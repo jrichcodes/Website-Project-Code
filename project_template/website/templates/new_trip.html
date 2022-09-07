@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block title %}New Trip{% endblock %}
+
+{% block content %} 
+<form method="POST">
+    <h3 align="center">Create New Trip</h3>
+    <div class="form-group">
+        <label for="tripName">Trip Name</label>
+        <input 
+            type="tripName" 
+            class="form-control" 
+            id="tripName" 
+            name="tripName"
+            placeholder="Enter Trip Name"
+        />
+    </div>
+    <div class="form-group">
+        <label for="numberOfParticipants">Number of Participants</label>
+        <input 
+            type="text" 
+            class="form-control" 
+            id="numberOfParticipants" 
+            name="numberOfParticipants"
+            placeholder="Enter Number of Participants"
+        />
+    </div>
+    <div class="form-group">
+        <label for="tripType">Trip Type</label>
+        <input 
+            type="text" 
+            class="form-control" 
+            id="tripType" 
+            name="tripType"
+            placeholder="Enter Trip Type"
+        />
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+{% endblock %}
