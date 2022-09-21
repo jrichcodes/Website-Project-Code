@@ -54,6 +54,12 @@
             <hr class="my-4">
 
             <h4 class="mb-3">Gear List</h4>
+            {% for gear_items in gear_items %}
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                    <label class="form-check-label" for="flexCheckDefault">{{gear_items.name}}</label>
+                </div>
+            {% endfor %}
         </form>
     </div>
 
