@@ -6,5 +6,51 @@
 }
 
 .feature_content {
-    /*display: inline-block;*/
+    display: inline-block;
 }
+
+.feature_logo {
+    margin: auto;
+    display: block;
+}
+
+/* ID Selectors */
+#title_section {
+    background-color: #1a8764; 
+    height: 100vh;
+    width: 100%;
+}
+
+#brand_name {
+    text-align: center;
+    font-family: "Montserrat-Black";
+    font-size: 4rem;
+    line-height: 1.5;
+}
+
+#home_navbar {
+    width: 100%;
+}
+
+#title_content {
+    padding-top: 1%;
+    height: 100vh;
+    width: 100vw;
+}
+
+#camping_image {
+}
+
+#title_content_container {
+}
+
+
+
+#features_section {
+
+}
+
+#footer_section {
+
+}
+
