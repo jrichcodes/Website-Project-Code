@@ -6,6 +6,6 @@ views = Blueprint('views', __name__)
 def home():
     return render_template("home.html")
 
-@views.route('/')
+@views.route('/events')
 def events():
     return render_template("events.html")
