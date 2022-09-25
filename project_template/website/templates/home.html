@@ -3,18 +3,29 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        <!-- Bootstrap -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css" integrity="sha384-xeJqLiuOvjUBq3iGOjvSQSIlwrpqjSHXpduPd6rQpuiM3f5/ijby8pCsnbu5S81n" crossorigin="anonymous">
+
+        <!-- Custom Stylesheets -->
         <link rel="stylesheet" href="../static/css/home.css">
+
+        <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Ubuntu&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;1,700&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
+        <!-- FontAwesome -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.2/css/fontawesome.min.css" integrity="sha384-X8QTME3FCg1DLb58++lPvsjbQoCT9bp3MsUU3grbIny/3ZwUJkRNO8NPW6zqzuW9" crossorigin="anonymous">
+
         <title>Home</title>
     </head>
     <body>
         <section id="title_section">
-            <div class="container-fluid" id="title_content_container">
-                <nav class="navbar navbar-expand-lg navbar-dark" id="home_navbar">
-                    <a class="navbar-brand" href="">TripPlanner</a>
+            <div class="container-fluid" id="title_container">
+                <nav class="navbar navbar-expand-lg navbar-dark">
+                    <a class="navbar-brand" href="">Trip Planner</a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
@@ -24,16 +35,22 @@
                                 <a class="nav-link" href="">Events</a>
                             </li>
                             <li class="navbar-item">
-                                <a class="nav-link" href="">Account</a>
+                                <a class="nav-link" href="">Log in</a>
                             </li>
-        
+                            <li class="navbar-item">
+                                <a class="nav-link" href="">Sign up</a>
+                            </li>       
                         </ul>
                     </div>
                 </nav>
                 
                 <div class="row w-100" id="title_content">
                     <div class="col-md-6">
-                        <h1 id="brand_name">Plan adventurous trips online</h1>
+                        <h1 id="title_introduction">Lorem ipsum dolor sit amet, consectetur adipiscing elit</h1>
+                        <h3 id="title_details">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt</h1>
+                        <button type="button" class="btn btn-dark btn-lg title_button"><i class="bi bi-clipboard-check-fill"></i> Get started</button>
+                        <button type="button" class="btn btn-light btn-lg title_button"><i class="bi bi-info-square-fill"></i> Learn more</button>
+
                     </div>
                     <div class="col-md-6">
                         <img src="../images/camping/people_camping.png" alt="People Camping" id="camping_image">
@@ -42,47 +59,80 @@
             </div>
         </section>
 
-        <hr>
-
-        <section id="features_section">
-            <h1 style="text-align: center;">Features</h1>
+        <section id="qualities_section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4 quality">
+                        <i class="bi bi-check-circle-fill quality_icon"></i>
+                        <h3 style="font-weight: bold;">Easy to use</h3>
+                        <p style="color: #8f8f8f;">Lorem ipsum dolor sit amet, consectetur</p>
+                    </div>
+                    <div class="col-lg-4 quality">
+                        <i class="bi bi-share-fill quality_icon"></i>
+                        <h3 style="font-weight: bold;">Shareable</h3>
+                        <p style="color: #8f8f8f;">Lorem ipsum dolor sit amet, consectetur</p>
+                    </div>
+                    <div class="col-lg-4 quality">
+                        <i class="quality_icon bi bi-arrow-repeat "></i>
+                        <h3 style="font-weight: bold;">Dynamic</h3>
+                        <p style="color: #8f8f8f;">Lorem ipsum dolor sit amet, consectetur</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="feature_section">
+            <h1 style="text-align: center; padding: 5rem; font-weight: bold;">Features</h1>
             <div class="container">
                 <div class="row w-100">
-                    <div class="col-md-4">
-                        <img class = "feature_logo" src="../images/features/placeholder2.png" alt="">
-                        <ul class="">
-                            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
-                            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
-                            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
-                        </ul>
+                    <div class="feature col-lg-4">
+                        <div style="text-align: center;">
+                            <i class="feature_icon bi bi-circle"></i>
+                        </div>
+                        <div class="feature_content">
+                            <ul class="">
+                                <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+                                <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+                                <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+                            </ul>
+                        </div>
                     </div>
-                    <div class="col-md-4">
-                        <img class = "feature_logo" src="../images/features/placeholder2.png" alt="">
-                        <ul class="">
-                            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
-                            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
-                            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
-                        </ul>
+                    <div class="feature col-lg-4">
+                        <div style="text-align: center;">
+                            <i class="feature_icon bi bi-circle"></i>
+                        </div>
+                        <div class="feature_content">
+                            <ul class="">
+                                <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+                                <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+                                <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+                            </ul>
+                        </div>
                     </div>
-                    <div class="col-md-4">
-                        <img class = "feature_logo" src="../images/features/placeholder2.png" alt="">
-                        <ul class="">
-                            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
-                            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
-                            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
-                        </ul>
+                    <div class="feature col-lg-4">
+                        <div style="text-align: center;">
+                            <i class="feature_icon bi bi-circle"></i>
+                        </div>
+                        <div class="feature_content">
+                            <ul class="">
+                                <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+                                <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+                                <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+                            </ul>
+                        </div>
                     </div>   
                 </div>
             </div>
-            <button>Join Today</button>
         </section>
 
         <section id="footer_section">
+            <h1 style="font-weight: bold; padding: 1%;">Contact Us</h1>
             <footer>
-                <img class="footer_logo" src="../images/contacts/email.png" alt="">
-                <img class="footer_logo" src="../images/contacts/linkedin.png" alt="">
-                <img class="footer_logo" src="../images/contacts/twitter.png" alt="">
-                <img class="footer_logo" src="../images/contacts/instagram.png" alt="">
+                <button type="button" class=" btn btn-link"><i class=" footer_icon bi bi-envelope-fill"></i></button>
+                <button type="button" class=" btn btn-link"><i class=" footer_icon bi bi-linkedin"></i></button>
+                <button type="button" class=" btn btn-link"><i class=" footer_icon bi bi-twitter"></i></button>
+                <button type="button" class=" btn btn-link"><i class=" footer_icon bi bi-instagram"></i></button>
+
             </footer>
         </section>
 

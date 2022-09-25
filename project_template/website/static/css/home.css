@@ -1,56 +1,97 @@
-/* Class Selectors */
-
-.footer_logo {
-    max-width: 45px;
-    max-height: 45px;
-}
-
-.feature_content {
-    display: inline-block;
-}
-
-.feature_logo {
-    margin: auto;
-    display: block;
-}
-
-/* ID Selectors */
 #title_section {
-    background-color: #1a8764; 
-    height: 100vh;
-    width: 100%;
-}
-
-#brand_name {
-    text-align: center;
-    font-family: "Montserrat-Black";
-    font-size: 4rem;
-    line-height: 1.5;
-}
-
-#home_navbar {
-    width: 100%;
-}
-
-#title_content {
-    padding-top: 1%;
-    height: 100vh;
-    width: 100vw;
+    background-color: #5CDB95;
 }
 
 #camping_image {
+    border-radius: 2%;
+    display: block;
+    margin-left: auto;
 }
 
-#title_content_container {
+#title_container {
+    padding: 2% 16%;
+}
+
+#title_introduction {
+    font-family: "Montserrat-Black";
+    color: rgb(0, 0, 0);
+    font-size: 3rem;
+    font-weight: bold;
+    line-height: 1.2;
+}
+
+#title_details {
+    color: rgb(53, 51, 51);
+
+}
+
+.title_button {
+    margin: 5% 3% 5% 0;
+}
+
+#qualities_section {
+    padding: 7% 15%;
+}
+
+.quality {
+    text-align: center;
+    padding: 5%;
+}
+
+.quality_icon {
+    font-size: 4rem;
+    color: #5CDB95;
+}
+
+.navbar {
+    padding-bottom: 2rem;
+}
+
+.navbar-brand {
+    font-size: 2rem;
+    font-weight: bold;
+    color: black;
+}
+
+.navbar-item {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.nav-link {
+    color: black;
+}
+
+#feature_section {
+    background-color: #5CDB95;
+    padding-bottom: 10%;
+}
+
+.feature_icon {
+    font-size: 4rem;
 }
 
 
-
-#features_section {
-
+.feature {
+    padding-top: 5%;
+    padding-bottom: 5%;
 }
+
+body {
+    font-family: "Montserrat";
+}
+
 
 #footer_section {
-
+    text-align: center;
 }
 
+.footer_icon {
+    font-size: 3rem;
+    padding: 5%;
+    color: #000000;
+}
+
+.btn-link {
+    margin: 0% 5%;
+}
