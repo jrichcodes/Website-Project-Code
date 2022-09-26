@@ -25,35 +25,44 @@
         <section id="title_section">
             <div class="container-fluid" id="title_container">
                 <nav class="navbar navbar-expand-lg navbar-dark">
-                    <a class="navbar-brand" href="">Trip Planner</a>
+                    <a class="navbar-brand" href="/">Trip Planner</a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav ms-auto">
                             <li class="navbar-item">
-                                <a class="nav-link" href="">Events</a>
+                                <a class="nav-link" href="events">Events</a>
                             </li>
                             <li class="navbar-item">
-                                <a class="nav-link" href="">Log in</a>
+                                <a class="nav-link" href="login">Log in</a>
                             </li>
                             <li class="navbar-item">
-                                <a class="nav-link" href="">Sign up</a>
+                                <a class="nav-link" href="sign-up">Sign up</a>
                             </li>       
                         </ul>
                     </div>
                 </nav>
                 
                 <div class="row w-100" id="title_content">
-                    <div class="col-md-6">
+                    <div class="col-md-5">
                         <h1 id="title_introduction">Lorem ipsum dolor sit amet, consectetur adipiscing elit</h1>
                         <h3 id="title_details">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt</h1>
-                        <button type="button" class="btn btn-dark btn-lg title_button"><i class="bi bi-clipboard-check-fill"></i> Get started</button>
-                        <button type="button" class="btn btn-light btn-lg title_button"><i class="bi bi-info-square-fill"></i> Learn more</button>
-
+                        <a href="sign-up" class="btn btn-dark btn-lg title_button" role="button" aria-pressed="true"><i class="bi bi-clipboard-check-fill"></i> Get started</a>
+                        <a href="#feature_section" type="button" class="btn btn-light btn-lg title_button"><i class="bi bi-info-square-fill"></i> Learn more</a>
                     </div>
-                    <div class="col-md-6">
-                        <img src="../images/camping/people_camping.png" alt="People Camping" id="camping_image">
+                    <div class="col-md-7">
+                        <div class="image_row row w-100">
+                            <div class="col-md-4 title_card" style="width: 18rem;">
+                                <img class="trip_image" src="../static/images/camping/people_camping.png" alt="Card image cap">
+                            </div>
+                            <div class="col-md-4 title_card" style="width: 18rem;">
+                                <img class="trip_image" src="../static/images/camping/hiking.jpg" alt="Card image cap">
+                            </div>
+                            <div class="col-md-4 title_card" style="width: 18rem;">
+                                <img class="trip_image" src="../static/images/camping/biking.jpg" alt="Card image cap">
+                            </div>
+                        </div> 
                     </div>
                 </div>
             </div>
@@ -82,7 +91,7 @@
         </section>
         
         <section id="feature_section">
-            <h1 style="text-align: center; padding: 5rem; font-weight: bold;">Features</h1>
+            <h1 style="text-align: center; padding: 6rem; font-weight: bold;">Features</h1>
             <div class="container">
                 <div class="row w-100">
                     <div class="feature col-lg-4">
@@ -123,17 +132,6 @@
                     </div>   
                 </div>
             </div>
-        </section>
-
-        <section id="footer_section">
-            <h1 style="font-weight: bold; padding: 1%;">Contact Us</h1>
-            <footer>
-                <button type="button" class=" btn btn-link"><i class=" footer_icon bi bi-envelope-fill"></i></button>
-                <button type="button" class=" btn btn-link"><i class=" footer_icon bi bi-linkedin"></i></button>
-                <button type="button" class=" btn btn-link"><i class=" footer_icon bi bi-twitter"></i></button>
-                <button type="button" class=" btn btn-link"><i class=" footer_icon bi bi-instagram"></i></button>
-
-            </footer>
         </section>
 
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
