@@ -20,6 +20,7 @@
 - Website-Project-Code/project_template/website/templates/home.html
 - Website-Project-Code/project_template/website/static/css/*
 - Website-Project-Code/project_template/website/static/images/*
+- Website-Project-Code/project_template/website/views.py
 
 ## What i accomplished
 - Added navbar to homepage
