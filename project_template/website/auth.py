@@ -1,6 +1,7 @@
 from flask import Blueprint, render_template, request, flash, redirect, url_for
-from .models import User
+from .models import User, gearItems
 from . import db
+from flask_sqlalchemy import SQLAlchemy
 
 auth = Blueprint('auth', __name__)
 
@@ -20,6 +21,10 @@ def new_trip():
         return redirect(url_for('views.home')) #redirect to home page after new account created
     return render_template("new_trip.html")
 
+@auth.route('/trip-summary', methods=['GET', 'POST'])
+def trip_summary():
+    gear_items = gearItems.query.filter_by(trip_type_id=1)
+    return render_template("trip_summary.html", gear_items = gear_items)
 
 @auth.route('/sign-up', methods=['GET', 'POST'])
 def sign_up():
