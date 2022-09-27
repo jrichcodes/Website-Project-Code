@@ -1,0 +1,36 @@
+auth.py
+9c058eca (juliasteed     2022-09-24 14:45:43 -0400 34)         last_name = request.form.get('lastName')
+55c1cb5c (juliasteed     2022-09-23 11:42:30 -0400 39)             flash('Email must be greater than 4 characters.', category='error')
+9c058eca (juliasteed     2022-09-24 14:45:43 -0400 42)         elif len(last_name) < 2:
+9c058eca (juliasteed     2022-09-24 14:45:43 -0400 43)             flash('Last name must be greater than 1 character', category='error')
+c166f153 (juliasteed     2022-09-23 12:34:45 -0400 48)         else:
+9c058eca (juliasteed     2022-09-24 14:45:43 -0400 50)             new_user = User(email=email, first_name=first_name, last_name=last_name, password=password1)
+c166f153 (juliasteed     2022-09-23 12:34:45 -0400 52)             db.session.commit()
+9c058eca (juliasteed     2022-09-24 14:45:43 -0400 54)             return redirect(url_for('views.events')) # redirect to events page after new account created
+
+sign_up.html
+9c058eca (juliasteed     2022-09-24 14:45:43 -0400 27)     <div class="form-group">
+9c058eca (juliasteed     2022-09-24 14:45:43 -0400 28)         <label for="lastName">Last Name</label>
+9c058eca (juliasteed     2022-09-24 14:45:43 -0400 29)         <input 
+9c058eca (juliasteed     2022-09-24 14:45:43 -0400 30)             type="text" 
+9c058eca (juliasteed     2022-09-24 14:45:43 -0400 31)             class="form-control" 
+9c058eca (juliasteed     2022-09-24 14:45:43 -0400 32)             id="lastName" 
+9c058eca (juliasteed     2022-09-24 14:45:43 -0400 33)             name="lastName"
+9c058eca (juliasteed     2022-09-24 14:45:43 -0400 34)             placeholder="Enter last name"
+9c058eca (juliasteed     2022-09-24 14:45:43 -0400 35)         />
+9c058eca (juliasteed     2022-09-24 14:45:43 -0400 36)     </div>
+55c1cb5c (juliasteed     2022-09-23 11:42:30 -0400 47)     <div class="form-group">
+55c1cb5c (juliasteed     2022-09-23 11:42:30 -0400 48)         <label for="password2">Confirm Password</label>
+55c1cb5c (juliasteed     2022-09-23 11:42:30 -0400 49)         <input 
+55c1cb5c (juliasteed     2022-09-23 11:42:30 -0400 50)             type="password" 
+55c1cb5c (juliasteed     2022-09-23 11:42:30 -0400 51)             class="form-control" 
+55c1cb5c (juliasteed     2022-09-23 11:42:30 -0400 52)             id="password2" 
+55c1cb5c (juliasteed     2022-09-23 11:42:30 -0400 53)             name="password2"
+55c1cb5c (juliasteed     2022-09-23 11:42:30 -0400 54)             placeholder="Confirm password"
+55c1cb5c (juliasteed     2022-09-23 11:42:30 -0400 55)         />
+55c1cb5c (juliasteed     2022-09-23 11:42:30 -0400 56)     </div>
+
+models.py
+6a242e76 (juliasteed     2022-09-27 08:48:46 -0400 19)     last_name = db.Column(db.String(150))
+
+views.py - I added events route but there was a merge conflict - someone else had also done this
