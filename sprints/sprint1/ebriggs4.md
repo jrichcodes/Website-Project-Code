@@ -1,17 +1,27 @@
-##Sprint 1
-#Erin Briggs, ebriggs4. TripPlanner
+## Sprint 1
+# Erin Briggs
+# Github ID: ebriggs4
+# TripPlanner
 
-#What was planned to do
-- Create login page
-- Check that user is in the data base
-- Link successful login to the events page with their saved events
+# What was planned to do
+- Create login page (Issue 2)
+- Check that user is in the data base (Issue 13)
+- Link successful login to the events page with their saved trips (Issue 6)
 
-#What I did not do
+# Problems encountered
+- Learning Python and html for the first time
 
-#Problems encountered
+# Issues worked on
+- Issue 2: #2
+- Issue 6: #6
+- Issue 13: #13
 
-#Issues worked on
+# Files I worked on
+- Website-Project-Code/project_template/website/auth.py
+- Website-Project-Code/project_template/website/__init__.py
 
-#Files I worked on
+# What I accomplished
+- Successfully created a login page that makes sure the user exists already
+- Links the user to their personal events page after logging in
+- Outputs Error messages if there is invalid/incorrect content (email or matching password)
 
-#What I accomplished

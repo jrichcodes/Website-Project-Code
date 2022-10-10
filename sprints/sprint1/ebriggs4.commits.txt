@@ -1,0 +1,37 @@
+auth.py
+1af18267 (ebriggs4       2022-10-09 21:50:16 -0400  4) from werkzeug.security import generate_password_hash, check_password_hash
+1af18267 (ebriggs4       2022-10-09 21:50:16 -0400  6) from flask_login import login_user, login_required, logout_user, current_user
+1af18267 (ebriggs4       2022-10-09 21:50:16 -0400 12)     if request.method == 'POST':
+1af18267 (ebriggs4       2022-10-09 21:50:16 -0400 13)         email = request.form.get('email')
+1af18267 (ebriggs4       2022-10-09 21:50:16 -0400 14)         password = request.form.get('password')
+1af18267 (ebriggs4       2022-10-09 21:50:16 -0400 15) 
+1af18267 (ebriggs4       2022-10-09 21:50:16 -0400 16)         user = User.query.filter_by(email=email).first()
+1af18267 (ebriggs4       2022-10-09 21:50:16 -0400 17)         if user:
+1af18267 (ebriggs4       2022-10-09 21:50:16 -0400 18)             if check_password_hash(user.password, password):
+1af18267 (ebriggs4       2022-10-09 21:50:16 -0400 19)                 flash('Logged in successfully!', category='success')
+1af18267 (ebriggs4       2022-10-09 21:50:16 -0400 20)                 login_user(user, remember=True)
+1af18267 (ebriggs4       2022-10-09 21:50:16 -0400 21)                 return redirect(url_for('views.events'))
+1af18267 (ebriggs4       2022-10-09 21:50:16 -0400 22)             else:
+1af18267 (ebriggs4       2022-10-09 21:50:16 -0400 23)                 flash('Incorrect password, try again.', category='error')
+1af18267 (ebriggs4       2022-10-09 21:50:16 -0400 24)         else:
+1af18267 (ebriggs4       2022-10-09 21:50:16 -0400 25)             flash('Email does not exist.', category='error')
+1af18267 (ebriggs4       2022-10-09 21:50:16 -0400 26) 
+1af18267 (ebriggs4       2022-10-09 21:50:16 -0400 27)     return render_template("login.html", user=current_user)
+1af18267 (ebriggs4       2022-10-09 21:50:16 -0400 31)     logout_user()
+1af18267 (ebriggs4       2022-10-09 21:50:16 -0400 32)     return redirect(url_for('auth.login'))
+1af18267 (ebriggs4       2022-10-09 21:50:16 -0400 66)             new_user = User(email=email, first_name=first_name, last_name=last_name, password=generate_password_hash(password1, method='sha256'))
+1af18267 (ebriggs4       2022-10-09 21:50:16 -0400 73)     return render_template("sign_up.html", user=current_user)
+
+__init__.py
+92f9615b (ebriggs4       2022-10-09 21:52:40 -0400  4) from flask_login import LoginManager
+92f9615b (ebriggs4       2022-10-09 21:52:40 -0400 26)     login_manager = LoginManager()
+92f9615b (ebriggs4       2022-10-09 21:52:40 -0400 27)     login_manager.login_view = 'auth.login'
+92f9615b (ebriggs4       2022-10-09 21:52:40 -0400 28)     login_manager.init_app(app)
+92f9615b (ebriggs4       2022-10-09 21:52:40 -0400 29) 
+92f9615b (ebriggs4       2022-10-09 21:52:40 -0400 30)     @login_manager.user_loader
+92f9615b (ebriggs4       2022-10-09 21:52:40 -0400 31)     def load_user(id):
+92f9615b (ebriggs4       2022-10-09 21:52:40 -0400 32)         return User.query.get(int(id))
+92f9615b (ebriggs4       2022-10-09 21:52:40 -0400 33) 
+92f9615b (ebriggs4       2022-10-09 21:52:40 -0400 39)         print('Created Database!')
+
+
