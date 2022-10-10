@@ -4,13 +4,12 @@ from sqlalchemy.sql import func
 
 class Trip(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    data = db.Column(db.String(10000))
-    date = db.Column(db.DateTime(timezone=True), default=func.now())
+    name = db.Column(db.String(50))
+    desc = db.Column(db.String(10000))
+    trip_type = db.Column(db.String(50))
     #how to associate different imformation with different users
     #do this in the form of a foregin key
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
-
-
 
 class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)

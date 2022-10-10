@@ -1,11 +1,26 @@
-from flask import Blueprint, render_template
+from dataclasses import dataclass
+from flask import Blueprint, render_template, request, flash
+from flask_login import login_required, current_user
+from .models import Trip
+from . import db
 
 views = Blueprint('views', __name__)
 
-@views.route('/')
+@views.route('/', methods=['GET', 'POST'])
 def home():
     return render_template("home.html")
 
-@views.route('events')
+@views.route('events', methods=['GET', 'POST'])
 def events():
-    return render_template("events.html")
+    if request.method == 'POST':
+        name_in = request.form.get('name')
+        desc_in = request.form.get('desc')
+        tripType_in = request.form.get('tripType')
+        if len(name_in) < 1:
+            flash('Trip name is too short!', category='error')
+        else:
+            new_trip = Trip(name = name_in, desc = desc_in, trip_type = tripType_in, user_id=current_user.id)
+            db.session.add(new_trip)
+            db.session.commit()
+            flash('Trip added!', category='success')
+    return render_template("events.html", user=current_user)
