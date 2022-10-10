@@ -8,7 +8,7 @@
     <ul class="list-group list-group-flush" id="trip"></ul>
         {% for trip in user.trip %}
         <li class="list-group-item"></li>
-            {{trip.name}}
+            <a class ="link" id = "{{trip.id}}"" href="/trip-summary">{{trip.name}}</a>
             <button type="button" class="close" onClick="deleteTrip({{ trip.id }})">
                 <span aria-hidden="true">&times;</span>
             </button>
