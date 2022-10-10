@@ -1,19 +1,35 @@
 from flask import Blueprint, render_template, request, flash, redirect, url_for
 from .models import User, gearItems
 from . import db
+from werkzeug.security import generate_password_hash, check_password_hash
 from flask_sqlalchemy import SQLAlchemy
+from flask_login import login_user, login_required, logout_user, current_user
 
 auth = Blueprint('auth', __name__)
 
 @auth.route('/login', methods=['GET', 'POST'])
 def login():
-    data = request.form
-    print(data)
-    return render_template("login.html", text ="testing")
+    if request.method == 'POST':
+        email = request.form.get('email')
+        password = request.form.get('password')
+
+        user = User.query.filter_by(email=email).first()
+        if user:
+            if check_password_hash(user.password, password):
+                flash('Logged in successfully!', category='success')
+                login_user(user, remember=True)
+                return redirect(url_for('views.events'))
+            else:
+                flash('Incorrect password, try again.', category='error')
+        else:
+            flash('Email does not exist.', category='error')
+
+    return render_template("login.html", user=current_user)
 
 @auth.route('/logout')
 def logout():
-    return "<p>logout</p>"
+    logout_user()
+    return redirect(url_for('auth.login'))
 
 @auth.route('/new-trip', methods=['GET', 'POST'])
 def new_trip():
@@ -47,11 +63,11 @@ def sign_up():
             flash('Password must be at least 7 characters.', category='error')
         else:
             #add user to database
-            new_user = User(email=email, first_name=first_name, last_name=last_name, password=password1)
+            new_user = User(email=email, first_name=first_name, last_name=last_name, password=generate_password_hash(password1, method='sha256'))
             db.session.add(new_user)
             db.session.commit()
             flash('Account created!', category='sucess')
             return redirect(url_for('views.events')) # redirect to events page after new account created
 
 
-    return render_template("sign_up.html")
+    return render_template("sign_up.html", user=current_user)
