@@ -4,15 +4,14 @@
 {% block content %} 
 <form method="POST">
     <h1 align="center">Trips</h1>
-    <hr>
-    <ul class="list-group list-group-flush" id="trip"></ul>
+    <ul class="list-group list-group-flush" id="trip">
         {% for trip in user.trip %}
-        <li class="list-group-item"></li>
-            <a class ="link" id = "{{trip.id}}"" href="/trip-summary">{{trip.name}}</a>
-            <button type="button" class="close" onClick="deleteTrip({{ trip.id }})">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </li>
+            <li class="list-group-item"></li>
+                <a class ="link" id = "{{trip.id}}"" href="/trip-summary">{{trip.name}}</a>
+                <button type="button" class="close" onClick="deleteTrip({{ trip.id }})">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </li>
         {% endfor %}
     </ul>  
     <h3 align="center">Create New Trip</h3>
