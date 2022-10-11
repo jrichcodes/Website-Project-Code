@@ -12,9 +12,9 @@
 - Learning Python and html for the first time
 
 ## Issues worked on
-- Issue 2: #2
-- Issue 6: #6
-- Issue 13: #13
+- Issue 2: [#2](https://github.com/jrichcodes/Website-Project-Code/issues/2)
+- Issue 6: [#6](https://github.com/jrichcodes/Website-Project-Code/issues/6)
+- Issue 13: [#13](https://github.com/jrichcodes/Website-Project-Code/issues/13)
 
 ## Files I worked on
 - Website-Project-Code/project_template/website/auth.py
