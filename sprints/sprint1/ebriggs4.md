@@ -4,9 +4,9 @@
 ## TripPlanner
 
 ## What was planned to do
-- Create login page (Issue 2)
-- Check that user is in the data base (Issue 13)
-- Link successful login to the events page with their saved trips (Issue 6)
+- Create login page [#2](https://github.com/jrichcodes/Website-Project-Code/issues/2)
+- Check that user is in the data base [#13](https://github.com/jrichcodes/Website-Project-Code/issues/13)
+- Link successful login to the events page with their saved trips [#6](https://github.com/jrichcodes/Website-Project-Code/issues/6)
 
 ## Problems encountered
 - Learning Python and html for the first time
