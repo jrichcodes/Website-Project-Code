@@ -1,0 +1,66 @@
+models.py
+20717192 (mmarcu10       2022-10-07 10:57:57 -0400  7)     name = db.Column(db.String(50))
+20717192 (mmarcu10       2022-10-07 10:57:57 -0400  8)     desc = db.Column(db.String(10000))
+20717192 (mmarcu10       2022-10-07 10:57:57 -0400  9)     trip_type = db.Column(db.String(50))
+720814dc (mmarcu10       2022-10-10 23:23:34 -0400 10)     date = db.Column(db.DateTime())
+
+views.py
+20717192 (mmarcu10       2022-10-07 10:57:57 -0400  1) from dataclasses import dataclass
+720814dc (mmarcu10       2022-10-10 23:23:34 -0400  2) from datetime import datetime
+20717192 (mmarcu10       2022-10-07 10:57:57 -0400  3) from flask import Blueprint, render_template, request, flash
+20717192 (mmarcu10       2022-10-07 10:57:57 -0400  4) from flask_login import login_required, current_user
+20717192 (mmarcu10       2022-10-07 10:57:57 -0400  5) from .models import Trip
+20717192 (mmarcu10       2022-10-07 10:57:57 -0400  6) from . import db
+20717192 (mmarcu10       2022-10-07 10:57:57 -0400 10) @views.route('/', methods=['GET', 'POST'])
+20717192 (mmarcu10       2022-10-07 10:57:57 -0400 14) @views.route('events', methods=['GET', 'POST'])
+720814dc (mmarcu10       2022-10-10 23:23:34 -0400 15) @login_required
+20717192 (mmarcu10       2022-10-07 10:57:57 -0400 17)     if request.method == 'POST':
+720814dc (mmarcu10       2022-10-10 23:23:34 -0400 18)         date_in = request.form.get('tripDate')
+720814dc (mmarcu10       2022-10-10 23:23:34 -0400 19)         time_in = request.form.get('tripTime')
+20717192 (mmarcu10       2022-10-07 10:57:57 -0400 20)         name_in = request.form.get('name')
+20717192 (mmarcu10       2022-10-07 10:57:57 -0400 21)         desc_in = request.form.get('desc')
+20717192 (mmarcu10       2022-10-07 10:57:57 -0400 22)         tripType_in = request.form.get('tripType')
+720814dc (mmarcu10       2022-10-10 23:23:34 -0400 23)         date_time = datetime.strptime(date_in + " " + time_in,"%Y-%m-%d %H:%M")
+20717192 (mmarcu10       2022-10-07 10:57:57 -0400 24)         if len(name_in) < 1:
+20717192 (mmarcu10       2022-10-07 10:57:57 -0400 25)             flash('Trip name is too short!', category='error')
+20717192 (mmarcu10       2022-10-07 10:57:57 -0400 26)         else:
+720814dc (mmarcu10       2022-10-10 23:23:34 -0400 27)             new_trip = Trip(name = name_in, desc = desc_in, trip_type = tripType_in, date = date_time, user_id=current_user.id)
+20717192 (mmarcu10       2022-10-07 10:57:57 -0400 28)             db.session.add(new_trip)
+20717192 (mmarcu10       2022-10-07 10:57:57 -0400 29)             db.session.commit()
+20717192 (mmarcu10       2022-10-07 10:57:57 -0400 30)             flash('Trip added!', category='success')
+ba0db7a5 (mmarcu10       2022-10-10 00:36:23 -0400 31)     return render_template("events.html", user=current_user)
+
+events.html
+720814dc project_template/website/templates/events.html   (mmarcu10       2022-10-10 23:23:34 -0400  3) {% block content %}
+720814dc project_template/website/templates/events.html   (mmarcu10       2022-10-10 23:23:34 -0400  6) <li class="list-group-item">
+720814dc project_template/website/templates/events.html   (mmarcu10       2022-10-10 23:23:34 -0400  7)     <a class="link" id="{{trip.id}}"" href=" /trip-summary">{{trip.name}}</a>
+720814dc project_template/website/templates/events.html   (mmarcu10       2022-10-10 23:23:34 -0400  8)     <button type="button" class="close" onClick="deleteTrip({{ trip.id }})">
+720814dc project_template/website/templates/events.html   (mmarcu10       2022-10-10 23:23:34 -0400  9)         <span aria-hidden="true">&times;</span>
+720814dc project_template/website/templates/events.html   (mmarcu10       2022-10-10 23:23:34 -0400 10)     </button>
+720814dc project_template/website/templates/events.html   (mmarcu10       2022-10-10 23:23:34 -0400 11) </li>
+20717192 project_template/website/templates/events.html   (mmarcu10       2022-10-07 10:57:57 -0400 16)         <label for="name">Trip Name</label>
+720814dc project_template/website/templates/events.html   (mmarcu10       2022-10-10 23:23:34 -0400 17)         <input type="name" class="form-control" id="name" name="name" placeholder="Enter Trip Name" />
+20717192 project_template/website/templates/events.html   (mmarcu10       2022-10-07 10:57:57 -0400 20)         <label for="desc">Description</label>
+720814dc project_template/website/templates/events.html   (mmarcu10       2022-10-10 23:23:34 -0400 21)         <input type="text" class="form-control" id="desc" name="desc" placeholder="Enter description" />
+720814dc project_template/website/templates/events.html   (mmarcu10       2022-10-10 23:23:34 -0400 25)         <select class="form-control" id="tripType" name = "tripType">
+720814dc project_template/website/templates/events.html   (mmarcu10       2022-10-10 23:23:34 -0400 26)             <option value="1">Backpacking</option>
+720814dc project_template/website/templates/events.html   (mmarcu10       2022-10-10 23:23:34 -0400 27)             <option value="2">Climbing</option>
+720814dc project_template/website/templates/events.html   (mmarcu10       2022-10-10 23:23:34 -0400 28)             <option value="3">Kyaking</option>
+720814dc project_template/website/templates/events.html   (mmarcu10       2022-10-10 23:23:34 -0400 29)             <option value="4">Biking</option>
+720814dc project_template/website/templates/events.html   (mmarcu10       2022-10-10 23:23:34 -0400 30)         </select>
+720814dc project_template/website/templates/events.html   (mmarcu10       2022-10-10 23:23:34 -0400 31)     </div>
+720814dc project_template/website/templates/events.html   (mmarcu10       2022-10-10 23:23:34 -0400 32)     <div class="form-group">
+720814dc project_template/website/templates/events.html   (mmarcu10       2022-10-10 23:23:34 -0400 33)         <label for="tripdate">Date</label>
+720814dc project_template/website/templates/events.html   (mmarcu10       2022-10-10 23:23:34 -0400 34)         <input type="date" id="tripDate" name="tripDate" class="form-control" >
+720814dc project_template/website/templates/events.html   (mmarcu10       2022-10-10 23:23:34 -0400 35)     </div>
+720814dc project_template/website/templates/events.html   (mmarcu10       2022-10-10 23:23:34 -0400 36)     <div class="form-group">
+720814dc project_template/website/templates/events.html   (mmarcu10       2022-10-10 23:23:34 -0400 37)         <label for="tripTime">Time</label>
+720814dc project_template/website/templates/events.html   (mmarcu10       2022-10-10 23:23:34 -0400 38) 	    <input type="time" id="tripTime" name="tripTime">
+
+database.db
+62665735 (mmarcu10          2022-10-07 10:59:35 -0400 11)   id INT,
+720814dc (mmarcu10          2022-10-10 23:23:34 -0400 12)   name TEXT,
+720814dc (mmarcu10          2022-10-10 23:23:34 -0400 13)   "desc" TEXT,
+720814dc (mmarcu10          2022-10-10 23:23:34 -0400 14)   trip_type INT,
+720814dc (mmarcu10          2022-10-10 23:23:34 -0400 15)   date NUM,
+720814dc (mmarcu10          2022-10-10 23:23:34 -0400 16)   user_id INT
