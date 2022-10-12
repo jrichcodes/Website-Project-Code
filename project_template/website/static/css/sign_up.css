@@ -1,0 +1,30 @@
+#title_section {
+    background-color: black;
+}
+
+#signup_section {
+    background-color: #5CDB95;
+}
+
+.navbar {
+    padding-bottom: 2rem;
+}
+
+.navbar-brand {
+    font-size: 2rem;
+    font-weight: bold;
+    color: white;
+}
+
+.navbar-item {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.nav-link {
+    color: #5CDB95;
+}
+
+body {
+    height:100vh;
+}
