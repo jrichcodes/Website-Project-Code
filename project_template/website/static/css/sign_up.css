@@ -2,6 +2,15 @@
     background-color: black;
 }
 
+#title_container {
+    padding: 2% 10%;
+}
+
+#signup_container {
+    padding: 2% 10%;
+    margin: 0 auto;
+}
+
 #signup_section {
     background-color: #5CDB95;
 }
