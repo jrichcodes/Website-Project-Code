@@ -6,13 +6,32 @@
     padding: 2% 10%;
 }
 
+.title_card {
+    background-color: black;
+    border: 0;
+    width: 18rem;
+}
+
 #signup_container {
     padding: 2% 10%;
     margin: 0 auto;
 }
 
+#image_section {
+    background-color: black;
+    margin: auto
+}
+
+#image_container {
+    padding: 2% 10%;
+}
+
 #signup_section {
     background-color: #5CDB95;
+}
+
+.image_row {
+    margin-left: 0%;
 }
 
 .navbar {
@@ -36,4 +55,28 @@
 
 body {
     height:100vh;
+}
+
+.trip_image {
+    float: left;
+    background-size: cover;
+    border-radius: 5%;
+    width: 100%;
+    height: 100%;
+}
+
+@media (max-width: 1902px) {
+    .title_card {
+        width: 20rem;
+    }
+
+    #t_img3 {
+        display: none;
+    }
+}
+
+@media (max-width: 1422px) {
+    #t_img2 {
+        display: none;
+    }
 }
