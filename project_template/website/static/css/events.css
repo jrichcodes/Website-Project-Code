@@ -1,0 +1,23 @@
+body {
+    font-family: "Montserrat";
+}
+
+#event_form {
+    padding: 0 10%;
+}
+
+.navbar {
+    margin-bottom: 15px;
+}
+
+.navbar-brand {
+    color: white;
+}
+
+.navbar-item {
+    font-weight: bold;
+}
+
+.nav-link {
+    color: white;
+}
