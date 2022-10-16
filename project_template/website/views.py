@@ -1,5 +1,6 @@
 from dataclasses import dataclass
 from datetime import datetime
+from django.shortcuts import render
 from flask import Blueprint, render_template, request, flash
 from flask_login import login_required, current_user
 from .models import Trip
@@ -29,3 +30,7 @@ def events():
             db.session.commit()
             flash('Trip added!', category='success')
     return render_template("events.html", user=current_user)
+
+@views.route('suggestions')
+def suggestions():
+    return render_template("trip_suggestions.html")
