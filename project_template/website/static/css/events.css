@@ -11,6 +11,8 @@ body {
 }
 
 .navbar-brand {
+    font-size: 1.3rem;
+    font-weight: bold;
     color: white;
 }
 
@@ -20,4 +22,16 @@ body {
 
 .nav-link {
     color: white;
+}
+
+.card {
+margin: 1rem; 
+border-radius: 25px; 
+background-color: rgb(249, 249, 249);
+border-color: rgb(237, 237, 237);
+}
+
+.card:hover {
+background-color: rgb(240, 234, 234);
+
 }
