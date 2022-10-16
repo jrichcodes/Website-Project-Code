@@ -8,12 +8,16 @@ body {
 
 .navbar {
     margin-bottom: 15px;
+    height: 40px;
 }
 
 .navbar-brand {
     font-size: 1.3rem;
     font-weight: bold;
     color: white;
+}
+.navbar-brand:hover {
+    color: rgb(197, 189, 189);
 }
 
 .navbar-item {
