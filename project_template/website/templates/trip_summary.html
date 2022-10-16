@@ -1,5 +1,4 @@
 {% extends "base.html" %}
-
 {% block content %} 
 <!doctype html>
 <html lang="en">
@@ -18,7 +17,7 @@
     <div class = "container">
         <div class ="py-5 text-center">
             <ion-icon class="d-block mx-auto" name="reader-outline" size ="large"></ion-icon>
-            <h2>Trip summary: {trip.name}</trip></h2>
+            <h2>Trip summary: {{trip.name}}</h2>
         </div>
     </div>
     <div class="container">
@@ -28,7 +27,7 @@
                 <label for="ActivityType" class = "col-sm-2 col-form-label">Activity Type</label>
                 <div class="col-sm-2">
                     <div class="p-1 mb-1 bg-secondary text-white">
-                        <input type="text" readonly class="form-control-plaintext text-white" id="ActivtyType" value="Backpacking">
+                        <input type="text" readonly class="form-control-plaintext text-white" id="ActivtyType" value={{type.type}}>
                     </div>
                 </div>
             </div>
@@ -36,15 +35,15 @@
                 <label for="Date" class = "col-sm-2 col-form-label">Date</label>
                 <div class="col-sm-2">
                     <div class="p-1 mb-1 bg-secondary text-white">
-                        <input type="text" readonly class="form-control-plaintext text-white" id="Date" value="10/10/2022">
+                        <input type="text" readonly class="form-control-plaintext text-white" id="Date" value={{trip.date}}>
                     </div>
                 </div>
             </div>
             <div class="form-group row">
-                <label for="Location" class = "col-sm-2 col-form-label">Location</label>
+                <label for="Location" class = "col-sm-2 col-form-label">Description</label>
                 <div class="col-sm-2">
                     <div class="p-1 mb-1 bg-secondary text-white">
-                        <input type="text" readonly class="form-control-plaintext text-white" id="Location" value="Fall Creek Falls">
+                        <input type="text" readonly class="form-control-plaintext text-white" id="Location" value={{trip.desc}}>
                     </div>
                 </div>
             </div>
@@ -52,7 +51,7 @@
                 <label for="NumberOfPeople" class = "col-sm-2 col-form-label">Number of People</label>
                 <div class="col-sm-2">
                     <div class="p-1 mb-1 bg-secondary text-white">
-                        <input type="text" readonly class="form-control-plaintext text-white" id="NumberOfPeople" value="2">
+                        <input type="text" readonly class="form-control-plaintext text-white" id="NumberOfPeople" value={{trip.num_people}}>
                     </div>
                 </div>
             </div>

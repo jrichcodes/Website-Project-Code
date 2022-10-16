@@ -1,10 +1,10 @@
 from flask import Blueprint, render_template, request, flash, redirect, url_for
-from .models import User, gearItems
+from .models import User, gearItems, Trip, tripTypes
 from . import db
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import login_user, login_required, logout_user, current_user
-
+import json
 auth = Blueprint('auth', __name__)
 
 @auth.route('/login', methods=['GET', 'POST'])
@@ -37,10 +37,12 @@ def new_trip():
         return redirect(url_for('views.home')) #redirect to home page after new account created
     return render_template("new_trip.html")
 
-@auth.route('/trip-summary', methods=['GET', 'POST'])
-def trip_summary():
-    gear_items = gearItems.query.filter_by(trip_type_id=1)
-    return render_template("trip_summary.html", gear_items = gear_items)
+@auth.route('/trip-summary/<tripId>', methods=['GET', 'POST'])
+def trip_summary(tripId):
+    trip = Trip.query.filter_by(id = tripId).first()
+    type = tripTypes.query.filter_by(id = trip.trip_type).first()
+    gear_items = gearItems.query.filter_by(trip_type_id = trip.trip_type)
+    return render_template("trip_summary.html", trip = trip, gear_items = gear_items, type =type)
 
 @auth.route('/sign-up', methods=['GET', 'POST'])
 def sign_up():
