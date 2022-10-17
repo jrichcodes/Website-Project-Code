@@ -1,0 +1,43 @@
+#title_section {
+    background-color: black;
+}
+
+#title_container {
+    padding: 2% 10%;
+}
+
+.title_card {
+    background-color: black;
+    border: 0;
+    width: 18rem;
+}
+
+.navbar {
+    padding-bottom: 2rem;
+}
+
+.navbar-brand {
+    font-size: 2rem;
+    font-weight: bold;
+    color: white;
+}
+
+.navbar-item {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.nav-link {
+    color: #5CDB95;
+}
+
+.gradient-custom {
+    /* fallback for old browsers */
+    background: #f6d365;
+    
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: -webkit-linear-gradient(to right bottom, rgba(246, 211, 101, 1), rgba(253, 160, 133, 1));
+    
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: linear-gradient(to right bottom, rgba(246, 211, 101, 1), rgba(253, 160, 133, 1))
+}
