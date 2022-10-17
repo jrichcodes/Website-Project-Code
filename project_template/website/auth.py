@@ -68,6 +68,4 @@ def sign_up():
             db.session.commit()
             flash('Account created!', category='sucess')
             return redirect(url_for('auth.login')) # redirect to events page after new account created
-
-
     return render_template("sign_up.html", user=current_user)

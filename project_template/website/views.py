@@ -29,3 +29,8 @@ def events():
             db.session.commit()
             flash('Trip added!', category='success')
     return render_template("events.html", user=current_user)
+
+@views.route('/profile/', methods = ['GET', 'POST'])
+@login_required
+def profile():
+    return render_template("profile.html", user=current_user)
