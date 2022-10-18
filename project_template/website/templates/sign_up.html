@@ -46,88 +46,48 @@
             </div>
         </section>
 
-        <section id="signup_section">
-            <div class="container" id="signup_container">
-                <form method="POST">
-                    <h1 align="center">Sign Up</h1>
-                    <div class="row mb-4 mt-4">
-                        <label for="email" class="col-sm-3 col-form-label"><b>Email Address</b></label>
-                        <div class="col-sm-4">
-                            <input
-                                type="email" 
-                                class="form-control" 
-                                id="email" 
-                                name="email"
-                                placeholder="Enter email"
-                            />
-                        </div>
-                    </div>
-                    <div class="row mb-4">
-                        <label for="firstName" class="col-sm-3 col-form-label"><b>First Name</b></label>
-                        <div class="col-sm-4">
-                            <input 
-                                type="text" 
-                                class="form-control" 
-                                id="firstName" 
-                                name="firstName"
-                                placeholder="Enter first name"
-                            />
-                        </div>
-                    </div>
-                    <div class="row mb-4">
-                        <label for="lastName" class="col-sm-3 col-form-label"><b>Last Name</b></label>
-                        <div class="col-sm-4">
-                            <input 
-                                type="text" 
-                                class="form-control" 
-                                id="lastName" 
-                                name="lastName"
-                                placeholder="Enter last name"
-                            />
-                        </div>
-                    </div>
-                    <div class="row mb-4">
-                        <label for="password1" class="col-sm-3 col-form-label"><b>Password</b></label>
-                        <div class="col-sm-4">
-                            <input 
-                                type="password" 
-                                class="form-control" 
-                                id="password1" 
-                                name="password1"
-                                placeholder="Enter password"
-                            />
-                        </div>
-                    </div>
-                    <div class="row mb-4">
-                        <label for="password2" class="col-sm-3 col-form-label"><b>Confirm Password</b></label>
-                        <div class="col-sm-4 align">
-                            <input 
-                                type="password" 
-                                class="form-control" 
-                                id="password2" 
-                                name="password2"
-                                placeholder="Re-enter password"
-                            />
-                        </div>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                </form>
-            </div>
-        </section>
+        <section class="vh-100 bg-image"
+            style="background-image: url('https://mdbcdn.b-cdn.net/img/Photos/new-templates/search-box/img4.webp');">
+            <div class="mask d-flex align-items-center h-100 gradient-custom-3">
+                <div class="container h-100">
+                <div class="row d-flex justify-content-center align-items-center h-100">
+                    <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+                    <div class="card" style="border-radius: 15px;">
+                        <div class="card-body p-5">
+                        <h2 class="text-uppercase text-center mb-5">Create an account</h2>
 
-        <!-- <section id="image_section">
-            <div class="row w-100" id="image_container">
-                <div class="col-md-7">
-                    <div class="image_row row w-100">
-                        <div id="t_img2" class="col-md-4 title_card">
-                            <img class="trip_image" src="../static/images/camping/van.jpg" alt="Card image cap">
+                        <form method="POST">
+
+                            <div class="form-outline mb-4">
+                            <input type="email" class="form-control" id="email" name="email" placeholder="Enter email"/>
+                            </div>
+
+                            <div class="form-outline mb-4">
+                            <input type="firstName" class="form-control" id="firstName" name="firstName" placeholder="Enter first name"/>
+                            </div>
+
+                            <div class="form-outline mb-4">
+                            <input type="lastName" class="form-control" id="lastName" name="lastName" placeholder="Enter last name"/>
+                            </div>
+
+                            <div class="form-outline mb-4">
+                            <input type="password" class="form-control" id="password1" name="password1" placeholder="Create a password"/>
+                            </div>
+
+                            <div class="form-outline mb-4">
+                            <input type="password" class="form-control" id="password2" name="password2" placeholder="Re-enter password"/>
+                            </div>
+
+                            <div class="d-flex justify-content-center">
+                            <button type="submit" class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Sign Up</button>
+                            </div>
+
+                        </form>
+
                         </div>
-                        <div id="t_img3" class="col-md-4 title_card " >
-                            <img class="trip_image" src="../static/images/camping/camping_starry.jpg" alt="Card image cap">
-                        </div>
-                    </div> 
+                    </div>
+                    </div>
+                </div>
                 </div>
             </div>
-        </section> -->
-    </body>
-</html>
+</section>

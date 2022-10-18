@@ -12,18 +12,26 @@
     width: 18rem;
 }
 
-#signup_container {
-    padding: 2% 10%;
-    margin: 0 auto;
+.gradient-custom-3 {
+    /* fallback for old browsers */
+    background: #5cdb95;
+    
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: -webkit-linear-gradient(to right, rgba(92, 219, 149, 0.5), rgba(246, 211, 101, 0.5));
+    
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: linear-gradient(to right, rgba(92, 219, 149, 0.5), rgba(246, 211, 101, 0.5))
 }
 
-#image_section {
-    background-color: black;
-    margin: auto
-}
-
-#signup_section {
-    background-color: #5CDB95;
+.gradient-custom-4 {
+    /* fallback for old browsers */
+    background: #5CDB95;
+    
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: -webkit-linear-gradient(to right, rgba(92, 219, 149, 0.5), rgba(246, 211, 101, 0.5));
+    
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: linear-gradient(to right, rgba(92, 219, 149, 0.5), rgba(246, 211, 101, 0.5))
 }
 
 .navbar {
