@@ -1,0 +1,24 @@
+{
+    "Africa": {
+        "Explore Cape Town, South Africa": "website/static/images/suggestions/cape-town-south-africa.jpg",
+        "Go Back in Time in Zanzibar, Tanzania": "website/static/images/suggestions/back-in-time-zanzibar-tanzania.jpg",
+        "Witness the Pyramids of Giza, Egypt": "website/static/images/suggestions/great-pyramids-cairo-egypt.jpg",
+        "Experience Victoria Falls, Zimbabwe and Zambia": "website/static/images/suggestions/experience-victoria-falls-zimbabwe-zambia.jpg",
+        "Wander the Souks in Marrakesh, Morocco": "website/static/images/suggestions/wander-souks-marrakesh-morocco.jpg",
+        "Go Gorilla Trekking in Rwanda": "website/static/images/suggestions/gorilla-trecking-rwanda.jpg",
+        "Watch the Sun Rise over the Dunes in Sossusvlei, Namibia": "website/static/images/suggestions/watch-sunrise-over-dunes-sossusvlei-namibia.jpg",
+        "Find Serenity by the Sea and in the Sahara in Tunisia": "website/static/images/suggestions/find-serenity-by-sea-sahara-tunisia.jpg",
+        "Summit Mount Kilimanjaro in Tanzania": "website/static/images/suggestions/summit-mt-kilimanjaro-tanzania.jpg",
+        "Go on Safari in Kruger National Park, South Africa": "website/static/images/suggestions/safari-kruger-national-park-south-africa.jpg",
+        "See the Great Migration in Masai Mara, Kenya": "website/static/images/suggestions/see-great-migration-masai-mara-kenya.jpg",
+        "Descend into the Ngorongoro Crater on Safari in Tanzania": "website/static/images/suggestions/descend-into-ngorongoro-crater-on-safari-tanzania.jpg",
+        "Take a Beach Vacation to the Bazaruto Archipelago in Mozambique": "website/static/images/suggestions/beach-vacation-bazaruto-archipelago-mozambique.jpg",
+        "Traverse the Okavango Delta in Botswana": "website/static/images/suggestions/traverse-okavango-delta-botswana.jpg",
+        "Discover the Beauty of Lake Malawi": "website/static/images/suggestions/discover-beauty-lake-malawi.jpg"
+    },
+    "North America": {},
+    "South America": {},
+    "Asia": {},
+    "Oceania": {},
+    "Europe": {}
+}
