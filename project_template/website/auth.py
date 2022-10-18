@@ -11,6 +11,7 @@ auth = Blueprint('auth', __name__)
 def login():
     if request.method == 'POST':
         email = request.form.get('email')
+        email = email.lower()
         password = request.form.get('password')
 
         user = User.query.filter_by(email=email).first()
@@ -46,6 +47,7 @@ def trip_summary():
 def sign_up():
     if request.method == 'POST':
         email = request.form.get('email')
+        email = email.lower()
         first_name = request.form.get('firstName')
         last_name = request.form.get('lastName')
         password1 = request.form.get('password1')
@@ -84,5 +86,20 @@ def password_reset(userId):
             tmp = User.query.filter_by(id = userId).first()
             tmp.password = generate_password_hash(password1, method='sha256')
             db.session.commit()
-            return redirect(url_for('auth.login')) # redirect to login page after new account created
+            return redirect(url_for('auth.login')) # redirect to login page after password reset
     return render_template("password_reset.html", user=current_user)
+
+@auth.route('/email_reset/<userId>', methods = ['GET', 'POST'])
+@login_required
+def email_reset(userId):
+    if request.method == 'POST':
+        email = request.form.get('email')
+        email = email.lower()
+        if len(email) < 4:
+            flash('Email must be greater than 4 characters.', category='error')
+        else:
+            tmp = User.query.filter_by(id = userId).first()
+            tmp.email = email
+            db.session.commit()
+            return redirect(url_for('auth.login')) # redirect to login page after email reset
+    return render_template("email_reset.html", user=current_user)
