@@ -1,10 +1,11 @@
 from dataclasses import dataclass
 from datetime import datetime
 from django.shortcuts import render
-from flask import Blueprint, render_template, request, flash
+from flask import Blueprint, render_template, request, flash, current_app as app
 from flask_login import login_required, current_user
 from .models import Trip
 from . import db
+import json, os
 
 views = Blueprint('views', __name__)
 
@@ -33,4 +34,8 @@ def events():
 
 @views.route('suggestions')
 def suggestions():
-    return render_template("trip_suggestions.html")
+    json_file = os.path.join(app.static_folder, "json_files", "suggestions.json")
+    with open(json_file) as file:
+        data = json.load(file)
+
+    return render_template("trip_suggestions.html", data=data)
