@@ -70,9 +70,9 @@ def sign_up():
             return redirect(url_for('auth.login')) # redirect to login page after new account created
     return render_template("sign_up.html", user=current_user)
 
-@auth.route('/password_reset/', methods = ['GET', 'POST'])
+@auth.route('/password_reset/<userId>', methods = ['GET', 'POST'])
 @login_required
-def profile():
+def password_reset(userId):
     if request.method == 'POST':
         password1 = request.form.get('password1')
         password2 = request.form.get('password2')
@@ -81,7 +81,7 @@ def profile():
         elif len(password1) < 7:
             flash('Password must be at least 7 characters.', category='error')
         else:
-            tmp = User.query.filter_by(first_name = "julia").first()
+            tmp = User.query.filter_by(id = userId).first()
             tmp.password = generate_password_hash(password1, method='sha256')
             db.session.commit()
             return redirect(url_for('auth.login')) # redirect to login page after new account created
