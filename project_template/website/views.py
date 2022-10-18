@@ -6,6 +6,7 @@ from flask_login import login_required, current_user
 from .models import Trip
 from . import db
 import json, os
+from .read_trip_suggestions import get_json
 
 views = Blueprint('views', __name__)
 
@@ -34,8 +35,5 @@ def events():
 
 @views.route('suggestions')
 def suggestions():
-    json_file = os.path.join(app.static_folder, "json_files", "suggestions.json")
-    with open(json_file) as file:
-        data = json.load(file)
-
+    data = get_json()
     return render_template("trip_suggestions.html", data=data)

@@ -1,0 +1,17 @@
+#suggestions_card {
+    margin: 10px 10px;
+    border-radius: 4%;
+
+}
+
+#suggestions_container {
+    width: 95%;
+    margin: auto;
+}
+
+#suggestions {
+   margin: auto; 
+}
+
+.card-img-top {
+}
