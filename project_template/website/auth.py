@@ -67,5 +67,22 @@ def sign_up():
             db.session.add(new_user)
             db.session.commit()
             flash('Account created!', category='sucess')
-            return redirect(url_for('auth.login')) # redirect to events page after new account created
+            return redirect(url_for('auth.login')) # redirect to login page after new account created
     return render_template("sign_up.html", user=current_user)
+
+@auth.route('/password_reset/', methods = ['GET', 'POST'])
+@login_required
+def profile():
+    if request.method == 'POST':
+        password1 = request.form.get('password1')
+        password2 = request.form.get('password2')
+        if password1 != password2:
+            flash('Passwords don\'t match', category='error')
+        elif len(password1) < 7:
+            flash('Password must be at least 7 characters.', category='error')
+        else:
+            tmp = User.query.filter_by(first_name = "julia").first()
+            tmp.password = generate_password_hash(password1, method='sha256')
+            db.session.commit()
+            return redirect(url_for('auth.login')) # redirect to login page after new account created
+    return render_template("password_reset.html", user=current_user)
