@@ -1,9 +1,10 @@
 from dataclasses import dataclass
 from datetime import datetime
-from flask import Blueprint, render_template, request, flash, redirect, url_for
+from flask import Blueprint, render_template, request, flash, redirect, url_for, jsonify 
 from flask_login import login_required, current_user
-from .models import Trip
+from .models import Trip, gearItems
 from . import db
+import json
 
 views = Blueprint('views', __name__)
 
@@ -32,3 +33,13 @@ def events():
                 flash('Trip added!', category='success')
 
     return render_template("events.html", user=current_user)
+
+@views.route('/delete-gearitem', methods=['POST'])
+def delete_gearitem():
+    Item = json.loads(request.data)
+    gearid = Item['gearItemId']
+    Item = gearItems.query.get(gearid)
+    if Item:
+        db.session.delete(Item)
+        db.session.commit()
+    return jsonify({})

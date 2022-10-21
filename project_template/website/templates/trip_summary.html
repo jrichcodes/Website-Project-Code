@@ -65,20 +65,15 @@
             <h4 class="mb-3">Gear List</h4>
             <ul class = "list-group list-group-flush">
                 {% for gear_items in gear_items %}
-                <div class="form-check">
-                    <li class="list-group-item">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
-                    <label class="form-check-label" for="flexCheckDefault">{{gear_items.name}}</label>
-                    </li>
-                </div>
+                <li class="list-group-item">
+                    <input class="form-check-input" type="checkbox" id="checkboxNoLabel" value="" aria-label="..." />
+                    {{gear_items.name}}
+                    <button type="button" class="close" onClick="deleteGearItem({{gear_items.id}})">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </li>
                 {% endfor %}
             </ul>
-            <div class="input-group mb-3">
-                <input class="mb-3" type="text" class="form-control" placeholder="Item Name" aria-label="Item Name" aria-describedby="basic-addon2">
-                <div class="input-group-append">
-                  <button class="btn btn-secondary btm-sm" type="button">Add</button>
-                </div>
-            </div>
         </div>
 
     <!-- used for bootstrap -->
