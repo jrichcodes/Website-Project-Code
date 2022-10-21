@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 from datetime import datetime
-from flask import Blueprint, render_template, request, flash
+from flask import Blueprint, render_template, request, flash, redirect, url_for
 from flask_login import login_required, current_user
 from .models import Trip
 from . import db
