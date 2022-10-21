@@ -30,14 +30,22 @@ def logout():
     logout_user()
     return redirect(url_for('auth.login'))
 
-@auth.route('/new-trip', methods=['GET', 'POST'])
-def new_trip():
-    if request.method == 'POST':
-        return redirect(url_for('views.home')) #redirect to home page after new account created
-    return render_template("new_trip.html")
-
 @auth.route('/trip-summary/<tripId>', methods=['GET', 'POST'])
 def trip_summary(tripId):
+
+    if request.method == 'POST':
+        print('here')
+        item = request.form.get('item')
+        trip = Trip.query.filter_by(id = tripId).first()
+        trip_type = trip.trip_type
+        if len(item) < 1:
+            flash('Not valid gear item', category = 'error')
+        else: 
+            new_gearItem = gearItems(name=item, trip_type_id = trip_type)
+            db.session.add(new_gearItem)
+            db.session.commit()
+            flash('Gear Item added!', category='success')
+
     trip = Trip.query.filter_by(id = tripId).first()
     type = tripTypes.query.filter_by(id = trip.trip_type).first()
     gear_items = gearItems.query.filter_by(trip_type_id = trip.trip_type)

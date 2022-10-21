@@ -36,10 +36,12 @@ def events():
 
 @views.route('/delete-gearitem', methods=['POST'])
 def delete_gearitem():
-    Item = json.loads(request.data)
-    gearid = Item['gearItemId']
-    Item = gearItems.query.get(gearid)
-    if Item:
-        db.session.delete(Item)
-        db.session.commit()
+    if request.method == 'POST':
+        print('delete')
+        Item = json.loads(request.data)
+        gearid = Item['gearItemId']
+        Item = gearItems.query.get(gearid)
+        if Item:
+            db.session.delete(Item)
+            db.session.commit()
     return jsonify({})
