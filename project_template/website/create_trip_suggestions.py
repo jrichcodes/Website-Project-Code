@@ -1,5 +1,6 @@
 from gettext import find
-import requests, bs4, re, shutil, time, json
+from matplotlib import image
+import requests, bs4, re, shutil, time, json, os
 
 class trip:
     trip_name = None
@@ -31,7 +32,7 @@ Europe = continent("Europe")
 names = []
 images = []
 
-# ------ Africa ------
+# ------ Africa ------ #
 req = requests.get('https://www.planetware.com/africa/best-places-to-visit-saf-1-36.htm')
 finder = bs4.BeautifulSoup(req.text, 'lxml')
 
@@ -57,6 +58,7 @@ for i in y:
 #     req.raw.decode_content = True
 #     shutil.copyfileobj(req.raw, filename)
 #     filename.close
+#     print(filename)
 #     time.sleep(0.5)
 
 for i in range(len(x)):
@@ -70,7 +72,7 @@ for i in Africa.trips:
 names.clear()
 images.clear()
 
-# ------North America------
+# ------North America------- #
 req = requests.get('https://www.theevolista.com/usa-trip-ideas/')
 finder = bs4.BeautifulSoup(req.text, 'lxml')
 
@@ -106,8 +108,8 @@ for i in y:
 #     req.raw.decode_content = True
 #     shutil.copyfileobj(req.raw, filename)
 #     filename.close
-#     time.sleep(0.5)
 #     print(filename)
+#     time.sleep(0.5)
 
 # print(len(names))
 # print(len(images))
@@ -119,6 +121,50 @@ for i in range(len(names)):
 
 for i in North_America.trips:
     world['North America'][i.trip_name] = i.img
+
+images.clear()
+names.clear()
+
+# ------South America------- #
+req = requests.get('https://www.jetsetter.com/magazine/life-changing-trips-to-take-in-south-america/')
+finder = bs4.BeautifulSoup(req.text, 'lxml')
+
+x = finder.find_all('h2', class_ = "heading")
+y = finder.find_all('div', class_ = 'img-fit__image-contain')
+
+
+#Get names
+for i in x:
+    names.append(i.text.strip())
+
+#Get images
+for i in y:
+    if len(images) == 10:
+        break
+
+    tag = i.find('img')
+    if tag["sizes"].find('768') == -1:
+        images.append(tag["src"])
+
+# Download all images
+# for i in images:
+#     req = requests.get(i, stream=True)
+#     filename = "website/static/images/suggestions/" + i[51::]
+#     filename = open(filename, 'wb')
+#     req.raw.decode_content = True
+#     shutil.copyfileobj(req.raw, filename)
+#     filename.close
+#     print(filename)
+#     time.sleep(0.5)
+
+for i in range(len(names)):
+    world['South America'][names[i]] = images[i][51::]
+
+images.clear()
+names.clear()
+
+#-----Asia-----
+
 
 with open('website/static/json_files/suggestions.json', 'w') as json_file:
     json.dump(world, json_file, indent = 4)
