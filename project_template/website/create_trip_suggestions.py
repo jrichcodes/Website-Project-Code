@@ -2,32 +2,18 @@ from gettext import find
 from matplotlib import image
 import requests, bs4, re, shutil, time, json, os
 
-class trip:
-    trip_name = None
-    img = None
-    #TODO Africa
-    description = None
-
-    def __init__(self, trip_name, img):
-        self.trip_name = trip_name
-        self.img = img
-
-class continent:
-    name = None
-    trips = []
-
-    def __init__(self, name):
-        self.name = name
-        self.trips = []
+def create_images(images, name_index):
+    for i in images:
+        req = requests.get(i, stream=True)
+        filename = "website/static/images/suggestions/" + i[name_index::]
+        filename = open(filename, 'wb')
+        req.raw.decode_content = True
+        shutil.copyfileobj(req.raw, filename)
+        filename.close
+        print(filename)
+        time.sleep(0.5)
 
 world = {'Africa': {}, 'North America': {}, 'South America': {}, 'Asia': {}, 'Oceania': {}, 'Europe': {}}
-
-Africa = continent("Africa")
-North_America = continent("North America")
-South_America = continent("South America")
-Asia = continent("Asia")
-Oceania = continent("Oceania")
-Europe = continent("Europe")
 
 names = []
 images = []
@@ -51,23 +37,12 @@ for i in range(len(x)):
 for i in y:
     images.append("https://www.planetware.com" + i["src"])
 
-# for i in images:
-#     req = requests.get(i, stream=True)
-#     filename = "website/static/images/suggestions/" + i[72::]
-#     filename = open(filename, 'wb')
-#     req.raw.decode_content = True
-#     shutil.copyfileobj(req.raw, filename)
-#     filename.close
-#     print(filename)
-#     time.sleep(0.5)
+#Download images
+# create_images(images, 72)
 
 for i in range(len(x)):
-    #curr_trip = trip(names[i], "website/static/images/suggestions/" + images[i][72::])
-    curr_trip = trip(names[i], images[i][72::])
-    Africa.trips.append(curr_trip)
+    world['Africa'][names[i]] = images[i][72::]
 
-for i in Africa.trips:
-    world['Africa'][i.trip_name] = i.img
 
 names.clear()
 images.clear()
@@ -85,10 +60,8 @@ y = finder.find_all('img',  loading="lazy")
 for i in x:
     if i.text[1] == '.':
         names.append(i.text[3::])
-        # print(i.text[3::])
     elif i.text[2] == '.' and int(i.text[0:2]) < 41:
         names.append(i.text[4::])
-        # print(i.text[4::])
 
 count = 0
 for i in y:
@@ -100,27 +73,11 @@ for i in y:
     elif i["src"][0] == 'h':
         count += 1
 
-# Download all images
-# for i in images:
-#     req = requests.get(i, stream=True)
-#     filename = "website/static/images/suggestions/" + i[55::]
-#     filename = open(filename, 'wb')
-#     req.raw.decode_content = True
-#     shutil.copyfileobj(req.raw, filename)
-#     filename.close
-#     print(filename)
-#     time.sleep(0.5)
-
-# print(len(names))
-# print(len(images))
+#Download images
+#create_images(images, 55)
 
 for i in range(len(names)):
-    curr_trip = trip(names[i], images[i][55::])
-    North_America.trips.append(curr_trip)
-    # print(names[i] + ": " + images[i][55::])
-
-for i in North_America.trips:
-    world['North America'][i.trip_name] = i.img
+    world['North America'][names[i]] = images[i][55::]
 
 images.clear()
 names.clear()
@@ -147,15 +104,7 @@ for i in y:
         images.append(tag["src"])
 
 # Download all images
-# for i in images:
-#     req = requests.get(i, stream=True)
-#     filename = "website/static/images/suggestions/" + i[51::]
-#     filename = open(filename, 'wb')
-#     req.raw.decode_content = True
-#     shutil.copyfileobj(req.raw, filename)
-#     filename.close
-#     print(filename)
-#     time.sleep(0.5)
+# create_images(images, 51)
 
 for i in range(len(names)):
     world['South America'][names[i]] = images[i][51::]
@@ -164,7 +113,30 @@ images.clear()
 names.clear()
 
 #-----Asia-----
+req = requests.get('https://globalcastaway.com/southeast-asia-bucket-list/')
+finder = bs4.BeautifulSoup(req.text, 'lxml')
 
+
+x = finder.find_all('h3')
+y = finder.find_all('img')
+
+for i in x:
+    if i.find('span'):
+        names.append(i.find('span').text)
+
+count = 0
+for i in y:
+    if i["src"][0] == 'h':
+        if count > 1 and count < 52:
+            images.append(i["src"])
+            print(1)
+        count += 1
+
+# create_images(images, 54)
+
+
+for i in range(len(names)):
+    world['Asia'][names[i]] = images[i][54::]
 
 with open('website/static/json_files/suggestions.json', 'w') as json_file:
     json.dump(world, json_file, indent = 4)
