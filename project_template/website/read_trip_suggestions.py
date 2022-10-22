@@ -5,7 +5,6 @@ def get_json():
 
     data = json.load(json_file)
 
-
     # for continent in data:
     #     for trip in data[continent]:
     #         print(trip + ": " + data[continent][trip])
