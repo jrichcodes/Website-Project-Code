@@ -3,7 +3,7 @@
 }
 
 #title_container {
-    padding: 2% 10%;
+    padding: 0px 15px;
 }
 
 .title_card {
@@ -34,9 +34,6 @@
     background: linear-gradient(to right, rgba(92, 219, 149, 0.5), rgba(246, 211, 101, 0.5))
 }
 
-.navbar {
-    padding-bottom: 2rem;
-}
 
 .navbar-brand {
     font-size: 2rem;
