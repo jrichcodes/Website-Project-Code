@@ -1,1 +1,3 @@
 project_template/website/__pycache__/*
+
+!.project_template/website/static/images/favicons/.gitkeep

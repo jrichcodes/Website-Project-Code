@@ -1,0 +1,20 @@
+#suggestions_card {
+    margin: 10px 10px;
+    border-radius: 4%;
+
+}
+
+#suggestions_container {
+    width: 85%;
+    margin: auto;
+}
+
+#suggestions {
+   margin: auto; 
+}
+
+.card-img-top {
+    width: 100%;
+    height: 15rem;
+    object-fit: cover;
+}
