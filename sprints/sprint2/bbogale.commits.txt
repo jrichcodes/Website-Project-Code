@@ -1,0 +1,468 @@
+66692a53 project_template/suggestions.py                     (yejashi 2022-10-16 18:16:28 -0400   1) from gettext import find
+76e829fd project_template/website/create_trip_suggestions.py (yejashi 2022-10-21 12:18:16 -0400   2) import requests, bs4, re, shutil, time, json, os
+66692a53 project_template/suggestions.py                     (yejashi 2022-10-16 18:16:28 -0400   3) 
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400   4) names = []
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400   5) images = []
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400   6) 
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400   7) world = {'Africa': {}, 'North America': {}, 'South America': {}, 'Asia': {}, 'Oceania': {}, 'Europe': {}}
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400   8) 
+4768105a project_template/website/create_trip_suggestions.py (yejashi 2022-10-21 20:29:46 -0400   9) def create_images(images, name_index):
+4768105a project_template/website/create_trip_suggestions.py (yejashi 2022-10-21 20:29:46 -0400  10)     for i in images:
+4768105a project_template/website/create_trip_suggestions.py (yejashi 2022-10-21 20:29:46 -0400  11)         req = requests.get(i, stream=True)
+4768105a project_template/website/create_trip_suggestions.py (yejashi 2022-10-21 20:29:46 -0400  12)         filename = "website/static/images/suggestions/" + i[name_index::]
+4768105a project_template/website/create_trip_suggestions.py (yejashi 2022-10-21 20:29:46 -0400  13)         filename = open(filename, 'wb')
+4768105a project_template/website/create_trip_suggestions.py (yejashi 2022-10-21 20:29:46 -0400  14)         req.raw.decode_content = True
+4768105a project_template/website/create_trip_suggestions.py (yejashi 2022-10-21 20:29:46 -0400  15)         shutil.copyfileobj(req.raw, filename)
+4768105a project_template/website/create_trip_suggestions.py (yejashi 2022-10-21 20:29:46 -0400  16)         filename.close
+4768105a project_template/website/create_trip_suggestions.py (yejashi 2022-10-21 20:29:46 -0400  17)         print(filename)
+4768105a project_template/website/create_trip_suggestions.py (yejashi 2022-10-21 20:29:46 -0400  18)         time.sleep(0.5)
+66692a53 project_template/suggestions.py                     (yejashi 2022-10-16 18:16:28 -0400  19) 
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400  20) def create_africa(world, images, names):
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400  21)     # ------ Africa ------ #
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400  22)     req = requests.get('https://www.planetware.com/africa/best-places-to-visit-saf-1-36.htm')
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400  23)     finder = bs4.BeautifulSoup(req.text, 'lxml')
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400  24)     
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400  25)     #Raw names
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400  26)     x = finder.find_all('h2', class_="sitename")
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400  27)     #Raw image links
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400  28)     y = finder.find_all('img', class_='wpimg')
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400  29)     
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400  30)     #Gets all the names in proper format
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400  31)     for i in range(len(x)):
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400  32)         if x[i].text[2] == ' ':
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400  33)             names.append(x[i].text[3::])
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400  34)         elif x[i].text[3] == ' ':
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400  35)             names.append(x[i].text[4::])
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400  36)     
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400  37)     for i in y:
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400  38)         images.append("https://www.planetware.com" + i["src"])
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400  39)     
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400  40)     #Download images
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400  41)     # create_images(images, 72)
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400  42)     
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400  43)     for i in range(len(x)):
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400  44)         world['Africa'][names[i]] = images[i][72::]
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400  45)     
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400  46)     
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400  47)     names.clear()
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400  48)     images.clear()
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400  49) 
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400  50) def create_north_america(world, images, names):
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400  51)     # ------North America------- #
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400  52)     images.clear()
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400  53)     names.clear()
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400  54) 
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400  55)     req = requests.get('https://www.theevolista.com/usa-trip-ideas/')
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400  56)     finder = bs4.BeautifulSoup(req.text, 'lxml')
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400  57)     
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400  58)     #Raw names
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400  59)     x = finder.find_all('h3')
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400  60)     y = finder.find_all('img',  loading="lazy")
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400  61)     # y = finder.find_all('figure',  class_="wp-block-image")
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400  62)     
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400  63)     
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400  64)     for i in x:
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400  65)         if i.text[1] == '.':
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400  66)             names.append(i.text[3::])
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400  67)         elif i.text[2] == '.' and int(i.text[0:2]) < 41:
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400  68)             names.append(i.text[4::])
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400  69)     
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400  70)     count = 0
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400  71)     for i in y:
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400  72)         if count >= 45:
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400  73)             break
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400  74)         if i["src"][0] == 'h' and count > 0 and count < 41:
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400  75)             images.append(i["src"])
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400  76)             count += 1
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400  77)         elif i["src"][0] == 'h':
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400  78)             count += 1
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400  79)     
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400  80)     #Download images
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400  81)     #create_images(images, 55)
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400  82)     
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400  83)     for i in range(len(names)):
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400  84)         world['North America'][names[i]] = images[i][55::]
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400  85)     
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400  86) 
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400  87) 
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400  88) def create_south_america(world, images, names):
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400  89)     # ------South America------- #
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400  90)     images.clear()
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400  91)     names.clear()
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400  92) 
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400  93)     req = requests.get('https://www.jetsetter.com/magazine/life-changing-trips-to-take-in-south-america/')
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400  94)     finder = bs4.BeautifulSoup(req.text, 'lxml')
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400  95)     
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400  96)     x = finder.find_all('h2', class_ = "heading")
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400  97)     y = finder.find_all('div', class_ = 'img-fit__image-contain')
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400  98)     
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400  99)     
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400 100)     #Get names
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400 101)     for i in x:
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400 102)         names.append(i.text.strip())
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400 103)     
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400 104)     #Get images
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400 105)     for i in y:
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400 106)         if len(images) == 10:
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400 107)             break
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400 108)     
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400 109)         tag = i.find('img')
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400 110)         if tag["sizes"].find('768') == -1:
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400 111)             images.append(tag["src"])
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400 112)     
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400 113)     # Download all images
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400 114)     # create_images(images, 51)
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400 115)     
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400 116)     for i in range(len(names)):
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400 117)         world['South America'][names[i]] = images[i][51::]
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400 118)     
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400 119) 
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400 120) def create_asia(world, images, names):
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400 121)     #-----Asia-----
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400 122)     images.clear()
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400 123)     names.clear()
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400 124) 
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400 125)     req = requests.get('https://globalcastaway.com/southeast-asia-bucket-list/')
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400 126)     finder = bs4.BeautifulSoup(req.text, 'lxml')
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400 127)     
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400 128)     
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400 129)     x = finder.find_all('h3')
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400 130)     y = finder.find_all('img')
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400 131)     
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400 132)     for i in x:
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400 133)         if i.find('span'):
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400 134)             names.append(i.find('span').text)
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400 135)     
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400 136)     count = 0
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400 137)     for i in y:
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400 138)         if i["src"][0] == 'h':
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400 139)             if count > 1 and count < 52:
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400 140)                 images.append(i["src"])
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400 141)             count += 1
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400 142)     
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400 143)     # create_images(images, 54)
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400 144)     
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400 145)     for i in range(len(names)):
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400 146)         world['Asia'][names[i]] = images[i][54::]
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400 147)     
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400 148) 
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400 149) 
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400 150) 
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400 151) def create_oceania(world, images, names):
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400 152)     #----Oceania----
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400 153)     images.clear()
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400 154)     names.clear()
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400 155) 
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400 156)     req = requests.get('https://www.joaoleitao.com/travel-oceania/')
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400 157)     finder = bs4.BeautifulSoup(req.text, 'lxml')
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400 158)     
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400 159)     x = finder.find_all('h3', class_='title3')
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400 160)     y = finder.find_all('img', loading='lazy')
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400 161)     
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400 162)     
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400 163)     for i in x:
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400 164)         if i.text[1] == '-':
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400 165)             names.append(i.text[3::])
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400 166)         elif i.text[2] == '-':
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400 167)             names.append(i.text[4::])
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400 168)     
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400 169)     count = 0
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400 170)     for i in y:
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400 171)         if count > 0:
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400 172)             images.append(i['src'])
+5f3e7d88 project_template/website/create_trip_suggestions.py (yejashi 2022-10-18 14:07:59 -0400 173)         count += 1
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400 174)     
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400 175)     # create_images(images, 54)
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400 176)     
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400 177)     for i in range(len(names)):
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400 178)         world['Oceania'][names[i]] = images[i][54::]
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400 179) 
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400 180) def create_europe(world, images, names):
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400 181)     #----Europe----
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400 182)     images.clear()
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400 183)     names.clear()
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400 184)     
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400 185)     req = requests.get('https://www.secretatlastravel.com/explorers-club/travel-tips/best-places-in-europe-to-visit/')
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400 186)     finder = bs4.BeautifulSoup(req.text, 'lxml')
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400 187)     
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400 188)     x = finder.find_all('span', class_='s1')
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400 189)     y = finder.find_all('img', class_='vc_single_image-img')
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400 190)     
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400 191)     for i in x:
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400 192)         if len(i.text) < 100 and len(i.text) > 3:
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400 193)             string = i.text.split(" ", 1)[1]
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400 194)             if string[0] == '.':
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400 195)                 names.append(string[1::])
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400 196)             else:
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400 197)                 names.append(string)
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400 198)     
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400 199)     count = 0
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400 200)     for i in y:
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400 201)         if count % 2 == 0:
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400 202)             images.append(i['data-src'])
+5f3e7d88 project_template/website/create_trip_suggestions.py (yejashi 2022-10-18 14:07:59 -0400 203)         count += 1
+5f3e7d88 project_template/website/create_trip_suggestions.py (yejashi 2022-10-18 14:07:59 -0400 204) 
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400 205)     # create_images(images, 61)
+76e829fd project_template/website/create_trip_suggestions.py (yejashi 2022-10-21 12:18:16 -0400 206) 
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400 207)     for i in range(len(names)):
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400 208)         world['Europe'][names[i]] = images[i][61::]
+4768105a project_template/website/create_trip_suggestions.py (yejashi 2022-10-21 20:29:46 -0400 209) 
+4768105a project_template/website/create_trip_suggestions.py (yejashi 2022-10-21 20:29:46 -0400 210) 
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400 211) create_africa(world, images, names)
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400 212) create_north_america(world, images, names)
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400 213) create_south_america(world, images, names)
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400 214) create_asia(world, images, names)
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400 215) create_oceania(world, images, names)
+3abe88bc project_template/website/create_trip_suggestions.py (yejashi 2022-10-22 06:22:20 -0400 216) create_europe(world, images, names)
+4768105a project_template/website/create_trip_suggestions.py (yejashi 2022-10-21 20:29:46 -0400 217) 
+76e829fd project_template/website/create_trip_suggestions.py (yejashi 2022-10-21 12:18:16 -0400 218) 
+511d1286 project_template/website/suggestions.py             (yejashi 2022-10-17 23:04:49 -0400 219) with open('website/static/json_files/suggestions.json', 'w') as json_file:
+511d1286 project_template/website/suggestions.py             (yejashi 2022-10-17 23:04:49 -0400 220)     json.dump(world, json_file, indent = 4)
+511d1286 project_template/website/suggestions.py             (yejashi 2022-10-17 23:04:49 -0400 221) 
+5f3e7d88 (yejashi 2022-10-18 14:07:59 -0400  1) import json
+5f3e7d88 (yejashi 2022-10-18 14:07:59 -0400  2) 
+5f3e7d88 (yejashi 2022-10-18 14:07:59 -0400  3) def get_json():
+5f3e7d88 (yejashi 2022-10-18 14:07:59 -0400  4)     json_file = open('website/static/json_files/suggestions.json')
+5f3e7d88 (yejashi 2022-10-18 14:07:59 -0400  5) 
+5f3e7d88 (yejashi 2022-10-18 14:07:59 -0400  6)     data = json.load(json_file)
+5f3e7d88 (yejashi 2022-10-18 14:07:59 -0400  7) 
+5f3e7d88 (yejashi 2022-10-18 14:07:59 -0400  8)     # for continent in data:
+5f3e7d88 (yejashi 2022-10-18 14:07:59 -0400  9)     #     for trip in data[continent]:
+5f3e7d88 (yejashi 2022-10-18 14:07:59 -0400 10)     #         print(trip + ": " + data[continent][trip])
+5f3e7d88 (yejashi 2022-10-18 14:07:59 -0400 11)     return data
+5f3e7d88 (yejashi 2022-10-18 14:07:59 -0400 12) 
+66692a53 (yejashi        2022-10-16 18:16:28 -0400  3) from django.shortcuts import render
+a978a246 (yejashi        2022-10-18 05:00:10 -0400  8) import json, os
+5f3e7d88 (yejashi        2022-10-18 14:07:59 -0400  9) from .read_trip_suggestions import get_json
+17f3d863 (yejashi        2022-09-25 22:54:50 -0400 19) def events():
+e3514c41 (yejashi        2022-10-22 06:54:20 -0400 42)     return render_template("profile.html", user=current_user)
+e3514c41 (yejashi        2022-10-22 06:54:20 -0400 43) 
+e3514c41 (yejashi        2022-10-22 06:54:20 -0400 44) 
+66692a53 (yejashi        2022-10-16 18:16:28 -0400 45) @views.route('suggestions')
+66692a53 (yejashi        2022-10-16 18:16:28 -0400 46) def suggestions():
+5f3e7d88 (yejashi        2022-10-18 14:07:59 -0400 47)     data = get_json()
+e3514c41 (yejashi        2022-10-22 06:54:20 -0400 48)     return render_template("trip_suggestions.html", data=data)
+66692a53 (yejashi 2022-10-16 18:16:28 -0400  1) <!DOCTYPE html>
+66692a53 (yejashi 2022-10-16 18:16:28 -0400  2) <html>
+66692a53 (yejashi 2022-10-16 18:16:28 -0400  3)     <head>
+66692a53 (yejashi 2022-10-16 18:16:28 -0400  4)         <meta charset="utf-8">
+66692a53 (yejashi 2022-10-16 18:16:28 -0400  5)         <meta name="viewport" content="width=device-width, initial-scale=1" />
+66692a53 (yejashi 2022-10-16 18:16:28 -0400  6)         <title>Suggestions</title>
+66692a53 (yejashi 2022-10-16 18:16:28 -0400  7) 
+66692a53 (yejashi 2022-10-16 18:16:28 -0400  8)         <!-- Bootstrap -->
+66692a53 (yejashi 2022-10-16 18:16:28 -0400  9)         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+66692a53 (yejashi 2022-10-16 18:16:28 -0400 10)         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css" integrity="sha384-xeJqLiuOvjUBq3iGOjvSQSIlwrpqjSHXpduPd6rQpuiM3f5/ijby8pCsnbu5S81n" crossorigin="anonymous">
+66692a53 (yejashi 2022-10-16 18:16:28 -0400 11) 
+66692a53 (yejashi 2022-10-16 18:16:28 -0400 12)         <!-- Custom Stylesheets -->
+66692a53 (yejashi 2022-10-16 18:16:28 -0400 13)         <link rel="stylesheet" href="../static/css/trip_suggestions.css">
+66692a53 (yejashi 2022-10-16 18:16:28 -0400 14) 
+66692a53 (yejashi 2022-10-16 18:16:28 -0400 15)         <!-- Fonts -->
+66692a53 (yejashi 2022-10-16 18:16:28 -0400 16)         <link rel="preconnect" href="https://fonts.googleapis.com">
+66692a53 (yejashi 2022-10-16 18:16:28 -0400 17)         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+66692a53 (yejashi 2022-10-16 18:16:28 -0400 18)         <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;1,700&display=swap" rel="stylesheet">
+66692a53 (yejashi 2022-10-16 18:16:28 -0400 19)         <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
+66692a53 (yejashi 2022-10-16 18:16:28 -0400 20)         <!-- FontAwesome -->
+66692a53 (yejashi 2022-10-16 18:16:28 -0400 21)         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.2/css/fontawesome.min.css" integrity="sha384-X8QTME3FCg1DLb58++lPvsjbQoCT9bp3MsUU3grbIny/3ZwUJkRNO8NPW6zqzuW9" crossorigin="anonymous">
+66692a53 (yejashi 2022-10-16 18:16:28 -0400 22)     </head>
+66692a53 (yejashi 2022-10-16 18:16:28 -0400 23)     <body>
+48bad16f (yejashi 2022-10-22 06:49:27 -0400 24)         <nav class=" sticky-top navbar navbar-expand-lg navbar-dark" style="background-color: rgb(25, 27, 24);">
+48bad16f (yejashi 2022-10-22 06:49:27 -0400 25)             <a class="navbar-brand" href="/" style="padding-left: 25px;">Trip Planner</a>
+48bad16f (yejashi 2022-10-22 06:49:27 -0400 26)             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+48bad16f (yejashi 2022-10-22 06:49:27 -0400 27)                 <span class="navbar-toggler-icon"></span>
+48bad16f (yejashi 2022-10-22 06:49:27 -0400 28)             </button>
+48bad16f (yejashi 2022-10-22 06:49:27 -0400 29)                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
+48bad16f (yejashi 2022-10-22 06:49:27 -0400 30)                     <ul class="navbar-nav ms-auto">
+48bad16f (yejashi 2022-10-22 06:49:27 -0400 31)                         <li class="navbar-item" style="margin-left: auto; padding-right: 25px; font-weight: bold; color: white;">
+48bad16f (yejashi 2022-10-22 06:49:27 -0400 32)                             <a class="nav-link" href="events">Events</a>
+48bad16f (yejashi 2022-10-22 06:49:27 -0400 33)                         </li>
+48bad16f (yejashi 2022-10-22 06:49:27 -0400 34)                         <li class="navbar-item" style="margin-left: auto; padding-right: 25px; font-weight: bold;">
+48bad16f (yejashi 2022-10-22 06:49:27 -0400 35)                             <a class="nav-link" href="profile">[Profile]</a>
+48bad16f (yejashi 2022-10-22 06:49:27 -0400 36)                         </li>
+48bad16f (yejashi 2022-10-22 06:49:27 -0400 37)                     </ul>
+48bad16f (yejashi 2022-10-22 06:49:27 -0400 38)                 </div>
+48bad16f (yejashi 2022-10-22 06:49:27 -0400 39)         </nav>
+48bad16f (yejashi 2022-10-22 06:49:27 -0400 40)         <div id="suggestions_container">
+48bad16f (yejashi 2022-10-22 06:49:27 -0400 41)             <div id="suggestions">
+48bad16f (yejashi 2022-10-22 06:49:27 -0400 42)                 <div class="row">
+48bad16f (yejashi 2022-10-22 06:49:27 -0400 43)                         {% for continent in data %}
+48bad16f (yejashi 2022-10-22 06:49:27 -0400 44)                             {% for suggested_trip in data[continent] %}
+48bad16f (yejashi 2022-10-22 06:49:27 -0400 45)                                 <div class="col-lg-3 col-md-4 col-sm-6 d-flex justify-content-center">
+48bad16f (yejashi 2022-10-22 06:49:27 -0400 46)                                     <div id="suggestions_card" class="card" style="width: 24rem;">
+48bad16f (yejashi 2022-10-22 06:49:27 -0400 47)                                     <!-- <img class="card-img-top" src="{{ data[continent][suggested_trip] }}" alt="Card image cap"> -->
+48bad16f (yejashi 2022-10-22 06:49:27 -0400 48)                                     <div id="card_img_container">
+48bad16f (yejashi 2022-10-22 06:49:27 -0400 49)                                         <img class="card-img-top" src="../static/images/suggestions/{{data[continent][suggested_trip]}}" alt="Trip Image">
+48bad16f (yejashi 2022-10-22 06:49:27 -0400 50)                                     </div>
+48bad16f (yejashi 2022-10-22 06:49:27 -0400 51)                                     <div class="card-body">
+48bad16f (yejashi 2022-10-22 06:49:27 -0400 52)                                         <h5 class="card-title">{{suggested_trip}}</h5>
+48bad16f (yejashi 2022-10-22 06:49:27 -0400 53)                                         <!-- <p class="card-text">Trip Description</p> -->
+48bad16f (yejashi 2022-10-22 06:49:27 -0400 54)                                         <a href="#" class="btn btn-primary">Create Trip</a>
+48bad16f (yejashi 2022-10-22 06:49:27 -0400 55)                                     </div>
+5f3e7d88 (yejashi 2022-10-18 14:07:59 -0400 56)                                     </div>
+48bad16f (yejashi 2022-10-22 06:49:27 -0400 57)                                 </div>
+5f3e7d88 (yejashi 2022-10-18 14:07:59 -0400 58)                             {% endfor %}
+48bad16f (yejashi 2022-10-22 06:49:27 -0400 59)                         {% endfor %}
+5f3e7d88 (yejashi 2022-10-18 14:07:59 -0400 60)                 </div>
+5f3e7d88 (yejashi 2022-10-18 14:07:59 -0400 61)             </div>
+48bad16f (yejashi 2022-10-22 06:49:27 -0400 62)         </div>
+66692a53 (yejashi 2022-10-16 18:16:28 -0400 63)         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+66692a53 (yejashi 2022-10-16 18:16:28 -0400 64)         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+66692a53 (yejashi 2022-10-16 18:16:28 -0400 65)         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script> 
+66692a53 (yejashi 2022-10-16 18:16:28 -0400 66)     </body>
+66692a53 (yejashi 2022-10-16 18:16:28 -0400 67) </html>
+513d5a43 project_template/website/templates/events.html   (yejashi        2022-10-16 05:05:54 -0400  1) <!DOCTYPE html>
+513d5a43 project_template/website/templates/events.html   (yejashi        2022-10-16 05:05:54 -0400  2) <html>
+513d5a43 project_template/website/templates/events.html   (yejashi        2022-10-16 05:05:54 -0400  3)     <head>
+513d5a43 project_template/website/templates/events.html   (yejashi        2022-10-16 05:05:54 -0400  4)         <meta charset="utf-8">
+513d5a43 project_template/website/templates/events.html   (yejashi        2022-10-16 05:05:54 -0400  5)         <meta name="viewport" content="width=device-width, initial-scale=1" />
+513d5a43 project_template/website/templates/events.html   (yejashi        2022-10-16 05:05:54 -0400  6)         <title>Events</title>
+513d5a43 project_template/website/templates/events.html   (yejashi        2022-10-16 05:05:54 -0400  8)         <!-- Bootstrap -->
+513d5a43 project_template/website/templates/events.html   (yejashi        2022-10-16 05:05:54 -0400  9)         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+513d5a43 project_template/website/templates/events.html   (yejashi        2022-10-16 05:05:54 -0400 10)         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css" integrity="sha384-xeJqLiuOvjUBq3iGOjvSQSIlwrpqjSHXpduPd6rQpuiM3f5/ijby8pCsnbu5S81n" crossorigin="anonymous">
+513d5a43 project_template/website/templates/events.html   (yejashi        2022-10-16 05:05:54 -0400 11) 
+513d5a43 project_template/website/templates/events.html   (yejashi        2022-10-16 05:05:54 -0400 12)         <!-- Custom Stylesheets -->
+08ca6bdf project_template/website/templates/events.html   (yejashi        2022-10-16 06:19:33 -0400 13)         <link rel="stylesheet" href="../static/css/events.css">
+513d5a43 project_template/website/templates/events.html   (yejashi        2022-10-16 05:05:54 -0400 14) 
+513d5a43 project_template/website/templates/events.html   (yejashi        2022-10-16 05:05:54 -0400 15)         <!-- Fonts -->
+513d5a43 project_template/website/templates/events.html   (yejashi        2022-10-16 05:05:54 -0400 16)         <link rel="preconnect" href="https://fonts.googleapis.com">
+513d5a43 project_template/website/templates/events.html   (yejashi        2022-10-16 05:05:54 -0400 17)         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+513d5a43 project_template/website/templates/events.html   (yejashi        2022-10-16 05:05:54 -0400 18)         <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;1,700&display=swap" rel="stylesheet">
+513d5a43 project_template/website/templates/events.html   (yejashi        2022-10-16 05:05:54 -0400 19)         <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
+513d5a43 project_template/website/templates/events.html   (yejashi        2022-10-16 05:05:54 -0400 20)         <!-- FontAwesome -->
+513d5a43 project_template/website/templates/events.html   (yejashi        2022-10-16 05:05:54 -0400 21)         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.2/css/fontawesome.min.css" integrity="sha384-X8QTME3FCg1DLb58++lPvsjbQoCT9bp3MsUU3grbIny/3ZwUJkRNO8NPW6zqzuW9" crossorigin="anonymous">
+513d5a43 project_template/website/templates/events.html   (yejashi        2022-10-16 05:05:54 -0400 22)     </head>
+513d5a43 project_template/website/templates/events.html   (yejashi        2022-10-16 05:05:54 -0400 23)     <body>
+08ca6bdf project_template/website/templates/events.html   (yejashi        2022-10-16 06:19:33 -0400 24)         <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: rgb(25, 27, 24);">
+08ca6bdf project_template/website/templates/events.html   (yejashi        2022-10-16 06:19:33 -0400 25)             <a class="navbar-brand" href="/" style="padding-left: 25px;">Trip Planner</a>
+08ca6bdf project_template/website/templates/events.html   (yejashi        2022-10-16 06:19:33 -0400 26)                 <ul class="navbar-nav ms-auto">
+0fde7acb project_template/website/templates/events.html   (yejashi        2022-10-22 07:37:59 -0400 27)                     <li class="navbar-item" style="padding-right: 25px;">
+0fde7acb project_template/website/templates/events.html   (yejashi        2022-10-22 07:37:59 -0400 28)                         <a class="nav-link" href="suggestions">Suggestions</a>
+0fde7acb project_template/website/templates/events.html   (yejashi        2022-10-22 07:37:59 -0400 29)                     </li>
+08ca6bdf project_template/website/templates/events.html   (yejashi        2022-10-16 06:19:33 -0400 30)                     <li class="navbar-item" style="padding-right: 25px;">
+08ca6bdf project_template/website/templates/events.html   (yejashi        2022-10-16 06:19:33 -0400 31)                         <a class="nav-link" href="events">[Profile]</a>
+08ca6bdf project_template/website/templates/events.html   (yejashi        2022-10-16 06:19:33 -0400 32)                     </li>
+08ca6bdf project_template/website/templates/events.html   (yejashi        2022-10-16 06:19:33 -0400 33)                 </ul>
+08ca6bdf project_template/website/templates/events.html   (yejashi        2022-10-16 06:19:33 -0400 34)         </nav>
+513d5a43 project_template/website/templates/events.html   (yejashi        2022-10-16 05:05:54 -0400 35)         <h1 align="center">Trips</h1>
+08ca6bdf project_template/website/templates/events.html   (yejashi        2022-10-16 06:19:33 -0400 36)         <div class="container" style="margin: auto;">
+08ca6bdf project_template/website/templates/events.html   (yejashi        2022-10-16 06:19:33 -0400 37)             <div class="row mx-auto" >
+513d5a43 project_template/website/templates/events.html   (yejashi        2022-10-16 05:05:54 -0400 38)                 {% for trip in user.trip %}
+b1ccda78 project_template/website/templates/events.html   (yejashi        2022-10-16 06:49:03 -0400 39)                 <div class="card col-lg-3 col-sm-12">
+513d5a43 project_template/website/templates/events.html   (yejashi        2022-10-16 05:05:54 -0400 41)                     <div class="card-body">
+513d5a43 project_template/website/templates/events.html   (yejashi        2022-10-16 05:05:54 -0400 43)                         <p class="card-text">{{trip.desc}}</p>
+513d5a43 project_template/website/templates/events.html   (yejashi        2022-10-16 05:05:54 -0400 44)                     </div>
+513d5a43 project_template/website/templates/events.html   (yejashi        2022-10-16 05:05:54 -0400 46)                 </div>
+513d5a43 project_template/website/templates/events.html   (yejashi        2022-10-16 05:05:54 -0400 47)                 {% endfor %}
+0fde7acb project_template/website/templates/events.html   (yejashi        2022-10-22 07:37:59 -0400 48)                 </div>
+513d5a43 project_template/website/templates/events.html   (yejashi        2022-10-16 05:05:54 -0400 49)             </div>
+513d5a43 project_template/website/templates/events.html   (yejashi        2022-10-16 05:05:54 -0400 50)         </div>
+08ca6bdf project_template/website/templates/events.html   (yejashi        2022-10-16 06:19:33 -0400 51)         <div id="event_form">
+08ca6bdf project_template/website/templates/events.html   (yejashi        2022-10-16 06:19:33 -0400 52)             <form method="POST">
+08ca6bdf project_template/website/templates/events.html   (yejashi        2022-10-16 06:19:33 -0400 53)                 <h3 align="center">Create New Trip</h3>
+08ca6bdf project_template/website/templates/events.html   (yejashi        2022-10-16 06:19:33 -0400 54)                 <div class="form-group">
+08ca6bdf project_template/website/templates/events.html   (yejashi        2022-10-16 06:19:33 -0400 55)                     <label for="name">Trip Name</label>
+08ca6bdf project_template/website/templates/events.html   (yejashi        2022-10-16 06:19:33 -0400 56)                     <input type="name" class="form-control" id="name" name="name" placeholder="Enter Trip Name" />
+08ca6bdf project_template/website/templates/events.html   (yejashi        2022-10-16 06:19:33 -0400 57)                 </div>
+08ca6bdf project_template/website/templates/events.html   (yejashi        2022-10-16 06:19:33 -0400 58)                 <div class="form-group">
+08ca6bdf project_template/website/templates/events.html   (yejashi        2022-10-16 06:19:33 -0400 59)                     <label for="desc">Description</label>
+08ca6bdf project_template/website/templates/events.html   (yejashi        2022-10-16 06:19:33 -0400 60)                     <input type="text" class="form-control" id="desc" name="desc" placeholder="Enter description" />
+08ca6bdf project_template/website/templates/events.html   (yejashi        2022-10-16 06:19:33 -0400 61)                 </div>
+08ca6bdf project_template/website/templates/events.html   (yejashi        2022-10-16 06:19:33 -0400 62)                 <div class="form-group">
+08ca6bdf project_template/website/templates/events.html   (yejashi        2022-10-16 06:19:33 -0400 63)                     <label for="tripType">Trip Type</label>
+08ca6bdf project_template/website/templates/events.html   (yejashi        2022-10-16 06:19:33 -0400 64)                     <select class="form-control" id="tripType" name = "tripType">
+08ca6bdf project_template/website/templates/events.html   (yejashi        2022-10-16 06:19:33 -0400 65)                         <option value="1">Backpacking</option>
+08ca6bdf project_template/website/templates/events.html   (yejashi        2022-10-16 06:19:33 -0400 66)                         <option value="2">Climbing</option>
+08ca6bdf project_template/website/templates/events.html   (yejashi        2022-10-16 06:19:33 -0400 67)                         <option value="3">Kyaking</option>
+08ca6bdf project_template/website/templates/events.html   (yejashi        2022-10-16 06:19:33 -0400 68)                         <option value="4">Biking</option>
+08ca6bdf project_template/website/templates/events.html   (yejashi        2022-10-16 06:19:33 -0400 69)                     </select>
+08ca6bdf project_template/website/templates/events.html   (yejashi        2022-10-16 06:19:33 -0400 70)                 </div>
+08ca6bdf project_template/website/templates/events.html   (yejashi        2022-10-16 06:19:33 -0400 71)                 <div class="form-group">
+08ca6bdf project_template/website/templates/events.html   (yejashi        2022-10-16 06:19:33 -0400 72)                     <label for="tripdate">Date</label>
+08ca6bdf project_template/website/templates/events.html   (yejashi        2022-10-16 06:19:33 -0400 73)                     <input type="date" id="tripDate" name="tripDate" class="form-control" >
+08ca6bdf project_template/website/templates/events.html   (yejashi        2022-10-16 06:19:33 -0400 74)                 </div>
+08ca6bdf project_template/website/templates/events.html   (yejashi        2022-10-16 06:19:33 -0400 75)                 <div class="form-group">
+08ca6bdf project_template/website/templates/events.html   (yejashi        2022-10-16 06:19:33 -0400 76)                     <label for="tripTime">Time</label>
+08ca6bdf project_template/website/templates/events.html   (yejashi        2022-10-16 06:19:33 -0400 77)                     <input type="time" id="tripTime" name="tripTime">
+08ca6bdf project_template/website/templates/events.html   (yejashi        2022-10-16 06:19:33 -0400 78)                 </div>
+08ca6bdf project_template/website/templates/events.html   (yejashi        2022-10-16 06:19:33 -0400 84)             </form>
+08ca6bdf project_template/website/templates/events.html   (yejashi        2022-10-16 06:19:33 -0400 85)         </div>  
+513d5a43 project_template/website/templates/events.html   (yejashi        2022-10-16 05:05:54 -0400 86)         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+513d5a43 project_template/website/templates/events.html   (yejashi        2022-10-16 05:05:54 -0400 87)         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+513d5a43 project_template/website/templates/events.html   (yejashi        2022-10-16 05:05:54 -0400 88)         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+513d5a43 project_template/website/templates/events.html   (yejashi        2022-10-16 05:05:54 -0400 90)     </body>
+513d5a43 project_template/website/templates/events.html   (yejashi        2022-10-16 05:05:54 -0400 91) </html>
+1f474182 (yejashi    2022-10-22 07:07:13 -0400 25)         <section id="title_section" class="sticky-top">
+1f474182 (yejashi    2022-10-22 07:07:13 -0400 93)         </section>
+1f474182 (yejashi    2022-10-22 07:07:13 -0400 94)         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+1f474182 (yejashi    2022-10-22 07:07:13 -0400 95)         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+1f474182 (yejashi    2022-10-22 07:07:13 -0400 96)         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script> 
+1f474182 (yejashi    2022-10-22 07:07:13 -0400 97)     </body>
+1f474182 (yejashi    2022-10-22 07:07:13 -0400 98) </html>
+5f3e7d88 (yejashi 2022-10-18 14:07:59 -0400  1) #suggestions_card {
+5f3e7d88 (yejashi 2022-10-18 14:07:59 -0400  2)     margin: 10px 10px;
+5f3e7d88 (yejashi 2022-10-18 14:07:59 -0400  3)     border-radius: 4%;
+5f3e7d88 (yejashi 2022-10-18 14:07:59 -0400  4) 
+5f3e7d88 (yejashi 2022-10-18 14:07:59 -0400  5) }
+5f3e7d88 (yejashi 2022-10-18 14:07:59 -0400  6) 
+5f3e7d88 (yejashi 2022-10-18 14:07:59 -0400  7) #suggestions_container {
+4768105a (yejashi 2022-10-21 20:29:46 -0400  8)     width: 85%;
+5f3e7d88 (yejashi 2022-10-18 14:07:59 -0400  9)     margin: auto;
+5f3e7d88 (yejashi 2022-10-18 14:07:59 -0400 10) }
+5f3e7d88 (yejashi 2022-10-18 14:07:59 -0400 11) 
+5f3e7d88 (yejashi 2022-10-18 14:07:59 -0400 12) #suggestions {
+5f3e7d88 (yejashi 2022-10-18 14:07:59 -0400 13)    margin: auto; 
+5f3e7d88 (yejashi 2022-10-18 14:07:59 -0400 14) }
+5f3e7d88 (yejashi 2022-10-18 14:07:59 -0400 15) 
+5f3e7d88 (yejashi 2022-10-18 14:07:59 -0400 16) .card-img-top {
+ea8c9e85 (yejashi 2022-10-18 15:52:29 -0400 17)     width: 100%;
+ea8c9e85 (yejashi 2022-10-18 15:52:29 -0400 18)     height: 15rem;
+ea8c9e85 (yejashi 2022-10-18 15:52:29 -0400 19)     object-fit: cover;
+5f3e7d88 (yejashi 2022-10-18 14:07:59 -0400 20) }1f474182 (yejashi    2022-10-22 07:07:13 -0400  6)     padding: 0px 15px;
+08ca6bdf (yejashi        2022-10-16 06:19:33 -0400  1) body {
+08ca6bdf (yejashi        2022-10-16 06:19:33 -0400  2)     font-family: "Montserrat";
+08ca6bdf (yejashi        2022-10-16 06:19:33 -0400  3) }
+08ca6bdf (yejashi        2022-10-16 06:19:33 -0400  4) 
+08ca6bdf (yejashi        2022-10-16 06:19:33 -0400  5) #event_form {
+08ca6bdf (yejashi        2022-10-16 06:19:33 -0400  6)     padding: 0 10%;
+08ca6bdf (yejashi        2022-10-16 06:19:33 -0400  7) }
+08ca6bdf (yejashi        2022-10-16 06:19:33 -0400  8) 
+08ca6bdf (yejashi        2022-10-16 06:19:33 -0400  9) .navbar {
+08ca6bdf (yejashi        2022-10-16 06:19:33 -0400 10)     margin-bottom: 15px;
+5c36a9db (yejashi        2022-10-16 12:23:40 -0400 11)     height: 40px;
+08ca6bdf (yejashi        2022-10-16 06:19:33 -0400 12) }
+08ca6bdf (yejashi        2022-10-16 06:19:33 -0400 13) 
+08ca6bdf (yejashi        2022-10-16 06:19:33 -0400 14) .navbar-brand {
+b1ccda78 (yejashi        2022-10-16 06:49:03 -0400 15)     font-size: 1.3rem;
+b1ccda78 (yejashi        2022-10-16 06:49:03 -0400 16)     font-weight: bold;
+08ca6bdf (yejashi        2022-10-16 06:19:33 -0400 17)     color: white;
+08ca6bdf (yejashi        2022-10-16 06:19:33 -0400 18) }
+5c36a9db (yejashi        2022-10-16 12:23:40 -0400 19) .navbar-brand:hover {
+5c36a9db (yejashi        2022-10-16 12:23:40 -0400 20)     color: rgb(197, 189, 189);
+5c36a9db (yejashi        2022-10-16 12:23:40 -0400 21) }
+08ca6bdf (yejashi        2022-10-16 06:19:33 -0400 22) 
+08ca6bdf (yejashi        2022-10-16 06:19:33 -0400 23) .navbar-item {
+08ca6bdf (yejashi        2022-10-16 06:19:33 -0400 24)     font-weight: bold;
+08ca6bdf (yejashi        2022-10-16 06:19:33 -0400 25) }
+08ca6bdf (yejashi        2022-10-16 06:19:33 -0400 26) 
+08ca6bdf (yejashi        2022-10-16 06:19:33 -0400 27) .nav-link {
+08ca6bdf (yejashi        2022-10-16 06:19:33 -0400 28)     color: white;
+b1ccda78 (yejashi        2022-10-16 06:49:03 -0400 29) }
+b1ccda78 (yejashi        2022-10-16 06:49:03 -0400 30) 
+b1ccda78 (yejashi        2022-10-16 06:49:03 -0400 31) .card {
+b1ccda78 (yejashi        2022-10-16 06:49:03 -0400 32) margin: 1rem; 
+b1ccda78 (yejashi        2022-10-16 06:49:03 -0400 33) border-radius: 25px; 
+b1ccda78 (yejashi        2022-10-16 06:49:03 -0400 34) background-color: rgb(249, 249, 249);
+b1ccda78 (yejashi        2022-10-16 06:49:03 -0400 35) border-color: rgb(237, 237, 237);
+b1ccda78 (yejashi        2022-10-16 06:49:03 -0400 36) }
+b1ccda78 (yejashi        2022-10-16 06:49:03 -0400 37) 
+b1ccda78 (yejashi        2022-10-16 06:49:03 -0400 38) .card:hover {
+b1ccda78 (yejashi        2022-10-16 06:49:03 -0400 39) background-color: rgb(240, 234, 234);
+b1ccda78 (yejashi        2022-10-16 06:49:03 -0400 40) 
+0fde7acb (yejashi        2022-10-22 07:37:59 -0400 41) }
+0fde7acb (yejashi        2022-10-22 07:37:59 -0400 42) 
+0fde7acb (yejashi        2022-10-22 07:37:59 -0400 43) .suggestions_button {
+0fde7acb (yejashi        2022-10-22 07:37:59 -0400 44)     position: absolute;
+0fde7acb (yejashi        2022-10-22 07:37:59 -0400 45)     left: 50%;
+0fde7acb (yejashi        2022-10-22 07:37:59 -0400 46)     top: 50%;
+0fde7acb (yejashi        2022-10-22 07:37:59 -0400 47)     -webkit-transform: translate(-50%, -50%);
+0fde7acb (yejashi        2022-10-22 07:37:59 -0400 48)     transform: translate(-50%, -50%);
+08ca6bdf (yejashi        2022-10-16 06:19:33 -0400 58) }
