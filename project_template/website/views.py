@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 from datetime import datetime
 from django.shortcuts import render
-from flask import Blueprint, render_template, request, flash, current_app as app, redirect, url_for
+from flask import Blueprint, render_template, request, flash, current_app as app, redirect, url_for, jsonify
 from flask_login import login_required, current_user
 from .models import Trip, gearItems
 from . import db
