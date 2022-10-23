@@ -4,6 +4,7 @@ from flask import Blueprint, render_template, request, flash, redirect, url_for
 from flask_login import login_required, current_user
 from .models import Trip
 from . import db
+import folium
 
 views = Blueprint('views', __name__)
 
@@ -32,6 +33,12 @@ def events():
                 flash('Trip added!', category='success')
 
     return render_template("events.html", user=current_user)
+
+@views.route('/map')
+def index():
+    start_coords = (35, -83)
+    folium_map = folium.Map(min_zoom = 4, center=start_coords, height = "90%",tiles="Stamen Terrain")
+    return folium_map._repr_html_()
 
 @views.route('/profile/', methods = ['GET', 'POST'])
 @login_required
