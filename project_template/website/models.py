@@ -22,11 +22,13 @@ class User(db.Model, UserMixin):
     trip = db.relationship('Trip')
 
 class tripTypes(db.Model): 
+    __tablename__ = 'trip_types'
     id = db.Column(db.Integer, primary_key=True)
     type = db.Column(db.String(150))
 
 class gearItems(db.Model):
+    __tablename__ = 'gear_items'
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(150))
-    trip_type_id = db.Column(db.Integer, db.ForeignKey('tripTypes.id'))
+    trip_type_id = db.Column(db.Integer, db.ForeignKey('trip_types.id'))
 
