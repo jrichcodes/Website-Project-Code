@@ -1,9 +1,12 @@
 from dataclasses import dataclass
 from datetime import datetime
-from flask import Blueprint, render_template, request, flash, redirect, url_for
+from django.shortcuts import render
+from flask import Blueprint, render_template, request, flash, current_app as app, redirect, url_for
 from flask_login import login_required, current_user
 from .models import Trip
 from . import db
+import json, os
+from .read_trip_suggestions import get_json
 import folium
 
 views = Blueprint('views', __name__)
@@ -44,3 +47,9 @@ def index():
 @login_required
 def profile():
     return render_template("profile.html", user=current_user)
+
+
+@views.route('suggestions')
+def suggestions():
+    data = get_json()
+    return render_template("trip_suggestions.html", data=data)
