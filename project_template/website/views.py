@@ -90,6 +90,7 @@ def menus():
 def suggestions():
     data = get_json()
     return render_template("trip_suggestions.html", data=data)
+    
 @views.route('/delete-gearitem', methods=['POST'])
 def delete_gearitem():
     if request.method == 'POST':
