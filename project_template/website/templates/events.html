@@ -30,6 +30,9 @@
                     <li class="navbar-item" style="padding-right: 25px;">
                         <a class="nav-link" href="events">[Profile]</a>
                     </li>
+                    <li class="navbar-item" style="padding-right: 100px;">
+                        <a class="nav-link" href="/map">[Map]</a>
+                    </li>
                 </ul>
         </nav>
         <h1 align="center">Trips</h1>
@@ -58,6 +61,12 @@
                 <div class="form-group">
                     <label for="desc">Description</label>
                     <input type="text" class="form-control" id="desc" name="desc" placeholder="Enter description" />
+                </div>
+                <div class="form-group">
+                    <label for="lat">latitude</label>
+                    <input type="number" step = .001 id="lat" name="lat" class="lat" min="-90" max="90">
+                    <label for="lon">longitude</label>
+                    <input type="number" step = .001 id="lon" name="lon" class="lon" min="-180" max="180">
                 </div>
                 <div class="form-group">
                     <label for="tripType">Trip Type</label>
