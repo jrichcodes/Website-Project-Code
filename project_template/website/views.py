@@ -3,11 +3,7 @@ from datetime import datetime
 from django.shortcuts import render
 from flask import Blueprint, render_template, request, flash, current_app as app, redirect, url_for, jsonify
 from flask_login import login_required, current_user
-<<<<<<< HEAD
-from .models import Trip, User, gearItems
-=======
-from .models import Trip, gearItems, Menu
->>>>>>> ebriggs
+from .models import Trip, User, gearItems, Menu
 from . import db
 import json, os
 from .read_trip_suggestions import get_json
