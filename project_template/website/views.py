@@ -3,7 +3,11 @@ from datetime import datetime
 from django.shortcuts import render
 from flask import Blueprint, render_template, request, flash, current_app as app, redirect, url_for, jsonify
 from flask_login import login_required, current_user
+<<<<<<< HEAD
 from .models import Trip, User, gearItems
+=======
+from .models import Trip, gearItems, Menu
+>>>>>>> ebriggs
 from . import db
 import json, os
 from .read_trip_suggestions import get_json
@@ -67,6 +71,24 @@ def index():
 def profile():
     return render_template("profile.html", user=current_user)
 
+@views.route('menu', methods=['GET', 'POST'])
+@login_required
+def menus():
+    if request.method == 'POST':
+        #if request.form['submit_button'] == 'create menu':
+            name_in = request.form.get('name')
+            desc_in = request.form.get('desc')
+            menuType_in = request.form.get('menuType')
+            num_servings_in = request.form.get('num_servings')
+            if len(name_in) < 1:
+                flash('Menu name is too short!', category='error')
+            else:
+                new_menu = Menu(name = name_in, m_desc = desc_in, menu_type = menuType_in, num_servings = num_servings_in, user_id=current_user.id)
+                db.session.add(new_menu)
+                db.session.commit()
+                flash('Menu added!', category='success')
+
+    return render_template("menu.html", user=current_user)
 
 @views.route('suggestions')
 def suggestions():
