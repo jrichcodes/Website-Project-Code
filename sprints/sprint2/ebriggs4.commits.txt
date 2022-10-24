@@ -1,0 +1,301 @@
+models.py
+250ed4cf (ebriggs4       2022-10-24 11:55:15 -0400 25)     menu = db.relationship('Menu')
+250ed4cf (ebriggs4       2022-10-24 11:55:15 -0400 38) class Menu(db.Model):
+250ed4cf (ebriggs4       2022-10-24 11:55:15 -0400 39)     id = db.Column(db.Integer, primary_key=True)
+250ed4cf (ebriggs4       2022-10-24 11:55:15 -0400 40)     name = db.Column(db.String(50))
+250ed4cf (ebriggs4       2022-10-24 11:55:15 -0400 41)     m_desc = db.Column(db.String(10000))
+250ed4cf (ebriggs4       2022-10-24 11:55:15 -0400 42)     menu_type = db.Column(db.String(50))
+250ed4cf (ebriggs4       2022-10-24 11:55:15 -0400 43)     num_servings = db.Column(db.Integer)
+250ed4cf (ebriggs4       2022-10-24 11:55:15 -0400 44)     #how to associate different imformation with different users
+250ed4cf (ebriggs4       2022-10-24 11:55:15 -0400 45)     #do this in the form of a foregin key
+250ed4cf (ebriggs4       2022-10-24 11:55:15 -0400 46)     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+250ed4cf (ebriggs4       2022-10-24 11:55:15 -0400 47)
+250ed4cf (ebriggs4       2022-10-24 11:55:15 -0400 48) class menuTypes(db.Model):
+250ed4cf (ebriggs4       2022-10-24 11:55:15 -0400 49)     __tablename__ = 'menu_types'
+250ed4cf (ebriggs4       2022-10-24 11:55:15 -0400 50)     id = db.Column(db.Integer, primary_key=True)
+250ed4cf (ebriggs4       2022-10-24 11:55:15 -0400 51)     type = db.Column(db.String(150))
+
+views.py
+250ed4cf (ebriggs4       2022-10-24 11:55:15 -0400  70) @views.route('menu', methods=['GET', 'POST'])
+250ed4cf (ebriggs4       2022-10-24 11:55:15 -0400  71) @login_required
+250ed4cf (ebriggs4       2022-10-24 11:55:15 -0400  72) def menus():
+250ed4cf (ebriggs4       2022-10-24 11:55:15 -0400  73)     if request.method == 'POST':
+250ed4cf (ebriggs4       2022-10-24 11:55:15 -0400  74)         #if request.form['submit_button'] == 'create menu':
+250ed4cf (ebriggs4       2022-10-24 11:55:15 -0400  75)             name_in = request.form.get('name')
+250ed4cf (ebriggs4       2022-10-24 11:55:15 -0400  76)             desc_in = request.form.get('desc')
+250ed4cf (ebriggs4       2022-10-24 11:55:15 -0400  77)             menuType_in = request.form.get('menuType')
+250ed4cf (ebriggs4       2022-10-24 11:55:15 -0400  78)             num_servings_in = request.form.get('num_servings')
+250ed4cf (ebriggs4       2022-10-24 11:55:15 -0400  79)             if len(name_in) < 1:
+250ed4cf (ebriggs4       2022-10-24 11:55:15 -0400  80)                 flash('Menu name is too short!', category='error')
+250ed4cf (ebriggs4       2022-10-24 11:55:15 -0400  81)             else:
+250ed4cf (ebriggs4       2022-10-24 11:55:15 -0400  82)                 new_menu = Menu(name = name_in, m_desc = desc_in, menu_type = menuType_in, num_servings = num_servings_in, user_id=current_user.id)
+250ed4cf (ebriggs4       2022-10-24 11:55:15 -0400  83)                 db.session.add(new_menu)
+250ed4cf (ebriggs4       2022-10-24 11:55:15 -0400  84)                 db.session.commit()
+250ed4cf (ebriggs4       2022-10-24 11:55:15 -0400  85)                 flash('Menu added!', category='success')
+250ed4cf (ebriggs4       2022-10-24 11:55:15 -0400  86)
+250ed4cf (ebriggs4       2022-10-24 11:55:15 -0400  87)     return render_template("menu.html", user=current_user)
+
+menu.html
+250ed4cf (ebriggs4 2022-10-24 11:55:15 -0400  1) <!DOCTYPE html>
+250ed4cf (ebriggs4 2022-10-24 11:55:15 -0400  2) <html>
+250ed4cf (ebriggs4 2022-10-24 11:55:15 -0400  3)     <head>
+250ed4cf (ebriggs4 2022-10-24 11:55:15 -0400  4)         <meta charset="utf-8">
+250ed4cf (ebriggs4 2022-10-24 11:55:15 -0400  5)         <meta name="viewport" content="width=device-width, initial-scale=1" />
+250ed4cf (ebriggs4 2022-10-24 11:55:15 -0400  6)         <title>Menus</title>
+250ed4cf (ebriggs4 2022-10-24 11:55:15 -0400  7)
+250ed4cf (ebriggs4 2022-10-24 11:55:15 -0400  8)         <!-- Bootstrap -->
+250ed4cf (ebriggs4 2022-10-24 11:55:15 -0400  9)         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+250ed4cf (ebriggs4 2022-10-24 11:55:15 -0400 10)         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css" integrity="sha384-xeJqLiuOvjUBq3iGOjvSQSIlwrpqjSHXpduPd6rQpuiM3f5/ijby8pCsnbu5S81n" crossorigin="anonymous">
+250ed4cf (ebriggs4 2022-10-24 11:55:15 -0400 11)
+250ed4cf (ebriggs4 2022-10-24 11:55:15 -0400 12)         <!-- Custom Stylesheets -->
+250ed4cf (ebriggs4 2022-10-24 11:55:15 -0400 13)         <link rel="stylesheet" href="../static/css/menu.css">
+250ed4cf (ebriggs4 2022-10-24 11:55:15 -0400 14)
+250ed4cf (ebriggs4 2022-10-24 11:55:15 -0400 15)         <!-- Fonts -->
+250ed4cf (ebriggs4 2022-10-24 11:55:15 -0400 16)         <link rel="preconnect" href="https://fonts.googleapis.com">
+250ed4cf (ebriggs4 2022-10-24 11:55:15 -0400 17)         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+250ed4cf (ebriggs4 2022-10-24 11:55:15 -0400 18)         <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;1,700&display=swap" rel="stylesheet">
+250ed4cf (ebriggs4 2022-10-24 11:55:15 -0400 19)         <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
+250ed4cf (ebriggs4 2022-10-24 11:55:15 -0400 20)         <!-- FontAwesome -->
+250ed4cf (ebriggs4 2022-10-24 11:55:15 -0400 21)         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.2/css/fontawesome.min.css" integrity="sha384-X8QTME3FCg1DLb58++lPvsjbQoCT9bp3MsUU3grbIny/3ZwUJkRNO8NPW6zqzuW9" crossorigin="anonymous">
+250ed4cf (ebriggs4 2022-10-24 11:55:15 -0400 22)     </head>
+250ed4cf (ebriggs4 2022-10-24 11:55:15 -0400 23)     <body>
+250ed4cf (ebriggs4 2022-10-24 11:55:15 -0400 24)         <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: rgb(25, 27, 24);">
+250ed4cf (ebriggs4 2022-10-24 11:55:15 -0400 25)             <a class="navbar-brand" href="/" style="padding-left: 25px;">Trip Planner</a>
+250ed4cf (ebriggs4 2022-10-24 11:55:15 -0400 26)         </nav>
+250ed4cf (ebriggs4 2022-10-24 11:55:15 -0400 27)         <h1 align="center">Menus</h1>
+250ed4cf (ebriggs4 2022-10-24 11:55:15 -0400 28)         <div class="container" style="margin: auto;">
+250ed4cf (ebriggs4 2022-10-24 11:55:15 -0400 29)             <div class="row mx-auto" >
+250ed4cf (ebriggs4 2022-10-24 11:55:15 -0400 30)                 </div>
+250ed4cf (ebriggs4 2022-10-24 11:55:15 -0400 31)                 </div>
+250ed4cf (ebriggs4 2022-10-24 11:55:15 -0400 32)             </div>
+250ed4cf (ebriggs4 2022-10-24 11:55:15 -0400 33)         </div>
+250ed4cf (ebriggs4 2022-10-24 11:55:15 -0400 34)         <div id="menu_form">
+250ed4cf (ebriggs4 2022-10-24 11:55:15 -0400 35)             <form method="POST">
+250ed4cf (ebriggs4 2022-10-24 11:55:15 -0400 36)                 <h3 align="center">Create New Menu</h3>
+250ed4cf (ebriggs4 2022-10-24 11:55:15 -0400 37)                 <div class="form-group">
+250ed4cf (ebriggs4 2022-10-24 11:55:15 -0400 38)                     <label for="name">Menu Name</label>
+250ed4cf (ebriggs4 2022-10-24 11:55:15 -0400 39)                     <input type="name" class="form-control" id="name" name="name" placeholder="Enter Menu Name" />
+250ed4cf (ebriggs4 2022-10-24 11:55:15 -0400 40)                 </div>
+250ed4cf (ebriggs4 2022-10-24 11:55:15 -0400 41)                 <div class="form-group">
+250ed4cf (ebriggs4 2022-10-24 11:55:15 -0400 42)                     <label for="desc">Description</label>
+250ed4cf (ebriggs4 2022-10-24 11:55:15 -0400 43)                     <input type="text" class="form-control" id="desc" name="desc" placeholder="Enter description" />
+250ed4cf (ebriggs4 2022-10-24 11:55:15 -0400 44)                 </div>
+250ed4cf (ebriggs4 2022-10-24 11:55:15 -0400 45)                 <div class="form-group">
+250ed4cf (ebriggs4 2022-10-24 11:55:15 -0400 46)                     <label for="menuType">Menu Type</label>
+250ed4cf (ebriggs4 2022-10-24 11:55:15 -0400 47)                     <select class="form-control" id="menuType" name = "menuType">
+250ed4cf (ebriggs4 2022-10-24 11:55:15 -0400 48)                         <option value="1">Breakfast</option>
+250ed4cf (ebriggs4 2022-10-24 11:55:15 -0400 49)                         <option value="2">Lunch</option>
+250ed4cf (ebriggs4 2022-10-24 11:55:15 -0400 50)                         <option value="3">Dinner</option>
+250ed4cf (ebriggs4 2022-10-24 11:55:15 -0400 51)                         <option value="4">Snack</option>
+250ed4cf (ebriggs4 2022-10-24 11:55:15 -0400 52)                     </select>
+250ed4cf (ebriggs4 2022-10-24 11:55:15 -0400 53)                 </div>
+250ed4cf (ebriggs4 2022-10-24 11:55:15 -0400 54)                 <div class="form-group">
+250ed4cf (ebriggs4 2022-10-24 11:55:15 -0400 55)                     <label for="num_servings">Number of Servings</label>
+250ed4cf (ebriggs4 2022-10-24 11:55:15 -0400 56)                     <input type="number" id="num_servings" name="num_servings" class="form-control" min="1" max="1000">
+250ed4cf (ebriggs4 2022-10-24 11:55:15 -0400 57)                 </div>
+250ed4cf (ebriggs4 2022-10-24 11:55:15 -0400 58)                 <button name="submit_button" value="create menu" type="submit" class="btn btn-primary" style="margin: 10px 0">Submit</button>
+250ed4cf (ebriggs4 2022-10-24 11:55:15 -0400 59)             </form>
+250ed4cf (ebriggs4 2022-10-24 11:55:15 -0400 60)         </div>
+250ed4cf (ebriggs4 2022-10-24 11:55:15 -0400 61)         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+250ed4cf (ebriggs4 2022-10-24 11:55:15 -0400 62)         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+250ed4cf (ebriggs4 2022-10-24 11:55:15 -0400 63)         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+250ed4cf (ebriggs4 2022-10-24 11:55:15 -0400 64)         <script type="text/javascript" src="../static/js/index.js"></script>
+250ed4cf (ebriggs4 2022-10-24 11:55:15 -0400 65)     </body>
+250ed4cf (ebriggs4 2022-10-24 11:55:15 -0400 66) </html>
+
+menu.css
+250ed4cf (ebriggs4 2022-10-24 11:55:15 -0400  1) body {
+250ed4cf (ebriggs4 2022-10-24 11:55:15 -0400  2)     font-family: "Montserrat";
+250ed4cf (ebriggs4 2022-10-24 11:55:15 -0400  3) }
+250ed4cf (ebriggs4 2022-10-24 11:55:15 -0400  4)
+250ed4cf (ebriggs4 2022-10-24 11:55:15 -0400  5) #event_form {
+250ed4cf (ebriggs4 2022-10-24 11:55:15 -0400  6)     padding: 0 10%;
+250ed4cf (ebriggs4 2022-10-24 11:55:15 -0400  7) }
+250ed4cf (ebriggs4 2022-10-24 11:55:15 -0400  8)
+250ed4cf (ebriggs4 2022-10-24 11:55:15 -0400  9) .navbar {
+250ed4cf (ebriggs4 2022-10-24 11:55:15 -0400 10)     margin-bottom: 15px;
+250ed4cf (ebriggs4 2022-10-24 11:55:15 -0400 11)     height: 40px;
+250ed4cf (ebriggs4 2022-10-24 11:55:15 -0400 12) }
+250ed4cf (ebriggs4 2022-10-24 11:55:15 -0400 13)
+250ed4cf (ebriggs4 2022-10-24 11:55:15 -0400 14) .navbar-brand {
+250ed4cf (ebriggs4 2022-10-24 11:55:15 -0400 15)     font-size: 1.3rem;
+250ed4cf (ebriggs4 2022-10-24 11:55:15 -0400 16)     font-weight: bold;
+250ed4cf (ebriggs4 2022-10-24 11:55:15 -0400 17)     color: white;
+250ed4cf (ebriggs4 2022-10-24 11:55:15 -0400 18) }
+250ed4cf (ebriggs4 2022-10-24 11:55:15 -0400 19) .navbar-brand:hover {
+250ed4cf (ebriggs4 2022-10-24 11:55:15 -0400 20)     color: rgb(197, 189, 189);
+250ed4cf (ebriggs4 2022-10-24 11:55:15 -0400 21) }
+250ed4cf (ebriggs4 2022-10-24 11:55:15 -0400 22)
+250ed4cf (ebriggs4 2022-10-24 11:55:15 -0400 23) .navbar-item {
+250ed4cf (ebriggs4 2022-10-24 11:55:15 -0400 24)     font-weight: bold;
+250ed4cf (ebriggs4 2022-10-24 11:55:15 -0400 25) }
+250ed4cf (ebriggs4 2022-10-24 11:55:15 -0400 26)
+250ed4cf (ebriggs4 2022-10-24 11:55:15 -0400 27) .nav-link {
+250ed4cf (ebriggs4 2022-10-24 11:55:15 -0400 28)     color: white;
+250ed4cf (ebriggs4 2022-10-24 11:55:15 -0400 29) }
+250ed4cf (ebriggs4 2022-10-24 11:55:15 -0400 30)
+250ed4cf (ebriggs4 2022-10-24 11:55:15 -0400 31) .card {
+250ed4cf (ebriggs4 2022-10-24 11:55:15 -0400 32) margin: 1rem;
+250ed4cf (ebriggs4 2022-10-24 11:55:15 -0400 33) border-radius: 25px;
+250ed4cf (ebriggs4 2022-10-24 11:55:15 -0400 34) background-color: rgb(249, 249, 249);
+250ed4cf (ebriggs4 2022-10-24 11:55:15 -0400 35) border-color: rgb(237, 237, 237);
+250ed4cf (ebriggs4 2022-10-24 11:55:15 -0400 36) }
+250ed4cf (ebriggs4 2022-10-24 11:55:15 -0400 37)
+250ed4cf (ebriggs4 2022-10-24 11:55:15 -0400 38) .card:hover {
+250ed4cf (ebriggs4 2022-10-24 11:55:15 -0400 39) background-color: rgb(240, 234, 234);
+250ed4cf (ebriggs4 2022-10-24 11:55:15 -0400 40)
+250ed4cf (ebriggs4 2022-10-24 11:55:15 -0400 41) }
+250ed4cf (ebriggs4 2022-10-24 11:55:15 -0400 42)
+250ed4cf (ebriggs4 2022-10-24 11:55:15 -0400 43) .suggestions_button {
+250ed4cf (ebriggs4 2022-10-24 11:55:15 -0400 44)     position: absolute;
+250ed4cf (ebriggs4 2022-10-24 11:55:15 -0400 45)     left: 50%;
+250ed4cf (ebriggs4 2022-10-24 11:55:15 -0400 46)     top: 50%;
+250ed4cf (ebriggs4 2022-10-24 11:55:15 -0400 47)     -webkit-transform: translate(-50%, -50%);
+250ed4cf (ebriggs4 2022-10-24 11:55:15 -0400 48)     transform: translate(-50%, -50%);
+250ed4cf (ebriggs4 2022-10-24 11:55:15 -0400 49) }
+250ed4cf (ebriggs4 2022-10-24 11:55:15 -0400 50)
+250ed4cf (ebriggs4 2022-10-24 11:55:15 -0400 51) a.button {
+250ed4cf (ebriggs4 2022-10-24 11:55:15 -0400 52)     -webkit-appearance: button;
+250ed4cf (ebriggs4 2022-10-24 11:55:15 -0400 53)     -moz-appearance: button;
+
+login.css
+30a0cda7 (ebriggs4 2022-10-23 14:47:20 -0400  1) #title_section {
+30a0cda7 (ebriggs4 2022-10-23 14:47:20 -0400  2)     background-color: black;
+30a0cda7 (ebriggs4 2022-10-23 14:47:20 -0400  3) }
+30a0cda7 (ebriggs4 2022-10-23 14:47:20 -0400  4)
+30a0cda7 (ebriggs4 2022-10-23 14:47:20 -0400  5) #title_container {
+30a0cda7 (ebriggs4 2022-10-23 14:47:20 -0400  6)     padding: 0px 15px;
+30a0cda7 (ebriggs4 2022-10-23 14:47:20 -0400  7) }
+30a0cda7 (ebriggs4 2022-10-23 14:47:20 -0400  8)
+30a0cda7 (ebriggs4 2022-10-23 14:47:20 -0400  9) .title_card {
+30a0cda7 (ebriggs4 2022-10-23 14:47:20 -0400 10)     background-color: black;
+30a0cda7 (ebriggs4 2022-10-23 14:47:20 -0400 11)     border: 0;
+30a0cda7 (ebriggs4 2022-10-23 14:47:20 -0400 12)     width: 18rem;
+30a0cda7 (ebriggs4 2022-10-23 14:47:20 -0400 13) }
+30a0cda7 (ebriggs4 2022-10-23 14:47:20 -0400 14)
+30a0cda7 (ebriggs4 2022-10-23 14:47:20 -0400 15) .gradient-custom-3 {
+30a0cda7 (ebriggs4 2022-10-23 14:47:20 -0400 16)     /* fallback for old browsers */
+30a0cda7 (ebriggs4 2022-10-23 14:47:20 -0400 17)     background: #5cdb95;
+30a0cda7 (ebriggs4 2022-10-23 14:47:20 -0400 18)
+30a0cda7 (ebriggs4 2022-10-23 14:47:20 -0400 19)     /* Chrome 10-25, Safari 5.1-6 */
+30a0cda7 (ebriggs4 2022-10-23 14:47:20 -0400 20)     background: -webkit-linear-gradient(to right, rgba(92, 219, 149, 0.5), rgba(246, 211, 101, 0.5));
+30a0cda7 (ebriggs4 2022-10-23 14:47:20 -0400 21)
+30a0cda7 (ebriggs4 2022-10-23 14:47:20 -0400 22)     /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+30a0cda7 (ebriggs4 2022-10-23 14:47:20 -0400 23)     background: linear-gradient(to right, rgba(92, 219, 149, 0.5), rgba(246, 211, 101, 0.5))
+30a0cda7 (ebriggs4 2022-10-23 14:47:20 -0400 24) }
+30a0cda7 (ebriggs4 2022-10-23 14:47:20 -0400 25)
+30a0cda7 (ebriggs4 2022-10-23 14:47:20 -0400 26) .gradient-custom-4 {
+30a0cda7 (ebriggs4 2022-10-23 14:47:20 -0400 27)     /* fallback for old browsers */
+30a0cda7 (ebriggs4 2022-10-23 14:47:20 -0400 28)     background: #5CDB95;
+30a0cda7 (ebriggs4 2022-10-23 14:47:20 -0400 29)
+30a0cda7 (ebriggs4 2022-10-23 14:47:20 -0400 30)     /* Chrome 10-25, Safari 5.1-6 */
+30a0cda7 (ebriggs4 2022-10-23 14:47:20 -0400 31)     background: -webkit-linear-gradient(to right, rgba(92, 219, 149, 0.5), rgba(246, 211, 101, 0.5));
+30a0cda7 (ebriggs4 2022-10-23 14:47:20 -0400 32)
+30a0cda7 (ebriggs4 2022-10-23 14:47:20 -0400 33)     /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+30a0cda7 (ebriggs4 2022-10-23 14:47:20 -0400 34)     background: linear-gradient(to right, rgba(92, 219, 149, 0.5), rgba(246, 211, 101, 0.5))
+30a0cda7 (ebriggs4 2022-10-23 14:47:20 -0400 35) }
+30a0cda7 (ebriggs4 2022-10-23 14:47:20 -0400 36)
+30a0cda7 (ebriggs4 2022-10-23 14:47:20 -0400 37)
+30a0cda7 (ebriggs4 2022-10-23 14:47:20 -0400 38) .navbar-brand {
+30a0cda7 (ebriggs4 2022-10-23 14:47:20 -0400 39)     font-size: 2rem;
+30a0cda7 (ebriggs4 2022-10-23 14:47:20 -0400 40)     font-weight: bold;
+30a0cda7 (ebriggs4 2022-10-23 14:47:20 -0400 41)     color: white;
+30a0cda7 (ebriggs4 2022-10-23 14:47:20 -0400 42) }
+30a0cda7 (ebriggs4 2022-10-23 14:47:20 -0400 43)
+30a0cda7 (ebriggs4 2022-10-23 14:47:20 -0400 44) .navbar-item {
+30a0cda7 (ebriggs4 2022-10-23 14:47:20 -0400 45)     font-size: 1.2rem;
+30a0cda7 (ebriggs4 2022-10-23 14:47:20 -0400 46)     font-weight: bold;
+30a0cda7 (ebriggs4 2022-10-23 14:47:20 -0400 47) }
+30a0cda7 (ebriggs4 2022-10-23 14:47:20 -0400 48)
+30a0cda7 (ebriggs4 2022-10-23 14:47:20 -0400 49) .nav-link {
+30a0cda7 (ebriggs4 2022-10-23 14:47:20 -0400 50)     color: #5CDB95;
+30a0cda7 (ebriggs4 2022-10-23 14:47:20 -0400 51) }
+
+login.html
+0c9fc4e4 (ebriggs4 2022-10-23 14:02:55 -0400  1) <!DOCTYPE html>
+0c9fc4e4 (ebriggs4 2022-10-23 14:02:55 -0400  2) <html>
+0c9fc4e4 (ebriggs4 2022-10-23 14:02:55 -0400  3)     <head>
+0c9fc4e4 (ebriggs4 2022-10-23 14:02:55 -0400  4)         <meta charset="utf-8">
+0c9fc4e4 (ebriggs4 2022-10-23 14:02:55 -0400  5)         <meta name="viewport" content="width=device-width, initial-scale=1" />
+0c9fc4e4 (ebriggs4 2022-10-23 14:02:55 -0400  6)
+0c9fc4e4 (ebriggs4 2022-10-23 14:02:55 -0400  7)         <!-- Bootstrap -->
+0c9fc4e4 (ebriggs4 2022-10-23 14:02:55 -0400  8)         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+0c9fc4e4 (ebriggs4 2022-10-23 14:02:55 -0400  9)         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css" integrity="sha384-xeJqLiuOvjUBq3iGOjvSQSIlwrpqjSHXpduPd6rQpuiM3f5/ijby8pCsnbu5S81n" crossorigin="anonymous">
+0c9fc4e4 (ebriggs4 2022-10-23 14:02:55 -0400 10)
+0c9fc4e4 (ebriggs4 2022-10-23 14:02:55 -0400 11)         <!-- Custom Stylesheets -->
+0c9fc4e4 (ebriggs4 2022-10-23 14:02:55 -0400 12)         <link rel="stylesheet" href="../static/css/sign_up.css">
+0c9fc4e4 (ebriggs4 2022-10-23 14:02:55 -0400 13)
+0c9fc4e4 (ebriggs4 2022-10-23 14:02:55 -0400 14)         <!-- Fonts -->
+0c9fc4e4 (ebriggs4 2022-10-23 14:02:55 -0400 15)         <link rel="preconnect" href="https://fonts.googleapis.com">
+0c9fc4e4 (ebriggs4 2022-10-23 14:02:55 -0400 16)         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+0c9fc4e4 (ebriggs4 2022-10-23 14:02:55 -0400 17)         <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;1,700&display=swap" rel="stylesheet">
+0c9fc4e4 (ebriggs4 2022-10-23 14:02:55 -0400 18)         <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
+0c9fc4e4 (ebriggs4 2022-10-23 14:02:55 -0400 19)
+0c9fc4e4 (ebriggs4 2022-10-23 14:02:55 -0400 20)         <!-- FontAwesome -->
+0c9fc4e4 (ebriggs4 2022-10-23 14:02:55 -0400 21)         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.2/css/fontawesome.min.css" integrity="sha384-X8QTME3FCg1DLb58++lPvsjbQoCT9bp3MsUU3grbIny/3ZwUJkRNO8NPW6zqzuW9" crossorigin="anonymous">
+0c9fc4e4 (ebriggs4 2022-10-23 14:02:55 -0400 22)
+0c9fc4e4 (ebriggs4 2022-10-23 14:02:55 -0400 23)         <title>Login</title>
+0c9fc4e4 (ebriggs4 2022-10-23 14:02:55 -0400 24)     </head>
+0c9fc4e4 (ebriggs4 2022-10-23 14:02:55 -0400 25)     <body>
+0c9fc4e4 (ebriggs4 2022-10-23 14:02:55 -0400 26)         <section id="title_section" class="sticky-top">
+0c9fc4e4 (ebriggs4 2022-10-23 14:02:55 -0400 27)             <div class="contianer-fluid" id="title_container">
+0c9fc4e4 (ebriggs4 2022-10-23 14:02:55 -0400 28)                 <nav class="navbar navbar-expand-lg navbar-dark">
+6ad65f3f (ebriggs4 2022-10-23 14:43:17 -0400 29)                     <a class="navbar-brand" href="/" style="padding-left: 25px;">Trip Planner</a>
+0c9fc4e4 (ebriggs4 2022-10-23 14:02:55 -0400 30)                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+0c9fc4e4 (ebriggs4 2022-10-23 14:02:55 -0400 31)                         <span class="navbar-toggler-icon"></span>
+0c9fc4e4 (ebriggs4 2022-10-23 14:02:55 -0400 32)                     </button>
+0c9fc4e4 (ebriggs4 2022-10-23 14:02:55 -0400 33)                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
+0c9fc4e4 (ebriggs4 2022-10-23 14:02:55 -0400 34)                         <ul class="navbar-nav ms-auto">
+0c9fc4e4 (ebriggs4 2022-10-23 14:02:55 -0400 35)                             <li class="navbar-item">
+0c9fc4e4 (ebriggs4 2022-10-23 14:02:55 -0400 36)                                 <a class="nav-link" href="events">Events</a>
+0c9fc4e4 (ebriggs4 2022-10-23 14:02:55 -0400 37)                             </li>
+0c9fc4e4 (ebriggs4 2022-10-23 14:02:55 -0400 38)                             <li class="navbar-item">
+0c9fc4e4 (ebriggs4 2022-10-23 14:02:55 -0400 39)                                 <a class="nav-link" href="login">Log in</a>
+0c9fc4e4 (ebriggs4 2022-10-23 14:02:55 -0400 40)                             </li>
+0c9fc4e4 (ebriggs4 2022-10-23 14:02:55 -0400 41)                             <li class="navbar-item">
+0c9fc4e4 (ebriggs4 2022-10-23 14:02:55 -0400 42)                                 <a class="nav-link" href="/">Home</a>
+0c9fc4e4 (ebriggs4 2022-10-23 14:02:55 -0400 43)                             </li>
+0c9fc4e4 (ebriggs4 2022-10-23 14:02:55 -0400 44)                         </ul>
+0c9fc4e4 (ebriggs4 2022-10-23 14:02:55 -0400 45)                     </div>
+0c9fc4e4 (ebriggs4 2022-10-23 14:02:55 -0400 46)                 </nav>
+0c9fc4e4 (ebriggs4 2022-10-23 14:02:55 -0400 47)             </div>
+0c9fc4e4 (ebriggs4 2022-10-23 14:02:55 -0400 48)         </section>
+0c9fc4e4 (ebriggs4 2022-10-23 14:02:55 -0400 49)
+0c9fc4e4 (ebriggs4 2022-10-23 14:02:55 -0400 50)         <section class="vh-100 bg-image"
+0c9fc4e4 (ebriggs4 2022-10-23 14:02:55 -0400 51)             style="background-image: url('https://mdbcdn.b-cdn.net/img/Photos/new-templates/search-box/img4.webp');">
+0c9fc4e4 (ebriggs4 2022-10-23 14:02:55 -0400 52)             <div class="mask d-flex align-items-center h-100 gradient-custom-3">
+0c9fc4e4 (ebriggs4 2022-10-23 14:02:55 -0400 53)                 <div class="container h-100">
+0c9fc4e4 (ebriggs4 2022-10-23 14:02:55 -0400 54)                 <div class="row d-flex justify-content-center align-items-center h-100">
+0c9fc4e4 (ebriggs4 2022-10-23 14:02:55 -0400 55)                     <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+0c9fc4e4 (ebriggs4 2022-10-23 14:02:55 -0400 56)                     <div class="card" style="border-radius: 15px;">
+0c9fc4e4 (ebriggs4 2022-10-23 14:02:55 -0400 57)                         <div class="card-body p-5">
+0c9fc4e4 (ebriggs4 2022-10-23 14:02:55 -0400 58)                         <h2 class="text-uppercase text-center mb-5">Login</h2>
+0c9fc4e4 (ebriggs4 2022-10-23 14:02:55 -0400 59)
+0c9fc4e4 (ebriggs4 2022-10-23 14:02:55 -0400 60)                         <form method="POST">
+0c9fc4e4 (ebriggs4 2022-10-23 14:02:55 -0400 61)
+0c9fc4e4 (ebriggs4 2022-10-23 14:02:55 -0400 62)                             <div class="form-outline mb-4">
+0c9fc4e4 (ebriggs4 2022-10-23 14:02:55 -0400 63)                             <input type="email" class="form-control" id="email" name="email" placeholder="Email Address"/>
+0c9fc4e4 (ebriggs4 2022-10-23 14:02:55 -0400 64)                             </div>
+0c9fc4e4 (ebriggs4 2022-10-23 14:02:55 -0400 65)
+0c9fc4e4 (ebriggs4 2022-10-23 14:02:55 -0400 66)                             <div class="form-outline mb-4">
+0c9fc4e4 (ebriggs4 2022-10-23 14:02:55 -0400 67)                             <input type="password" class="form-control" id="password" name="password" placeholder="Password"/>
+0c9fc4e4 (ebriggs4 2022-10-23 14:02:55 -0400 68)                             </div>
+0c9fc4e4 (ebriggs4 2022-10-23 14:02:55 -0400 69)
+0c9fc4e4 (ebriggs4 2022-10-23 14:02:55 -0400 70)                             <div class="d-flex justify-content-center">
+0c9fc4e4 (ebriggs4 2022-10-23 14:02:55 -0400 71)                             <button type="submit" class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Login</button>
+0c9fc4e4 (ebriggs4 2022-10-23 14:02:55 -0400 72)                             </div>
+0c9fc4e4 (ebriggs4 2022-10-23 14:02:55 -0400 73)
+0c9fc4e4 (ebriggs4 2022-10-23 14:02:55 -0400 74)                         </form>
+0c9fc4e4 (ebriggs4 2022-10-23 14:02:55 -0400 75)
+0c9fc4e4 (ebriggs4 2022-10-23 14:02:55 -0400 76)                          </div>
+0c9fc4e4 (ebriggs4 2022-10-23 14:02:55 -0400 77)                     </div>
+0c9fc4e4 (ebriggs4 2022-10-23 14:02:55 -0400 78)                     </div>
+0c9fc4e4 (ebriggs4 2022-10-23 14:02:55 -0400 79)                 </div>
+0c9fc4e4 (ebriggs4 2022-10-23 14:02:55 -0400 80)                 </div>
+0c9fc4e4 (ebriggs4 2022-10-23 14:02:55 -0400 81)             </div>
+0c9fc4e4 (ebriggs4 2022-10-23 14:02:55 -0400 82)         </section>
+0c9fc4e4 (ebriggs4 2022-10-23 14:02:55 -0400 83)         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+0c9fc4e4 (ebriggs4 2022-10-23 14:02:55 -0400 84)         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+0c9fc4e4 (ebriggs4 2022-10-23 14:02:55 -0400 85)         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+0c9fc4e4 (ebriggs4 2022-10-23 14:02:55 -0400 86)     </body>
+0c9fc4e4 (ebriggs4 2022-10-23 14:02:55 -0400 87) </html>
