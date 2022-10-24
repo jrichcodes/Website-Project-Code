@@ -20,6 +20,7 @@ class User(db.Model, UserMixin):
     last_name = db.Column(db.String(150))
     first_name = db.Column(db.String(150))
     trip = db.relationship('Trip')
+    menu = db.relationship('Menu')
 
 class tripTypes(db.Model): 
     __tablename__ = 'trip_types'
@@ -32,3 +33,17 @@ class gearItems(db.Model):
     name = db.Column(db.String(150))
     trip_type_id = db.Column(db.Integer, db.ForeignKey('trip_types.id'))
 
+class Menu(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(50))
+    m_desc = db.Column(db.String(10000))
+    menu_type = db.Column(db.String(50))
+    num_servings = db.Column(db.Integer)
+    #how to associate different imformation with different users
+    #do this in the form of a foregin key
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+
+class menuTypes(db.Model):
+    __tablename__ = 'menu_types'
+    id = db.Column(db.Integer, primary_key=True)
+    type = db.Column(db.String(150))
