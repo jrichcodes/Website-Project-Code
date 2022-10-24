@@ -1,9 +1,9 @@
 from dataclasses import dataclass
 from datetime import datetime
 from django.shortcuts import render
-from flask import Blueprint, render_template, request, flash, current_app as app, redirect, url_for
+from flask import Blueprint, render_template, request, flash, current_app as app, redirect, url_for, jsonify
 from flask_login import login_required, current_user
-from .models import Trip, User
+from .models import Trip, User, gearItems
 from . import db
 import json, os
 from .read_trip_suggestions import get_json
@@ -72,3 +72,14 @@ def profile():
 def suggestions():
     data = get_json()
     return render_template("trip_suggestions.html", data=data)
+@views.route('/delete-gearitem', methods=['POST'])
+def delete_gearitem():
+    if request.method == 'POST':
+        print('delete')
+        Item = json.loads(request.data)
+        gearid = Item['gearItemId']
+        Item = gearItems.query.get(gearid)
+        if Item:
+            db.session.delete(Item)
+            db.session.commit()
+    return jsonify({})

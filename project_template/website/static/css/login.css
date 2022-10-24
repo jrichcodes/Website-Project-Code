@@ -1,0 +1,51 @@
+#title_section {
+    background-color: black;
+}
+
+#title_container {
+    padding: 0px 15px;
+}
+
+.title_card {
+    background-color: black;
+    border: 0;
+    width: 18rem;
+}
+
+.gradient-custom-3 {
+    /* fallback for old browsers */
+    background: #5cdb95;
+    
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: -webkit-linear-gradient(to right, rgba(92, 219, 149, 0.5), rgba(246, 211, 101, 0.5));
+    
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: linear-gradient(to right, rgba(92, 219, 149, 0.5), rgba(246, 211, 101, 0.5))
+}
+
+.gradient-custom-4 {
+    /* fallback for old browsers */
+    background: #5CDB95;
+    
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: -webkit-linear-gradient(to right, rgba(92, 219, 149, 0.5), rgba(246, 211, 101, 0.5));
+    
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: linear-gradient(to right, rgba(92, 219, 149, 0.5), rgba(246, 211, 101, 0.5))
+}
+
+
+.navbar-brand {
+    font-size: 2rem;
+    font-weight: bold;
+    color: white;
+}
+
+.navbar-item {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.nav-link {
+    color: #5CDB95;
+}

@@ -22,7 +22,6 @@
     </div>
     <div class="container">
         <h4>General Information</h4>
-        <form>
             <div class="form-group row">
                 <label for="ActivityType" class = "col-sm-2 col-form-label">Activity Type</label>
                 <div class="col-sm-2">
@@ -65,21 +64,24 @@
             <h4 class="mb-3">Gear List</h4>
             <ul class = "list-group list-group-flush">
                 {% for gear_items in gear_items %}
-                <div class="form-check">
-                    <li class="list-group-item">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
-                    <label class="form-check-label" for="flexCheckDefault">{{gear_items.name}}</label>
-                    </li>
-                </div>
+                <li class="list-group-item">
+                    <input class="form-check-input" type="checkbox" id="checkboxNoLabel" value="" aria-label="..." />
+                    {{gear_items.name}}
+                    <button type="button" class="close" onClick="deleteGearItem({{gear_items.id}}, {{trip.id}})">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </li>
                 {% endfor %}
             </ul>
-            <div class="input-group mb-3">
-                <input class="mb-3" type="text" class="form-control" placeholder="Item Name" aria-label="Item Name" aria-describedby="basic-addon2">
-                <div class="input-group-append">
-                  <button class="btn btn-secondary btm-sm" type="button">Add</button>
-                </div>
-            </div>
         </div>
+        <h4 class="mb-3"></h4>
+        <form method="POST">
+            <textarea name="item" id="item" class="form-control"></textarea>
+            <br />
+            <div align="center">
+              <button type="submit" class="btn btn-primary">Add Item</button>
+            </div>
+        </form>
 
     <!-- used for bootstrap -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
