@@ -1,5 +1,6 @@
 from . import db
 from flask_login import UserMixin
+from hashlib import md5
 from sqlalchemy.sql import func
 
 
@@ -25,6 +26,10 @@ class User(db.Model, UserMixin):
     first_name = db.Column(db.String(150))
     trip = db.relationship('Trip')
     menu = db.relationship('Menu')
+    def avatar(self, size):
+        digest = md5(self.email.lower().encode('utf-8')).hexdigest()
+        return 'https://www.gravatar.com/avatar/{}?d=identicon&s={}'.format(
+            digest, size)
 
 class tripTypes(db.Model): 
     __tablename__ = 'trip_types'
