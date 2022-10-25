@@ -39,7 +39,7 @@
         <div class="container" style="margin: auto; background-color: black; border-radius: 25px">
             <div class="row mx-auto" >
                 {% for trip in user.trip %}
-                <div class="card col-lg-3 col-sm-12">
+                <div class="card col-lg-2 col-sm-12">
                     <a href="/trip-summary/{{trip.id}}" class="button">
                     <div class="card-body">
                         <h5 id="{{trip.id}}" class="link card-title" >{{trip.name}}</h5>
@@ -82,11 +82,12 @@
 
                         <div class="form-group mb-4">
                             <label for="tripType">Trip Type</label>
-                            <select class="form-control" id="tripType" name = "tripType">
+                            <select class="form-control" id="tripType" name="tripType">
                                 <option value="1">Backpacking</option>
                                 <option value="2">Climbing</option>
-                                <option value="3">Kyaking</option>
+                                <option value="3">Kayaking</option>
                                 <option value="4">Biking</option>
+                                <option value="5">Other</option>
                             </select>
                         </div>
 
