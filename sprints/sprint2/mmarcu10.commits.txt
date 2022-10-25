@@ -1,0 +1,109 @@
+auth.py
+feba5f1f (mmarcu10       2022-10-24 23:59:58 -0400   7) import folium
+feba5f1f (mmarcu10       2022-10-24 23:59:58 -0400  35) @auth.route('/trip-summary-map/<tripId>', methods=['GET', 'POST'])
+feba5f1f (mmarcu10       2022-10-24 23:59:58 -0400  36) def trip_summary_map(tripId):
+feba5f1f (mmarcu10       2022-10-24 23:59:58 -0400  37)     trip = Trip.query.filter_by(id = tripId).first()
+feba5f1f (mmarcu10       2022-10-24 23:59:58 -0400  38)     start_coords = (trip.latitude, trip.longitude)
+feba5f1f (mmarcu10       2022-10-24 23:59:58 -0400  39)     folium_map = folium.Map(min_zoom = 6, center=start_coords,tiles="Stamen Terrain")
+feba5f1f (mmarcu10       2022-10-24 23:59:58 -0400  40)     if trip.trip_type == 1:
+feba5f1f (mmarcu10       2022-10-24 23:59:58 -0400  41)         icon_color = "red"
+feba5f1f (mmarcu10       2022-10-24 23:59:58 -0400  42)     elif trip.trip_type == 2:
+feba5f1f (mmarcu10       2022-10-24 23:59:58 -0400  43)         icon_color = "blue"
+feba5f1f (mmarcu10       2022-10-24 23:59:58 -0400  44)     elif trip.trip_type == 3:
+feba5f1f (mmarcu10       2022-10-24 23:59:58 -0400  45)         icon_color = "green"
+feba5f1f (mmarcu10       2022-10-24 23:59:58 -0400  46)     elif trip.trip_type == 4:
+feba5f1f (mmarcu10       2022-10-24 23:59:58 -0400  47)         icon_color = "purple"
+feba5f1f (mmarcu10       2022-10-24 23:59:58 -0400  48)     else:
+feba5f1f (mmarcu10       2022-10-24 23:59:58 -0400  49)         icon_color = "yellow"
+feba5f1f (mmarcu10       2022-10-24 23:59:58 -0400  50)     folium.Marker(location = start_coords,popup=f'<p>{trip.name}</p>', 
+feba5f1f (mmarcu10       2022-10-24 23:59:58 -0400  51)     icon = folium.Icon(color = icon_color, icon = "info-sign") ).add_to(folium_map)
+feba5f1f (mmarcu10       2022-10-24 23:59:58 -0400  52)     return folium_map._repr_html_()
+feba5f1f (mmarcu10       2022-10-24 23:59:58 -0400  53) 
+feba5f1f (mmarcu10       2022-10-24 23:59:58 -0400  73) 
+feba5f1f (mmarcu10       2022-10-24 23:59:58 -0400  74)     return render_template("trip_summary.html", trip = trip, gear_items = gear_items, type = type)
+
+models.py
+33612a69 (mmarcu10       2022-10-24 11:12:24 -0400 10)     trip_type = db.Column(db.Integer)
+720814dc (mmarcu10       2022-10-10 23:23:34 -0400 11)     date = db.Column(db.DateTime())
+33612a69 (mmarcu10       2022-10-24 11:12:24 -0400 16)     latitude = db.Column(db.Float)
+33612a69 (mmarcu10       2022-10-24 11:12:24 -0400 17)     longitude = db.Column(db.Float)
+
+time_till.py
+feba5f1f (mmarcu10 2022-10-24 23:59:58 -0400  1) from datetime import datetime
+feba5f1f (mmarcu10 2022-10-24 23:59:58 -0400  2) from pytz import timezone
+feba5f1f (mmarcu10 2022-10-24 23:59:58 -0400  3) 
+feba5f1f (mmarcu10 2022-10-24 23:59:58 -0400  4) def count_time(event_date):
+feba5f1f (mmarcu10 2022-10-24 23:59:58 -0400  5)     tz = timezone('EST')
+feba5f1f (mmarcu10 2022-10-24 23:59:58 -0400  6)     now_time = datetime.now(tz)
+feba5f1f (mmarcu10 2022-10-24 23:59:58 -0400  7)     time_delta = event_date.replace(tzinfo=None) - now_time.replace(tzinfo=None)
+feba5f1f (mmarcu10 2022-10-24 23:59:58 -0400  8)     days = time_delta.days
+feba5f1f (mmarcu10 2022-10-24 23:59:58 -0400  9)     seconds = time_delta.seconds
+feba5f1f (mmarcu10 2022-10-24 23:59:58 -0400 10)     if days == 356:
+feba5f1f (mmarcu10 2022-10-24 23:59:58 -0400 11)         string = "Trip in 1 year."
+feba5f1f (mmarcu10 2022-10-24 23:59:58 -0400 12)     elif days > 365:
+feba5f1f (mmarcu10 2022-10-24 23:59:58 -0400 13)         if days % 365 == 0:
+feba5f1f (mmarcu10 2022-10-24 23:59:58 -0400 14)             string = "Trip in {} years".format(days/365)
+feba5f1f (mmarcu10 2022-10-24 23:59:58 -0400 15)         else:
+feba5f1f (mmarcu10 2022-10-24 23:59:58 -0400 16)             string = "Trip in {} years, {} days.".format(days//365,days%365)
+feba5f1f (mmarcu10 2022-10-24 23:59:58 -0400 17)     elif days < 365:
+feba5f1f (mmarcu10 2022-10-24 23:59:58 -0400 18)         if days == 0:
+feba5f1f (mmarcu10 2022-10-24 23:59:58 -0400 19)             string = "Trip in {} hours.".format(seconds // (60*60))
+feba5f1f (mmarcu10 2022-10-24 23:59:58 -0400 20)         elif days > 0:
+feba5f1f (mmarcu10 2022-10-24 23:59:58 -0400 21)             string = "Trip in {} days.".format(days)
+feba5f1f (mmarcu10 2022-10-24 23:59:58 -0400 22)         else :
+feba5f1f (mmarcu10 2022-10-24 23:59:58 -0400 23)             string = "Trip has allready occured."
+feba5f1f (mmarcu10 2022-10-24 23:59:58 -0400 24)     return string
+
+views.py
+10f919e7 (mmarcu10       2022-10-22 21:21:21 -0400  10) import folium
+33612a69 (mmarcu10       2022-10-24 11:12:24 -0400  11) from flask_sqlalchemy import SQLAlchemy
+feba5f1f (mmarcu10       2022-10-24 23:59:58 -0400  12) from . import time_till
+33612a69 (mmarcu10       2022-10-24 11:12:24 -0400  29)             lat_in = request.form.get('lat')
+33612a69 (mmarcu10       2022-10-24 11:12:24 -0400  30)             lon_in = request.form.get('lon')
+33612a69 (mmarcu10       2022-10-24 11:12:24 -0400  37)                 new_trip = Trip(name = name_in, desc = desc_in, trip_type = tripType_in, date = date_time, num_people = num_people_in, user_id=current_user.id, latitude = lat_in, longitude = lon_in)
+feba5f1f (mmarcu10       2022-10-24 23:59:58 -0400  42)     return render_template("events.html", user=current_user, time_till=time_till.count_time)
+10f919e7 (mmarcu10       2022-10-22 21:21:21 -0400  44) @views.route('/map')
+10f919e7 (mmarcu10       2022-10-22 21:21:21 -0400  45) def index():
+10f919e7 (mmarcu10       2022-10-22 21:21:21 -0400  46)     start_coords = (35, -83)
+33612a69 (mmarcu10       2022-10-24 11:12:24 -0400  47)     folium_map = folium.Map(min_zoom = 4, center=start_coords,tiles="Stamen Terrain")
+33612a69 (mmarcu10       2022-10-24 11:12:24 -0400  48)     list = Trip.query.filter_by(user_id=current_user.id).order_by(Trip.id).all()
+33612a69 (mmarcu10       2022-10-24 11:12:24 -0400  49)     for item in list:
+33612a69 (mmarcu10       2022-10-24 11:12:24 -0400  50)         if item.latitude != None and item.longitude != None:
+33612a69 (mmarcu10       2022-10-24 11:12:24 -0400  51)             marker_coords = (item.latitude,item.longitude)
+33612a69 (mmarcu10       2022-10-24 11:12:24 -0400  52)             if item.trip_type == 1:
+33612a69 (mmarcu10       2022-10-24 11:12:24 -0400  53)                 icon_color = "red"
+33612a69 (mmarcu10       2022-10-24 11:12:24 -0400  54)             elif item.trip_type == 2:
+33612a69 (mmarcu10       2022-10-24 11:12:24 -0400  55)                 icon_color = "blue"
+33612a69 (mmarcu10       2022-10-24 11:12:24 -0400  56)             elif item.trip_type == 3:
+33612a69 (mmarcu10       2022-10-24 11:12:24 -0400  57)                 icon_color = "green"
+33612a69 (mmarcu10       2022-10-24 11:12:24 -0400  58)             elif item.trip_type == 4:
+33612a69 (mmarcu10       2022-10-24 11:12:24 -0400  59)                 icon_color = "purple"
+33612a69 (mmarcu10       2022-10-24 11:12:24 -0400  60)             else:
+33612a69 (mmarcu10       2022-10-24 11:12:24 -0400  61)                 icon_color = "yellow"
+33612a69 (mmarcu10       2022-10-24 11:12:24 -0400  62)                 
+feba5f1f (mmarcu10       2022-10-24 23:59:58 -0400  63)             folium.Marker(location = marker_coords,popup=f'<a href="/trip-summary/{item.id}"> {item.name}</a>', 
+feba5f1f (mmarcu10       2022-10-24 23:59:58 -0400  64)             icon = folium.Icon(color = icon_color, icon = "info-sign") ).add_to(folium_map)
+10f919e7 (mmarcu10       2022-10-22 21:21:21 -0400  65)     return folium_map._repr_html_()
+10f919e7 (mmarcu10       2022-10-22 21:21:21 -0400  66) 
+
+events.html
+10f919e7 project_template/website/templates/events.html   (mmarcu10       2022-10-22 21:21:21 -0400  33)                     <li class="navbar-item" style="padding-right: 100px;">
+10f919e7 project_template/website/templates/events.html   (mmarcu10       2022-10-22 21:21:21 -0400  34)                         <a class="nav-link" href="/map">[Map]</a>
+10f919e7 project_template/website/templates/events.html   (mmarcu10       2022-10-22 21:21:21 -0400  35)                     </li>
+feba5f1f project_template/website/templates/events.html   (mmarcu10       2022-10-24 23:59:58 -0400  47)                         <p class="card-text">{{time_till(trip.date)}}</p>
+33612a69 project_template/website/templates/events.html   (mmarcu10       2022-10-24 11:12:24 -0400  66)                 <div class="form-group">
+33612a69 project_template/website/templates/events.html   (mmarcu10       2022-10-24 11:12:24 -0400  67)                     <label for="lat">latitude</label>
+33612a69 project_template/website/templates/events.html   (mmarcu10       2022-10-24 11:12:24 -0400  68)                     <input type="number" step = .001 id="lat" name="lat" class="lat" min="-90" max="90">
+33612a69 project_template/website/templates/events.html   (mmarcu10       2022-10-24 11:12:24 -0400  69)                     <label for="lon">longitude</label>
+33612a69 project_template/website/templates/events.html   (mmarcu10       2022-10-24 11:12:24 -0400  70)                     <input type="number" step = .001 id="lon" name="lon" class="lon" min="-180" max="180">
+33612a69 project_template/website/templates/events.html   (mmarcu10       2022-10-24 11:12:24 -0400  71)                 </div>
+
+trip_summary.html
+feba5f1f (mmarcu10       2022-10-24 23:59:58 -0400  58)             <iframe
+feba5f1f (mmarcu10       2022-10-24 23:59:58 -0400  59)                 class = "map",
+feba5f1f (mmarcu10       2022-10-24 23:59:58 -0400  60)                 src = "/trip-summary-map/{{trip.id}}"
+feba5f1f (mmarcu10       2022-10-24 23:59:58 -0400  61)                 width = "600"
+feba5f1f (mmarcu10       2022-10-24 23:59:58 -0400  62)                 height = "400"
+feba5f1f (mmarcu10       2022-10-24 23:59:58 -0400  63)             >
+feba5f1f (mmarcu10       2022-10-24 23:59:58 -0400  64)             </iframe>
+feba5f1f (mmarcu10       2022-10-24 23:59:58 -0400  65) 
