@@ -21,6 +21,7 @@
 - [Issue 33](https://github.com/jrichcodes/Website-Project-Code/issues/33)
 - [Issue 34](https://github.com/jrichcodes/Website-Project-Code/issues/34)
 - [Issue 42](https://github.com/jrichcodes/Website-Project-Code/issues/42)
+- [Issue 52](https://github.com/jrichcodes/Website-Project-Code/issues/52)
 
 ### Files I Worked On
 - project_template/website/views.py
@@ -28,6 +29,10 @@
 - project_template/website/templates/pretty_tripsummary.html
 - project_template/website/templates/events.html
 - project_template/website/templates/trip_summary.html
+- project_template/website/templates/events.html
+- project_template/website/templates/sign_up.html
+- project_template/website/templates/login.html
+- project_template/website/templates/profile.html
 - project_template/website/static/css/trip_summary.css
 - project_template/website/static/js/index.js
 
@@ -36,3 +41,4 @@
 - the trip summary page now displays accurate information from database
 - made a prettier trip summary page template with html and css
 - created the funcionality to add and delete gear items from the database and displays change on the trip summary page
+- created a basic navbar and implemented on all of the pages

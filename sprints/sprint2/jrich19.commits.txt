@@ -196,3 +196,51 @@ a114843f (Josephine Rich 2022-10-21 10:14:20 -0400 8) }
 
 events.html
 8b73d793 (Josephine Rich 2022-10-23 11:12:32 -0400  43)                     <a href="/trip-summary/{{trip.id}}" class="button">
+
+navbar.css
+d8e1e97b (Josephine Rich 2022-10-25 14:21:18 -0400  1) nav{
+d8e1e97b (Josephine Rich 2022-10-25 14:21:18 -0400  2)     display: flex;
+d8e1e97b (Josephine Rich 2022-10-25 14:21:18 -0400  3)     justify-content: space-around;
+d8e1e97b (Josephine Rich 2022-10-25 14:21:18 -0400  4)     align-items: center;
+d8e1e97b (Josephine Rich 2022-10-25 14:21:18 -0400  5)     min-height: 8vh;
+d8e1e97b (Josephine Rich 2022-10-25 14:21:18 -0400  6)     background-color: black;
+d8e1e97b (Josephine Rich 2022-10-25 14:21:18 -0400  7)     font-family: "Montserrat", sans-serif;
+d8e1e97b (Josephine Rich 2022-10-25 14:21:18 -0400  8) }
+d8e1e97b (Josephine Rich 2022-10-25 14:21:18 -0400  9) 
+d8e1e97b (Josephine Rich 2022-10-25 14:21:18 -0400 10) .nav-links{
+d8e1e97b (Josephine Rich 2022-10-25 14:21:18 -0400 11)     display: flex;
+d8e1e97b (Josephine Rich 2022-10-25 14:21:18 -0400 12)     justify-content: space-around;
+d8e1e97b (Josephine Rich 2022-10-25 14:21:18 -0400 13)     width: 30%;
+d8e1e97b (Josephine Rich 2022-10-25 14:21:18 -0400 14) }
+d8e1e97b (Josephine Rich 2022-10-25 14:21:18 -0400 15) 
+d8e1e97b (Josephine Rich 2022-10-25 14:21:18 -0400 16) .nav-links li {
+d8e1e97b (Josephine Rich 2022-10-25 14:21:18 -0400 17)     list-style: none;
+d8e1e97b (Josephine Rich 2022-10-25 14:21:18 -0400 18) }
+d8e1e97b (Josephine Rich 2022-10-25 14:21:18 -0400 19) 
+d8e1e97b (Josephine Rich 2022-10-25 14:21:18 -0400 20) .navheading{
+d8e1e97b (Josephine Rich 2022-10-25 14:21:18 -0400 21)     color: white;
+d8e1e97b (Josephine Rich 2022-10-25 14:21:18 -0400 22)     text-transform: uppercase;
+d8e1e97b (Josephine Rich 2022-10-25 14:21:18 -0400 23)     letter-spacing: 5px;
+d8e1e97b (Josephine Rich 2022-10-25 14:21:18 -0400 24)     font-size: 20px;
+d8e1e97b (Josephine Rich 2022-10-25 14:21:18 -0400 25) }
+d8e1e97b (Josephine Rich 2022-10-25 14:21:18 -0400 26) 
+d8e1e97b (Josephine Rich 2022-10-25 14:21:18 -0400 27) .nav-links a{
+d8e1e97b (Josephine Rich 2022-10-25 14:21:18 -0400 28)     color: white;
+d8e1e97b (Josephine Rich 2022-10-25 14:21:18 -0400 29)     text-decoration: none;
+d8e1e97b (Josephine Rich 2022-10-25 14:21:18 -0400 30)     letter-spacing: 3px;
+d8e1e97b (Josephine Rich 2022-10-25 14:21:18 -0400 31)     font-weight: bold;
+d8e1e97b (Josephine Rich 2022-10-25 14:21:18 -0400 32)     font-size: 14px;
+d8e1e97b (Josephine Rich 2022-10-25 14:21:18 -0400 33)     padding: 14px 16px;
+d8e1e97b (Josephine Rich 2022-10-25 14:21:18 -0400 34) }
+
+events.html, profile.html, login.html, sign_up.html (adding navbar to all of them -- same code)
+0961a80d (Josephine Rich 2022-10-25 15:07:10 -0400 13)         <link rel="stylesheet" href="../static/css/navbar.css">
+0961a80d (Josephine Rich 2022-10-25 15:07:10 -0400 26)         <nav>
+0961a80d (Josephine Rich 2022-10-25 15:07:10 -0400 27)           <div class="navheading">
+0961a80d (Josephine Rich 2022-10-25 15:07:10 -0400 28)               <h4>Trip Planner</h4>
+0961a80d (Josephine Rich 2022-10-25 15:07:10 -0400 30)             <ul class="nav-links">
+0961a80d (Josephine Rich 2022-10-25 15:07:10 -0400 31)                 <li><a href="/">Home</a></li>
+0961a80d (Josephine Rich 2022-10-25 15:07:10 -0400 32)                 <li><a href="/logout">Logout</a></li>
+0961a80d (Josephine Rich 2022-10-25 15:07:10 -0400 33)             </ul>
+0961a80d (Josephine Rich 2022-10-25 15:07:10 -0400 34)           </nav>
+
