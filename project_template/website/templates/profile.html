@@ -10,6 +10,7 @@
 
         <!-- Custom Stylesheets -->
         <link rel="stylesheet" href="../static/css/profile.css">
+        <link rel="stylesheet" href="../static/css/navbar.css">
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -22,29 +23,15 @@
         <title>My Profile</title>
     </head>
     <body>
-        <section id="title_section">
-            <div class="container-fluid" id="title_container">
-                <nav class="navbar navbar-expand-lg navbar-dark">
-                    <a class="navbar-brand" href="/">My Profile</a>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav ms-auto">
-                            <li class="navbar-item">
-                                <a class="nav-link" href="/events">Events</a>
-                            </li>
-                            <li class="navbar-item">
-                                <a class="nav-link" href="/logout">Logout</a>
-                            </li>
-                            <li class="navbar-item">
-                                <a class="nav-link" href="/">Home</a>
-                            </li>       
-                        </ul>
-                    </div>
-                </nav>
+        <nav>
+          <div class="navheading">
+              <h4>Trip Planner</h4>
             </div>
-        </section>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/logout">Logout</a></li>
+            </ul>
+          </nav>
         
         <section class="vh-100" style="background-color: #5CDB95;">
             <div class="container py-5 h-100">

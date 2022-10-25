@@ -10,6 +10,7 @@
 
         <!-- Custom Stylesheets -->
         <link rel="stylesheet" href="../static/css/sign_up.css">
+        <link rel="stylesheet" href="../static/css/navbar.css">
         
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -23,29 +24,14 @@
         <title>Login</title>
     </head>
     <body>
-        <section id="title_section" class="sticky-top">
-            <div class="contianer-fluid" id="title_container">
-                <nav class="navbar navbar-expand-lg navbar-dark">
-                    <a class="navbar-brand" href="/" style="padding-left: 25px;">Trip Planner</a>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav ms-auto">
-                            <li class="navbar-item">
-                                <a class="nav-link" href="events">Events</a>
-                            </li>
-                            <li class="navbar-item">
-                                <a class="nav-link" href="login">Log in</a>
-                            </li>
-                            <li class="navbar-item">
-                                <a class="nav-link" href="/">Home</a>
-                            </li>       
-                        </ul>
-                    </div>
-                </nav>
+        <nav>
+            <div class="navheading">
+                <h4>Trip Planner</h4>
             </div>
-        </section>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+            </ul>
+        </nav>
 
         <section class="vh-100 bg-image"
             style="background-image: url('https://mdbcdn.b-cdn.net/img/Photos/new-templates/search-box/img4.webp');">

@@ -11,6 +11,7 @@
 
         <!-- Custom Stylesheets -->
         <link rel="stylesheet" href="../static/css/events.css">
+        <link rel="stylesheet" href="../static/css/navbar.css">
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -21,19 +22,14 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.2/css/fontawesome.min.css" integrity="sha384-X8QTME3FCg1DLb58++lPvsjbQoCT9bp3MsUU3grbIny/3ZwUJkRNO8NPW6zqzuW9" crossorigin="anonymous">
     </head>
     <body>
-        <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: rgb(25, 27, 24);">
-            <a class="navbar-brand" href="/" style="padding-left: 25px;">Trip Planner</a>
-                <ul class="navbar-nav ms-auto">
-                    <li class="navbar-item" style="padding-right: 25px;">
-                        <a class="nav-link" href="suggestions">Suggestions</a>
-                    </li>
-                    <li class="navbar-item" style="padding-right: 25px;">
-                        <a class="nav-link" href="events">[Profile]</a>
-                    </li>
-                    <li class="navbar-item" style="padding-right: 100px;">
-                        <a class="nav-link" href="/map">[Map]</a>
-                    </li>
-                </ul>
+        <nav>
+            <div class="navheading">
+                <h4>Trip Planner</h4>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/map">Map</a></li>
+            </ul>
         </nav>
         <h1 align="center">Trips</h1>
         <div class="container" style="margin: auto;">
