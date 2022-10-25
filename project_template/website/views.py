@@ -9,6 +9,7 @@ import json, os
 from .read_trip_suggestions import get_json
 import folium
 from flask_sqlalchemy import SQLAlchemy
+from . import time_till
 
 views = Blueprint('views', __name__)
 
@@ -38,7 +39,7 @@ def events():
                 db.session.commit()
                 flash('Trip added!', category='success')
 
-    return render_template("events.html", user=current_user)
+    return render_template("events.html", user=current_user, time_till=time_till.count_time)
 
 @views.route('/map')
 def index():
@@ -59,7 +60,8 @@ def index():
             else:
                 icon_color = "yellow"
                 
-            folium.Marker(location = marker_coords,popup=f'<a href="/trip-summary/{item.id}"> {item.name}</a>', icon = folium.Icon(color = icon_color, icon = "info-sign") ).add_to(folium_map)
+            folium.Marker(location = marker_coords,popup=f'<a href="/trip-summary/{item.id}"> {item.name}</a>', 
+            icon = folium.Icon(color = icon_color, icon = "info-sign") ).add_to(folium_map)
     return folium_map._repr_html_()
 
 @views.route('/profile/', methods = ['GET', 'POST'])

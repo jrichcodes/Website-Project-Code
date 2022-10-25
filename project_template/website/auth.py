@@ -4,6 +4,7 @@ from . import db
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import login_user, login_required, logout_user, current_user
+import folium
 auth = Blueprint('auth', __name__)
 
 @auth.route('/login', methods=['GET', 'POST'])
@@ -31,6 +32,25 @@ def logout():
     logout_user()
     return redirect(url_for('auth.login'))
 
+@auth.route('/trip-summary-map/<tripId>', methods=['GET', 'POST'])
+def trip_summary_map(tripId):
+    trip = Trip.query.filter_by(id = tripId).first()
+    start_coords = (trip.latitude, trip.longitude)
+    folium_map = folium.Map(min_zoom = 6, center=start_coords,tiles="Stamen Terrain")
+    if trip.trip_type == 1:
+        icon_color = "red"
+    elif trip.trip_type == 2:
+        icon_color = "blue"
+    elif trip.trip_type == 3:
+        icon_color = "green"
+    elif trip.trip_type == 4:
+        icon_color = "purple"
+    else:
+        icon_color = "yellow"
+    folium.Marker(location = start_coords,popup=f'<p>{trip.name}</p>', 
+    icon = folium.Icon(color = icon_color, icon = "info-sign") ).add_to(folium_map)
+    return folium_map._repr_html_()
+
 @auth.route('/trip-summary/<tripId>', methods=['GET', 'POST'])
 def trip_summary(tripId):
 
@@ -50,7 +70,8 @@ def trip_summary(tripId):
     trip = Trip.query.filter_by(id = tripId).first()
     type = tripTypes.query.filter_by(id = trip.trip_type).first()
     gear_items = gearItems.query.filter_by(trip_type_id = trip.trip_type)
-    return render_template("trip_summary.html", trip = trip, gear_items = gear_items, type =type)
+
+    return render_template("trip_summary.html", trip = trip, gear_items = gear_items, type = type)
 
 @auth.route('/sign-up', methods=['GET', 'POST'])
 def sign_up():
