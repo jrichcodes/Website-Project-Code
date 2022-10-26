@@ -19,6 +19,16 @@
         <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
         <!-- FontAwesome -->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.2/css/fontawesome.min.css" integrity="sha384-X8QTME3FCg1DLb58++lPvsjbQoCT9bp3MsUU3grbIny/3ZwUJkRNO8NPW6zqzuW9" crossorigin="anonymous">
+
+        <script type="text/javascript">
+            function CheckTripType(val){
+             var element=document.getElementById('displayOther');
+             if(val==5)
+               element.style.display='block';
+             else
+               element.style.display='none';
+            }
+        </script> 
     </head>
     <body>
         <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: rgb(25, 27, 24);">
@@ -35,6 +45,7 @@
                     </li>
                 </ul>
         </nav>
+        {% if user.trip %}
         <h1 align="center">My Trips</h1>
         <div class="container" style="margin: auto; background-color: black; border-radius: 25px">
             <div class="row mx-auto" >
@@ -52,6 +63,7 @@
                 </div>
             </div>
         </div>
+        {% endif %}
         
         <div class="mask d-flex align-items-center h-100">
             <div class="container h-100">
@@ -82,13 +94,19 @@
 
                         <div class="form-group mb-4">
                             <label for="tripType">Trip Type</label>
-                            <select class="form-control" id="tripType" name="tripType">
+                            <select class="form-control" id="tripType" name="tripType" onchange='CheckTripType(this.value);'>
                                 <option value="1">Backpacking</option>
                                 <option value="2">Climbing</option>
                                 <option value="3">Kayaking</option>
                                 <option value="4">Biking</option>
                                 <option value="5">Other</option>
                             </select>
+                            <!-- <input type="text" name="othertype" id="othertype" style='display:none;'/> -->
+                        </div>
+
+                        <div class="form-group mb-4" id = "displayOther" style='display:none;'>
+                            <label for="othertype">Other</label>
+                            <input type="text" id="otherType" name="otherType" class="form-control">
                         </div>
 
                         <div class="form-group mb-4">
