@@ -85,7 +85,7 @@ def sign_up():
         password1 = request.form.get('password1')
         password2 = request.form.get('password2')
 
-        if len(email) < 4:
+        if len(email) < 5:
             flash('Email must be greater than 4 characters.', category='error')
         elif len(first_name) < 2:
             flash('First name must be greater than 1 character', category='error')
@@ -94,7 +94,7 @@ def sign_up():
         elif len(username) < 5:
             flash('Username must be greater than 4 characters', category='error')
         elif User.query.filter_by(username = username).first() != None:
-            flash('Username already in use')
+            flash('Username is taken')
         elif password1 != password2:
             flash('Passwords don\'t match', category='error')
         elif len(password1) < 7:
@@ -131,7 +131,7 @@ def email_reset(userId):
     if request.method == 'POST':
         email = request.form.get('email')
         email = email.lower()
-        if len(email) < 4:
+        if len(email) < 5:
             flash('Email must be greater than 4 characters.', category='error')
         else:
             tmp = User.query.filter_by(id = userId).first()
@@ -139,3 +139,17 @@ def email_reset(userId):
             db.session.commit()
             return redirect(url_for('auth.login')) # redirect to login page after email reset
     return render_template("email_reset.html", user=current_user)
+
+@auth.route('/username_reset/<userId>', methods = ['GET', 'POST'])
+@login_required
+def username_reset(userId):
+    if request.method == 'POST':
+        username = request.form.get('username')
+        if len(username) < 5:
+            flash('Email must be greater than 4 characters.', category='error')
+        else:
+            tmp = User.query.filter_by(id = userId).first()
+            tmp.username = username
+            db.session.commit()
+            return redirect(url_for('auth.login')) # redirect to login page after email reset
+    return render_template("username_reset.html", user=current_user)
