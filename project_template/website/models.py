@@ -8,7 +8,7 @@ class Trip(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(50))
     desc = db.Column(db.String(10000))
-    trip_type = db.Column(db.Integer)
+    trip_type = db.Column(db.String(150))
     date = db.Column(db.DateTime())
     num_people = db.Column(db.Integer)
     #how to associate different imformation with different users

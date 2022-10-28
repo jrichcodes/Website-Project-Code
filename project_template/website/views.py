@@ -29,8 +29,9 @@ def events():
             lat_in = request.form.get('lat')
             lon_in = request.form.get('lon')
             tripType_in = request.form.get('tripType')
-            # if tripType_in = other trip type = other type
-            # otherType_in = request.form.get('otherType')
+            if (tripType_in == "Other"):
+                otherType = request.form.get('otherType')
+                tripType_in = otherType
             num_people_in = request.form.get('num_people')
             date_time = datetime.strptime(date_in + " " + time_in,"%Y-%m-%d %H:%M")
             if len(name_in) < 1:
