@@ -67,10 +67,8 @@ def trip_summary(tripId):
             flash('Gear Item added!', category='success')
 
     trip = Trip.query.filter_by(id = tripId).first()
-    type = tripTypes.query.filter_by(type = trip.trip_type).first()
-    # type = tripTypes.query.filter_by(id = trip.trip_type).first()
-    # gear_items = gearItems.query.filter_by(trip_type_id = trip.trip_type)
-    gear_items = gearItems.query.filter_by(trip_type_id = trip.id)
+    type = tripTypes.query.filter_by(id = trip.trip_type).first()
+    gear_items = gearItems.query.filter_by(trip_type_id = trip.trip_type)
 
     return render_template("trip_summary.html", trip = trip, gear_items = gear_items, type = type)
 

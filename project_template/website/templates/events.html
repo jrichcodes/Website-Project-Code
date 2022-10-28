@@ -23,7 +23,7 @@
         <script type="text/javascript">
             function CheckTripType(val){
              var element=document.getElementById('displayOther');
-             if(val=="Other")
+             if(val==5)
                element.style.display='block';
              else
                element.style.display='none';
@@ -95,15 +95,11 @@
                         <div class="form-group mb-4">
                             <label for="tripType">Trip Type</label>
                             <select class="form-control" id="tripType" name="tripType" onchange='CheckTripType(this.value);'>
-                                <!-- <option value="1">Backpacking</option>
+                                <option value="1">Backpacking</option>
                                 <option value="2">Climbing</option>
                                 <option value="3">Kayaking</option>
-                                <option value="4">Biking</option> -->
-                                <option value="Backpacking">Backpacking</option>
-                                <option value="Climbing">Climbing</option>
-                                <option value="Kayaking">Kayaking</option>
-                                <option value="Biking">Biking</option>
-                                <option value="Other">Other</option>
+                                <option value="4">Biking</option>
+                                <option value="5">Other</option>
                             </select>
                         </div>
 
