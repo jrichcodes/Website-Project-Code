@@ -7,9 +7,16 @@
         <!-- Bootstrap -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css" integrity="sha384-xeJqLiuOvjUBq3iGOjvSQSIlwrpqjSHXpduPd6rQpuiM3f5/ijby8pCsnbu5S81n" crossorigin="anonymous">
+        <link
+            rel="stylesheet"
+            href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+            integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+            crossorigin="anonymous"
+        />
 
         <!-- Custom Stylesheets -->
         <link rel="stylesheet" href="../static/css/sign_up.css">
+        <link rel="stylesheet" href="../static/css/navbar.css">
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -18,36 +25,40 @@
         <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
         <!-- FontAwesome -->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.2/css/fontawesome.min.css" integrity="sha384-X8QTME3FCg1DLb58++lPvsjbQoCT9bp3MsUU3grbIny/3ZwUJkRNO8NPW6zqzuW9" crossorigin="anonymous">
+        
 
         <title>Sign Up</title>
     </head>
     <body>
-        <section id="title_section" class="sticky-top">
-            <div class="container-fluid" id="title_container">
-                <nav class="navbar navbar-expand-lg navbar-dark">
-                    <a class="navbar-brand" href="/">Welcome to Trip Planner!</a>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav ms-auto">
-                            <li class="navbar-item">
-                                <a class="nav-link" href="events">Events</a>
-                            </li>
-                            <li class="navbar-item">
-                                <a class="nav-link" href="login">Log in</a>
-                            </li>
-                            <li class="navbar-item">
-                                <a class="nav-link" href="/">Home</a>
-                            </li>       
-                        </ul>
-                    </div>
-                </nav>
+        <nav>
+            <div class="navheading">
+                <h4>Trip Planner</h4>
             </div>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+            </ul>
+        </nav>
         </section>
 
         <section class="vh-100 bg-image"
-            style="background-size:auto; background-image: url(../static/images/camping/hiking.jpg);">
+            style="background-image: url(../static/images/camping/hiking.jpg);">
+            <!-- Error Messages -->
+            {% with messages = get_flashed_messages(with_categories=true) %} {% if messages %} {% for category, message in messages %} {% if category ==
+                'error' %}
+                <div class="alert alert-danger alter-dismissable fade show" role="alert">
+                {{ message }}
+                <button type="button" class="close" data-dismiss="alert">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                </div>
+                {% else %}
+                <div class="alert alert-success alter-dismissable fade show" role="alert">
+                {{ message }}
+                <button type="button" class="close" data-dismiss="alert">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                </div>
+            {% endif %} {% endfor %} {% endif %} {% endwith %}
             <div class="mask d-flex align-items-center h-100 gradient-custom-3">
                 <div class="container h-100">
                 <div class="row d-flex justify-content-center align-items-center h-100">

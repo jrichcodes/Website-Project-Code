@@ -3,20 +3,22 @@
     <meta name = "viewpport" content="width=device-width, inital-scale=1.0">
     <title>Trip Planner</title>
     <link rel="stylesheet" href="../static/css/trip_summary.css">
+    <link rel="stylesheet" href="../static/css/navbar.css">
     <link href="https://fonts.googleapis.com/css2?
     family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="container">
-        <div class="navbar">
-            <nav>
-                <ul>
-                    <li><a href="">Home</a></li>
-                    <li><a href="">Account</a></li>
-                    <li><a href="">Events</a></li>
-                </ul>
-            </nav>
+    <nav>
+        <div class="navheading">
+            <h4>Trip Planner</h4>
         </div>
+        <ul class="nav-links">
+            <li><a href="/">Home</a></li>
+            <li><a href="/logout">Logout</a></li>
+            <li><a href="/map">Map</a></li>
+        </ul>
+    </nav>
+    <div class="container">
             <div class="row">
                 <div class="col">
                     <h1>{{trip.name}}</h1>

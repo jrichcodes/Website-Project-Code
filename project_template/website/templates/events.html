@@ -11,6 +11,7 @@
 
         <!-- Custom Stylesheets -->
         <link rel="stylesheet" href="../static/css/events.css">
+        <link rel="stylesheet" href="../static/css/navbar.css">
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -31,19 +32,14 @@
         </script> 
     </head>
     <body>
-        <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: rgb(25, 27, 24);">
-            <a class="navbar-brand" href="/" style="padding-left: 25px;">Trip Planner</a>
-                <ul class="navbar-nav ms-auto">
-                    <li class="navbar-item" style="padding-right: 25px;">
-                        <a class="nav-link" href="suggestions">Suggestions</a>
-                    </li>
-                    <li class="navbar-item" style="padding-right: 25px;">
-                        <a class="nav-link" href="profile">Profile</a>
-                    </li>
-                    <li class="navbar-item" style="padding-right: 100px;">
-                        <a class="nav-link" href="/map">[Map]</a>
-                    </li>
-                </ul>
+        <nav>
+            <div class="navheading">
+                <h4>Trip Planner</h4>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/map">Map</a></li>
+            </ul>
         </nav>
         {% if user.trip %}
         <h1 align="center">My Trips</h1>
