@@ -20,6 +20,16 @@
         <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
         <!-- FontAwesome -->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.2/css/fontawesome.min.css" integrity="sha384-X8QTME3FCg1DLb58++lPvsjbQoCT9bp3MsUU3grbIny/3ZwUJkRNO8NPW6zqzuW9" crossorigin="anonymous">
+
+        <script type="text/javascript">
+            function CheckTripType(val){
+             var element=document.getElementById('displayOther');
+             if(val==5)
+               element.style.display='block';
+             else
+               element.style.display='none';
+            }
+        </script> 
     </head>
     <body>
         <nav>
@@ -31,11 +41,12 @@
                 <li><a href="/map">Map</a></li>
             </ul>
         </nav>
-        <h1 align="center">Trips</h1>
-        <div class="container" style="margin: auto;">
+        {% if user.trip %}
+        <h1 align="center">My Trips</h1>
+        <div class="container" style="margin: auto; background-color: black; border-radius: 25px">
             <div class="row mx-auto" >
                 {% for trip in user.trip %}
-                <div class="card col-lg-3 col-sm-12">
+                <div class="card col-lg-2 col-sm-12">
                     <a href="/trip-summary/{{trip.id}}" class="button">
                     <div class="card-body">
                         <h5 id="{{trip.id}}" class="link card-title" >{{trip.name}}</h5>
@@ -48,47 +59,78 @@
                 </div>
             </div>
         </div>
-        <div id="event_form">
-            <form method="POST">
-                <h3 align="center">Create New Trip</h3>
-                <div class="form-group">
-                    <label for="name">Trip Name</label>
-                    <input type="name" class="form-control" id="name" name="name" placeholder="Enter Trip Name" />
+        {% endif %}
+        
+        <div class="mask d-flex align-items-center h-100">
+            <div class="container h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+                <div class="card" style="border-radius: 15px; background-color: #5cdb95">
+                    <div class="card-body p-5">
+                    <h2 class="text-uppercase text-center mb-5">Create New Trip</h2>
+
+                    <form method="POST">
+
+                        <div class="form-outline mb-4">
+                        <label for="name">Trip Name</label>
+                        <input type="name" class="form-control" id="name" name="name"/>
+                        </div>
+
+                        <div class="form-outline mb-4">
+                        <label for="desc">Trip Description</label>
+                        <input type="Description" class="form-control" id="desc" name="desc"/>
+                        </div>
+
+                        <div class="form-group mb-4">
+                            <label for="lat">Latitude: </label>
+                            <input type="number" step = .001 id="lat" name="lat" class="lat" min="-90" max="90">
+                            <label for="lon">Longitude: </label>
+                            <input type="number" step = .001 id="lon" name="lon" class="lon" min="-180" max="180">
+                        </div>
+
+                        <div class="form-group mb-4">
+                            <label for="tripType">Trip Type</label>
+                            <select class="form-control" id="tripType" name="tripType" onchange='CheckTripType(this.value);'>
+                                <option value="1">Backpacking</option>
+                                <option value="2">Climbing</option>
+                                <option value="3">Kayaking</option>
+                                <option value="4">Biking</option>
+                                <option value="5">Other</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group mb-4" id = "displayOther" style='display:none;'>
+                            <label for="othertype">Other</label>
+                            <input type="text" id="otherType" name="otherType" class="form-control">
+                        </div>
+
+                        <div class="form-group mb-4">
+                            <label for="tripdate">Date</label>
+                            <input type="date" id="tripDate" name="tripDate" class="form-control" >
+                        </div>
+
+                        <div class="form-group mb-4">
+                            <label for="tripTime">Time</label>
+                            <input type="time" id="tripTime" name="tripTime">
+                        </div>
+
+                        <div class="form-outline mb-4">
+                        <label for="num_people">Number of Participants</label>
+                        <input type="number" class="form-control" id="num_people" name="num_people" min="1" max="1000"/>
+                        </div>
+
+                        <div class="d-flex justify-content-center">
+                        <button name="submit_button" value="create trip" type="submit" class="btn btn-primary btn-block btn-lg" style="margin: 10px 0">Submit Trip</button>
+                        </div>
+
+                    </form>
+
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label for="desc">Description</label>
-                    <input type="text" class="form-control" id="desc" name="desc" placeholder="Enter description" />
                 </div>
-                <div class="form-group">
-                    <label for="lat">latitude</label>
-                    <input type="number" step = .001 id="lat" name="lat" class="lat" min="-90" max="90">
-                    <label for="lon">longitude</label>
-                    <input type="number" step = .001 id="lon" name="lon" class="lon" min="-180" max="180">
-                </div>
-                <div class="form-group">
-                    <label for="tripType">Trip Type</label>
-                    <select class="form-control" id="tripType" name = "tripType">
-                        <option value="1">Backpacking</option>
-                        <option value="2">Climbing</option>
-                        <option value="3">Kyaking</option>
-                        <option value="4">Biking</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="tripdate">Date</label>
-                    <input type="date" id="tripDate" name="tripDate" class="form-control" >
-                </div>
-                <div class="form-group">
-                    <label for="tripTime">Time</label>
-                    <input type="time" id="tripTime" name="tripTime">
-                </div>
-                <div class="form-group">
-                    <label for="num_people">Number of People</label>
-                    <input type="number" id="num_people" name="num_people" class="form-control" min="1" max="1000">
-                </div>
-                <button name="submit_button" value="create trip" type="submit" class="btn btn-primary" style="margin: 10px 0">Submit</button>
-            </form>
-        </div>  
+            </div>
+            </div>
+        </div>
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>

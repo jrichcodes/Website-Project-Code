@@ -41,7 +41,7 @@
         </section>
 
         <section class="vh-100 bg-image"
-            style="background-image: url('https://mdbcdn.b-cdn.net/img/Photos/new-templates/search-box/img4.webp');">
+            style="background-image: url(../static/images/camping/hiking.jpg);">
             <!-- Error Messages -->
             {% with messages = get_flashed_messages(with_categories=true) %} {% if messages %} {% for category, message in messages %} {% if category ==
                 'error' %}
@@ -79,6 +79,10 @@
 
                             <div class="form-outline mb-4">
                             <input type="lastName" class="form-control" id="lastName" name="lastName" placeholder="Enter last name"/>
+                            </div>
+
+                            <div class="form-outline mb-4">
+                            <input type="username" class="form-control" id="username" name="username" placeholder="Create a username"/>
                             </div>
 
                             <div class="form-outline mb-4">
