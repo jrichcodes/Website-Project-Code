@@ -1,102 +1,77 @@
-{% extends "base.html" %}
-{% block content %} 
-<!doctype html>
-<html lang="en">
-  <head>
+<html>
+<head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name = "viewpport" content="width=device-width, inital-scale=1.0">
 
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    
+    <!-- Custom Stylesheets-->
+    <link rel="stylesheet" href="../static/css/trip_summary.css">
+    <link rel="stylesheet" href="../static/css/navbar.css">
+    <link href="https://fonts.googleapis.com/css2?
+    family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
     <title>Trip Planner</title>
-  </head>
-  <body class="bg-light">
-
-    <div class = "container">
-        <div class ="py-5 text-center">
-            <ion-icon class="d-block mx-auto" name="reader-outline" size ="large"></ion-icon>
-            <h2>Trip summary: {{trip.name}}</h2>
+</head>
+<body>
+    <nav>
+        <div class="navheading">
+            <h4>Trip Planner</h4>
         </div>
-    </div>
+        <ul class="nav-links">
+            <li><a href="/">Home</a></li>
+            <li><a href="/logout">Logout</a></li>
+            <li><a href="/map">Map</a></li>
+        </ul>
+    </nav>
     <div class="container">
-        <h4>General Information</h4>
-            <div class="form-group row">
-                <label for="ActivityType" class = "col-sm-2 col-form-label">Activity Type</label>
-                <div class="col-sm-2">
-                    <div class="p-1 mb-1 bg-secondary text-white">
-                        <input type="text" readonly class="form-control-plaintext text-white" id="ActivtyType" value={{type.type}}>
-                    </div>
+            <div class="row">
+                <div class="col">
+                    <h1>{{trip.name}}</h1>
+                    <p>{{trip.desc}}</p>
+                </div>
+                <div class="cards">
+                        <div class="card">
+                            <div class="card__content">
+                                <h5>General Information</h5>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card__content">
+                                <h5>Menu</h5>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card__content">
+                                <h5>Gear List</h5>
+                                    {% for gear_items in gear_items %}
+                                    <div class="box">
+                                        <input type="checkbox">
+                                        <label>{{gear_items.name}}</label>
+                                        <div class="close" onClick="deleteGearItem({{gear_items.id}}, {{trip.id}})"></div>
+                                    </div>
+                                    {% endfor %}
+                                    <form method="POST">
+                                        <input id="textboxid" type="text" name="item">
+                                          <input type="submit" value="Add Item" class="button" style="cursor: pointer">
+                                    </form>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card__content">
+                                <h5>Map</h5>
+                            </div>
+                            <div class="card__image">
+                                <iframe width="450px" height="460px" frameborder="0" 
+                                scrolling="no" src="/trip-summary-map/{{trip.id}}">
+                                </iframe>
+                            </div>
+                        </div>
                 </div>
             </div>
-            <div class="form-group row">
-                <label for="Date" class = "col-sm-2 col-form-label">Date</label>
-                <div class="col-sm-2">
-                    <div class="p-1 mb-1 bg-secondary text-white">
-                        <input type="text" readonly class="form-control-plaintext text-white" id="Date" value={{trip.date}}>
-                    </div>
-                </div>
-            </div>
-            <div class="form-group row">
-                <label for="Location" class = "col-sm-2 col-form-label">Description</label>
-                <div class="col-sm-2">
-                    <div class="p-1 mb-1 bg-secondary text-white">
-                        <input type="text" readonly class="form-control-plaintext text-white" id="Location" value={{trip.desc}}>
-                    </div>
-                </div>
-            </div>
-            <div class="form-group row">
-                <label for="NumberOfPeople" class = "col-sm-2 col-form-label">Number of People</label>
-                <div class="col-sm-2">
-                    <div class="p-1 mb-1 bg-secondary text-white">
-                        <input type="text" readonly class="form-control-plaintext text-white" id="NumberOfPeople" value={{trip.num_people}}>
-                    </div>
-                </div>
-            </div>
-
-            <iframe
-                class = "map",
-                src = "/trip-summary-map/{{trip.id}}"
-                width = "600"
-                height = "400"
-            >
-            </iframe>
-
-            <hr class="my-4">
-
-            <h4 class="mb-3">Menu Items</h4>
-
-            <hr class="my-4">
-
-            <h4 class="mb-3">Gear List</h4>
-            <ul class = "list-group list-group-flush">
-                {% for gear_items in gear_items %}
-                <li class="list-group-item">
-                    <input class="form-check-input" type="checkbox" id="checkboxNoLabel" value="" aria-label="..." />
-                    {{gear_items.name}}
-                    <button type="button" class="close" onClick="deleteGearItem({{gear_items.id}}, {{trip.id}})">
-                    <span aria-hidden="true">&times;</span>
-                    </button>
-                </li>
-                {% endfor %}
-            </ul>
-        </div>
-        <h4 class="mb-3"></h4>
-        <form method="POST">
-            <textarea name="item" id="item" class="form-control"></textarea>
-            <br />
-            <div align="center">
-              <button type="submit" class="btn btn-primary">Add Item</button>
-            </div>
-        </form>
-
-    <!-- used for bootstrap -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-
-    <!-- used for icons on page -->
-    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-  </body>
+    </div>
+    <script
+      type="text/javascript"
+      src="../static/js/index.js"
+    ></script>
+</body>
 </html>
-{% endblock %}
