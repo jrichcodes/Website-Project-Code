@@ -37,8 +37,9 @@
                 <h4>Trip Planner</h4>
             </div>
             <ul class="nav-links">
-                <li><a href="/">Home</a></li>
                 <li><a href="/map">Map</a></li>
+                <li><a href="suggestions">Suggestions</a></li>
+                <li><a href="/">Home</a></li>
             </ul>
         </nav>
         {% if user.trip %}
@@ -52,6 +53,9 @@
                         <h5 id="{{trip.id}}" class="link card-title" >{{trip.name}}</h5>
                         <p class="card-text">{{trip.desc}}</p>
                         <p class="card-text">{{time_till(trip.date)}}</p>
+                        <button type="button" class="close" onClick="deleteTrip({{trip.id}})">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
                     </div>
                     </a>
                 </div>

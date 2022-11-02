@@ -52,7 +52,6 @@ def trip_summary_map(tripId):
 
 @auth.route('/trip-summary/<tripId>', methods=['GET', 'POST'])
 def trip_summary(tripId):
-
     if request.method == 'POST':
         print('here')
         item = request.form.get('item')

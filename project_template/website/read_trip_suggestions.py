@@ -1,7 +1,7 @@
 import json
 
 def get_json():
-    json_file = open('project_template/website/static/json_files/suggestions.json')
+    json_file = open('website/static/json_files/suggestions.json')
 
     data = json.load(json_file)
 
