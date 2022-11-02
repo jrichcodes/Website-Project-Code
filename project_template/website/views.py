@@ -10,6 +10,7 @@ from .read_trip_suggestions import get_json
 import folium
 from flask_sqlalchemy import SQLAlchemy
 from . import time_till
+from .get_location import ret_location
 
 views = Blueprint('views', __name__)
 
@@ -26,8 +27,9 @@ def events():
             time_in = request.form.get('tripTime')
             name_in = request.form.get('name')
             desc_in = request.form.get('desc')
-            lat_in = request.form.get('lat')
-            lon_in = request.form.get('lon')
+            location = ret_location(request.form.get('location_name'))
+            lat_in = location[0]
+            lon_in = location[1]
             tripType_in = request.form.get('tripType')
             num_people_in = request.form.get('num_people')
             date_time = datetime.strptime(date_in + " " + time_in,"%Y-%m-%d %H:%M")
@@ -44,7 +46,7 @@ def events():
 @views.route('/map')
 def index():
     start_coords = (35, -83)
-    folium_map = folium.Map(min_zoom = 4, center=start_coords,tiles="Stamen Terrain")
+    folium_map = folium.Map(min_zoom = 4, center=start_coords,tiles="OpenStreetMap")
     list = Trip.query.filter_by(user_id=current_user.id).order_by(Trip.id).all()
     for item in list:
         if item.latitude != None and item.longitude != None:

@@ -44,18 +44,22 @@
         </nav>
         {% if user.trip %}
         <h1 align="center">My Trips</h1>
-        <div class="container" style="margin: auto; background-color: black; border-radius: 25px">
-            <div class="row mx-auto" >
+        <div class="container" style="margin: auto; background-color: black; border-radius: 20px">
+            <div class="  row mx-auto" >
                 {% for trip in user.trip %}
-                <div class="card col-lg-2 col-sm-12">
+                <div style="position: relative;" class="card col-lg-2 col-sm-12">
                     <a href="/trip-summary/{{trip.id}}" class="button">
                     <div class="card-body">
-                        <h5 id="{{trip.id}}" class="link card-title" >{{trip.name}}</h5>
-                        <p class="card-text">{{trip.desc}}</p>
-                        <p class="card-text">{{time_till(trip.date)}}</p>
-                        <button type="button" class="close" onClick="deleteTrip({{trip.id}})">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
+                        <div style="margin-bottom: 2rem;">
+                            <h5 id="{{trip.id}}" class="link card-title" >{{trip.name}}</h5>
+                            <p class="card-text">{{trip.desc}}</p>
+                            <p class="card-text">{{time_till(trip.date)}}</p>
+                        </div>
+                        <div style="position: absolute; bottom: 0; text-align: center;">
+                            <button  type="button" class="btn btn-primary btn-block btn-sm close" onClick="deleteTrip({{trip.id}})">
+                                <span style="font-size: 1rem;" aria-hidden="true">Delete Trip</span>
+                            </button>
+                        </div>
                     </div>
                     </a>
                 </div>
@@ -86,10 +90,8 @@
                         </div>
 
                         <div class="form-group mb-4">
-                            <label for="lat">Latitude: </label>
-                            <input type="number" step = .001 id="lat" name="lat" class="lat" min="-90" max="90">
-                            <label for="lon">Longitude: </label>
-                            <input type="number" step = .001 id="lon" name="lon" class="lon" min="-180" max="180">
+                            <label for="location_name">Location</label>
+                            <input type="location_name" class="form-control" id="location_name" name="location_name"/>
                         </div>
 
                         <div class="form-group mb-4">

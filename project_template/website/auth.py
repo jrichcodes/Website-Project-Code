@@ -35,7 +35,7 @@ def logout():
 def trip_summary_map(tripId):
     trip = Trip.query.filter_by(id = tripId).first()
     start_coords = (trip.latitude, trip.longitude)
-    folium_map = folium.Map(min_zoom = 6, center=start_coords,tiles="Stamen Terrain")
+    folium_map = folium.Map(min_zoom = 6, center=start_coords,tiles="OpenStreetMap")
     if trip.trip_type == 1:
         icon_color = "red"
     elif trip.trip_type == 2:
