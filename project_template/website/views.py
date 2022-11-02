@@ -6,11 +6,10 @@ from flask_login import login_required, current_user
 from .models import Trip, User, gearItems, Menu
 from . import db
 import json, os
-from .read_trip_suggestions import get_json
 import folium
 from flask_sqlalchemy import SQLAlchemy
 from . import time_till
-from .get_location import ret_location
+from .general import ret_location, get_json
 
 views = Blueprint('views', __name__)
 
