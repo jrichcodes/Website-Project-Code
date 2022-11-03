@@ -20,6 +20,9 @@ def home():
 @views.route('events', methods=['GET', 'POST'])
 @login_required
 def events():
+    continent = request.args.get('continent', "")
+    name = request.args.get('name', "")
+
     if request.method == 'POST':
         if request.form['submit_button'] == 'create trip':
             date_in = request.form.get('tripDate')
@@ -40,7 +43,7 @@ def events():
                 db.session.commit()
                 flash('Trip added!', category='success')
 
-    return render_template("events.html", user=current_user, time_till=time_till.count_time)
+    return render_template("events.html", user=current_user, time_till=time_till.count_time, continent=continent, name=name)
 
 @views.route('/map')
 def index():

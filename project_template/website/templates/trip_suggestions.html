@@ -47,14 +47,13 @@
                             {% for suggested_trip in data[continent] %}
                                 <div  class="col-lg-3 col-md-4 col-sm-6 d-flex justify-content-center">
                                     <div  id="suggestions_card" class="card" style="width: 24rem;">
-                                    <!-- <img class="card-img-top" src="{{ data[continent][suggested_trip] }}" alt="Card image cap"> -->
-                                    <div loading="lazy" id="card_img_container">
-                                        <img class="card-img-top" src="../static/images/suggestions/{{data[continent][suggested_trip]}}" alt="Trip Image">
+                                    <div  id="card_img_container">
+                                        <img loading="lazy" class="card-img-top" src="../static/images/suggestions/{{data[continent][suggested_trip]}}" alt="Trip Image">
                                     </div>
                                     <div class="card-body">
                                         <h5 class="card-title">{{suggested_trip}}</h5>
-                                        <!-- <p class="card-text">Trip Description</p> -->
-                                        <a href="events/{{continent}}/{{suggested_trip}}" class="btn btn-primary">Create Trip</a>
+                                        <!-- <a id="'{{continent}}'" href="{{ url_for('views.events', continent='{{continent}}') }}" class="btn btn-primary">Create Trip</a> -->
+                                        <a href="{{ url_for('views.events', continent=continent, name=suggested_trip) }}" class="btn btn-primary">Create Trip</a>
                                     </div>
                                     </div>
                                 </div>
