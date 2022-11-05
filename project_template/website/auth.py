@@ -65,7 +65,6 @@ def trip_summary(tripId):
             new_gearItem = gearItems(name=item, trip_type_id = trip_type)
             db.session.add(new_gearItem)
             db.session.commit()
-            flash('Gear Item added!', category='success')
 
     trip = Trip.query.filter_by(id = tripId).first()
     type = tripTypes.query.filter_by(id = trip.trip_type).first()

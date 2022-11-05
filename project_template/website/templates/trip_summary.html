@@ -21,6 +21,7 @@
             <li><a href="/">Home</a></li>
             <li><a href="/logout">Logout</a></li>
             <li><a href="/map">Map</a></li>
+            <li><a href="/profile">Profile</a></li>
         </ul>
     </nav>
     <div class="container">
@@ -33,6 +34,9 @@
                         <div class="card">
                             <div class="card__content">
                                 <h5>General Information</h5>
+                                <p>Activity Type: {{type.type}}</p>
+                                <p>Date: {{trip.date}}</p>
+                                <p>Number of People: {{trip.num_people}}</p>
                             </div>
                         </div>
                         <div class="card">
@@ -47,7 +51,9 @@
                                     <div class="box">
                                         <input type="checkbox">
                                         <label>{{gear_items.name}}</label>
-                                        <div class="close" onClick="deleteGearItem({{gear_items.id}}, {{trip.id}})"></div>
+                                        <button type="button" onClick="deleteGearItem({{gear_items.id}}, {{trip.id}})">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
                                     </div>
                                     {% endfor %}
                                     <form method="POST">
