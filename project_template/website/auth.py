@@ -62,7 +62,7 @@ def trip_summary(tripId):
         if len(item) < 1:
             flash('Not valid gear item', category = 'error')
         else: 
-            new_gearItem = gearItems(name=item, trip_type_id = trip_type)
+            new_gearItem = gearItems(name=item, trip_id = trip.id)
             db.session.add(new_gearItem)
             db.session.commit()
 
