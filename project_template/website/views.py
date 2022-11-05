@@ -10,6 +10,7 @@ from .read_trip_suggestions import get_json
 import folium
 from flask_sqlalchemy import SQLAlchemy
 from . import time_till
+import uuid
 
 views = Blueprint('views', __name__)
 
@@ -34,7 +35,7 @@ def events():
             if len(name_in) < 1:
                 flash('Trip name is too short!', category='error')
             else:
-                new_trip = Trip(name = name_in, desc = desc_in, trip_type = tripType_in, date = date_time, num_people = num_people_in, user_id=current_user.id, latitude = lat_in, longitude = lon_in)
+                new_trip = Trip(name = name_in, desc = desc_in, trip_type = tripType_in, date = date_time, num_people = num_people_in, user_id=current_user.id, latitude = lat_in, longitude = lon_in, id = uuid.uuid1().hex)
                 db.session.add(new_trip)
                 db.session.commit()
                 flash('Trip added!', category='success')

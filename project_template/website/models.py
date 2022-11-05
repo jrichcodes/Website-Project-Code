@@ -5,7 +5,7 @@ from sqlalchemy.sql import func
 
 
 class Trip(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.String(40), primary_key=True)
     name = db.Column(db.String(50))
     desc = db.Column(db.String(10000))
     trip_type = db.Column(db.Integer)
