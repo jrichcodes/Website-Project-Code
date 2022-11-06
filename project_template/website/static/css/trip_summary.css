@@ -40,7 +40,7 @@ h1{
 p{
     color: #fff;
     font-size: 22px;
-    line-height: 15px;
+    line-height: 30px;
 }
 
 .cards {
@@ -171,4 +171,3 @@ input[type=button], input[type=submit], input[type=reset] {
     margin: 4px 2px;
     cursor: pointer;
 }
-
