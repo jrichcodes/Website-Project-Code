@@ -40,7 +40,8 @@ class gearItems(db.Model):
     __tablename__ = 'gear_items'
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(150))
-    trip_type_id = db.Column(db.Integer, db.ForeignKey('trip_types.id'))
+    trip_id = db.Column(db.Integer, db.ForeignKey('trip.id'))
+    quantity = db.Column(db.Integer)
 
 class Menu(db.Model):
     id = db.Column(db.Integer, primary_key=True)

@@ -54,21 +54,19 @@ def trip_summary_map(tripId):
 def trip_summary(tripId):
 
     if request.method == 'POST':
-        print('here')
         item = request.form.get('item')
         trip = Trip.query.filter_by(id = tripId).first()
-        trip_type = trip.trip_type
+        quantity = request.form.get('quantity')
         if len(item) < 1:
             flash('Not valid gear item', category = 'error')
         else: 
-            new_gearItem = gearItems(name=item, trip_type_id = trip_type)
+            new_gearItem = gearItems(name=item, trip_id = trip.id, quantity = quantity)
             db.session.add(new_gearItem)
             db.session.commit()
-            flash('Gear Item added!', category='success')
 
     trip = Trip.query.filter_by(id = tripId).first()
     type = tripTypes.query.filter_by(id = trip.trip_type).first()
-    gear_items = gearItems.query.filter_by(trip_type_id = trip.trip_type)
+    gear_items = gearItems.query.filter_by(trip_id = trip.id)
 
     return render_template("trip_summary.html", trip = trip, gear_items = gear_items, type = type)
 
