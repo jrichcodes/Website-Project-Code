@@ -3,7 +3,7 @@ from datetime import datetime
 from django.shortcuts import render
 from flask import Blueprint, render_template, request, flash, current_app as app, redirect, url_for, jsonify
 from flask_login import login_required, current_user
-from .models import Trip, User, gearItems, Menu
+from .models import Trip, User, gearItems, Menu, tripTypes
 from . import db
 import json, os
 from .read_trip_suggestions import get_json
@@ -31,6 +31,15 @@ def events():
             tripType_in = request.form.get('tripType')
             num_people_in = request.form.get('num_people')
             date_time = datetime.strptime(date_in + " " + time_in,"%Y-%m-%d %H:%M")
+            
+            if int(tripType_in) == 5:
+                other_name = request.form.get('otherType')
+                other_Type = tripTypes(type=other_name)
+                db.session.add(other_Type)
+                db.session.commit()
+                type = db.session.query(tripTypes).filter(tripTypes.type == other_name).first()
+                tripType_in = type.id
+            
             if len(name_in) < 1:
                 flash('Trip name is too short!', category='error')
             else:
