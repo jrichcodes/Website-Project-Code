@@ -112,3 +112,14 @@ def delete_gearitem():
             db.session.delete(Item)
             db.session.commit()
     return jsonify({})
+
+@views.route('/delete-trip',methods=['POST'])
+def delete_trip():
+    if request.method == 'POST':
+        delete_trip = json.loads(request.data)
+        tripId = delete_trip['tripId']
+        delete_trip = Trip.query.get(tripId)
+        if delete_trip:
+            db.session.delete(delete_trip)
+            db.session.commit()
+    return jsonify({})

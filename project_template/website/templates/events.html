@@ -54,6 +54,7 @@
                         <p class="card-text">{{time_till(trip.date)}}</p>
                     </div>
                     </a>
+                    <button type="button" class="btn btn-primary btn-sm" onClick="deleteTrip({{trip.id}})">Delete</button>
                 </div>
                 {% endfor %}
                 </div>
