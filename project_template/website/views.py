@@ -22,6 +22,7 @@ def home():
 def events():
     continent = request.args.get('continent', "")
     name = request.args.get('name', "")
+    description = request.args.get('description', "")
 
     if request.method == 'POST':
         if request.form['submit_button'] == 'create trip':
@@ -52,7 +53,7 @@ def events():
                 db.session.commit()
                 flash('Trip added!', category='success')
 
-    return render_template("events.html", user=current_user, time_till=time_till.count_time, continent=continent, name=name)
+    return render_template("events.html", user=current_user, time_till=time_till.count_time, continent=continent, name=name, description=description)
 
 @views.route('/map')
 def index():

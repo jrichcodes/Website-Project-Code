@@ -45,18 +45,20 @@
                 <div   class="row">
                         {% for continent in data %}
                             {% for suggested_trip in data[continent] %}
+                                {% for trip_info in data[continent][suggested_trip] %}
                                 <div  class="col-lg-3 col-md-4 col-sm-6 d-flex justify-content-center">
                                     <div  id="suggestions_card" class="card" style="width: 24rem;">
                                     <div  id="card_img_container">
-                                        <img loading="lazy" class="card-img-top" src="../static/images/suggestions/{{data[continent][suggested_trip]}}" alt="Trip Image">
+                                        <img loading="lazy" class="card-img-top" src="../static/images/suggestions/{{trip_info}}" alt="Trip Image">
                                     </div>
                                     <div class="card-body">
                                         <h5 class="card-title">{{suggested_trip}}</h5>
                                         <!-- <a id="'{{continent}}'" href="{{ url_for('views.events', continent='{{continent}}') }}" class="btn btn-primary">Create Trip</a> -->
-                                        <a href="{{ url_for('views.events', continent=continent, name=suggested_trip) }}" class="btn btn-primary">Create Trip</a>
+                                        <a href="{{ url_for('views.events', continent=continent, name=suggested_trip, description=data[continent][suggested_trip][trip_info]) }}" class="btn btn-primary">Create Trip</a>
                                     </div>
                                     </div>
                                 </div>
+                                {% endfor %}
                             {% endfor %}
                         {% endfor %}
                 </div>
