@@ -1,0 +1,75 @@
+97e2d123 project_template/website/templates/events.html   (yejashi           2022-11-01 22:59:58 -0400  41)                 <li><a href="suggestions">Suggestions</a></li>
+97e2d123 project_template/website/templates/events.html   (yejashi           2022-11-01 22:59:58 -0400  42)                 <li><a href="/">Home</a></li>
+cfe5daf0 project_template/website/templates/events.html   (yejashi           2022-11-02 13:20:55 -0400  47)         <div class="container" style="margin: auto; background-color: black; border-radius: 20px">
+cfe5daf0 project_template/website/templates/events.html   (yejashi           2022-11-02 13:20:55 -0400  48)             <div class="  row mx-auto" >
+cfe5daf0 project_template/website/templates/events.html   (yejashi           2022-11-02 13:20:55 -0400  50)                 <div style="position: relative;" class="card col-lg-2 col-sm-12">
+cfe5daf0 project_template/website/templates/events.html   (yejashi           2022-11-02 13:20:55 -0400  53)                         <div style="margin-bottom: 2rem;">
+cfe5daf0 project_template/website/templates/events.html   (yejashi           2022-11-02 13:20:55 -0400  54)                             <h5 id="{{trip.id}}" class="link card-title" >{{trip.name}}</h5>
+cfe5daf0 project_template/website/templates/events.html   (yejashi           2022-11-02 13:20:55 -0400  55)                             <p class="card-text">{{time_till(trip.date)}}</p>
+cfe5daf0 project_template/website/templates/events.html   (yejashi           2022-11-02 13:20:55 -0400  56)                         </div>
+cfe5daf0 project_template/website/templates/events.html   (yejashi           2022-11-02 13:20:55 -0400  57)                         <div style="position: absolute; bottom: 0; text-align: center;">
+cfe5daf0 project_template/website/templates/events.html   (yejashi           2022-11-02 13:20:55 -0400  58)                             <button  type="button" class="btn btn-primary btn-block btn-sm close" onClick="deleteTrip({{trip.id}})">
+cfe5daf0 project_template/website/templates/events.html   (yejashi           2022-11-02 13:20:55 -0400  59)                                 <span style="font-size: 1rem;" aria-hidden="true">Delete Trip</span>
+cfe5daf0 project_template/website/templates/events.html   (yejashi           2022-11-02 13:20:55 -0400  60)                             </button>
+cfe5daf0 project_template/website/templates/events.html   (yejashi           2022-11-02 13:20:55 -0400  61)                         </div>
+cfe5daf0 project_template/website/templates/events.html   (yejashi           2022-11-02 13:20:55 -0400  92)                             <label for="location_name">Location</label>
+cfe5daf0 project_template/website/templates/events.html   (yejashi           2022-11-02 13:20:55 -0400  93)                             <input type="location_name" class="form-control" id="location_name" name="location_name"/>
+cfe5daf0 (yejashi        2022-11-02 13:20:55 -0400 33)     border-radius: 20px; 
+cfe5daf0 (yejashi        2022-11-02 13:20:55 -0400 58) }
+cfe5daf0 (yejashi        2022-11-02 13:20:55 -0400 59) 
+cfe5daf0 (yejashi        2022-11-02 13:20:55 -0400 60) .delete_button {
+cfe5daf0 (yejashi        2022-11-02 13:20:55 -0400 61)     position: relative;
+cfe5daf0 (yejashi        2022-11-02 13:20:55 -0400 62)     top: 100%;
+cfe5daf0 (yejashi        2022-11-02 13:20:55 -0400 63)     transform: translateY(-100%);
+97e2d123 (yejashi           2022-11-01 22:59:58 -0400 23)     <body >
+97e2d123 (yejashi           2022-11-01 22:59:58 -0400 45)                 <div   class="row">
+97e2d123 (yejashi           2022-11-01 22:59:58 -0400 48)                                 <div  class="col-lg-3 col-md-4 col-sm-6 d-flex justify-content-center">
+97e2d123 (yejashi           2022-11-01 22:59:58 -0400 49)                                     <div  id="suggestions_card" class="card" style="width: 24rem;">
+97e2d123 (yejashi 2022-11-01 22:59:58 -0400  3)     border-radius: 2.5%;
+4e543cbb (yejashi           2022-11-02 19:12:12 -0400  12) from .general import ret_location, get_json
+cfe5daf0 (yejashi           2022-11-02 13:20:55 -0400  32)             location = ret_location(request.form.get('location_name'))
+cfe5daf0 (yejashi           2022-11-02 13:20:55 -0400  33)             lat_in = location[0]
+cfe5daf0 (yejashi           2022-11-02 13:20:55 -0400  34)             lon_in = location[1]
+cfe5daf0 (yejashi           2022-11-02 13:20:55 -0400  51)     folium_map = folium.Map(min_zoom = 4, center=start_coords,tiles="OpenStreetMap")
+97e2d123 (yejashi           2022-11-01 22:59:58 -0400 111) 
+97e2d123 (yejashi           2022-11-01 22:59:58 -0400 112) @views.route('/delete-trip', methods=['POST'])
+97e2d123 (yejashi           2022-11-01 22:59:58 -0400 113) def delete_trip():
+97e2d123 (yejashi           2022-11-01 22:59:58 -0400 114)     if request.method == 'POST':
+97e2d123 (yejashi           2022-11-01 22:59:58 -0400 115)         print('delete')
+97e2d123 (yejashi           2022-11-01 22:59:58 -0400 116)         Item = json.loads(request.data)
+97e2d123 (yejashi           2022-11-01 22:59:58 -0400 117)         trip = Item['tripId']
+97e2d123 (yejashi           2022-11-01 22:59:58 -0400 118)         Item = Trip.query.get(trip)
+97e2d123 (yejashi           2022-11-01 22:59:58 -0400 119)         if Item:
+97e2d123 (yejashi           2022-11-01 22:59:58 -0400 120)             db.session.delete(Item)
+97e2d123 (yejashi           2022-11-01 22:59:58 -0400 121)             db.session.commit()
+97e2d123 (yejashi           2022-11-01 22:59:58 -0400 122)     return jsonify({})
+cfe5daf0 (yejashi        2022-11-02 13:20:55 -0400  38)     folium_map = folium.Map(min_zoom = 6, center=start_coords,tiles="OpenStreetMap")
+4e543cbb (yejashi 2022-11-02 19:12:12 -0400  1) import json
+4e543cbb (yejashi 2022-11-02 19:12:12 -0400  2) from geopy.geocoders import Nominatim
+4e543cbb (yejashi 2022-11-02 19:12:12 -0400  3) 
+4e543cbb (yejashi 2022-11-02 19:12:12 -0400  4) def get_json():
+4e543cbb (yejashi 2022-11-02 19:12:12 -0400  5)     json_file = open('website/static/json_files/suggestions.json')
+4e543cbb (yejashi 2022-11-02 19:12:12 -0400  6) 
+4e543cbb (yejashi 2022-11-02 19:12:12 -0400  7)     data = json.load(json_file)
+4e543cbb (yejashi 2022-11-02 19:12:12 -0400  8) 
+4e543cbb (yejashi 2022-11-02 19:12:12 -0400  9)     # for continent in data:
+4e543cbb (yejashi 2022-11-02 19:12:12 -0400 10)     #     for trip in data[continent]:
+4e543cbb (yejashi 2022-11-02 19:12:12 -0400 11)     #         print(trip + ": " + data[continent][trip])
+4e543cbb (yejashi 2022-11-02 19:12:12 -0400 12)     return data
+4e543cbb (yejashi 2022-11-02 19:12:12 -0400 13) 
+4e543cbb (yejashi 2022-11-02 19:12:12 -0400 14) def ret_location(location):
+4e543cbb (yejashi 2022-11-02 19:12:12 -0400 15)     geolocator = Nominatim(user_agent="geoapiExercises")
+4e543cbb (yejashi 2022-11-02 19:12:12 -0400 16)     address=geolocator.geocode(location)
+4e543cbb (yejashi 2022-11-02 19:12:12 -0400 17)     ret = []
+4e543cbb (yejashi 2022-11-02 19:12:12 -0400 18)     ret.append(address.latitude)
+4e543cbb (yejashi 2022-11-02 19:12:12 -0400 19)     ret.append(address.longitude)
+4e543cbb (yejashi 2022-11-02 19:12:12 -0400 20)     return ret
+97e2d123 (yejashi        2022-11-01 22:59:58 -0400  8) }
+97e2d123 (yejashi        2022-11-01 22:59:58 -0400  9) 
+97e2d123 (yejashi        2022-11-01 22:59:58 -0400 10) function deleteTrip(tripId){
+97e2d123 (yejashi        2022-11-01 22:59:58 -0400 11)     fetch('/delete-trip', {
+97e2d123 (yejashi        2022-11-01 22:59:58 -0400 12)         method: "POST",
+97e2d123 (yejashi        2022-11-01 22:59:58 -0400 13)         body: JSON.stringify({ tripId: tripId}),
+97e2d123 (yejashi        2022-11-01 22:59:58 -0400 14)     }).then((_res) => {
+97e2d123 (yejashi        2022-11-01 22:59:58 -0400 15)         window.location.href = "events";
+97e2d123 (yejashi        2022-11-01 22:59:58 -0400 16)     });

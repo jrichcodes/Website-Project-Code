@@ -20,7 +20,7 @@
         <!-- FontAwesome -->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.2/css/fontawesome.min.css" integrity="sha384-X8QTME3FCg1DLb58++lPvsjbQoCT9bp3MsUU3grbIny/3ZwUJkRNO8NPW6zqzuW9" crossorigin="anonymous">
     </head>
-    <body>
+    <body >
         <nav class=" sticky-top navbar navbar-expand-lg navbar-dark" style="background-color: rgb(25, 27, 24);">
             <a class="navbar-brand" href="/" style="padding-left: 25px;">Trip Planner</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -42,19 +42,18 @@
         </nav>
         <div id="suggestions_container">
             <div id="suggestions">
-                <div class="row">
+                <div   class="row">
                         {% for continent in data %}
                             {% for suggested_trip in data[continent] %}
-                                <div class="col-lg-3 col-md-4 col-sm-6 d-flex justify-content-center">
-                                    <div id="suggestions_card" class="card" style="width: 24rem;">
-                                    <!-- <img class="card-img-top" src="{{ data[continent][suggested_trip] }}" alt="Card image cap"> -->
-                                    <div id="card_img_container">
-                                        <img class="card-img-top" src="../static/images/suggestions/{{data[continent][suggested_trip]}}" alt="Trip Image">
+                                <div  class="col-lg-3 col-md-4 col-sm-6 d-flex justify-content-center">
+                                    <div  id="suggestions_card" class="card" style="width: 24rem;">
+                                    <div  id="card_img_container">
+                                        <img loading="lazy" class="card-img-top" src="../static/images/suggestions/{{data[continent][suggested_trip]}}" alt="Trip Image">
                                     </div>
                                     <div class="card-body">
                                         <h5 class="card-title">{{suggested_trip}}</h5>
-                                        <!-- <p class="card-text">Trip Description</p> -->
-                                        <a href="#" class="btn btn-primary">Create Trip</a>
+                                        <!-- <a id="'{{continent}}'" href="{{ url_for('views.events', continent='{{continent}}') }}" class="btn btn-primary">Create Trip</a> -->
+                                        <a href="{{ url_for('views.events', continent=continent, name=suggested_trip) }}" class="btn btn-primary">Create Trip</a>
                                     </div>
                                     </div>
                                 </div>

@@ -8,9 +8,13 @@ world = {'Africa': {}, 'North America': {}, 'South America': {}, 'Asia': {}, 'Oc
 
 def create_images(images, name_index):
     for i in images:
-        req = requests.get(i, stream=True)
         filename = "website/static/images/suggestions/" + i[name_index::]
+
+        if os.path.isfile(filename):
+            continue
+
         filename = open(filename, 'wb')
+        req = requests.get(i, stream=True)
         req.raw.decode_content = True
         shutil.copyfileobj(req.raw, filename)
         filename.close
@@ -38,7 +42,7 @@ def create_africa(world, images, names):
         images.append("https://www.planetware.com" + i["src"])
     
     #Download images
-    # create_images(images, 72)
+    create_images(images, 72)
     
     for i in range(len(x)):
         world['Africa'][names[i]] = images[i][72::]
@@ -78,7 +82,7 @@ def create_north_america(world, images, names):
             count += 1
     
     #Download images
-    #create_images(images, 55)
+    create_images(images, 55)
     
     for i in range(len(names)):
         world['North America'][names[i]] = images[i][55::]
@@ -111,7 +115,7 @@ def create_south_america(world, images, names):
             images.append(tag["src"])
     
     # Download all images
-    # create_images(images, 51)
+    create_images(images, 51)
     
     for i in range(len(names)):
         world['South America'][names[i]] = images[i][51::]
@@ -140,7 +144,7 @@ def create_asia(world, images, names):
                 images.append(i["src"])
             count += 1
     
-    # create_images(images, 54)
+    create_images(images, 54)
     
     for i in range(len(names)):
         world['Asia'][names[i]] = images[i][54::]
@@ -172,7 +176,7 @@ def create_oceania(world, images, names):
             images.append(i['src'])
         count += 1
     
-    # create_images(images, 54)
+    create_images(images, 54)
     
     for i in range(len(names)):
         world['Oceania'][names[i]] = images[i][54::]
@@ -202,7 +206,7 @@ def create_europe(world, images, names):
             images.append(i['data-src'])
         count += 1
 
-    # create_images(images, 61)
+    create_images(images, 61)
 
     for i in range(len(names)):
         world['Europe'][names[i]] = images[i][61::]

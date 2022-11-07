@@ -6,10 +6,10 @@ from flask_login import login_required, current_user
 from .models import Trip, User, gearItems, Menu
 from . import db
 import json, os
-from .read_trip_suggestions import get_json
 import folium
 from flask_sqlalchemy import SQLAlchemy
 from . import time_till
+from .general import ret_location, get_json
 
 views = Blueprint('views', __name__)
 
@@ -20,14 +20,18 @@ def home():
 @views.route('events', methods=['GET', 'POST'])
 @login_required
 def events():
+    continent = request.args.get('continent', "")
+    name = request.args.get('name', "")
+
     if request.method == 'POST':
         if request.form['submit_button'] == 'create trip':
             date_in = request.form.get('tripDate')
             time_in = request.form.get('tripTime')
             name_in = request.form.get('name')
             desc_in = request.form.get('desc')
-            lat_in = request.form.get('lat')
-            lon_in = request.form.get('lon')
+            location = ret_location(request.form.get('location_name'))
+            lat_in = location[0]
+            lon_in = location[1]
             tripType_in = request.form.get('tripType')
             num_people_in = request.form.get('num_people')
             date_time = datetime.strptime(date_in + " " + time_in,"%Y-%m-%d %H:%M")
@@ -39,12 +43,12 @@ def events():
                 db.session.commit()
                 flash('Trip added!', category='success')
 
-    return render_template("events.html", user=current_user, time_till=time_till.count_time)
+    return render_template("events.html", user=current_user, time_till=time_till.count_time, continent=continent, name=name)
 
 @views.route('/map')
 def index():
     start_coords = (35, -83)
-    folium_map = folium.Map(min_zoom = 4, center=start_coords,tiles="Stamen Terrain")
+    folium_map = folium.Map(min_zoom = 4, center=start_coords,tiles="OpenStreetMap")
     list = Trip.query.filter_by(user_id=current_user.id).order_by(Trip.id).all()
     for item in list:
         if item.latitude != None and item.longitude != None:
@@ -99,6 +103,18 @@ def delete_gearitem():
         Item = json.loads(request.data)
         gearid = Item['gearItemId']
         Item = gearItems.query.get(gearid)
+        if Item:
+            db.session.delete(Item)
+            db.session.commit()
+    return jsonify({})
+
+@views.route('/delete-trip', methods=['POST'])
+def delete_trip():
+    if request.method == 'POST':
+        print('delete')
+        Item = json.loads(request.data)
+        trip = Item['tripId']
+        Item = Trip.query.get(trip)
         if Item:
             db.session.delete(Item)
             db.session.commit()
