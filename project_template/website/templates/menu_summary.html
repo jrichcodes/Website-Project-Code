@@ -1,0 +1,65 @@
+<html>
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name = "viewpport" content="width=device-width, inital-scale=1.0">
+
+    <!-- Custom Stylesheets-->
+    <link rel="stylesheet" href="../static/css/menu_summary.css">
+    <link rel="stylesheet" href="../static/css/navbar.css">
+    <link href="https://fonts.googleapis.com/css2?
+    family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+    <title>Trip Planner</title>
+</head>
+<body>
+    <nav>
+        <div class="navheading">
+            <h4>Trip Planner</h4>
+        </div>
+        <ul class="nav-links">
+            <li><a href="/">Home</a></li>
+            <li><a href="/logout">Logout</a></li>
+            <li><a href="/events">Events</a></li>
+            <li><a href="/profile">Profile</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+            <div class="row">
+                <div class="col">
+                    <h1>{{menu.name}}</h1>
+                    <p>{{menu.m_desc}}</p>
+                </div>
+                <div class="cards">
+                        <div class="card">
+                            <div class="card__content">
+                                <h5>General Information</h5>
+                                <p>Meal Type: {{menu.type}}</p>
+                                <p>Number of Servings: {{menu.num_servings}}</p>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card__content">
+                                <h5>Grocery List</h5>
+                                    {% for menu_items in menu_items %}
+                                    <div class="box">
+                                        <input type="checkbox">
+                                        <label>{{menu_items.name}}</label>
+                                    </div>
+                                    {% endfor %}
+                                    <form method="POST">
+                                        <input id="textboxid" type="text" name="item" placeholder="item">
+                                        <input id="textboxid" type="text" name="quantity" placeholder="quantity">
+                                        <input type="submit" value="Add Menu Item" class="button" style="cursor: pointer">
+                                    </form>
+                            </div>
+                        </div>
+                </div>
+            </div>
+    </div>
+    <script
+      type="text/javascript"
+      src="../static/js/index.js"
+    ></script>
+</body>
+</html>

@@ -84,20 +84,20 @@ def profile():
 
 @views.route('menu', methods=['GET', 'POST'])
 @login_required
-def menus():
+def menu():
     if request.method == 'POST':
-        #if request.form['submit_button'] == 'create menu':
+        if request.form['submit_button'] == 'create meal':
             name_in = request.form.get('name')
             desc_in = request.form.get('desc')
             menuType_in = request.form.get('menuType')
             num_servings_in = request.form.get('num_servings')
             if len(name_in) < 1:
-                flash('Menu name is too short!', category='error')
+                flash('Meal name is too short!', category='error')
             else:
                 new_menu = Menu(name = name_in, m_desc = desc_in, menu_type = menuType_in, num_servings = num_servings_in, user_id=current_user.id)
                 db.session.add(new_menu)
                 db.session.commit()
-                flash('Menu added!', category='success')
+                flash('Meal added!', category='success')
 
     return render_template("menu.html", user=current_user)
 

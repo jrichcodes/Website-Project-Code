@@ -57,3 +57,10 @@ class menuTypes(db.Model):
     __tablename__ = 'menu_types'
     id = db.Column(db.Integer, primary_key=True)
     type = db.Column(db.String(150))
+
+class menuItems(db.Model):
+    __tablename__ = 'menu_items'
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(150))
+    menu_id = db.Column(db.Integer, db.ForeignKey('menu.id'))
+    quantity = db.Column(db.Integer)
