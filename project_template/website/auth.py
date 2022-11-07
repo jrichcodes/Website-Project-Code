@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, request, flash, redirect, url_for
-from .models import User, gearItems, Trip, tripTypes
+from .models import User, gearItems, Trip, tripTypes, Menu, menuTypes, menuItems
 from . import db
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_sqlalchemy import SQLAlchemy
@@ -69,6 +69,27 @@ def trip_summary(tripId):
     gear_items = gearItems.query.filter_by(trip_id = trip.id)
 
     return render_template("trip_summary.html", trip = trip, gear_items = gear_items, type = type)
+
+@auth.route('/menu-summary/<menuId>', methods=['GET', 'POST'])
+def menu_summary(menuId):
+
+    if request.method == 'POST':
+        item = request.form.get('item')
+        menu = Menu.query.filter_by(id = menuId).first()
+        quantity = request.form.get('quantity')
+        if len(item) < 1:
+            flash('Not valid menu item', category = 'error')
+        else:
+            new_menuItem = menuItems(name=item, menu_id = menu.id, quantity = quantity)
+            db.session.add(new_menuItem)
+            db.session.commit()
+
+    menu = Menu.query.filter_by(id = menuId).first()
+    #type = menuTypes.query.filter_by(id = menu.menu_type).first()
+    #menu_items = menuItems.query.filter_by(menu_id = menu.id)
+
+    #return render_template("menu_summary.html", menu = menu, menu_items = menu_items, type = type)
+    return render_template("menu_summary.html", menu = menu)
 
 @auth.route('/sign-up', methods=['GET', 'POST'])
 def sign_up():
