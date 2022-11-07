@@ -3,7 +3,7 @@ from datetime import datetime
 from django.shortcuts import render
 from flask import Blueprint, render_template, request, flash, current_app as app, redirect, url_for, jsonify
 from flask_login import login_required, current_user
-from .models import Trip, User, gearItems, Menu
+from .models import Trip, User, gearItems, Menu, tripTypes
 from . import db
 import json, os
 import folium
@@ -35,6 +35,15 @@ def events():
             tripType_in = request.form.get('tripType')
             num_people_in = request.form.get('num_people')
             date_time = datetime.strptime(date_in + " " + time_in,"%Y-%m-%d %H:%M")
+            
+            if int(tripType_in) == 5:
+                other_name = request.form.get('otherType')
+                other_Type = tripTypes(type=other_name)
+                db.session.add(other_Type)
+                db.session.commit()
+                type = db.session.query(tripTypes).filter(tripTypes.type == other_name).first()
+                tripType_in = type.id
+            
             if len(name_in) < 1:
                 flash('Trip name is too short!', category='error')
             else:
@@ -108,14 +117,13 @@ def delete_gearitem():
             db.session.commit()
     return jsonify({})
 
-@views.route('/delete-trip', methods=['POST'])
+@views.route('/delete-trip',methods=['POST'])
 def delete_trip():
     if request.method == 'POST':
-        print('delete')
-        Item = json.loads(request.data)
-        trip = Item['tripId']
-        Item = Trip.query.get(trip)
-        if Item:
-            db.session.delete(Item)
+        delete_trip = json.loads(request.data)
+        tripId = delete_trip['tripId']
+        delete_trip = Trip.query.get(tripId)
+        if delete_trip:
+            db.session.delete(delete_trip)
             db.session.commit()
     return jsonify({})

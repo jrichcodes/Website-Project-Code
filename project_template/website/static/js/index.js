@@ -7,11 +7,11 @@ function deleteGearItem(gearItemId, tripId){
     });
 }
 
-function deleteTrip(tripId){
+function deleteTrip(tripId) {
     fetch('/delete-trip', {
         method: "POST",
-        body: JSON.stringify({ tripId: tripId}),
+        body: JSON.stringify({tripId: tripId}),
     }).then((_res) => {
-        window.location.href = "events";
+        window.location.href = "/events";
     });
 }
