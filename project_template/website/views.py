@@ -102,10 +102,11 @@ def menus():
 
     return render_template("menu.html", user=current_user)
 
-@views.route('suggestions')
+@views.route('suggestions', methods=['GET', 'POST'])
 def suggestions():
+    continent = request.args.get('continent', "")
     data = get_json()
-    return render_template("trip_suggestions.html", data=data)
+    return render_template("trip_suggestions.html", data=data, place=continent)
     
 @views.route('/delete-gearitem', methods=['POST'])
 def delete_gearitem():
