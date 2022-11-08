@@ -3,13 +3,14 @@ from datetime import datetime
 from django.shortcuts import render
 from flask import Blueprint, render_template, request, flash, current_app as app, redirect, url_for, jsonify
 from flask_login import login_required, current_user
-from .models import Trip, User, gearItems, Menu
+from .models import Trip, User, gearItems, Menu, Friends
 from . import db
 import json, os
 from .read_trip_suggestions import get_json
 import folium
 from flask_sqlalchemy import SQLAlchemy
 from . import time_till
+from . import friendsfuncs
 import uuid
 
 views = Blueprint('views', __name__)
@@ -41,6 +42,44 @@ def events():
                 flash('Trip added!', category='success')
 
     return render_template("events.html", user=current_user, time_till=time_till.count_time)
+
+@views.route('friends', methods=['GET', 'POST'])
+@login_required
+def friends():
+    if request.method == 'POST':
+        if request.form['Add_friend_button'] == 'Add Friend':
+            username_in = request.form.get('username')
+            if len(username_in) < 1:
+                flash('Username is too short!', category='error')
+            else:
+                friend2 = User.query.filter_by(username = username_in).first()
+                if friend2:
+                    new_friends1 = Friends(friend1_id = current_user.id, friend2_id = friend2.id, status = 2)
+                    new_friends2 = Friends(friend2_id = current_user.id, friend1_id = friend2.id, status = 1)
+                    db.session.add(new_friends1)
+                    db.session.add(new_friends2)
+                    db.session.commit()
+                    new_friends1.partner_link = new_friends2.id
+                    new_friends2.partner_link = new_friends1.id
+                    db.session.commit()
+                else:
+                    flash('not found', category='error')
+
+    return render_template("friends.html", user=current_user, getfriend = friendsfuncs.getfriend)
+
+@views.route('/friend/<friendship_id>', methods=['GET', 'POST'])
+def friend(friendship_id):
+    friendship = Friends.query.filter_by(id = friendship_id).first()
+    friend2 = User.query.filter_by(id = friendship.friend2_id).first()
+
+    if request.method == 'POST':
+        if request.form['Friendship_Button'] == 'Accept':
+            friendsfuncs.acceptfriend(friendship_id)
+        elif request.form['Friendship_Button'] == 'Reject':
+            friendsfuncs.rejectfriend(friendship_id)
+            return redirect(url_for('views.friends'))
+
+    return render_template("friend.html", friendship = friendship, friend2 = friend2, time_till=time_till.count_time)
 
 @views.route('/map')
 def index():

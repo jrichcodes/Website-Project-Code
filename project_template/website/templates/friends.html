@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Friends</title>
+
+        <!-- Bootstrap -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css" integrity="sha384-xeJqLiuOvjUBq3iGOjvSQSIlwrpqjSHXpduPd6rQpuiM3f5/ijby8pCsnbu5S81n" crossorigin="anonymous">
+
+        <!-- Custom Stylesheets -->
+        <link rel="stylesheet" href="../static/css/events.css">
+        <link rel="stylesheet" href="../static/css/navbar.css">
+
+        <!-- Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;1,700&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
+        <!-- FontAwesome -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.2/css/fontawesome.min.css" integrity="sha384-X8QTME3FCg1DLb58++lPvsjbQoCT9bp3MsUU3grbIny/3ZwUJkRNO8NPW6zqzuW9" crossorigin="anonymous">
+
+    </head>
+    <body>
+        <nav>
+            <div class="navheading">
+                <h4>Trip Planner</h4>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/map">Map</a></li>
+            </ul>
+        </nav>
+        {% if user.friended %}
+        <h1 align="center">My Friends</h1>
+        <hr>
+        <div class="container" style="margin: auto; background-color: black; border-radius: 25px">
+            <div class="row mx-auto" >
+                {% for friends in user.friended %}
+                    {% if friends.status == 0 %}
+                    <div class="card col-lg-2 col-sm-12">
+                        <a href="/friend/{{friends.id}}" class="button">
+                        <div class="card-body">
+                            <h5 class="{{friends.id}}"class="link card-title">{{getfriend(friends.friend2_id).username}}</p>
+                        </div>
+                    </a>
+                    </div>
+                    {% endif %}
+                {% endfor %}
+                </div>
+            </div>
+        </div>
+        <h1 align="center">Incoming Friend Requests</h1>
+        <hr>
+        <div class="container" style="margin: auto; background-color: black; border-radius: 25px">
+            <div class="row mx-auto" >
+                {% for friends in user.friended %}
+                    {% if friends.status == 1 %}
+                        <div class="card col-lg-2 col-sm-12">
+                            <a href="/friend/{{friends.id}}" class="button">
+                            <div class="card-body">
+                                <h5 class="{{friends.id}}"class="link card-title">{{getfriend(friends.friend2_id).username}}</p>
+                            </div>
+                        </a>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+                </div>
+            </div>
+        </div>
+        <h1 align="center">Outgoing Friend Requests</h1>
+        <hr>
+        <div class="container" style="margin: auto; background-color: black; border-radius: 25px">
+            <div class="row mx-auto" >
+                {% for friends in user.friended %}
+                    {% if friends.status == 2 %}
+                    <div class="card col-lg-2 col-sm-12">
+                        <a href="/friend/{{friends.id}}" class="button">
+                        <div class="card-body">
+                            <h5 class="{{friends.id}}"class="link card-title">{{getfriend(friends.friend2_id).username}}</p>
+                        </div>
+                    </a>
+                    </div>
+                    {% endif %}
+                {% endfor %}
+                </div>
+            </div>
+        </div>
+        {% endif %}
+        
+        <div class="mask d-flex align-items-center h-100">
+            <div class="container h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+                <div class="card" style="border-radius: 15px; background-color: #5cdb95">
+                    <div class="card-body p-5">
+                    <h2 class="text-uppercase text-center mb-5">Add A Friend</h2>
+                    <form method="POST">
+                        <div class="form-outline mb-4">
+                        <label for="name">Enter a username</label>
+                        <input type="username" class="form-control" id="username" name="username"/>
+                        </div>
+                        <button name="Add_friend_button" value="Add Friend" type="submit" class="btn btn-primary btn-block btn-lg" style="margin: 10px 0">Add friend</button>
+                        </div>
+                    </form>
+                    </div>
+                </div>
+                </div>
+            </div>
+            </div>
+        </div>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        <script type="text/javascript" src="../static/js/index.js"></script>
+    </body>
+</html>

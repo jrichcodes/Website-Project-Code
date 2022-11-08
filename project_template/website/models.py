@@ -17,6 +17,16 @@ class Trip(db.Model):
     latitude = db.Column(db.Float)
     longitude = db.Column(db.Float)
 
+class Friends(db.Model):
+    __tablename__ = 'friends'
+    id = db.Column(db.Integer, primary_key=True)
+    #1 for waiting on friend1, 2 for waiting on friend2, 0 for active
+    status = db.Column(db.Integer)
+    # holds the id of the partners friend id
+    partner_link = db.Column(db.Integer)
+    friend1_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    friend2_id = db.Column(db.Integer)
+
 class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(150), unique=True)
@@ -26,6 +36,7 @@ class User(db.Model, UserMixin):
     first_name = db.Column(db.String(150))
     trip = db.relationship('Trip')
     menu = db.relationship('Menu')
+    friended = db.relationship('Friends')
     def avatar(self, size):
         digest = md5(self.email.lower().encode('utf-8')).hexdigest()
         return 'https://www.gravatar.com/avatar/{}?d=identicon&s={}'.format(
