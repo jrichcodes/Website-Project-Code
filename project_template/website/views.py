@@ -22,6 +22,7 @@ def home():
 def events():
     continent = request.args.get('continent', "")
     name = request.args.get('name', "")
+    description = request.args.get('description', "")
 
     if request.method == 'POST':
         if request.form['submit_button'] == 'create trip':
@@ -52,7 +53,7 @@ def events():
                 db.session.commit()
                 flash('Trip added!', category='success')
 
-    return render_template("events.html", user=current_user, time_till=time_till.count_time, continent=continent, name=name)
+    return render_template("events.html", user=current_user, time_till=time_till.count_time, continent=continent, name=name, description=description)
 
 @views.route('/map')
 def index():
@@ -101,10 +102,11 @@ def menu():
 
     return render_template("menu.html", user=current_user)
 
-@views.route('suggestions')
+@views.route('suggestions', methods=['GET', 'POST'])
 def suggestions():
+    continent = request.args.get('continent', "")
     data = get_json()
-    return render_template("trip_suggestions.html", data=data)
+    return render_template("trip_suggestions.html", data=data, place=continent)
     
 @views.route('/delete-gearitem', methods=['POST'])
 def delete_gearitem():
