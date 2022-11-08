@@ -1,19 +1,24 @@
-97e2d123 project_template/website/templates/events.html   (yejashi           2022-11-01 22:59:58 -0400  41)                 <li><a href="suggestions">Suggestions</a></li>
-97e2d123 project_template/website/templates/events.html   (yejashi           2022-11-01 22:59:58 -0400  42)                 <li><a href="/">Home</a></li>
-cfe5daf0 project_template/website/templates/events.html   (yejashi           2022-11-02 13:20:55 -0400  47)         <div class="container" style="margin: auto; background-color: black; border-radius: 20px">
-cfe5daf0 project_template/website/templates/events.html   (yejashi           2022-11-02 13:20:55 -0400  48)             <div class="  row mx-auto" >
-cfe5daf0 project_template/website/templates/events.html   (yejashi           2022-11-02 13:20:55 -0400  50)                 <div style="position: relative;" class="card col-lg-2 col-sm-12">
-cfe5daf0 project_template/website/templates/events.html   (yejashi           2022-11-02 13:20:55 -0400  53)                         <div style="margin-bottom: 2rem;">
-cfe5daf0 project_template/website/templates/events.html   (yejashi           2022-11-02 13:20:55 -0400  54)                             <h5 id="{{trip.id}}" class="link card-title" >{{trip.name}}</h5>
-cfe5daf0 project_template/website/templates/events.html   (yejashi           2022-11-02 13:20:55 -0400  55)                             <p class="card-text">{{time_till(trip.date)}}</p>
-cfe5daf0 project_template/website/templates/events.html   (yejashi           2022-11-02 13:20:55 -0400  56)                         </div>
-cfe5daf0 project_template/website/templates/events.html   (yejashi           2022-11-02 13:20:55 -0400  57)                         <div style="position: absolute; bottom: 0; text-align: center;">
-cfe5daf0 project_template/website/templates/events.html   (yejashi           2022-11-02 13:20:55 -0400  58)                             <button  type="button" class="btn btn-primary btn-block btn-sm close" onClick="deleteTrip({{trip.id}})">
-cfe5daf0 project_template/website/templates/events.html   (yejashi           2022-11-02 13:20:55 -0400  59)                                 <span style="font-size: 1rem;" aria-hidden="true">Delete Trip</span>
-cfe5daf0 project_template/website/templates/events.html   (yejashi           2022-11-02 13:20:55 -0400  60)                             </button>
-cfe5daf0 project_template/website/templates/events.html   (yejashi           2022-11-02 13:20:55 -0400  61)                         </div>
-cfe5daf0 project_template/website/templates/events.html   (yejashi           2022-11-02 13:20:55 -0400  92)                             <label for="location_name">Location</label>
-cfe5daf0 project_template/website/templates/events.html   (yejashi           2022-11-02 13:20:55 -0400  93)                             <input type="location_name" class="form-control" id="location_name" name="location_name"/>
+97e2d123 project_template/website/templates/events.html   (yejashi        2022-11-01 22:59:58 -0400  41)                 <li><a href="suggestions">Suggestions</a></li>
+97e2d123 project_template/website/templates/events.html   (yejashi        2022-11-01 22:59:58 -0400  42)                 <li><a href="/">Home</a></li>
+cfe5daf0 project_template/website/templates/events.html   (yejashi        2022-11-02 13:20:55 -0400  47)         <div class="container" style="margin: auto; background-color: black; border-radius: 20px">
+cfe5daf0 project_template/website/templates/events.html   (yejashi        2022-11-02 13:20:55 -0400  48)             <div class="  row mx-auto" >
+cfe5daf0 project_template/website/templates/events.html   (yejashi        2022-11-02 13:20:55 -0400  50)                 <div style="position: relative;" class="card col-lg-2 col-sm-12">
+cfe5daf0 project_template/website/templates/events.html   (yejashi        2022-11-02 13:20:55 -0400  53)                         <div style="margin-bottom: 2rem;">
+cfe5daf0 project_template/website/templates/events.html   (yejashi        2022-11-02 13:20:55 -0400  54)                             <h5 id="{{trip.id}}" class="link card-title" >{{trip.name}}</h5>
+cfe5daf0 project_template/website/templates/events.html   (yejashi        2022-11-02 13:20:55 -0400  55)                             <p class="card-text">{{time_till(trip.date)}}</p>
+cfe5daf0 project_template/website/templates/events.html   (yejashi        2022-11-02 13:20:55 -0400  56)                         </div>
+cfe5daf0 project_template/website/templates/events.html   (yejashi        2022-11-02 13:20:55 -0400  57)                         <div style="position: absolute; bottom: 0; text-align: center;">
+cfe5daf0 project_template/website/templates/events.html   (yejashi        2022-11-02 13:20:55 -0400  58)                             <button  type="button" class="btn btn-primary btn-block btn-sm close" onClick="deleteTrip({{trip.id}})">
+cfe5daf0 project_template/website/templates/events.html   (yejashi        2022-11-02 13:20:55 -0400  59)                                 <span style="font-size: 1rem;" aria-hidden="true">Delete Trip</span>
+cfe5daf0 project_template/website/templates/events.html   (yejashi        2022-11-02 13:20:55 -0400  60)                             </button>
+cfe5daf0 project_template/website/templates/events.html   (yejashi        2022-11-02 13:20:55 -0400  61)                         </div>
+2910d88e project_template/website/templates/events.html   (yejashi        2022-11-02 20:37:06 -0400  83)                         <input type="name" class="form-control" id="name" name="name" value="{{name}}"/>
+4e442c53 project_template/website/templates/events.html   (yejashi        2022-11-07 18:40:52 -0500  88)                         <input type="Description" class="form-control" id="desc" name="desc" value="{{description}}"/>
+cfe5daf0 project_template/website/templates/events.html   (yejashi        2022-11-02 13:20:55 -0400  92)                             <label for="location_name">Location</label>
+cfe5daf0 project_template/website/templates/events.html   (yejashi        2022-11-02 13:20:55 -0400  93)                             <input type="location_name" class="form-control" id="location_name" name="location_name"/>
+2910d88e project_template/website/templates/events.html   (yejashi        2022-11-02 20:37:06 -0400 139)         <!-- Bootstrap JS -->
+2910d88e project_template/website/templates/events.html   (yejashi        2022-11-02 20:37:06 -0400 143) 
+2910d88e project_template/website/templates/events.html   (yejashi        2022-11-02 20:37:06 -0400 144)         <!-- Custom JS -->
 cfe5daf0 (yejashi        2022-11-02 13:20:55 -0400 33)     border-radius: 20px; 
 cfe5daf0 (yejashi        2022-11-02 13:20:55 -0400 58) }
 cfe5daf0 (yejashi        2022-11-02 13:20:55 -0400 59) 
@@ -21,28 +26,72 @@ cfe5daf0 (yejashi        2022-11-02 13:20:55 -0400 60) .delete_button {
 cfe5daf0 (yejashi        2022-11-02 13:20:55 -0400 61)     position: relative;
 cfe5daf0 (yejashi        2022-11-02 13:20:55 -0400 62)     top: 100%;
 cfe5daf0 (yejashi        2022-11-02 13:20:55 -0400 63)     transform: translateY(-100%);
-97e2d123 (yejashi           2022-11-01 22:59:58 -0400 23)     <body >
-97e2d123 (yejashi           2022-11-01 22:59:58 -0400 45)                 <div   class="row">
-97e2d123 (yejashi           2022-11-01 22:59:58 -0400 48)                                 <div  class="col-lg-3 col-md-4 col-sm-6 d-flex justify-content-center">
-97e2d123 (yejashi           2022-11-01 22:59:58 -0400 49)                                     <div  id="suggestions_card" class="card" style="width: 24rem;">
+97e2d123 (yejashi  2022-11-01 22:59:58 -0400  23)     <body >
+0bd0bcaf (yejashi  2022-11-07 19:15:44 -0500  37)                         <li class="navbar-item" style="padding-right: 25px; margin-left: auto;">
+0bd0bcaf (yejashi  2022-11-07 19:15:44 -0500  40)                         <li style="margin-left: auto; padding-right: 40px;">
+0bd0bcaf (yejashi  2022-11-07 19:15:44 -0500  41)                             <div class="dropdown">
+0bd0bcaf (yejashi  2022-11-07 19:15:44 -0500  42)                                 <button  style="background-color: rgb(25, 27, 24); border-color: rgb(25, 27, 24);" class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+0bd0bcaf (yejashi  2022-11-07 19:15:44 -0500  43)                                     Filter
+0bd0bcaf (yejashi  2022-11-07 19:15:44 -0500  44)                                 </button>
+0bd0bcaf (yejashi  2022-11-07 19:15:44 -0500  45)                                 <div style="left: -50px" class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+0bd0bcaf (yejashi  2022-11-07 19:15:44 -0500  46)                                     <a class="dropdown-item" href="{{ url_for('views.suggestions', continent='Africa') }}">Africa</a>
+0bd0bcaf (yejashi  2022-11-07 19:15:44 -0500  47)                                     <a class="dropdown-item" href="{{ url_for('views.suggestions', continent='North America') }}">North America</a>
+0bd0bcaf (yejashi  2022-11-07 19:15:44 -0500  48)                                     <a class="dropdown-item" href="{{ url_for('views.suggestions', continent='South America') }}">South America</a>
+0bd0bcaf (yejashi  2022-11-07 19:15:44 -0500  49)                                     <a class="dropdown-item" href="{{ url_for('views.suggestions', continent='Asia') }}">Asia</a>
+0bd0bcaf (yejashi  2022-11-07 19:15:44 -0500  50)                                     <a class="dropdown-item" href="{{ url_for('views.suggestions', continent='Oceania') }}">Oceania</a>
+0bd0bcaf (yejashi  2022-11-07 19:15:44 -0500  51)                                     <a class="dropdown-item" href="{{ url_for('views.suggestions', continent='Europe') }}">Europe</a>
+0bd0bcaf (yejashi  2022-11-07 19:15:44 -0500  52)                                 </div>
+0bd0bcaf (yejashi  2022-11-07 19:15:44 -0500  53)                             </div>
+0bd0bcaf (yejashi  2022-11-07 19:15:44 -0500  54)                         </li>
+0bd0bcaf (yejashi  2022-11-07 19:15:44 -0500  58) 
+97e2d123 (yejashi  2022-11-01 22:59:58 -0400  61)                 <div   class="row">
+0bd0bcaf (yejashi  2022-11-07 19:15:44 -0500  62)                     {% if place == "" %}
+4e442c53 (yejashi  2022-11-07 18:40:52 -0500  65)                                 {% for trip_info in data[continent][suggested_trip] %}
+97e2d123 (yejashi  2022-11-01 22:59:58 -0400  66)                                 <div  class="col-lg-3 col-md-4 col-sm-6 d-flex justify-content-center">
+97e2d123 (yejashi  2022-11-01 22:59:58 -0400  67)                                     <div  id="suggestions_card" class="card" style="width: 24rem;">
+2910d88e (yejashi  2022-11-02 20:37:06 -0400  68)                                     <div  id="card_img_container">
+4e442c53 (yejashi  2022-11-07 18:40:52 -0500  69)                                         <img loading="lazy" class="card-img-top" src="../static/images/suggestions/{{trip_info}}" alt="Trip Image">
+2910d88e (yejashi  2022-11-02 20:37:06 -0400  73)                                         <!-- <a id="'{{continent}}'" href="{{ url_for('views.events', continent='{{continent}}') }}" class="btn btn-primary">Create Trip</a> -->
+4e442c53 (yejashi  2022-11-07 18:40:52 -0500  74)                                         <a href="{{ url_for('views.events', continent=continent, name=suggested_trip, description=data[continent][suggested_trip][trip_info]) }}" class="btn btn-primary">Create Trip</a>
+4e442c53 (yejashi  2022-11-07 18:40:52 -0500  78)                                 {% endfor %}
+0bd0bcaf (yejashi  2022-11-07 19:15:44 -0500  81)                     {% endif %}
+0bd0bcaf (yejashi  2022-11-07 19:15:44 -0500  82)                     {% if place != "" %}
+0bd0bcaf (yejashi  2022-11-07 19:15:44 -0500  83)                             {% for suggested_trip in data[place] %}
+0bd0bcaf (yejashi  2022-11-07 19:15:44 -0500  84)                                 {% for trip_info in data[place][suggested_trip] %}
+0bd0bcaf (yejashi  2022-11-07 19:15:44 -0500  85)                                 <div  class="col-lg-3 col-md-4 col-sm-6 d-flex justify-content-center">
+0bd0bcaf (yejashi  2022-11-07 19:15:44 -0500  86)                                     <div  id="suggestions_card" class="card" style="width: 24rem;">
+0bd0bcaf (yejashi  2022-11-07 19:15:44 -0500  87)                                     <div  id="card_img_container">
+0bd0bcaf (yejashi  2022-11-07 19:15:44 -0500  88)                                         <img loading="lazy" class="card-img-top" src="../static/images/suggestions/{{trip_info}}" alt="Trip Image">
+0bd0bcaf (yejashi  2022-11-07 19:15:44 -0500  89)                                     </div>
+0bd0bcaf (yejashi  2022-11-07 19:15:44 -0500  90)                                     <div class="card-body">
+0bd0bcaf (yejashi  2022-11-07 19:15:44 -0500  91)                                         <h5 class="card-title">{{suggested_trip}}</h5>
+0bd0bcaf (yejashi  2022-11-07 19:15:44 -0500  92)                                         <!-- <a id="'{{continent}}'" href="{{ url_for('views.events', continent='{{continent}}') }}" class="btn btn-primary">Create Trip</a> -->
+0bd0bcaf (yejashi  2022-11-07 19:15:44 -0500  93)                                         <a href="{{ url_for('views.events', continent=place, name=suggested_trip, description=data[place][suggested_trip][trip_info]) }}" class="btn btn-primary">Create Trip</a>
+0bd0bcaf (yejashi  2022-11-07 19:15:44 -0500  94)                                     </div>
+0bd0bcaf (yejashi  2022-11-07 19:15:44 -0500  95)                                     </div>
+0bd0bcaf (yejashi  2022-11-07 19:15:44 -0500  96)                                 </div>
+0bd0bcaf (yejashi  2022-11-07 19:15:44 -0500  97)                                 {% endfor %}
+0bd0bcaf (yejashi  2022-11-07 19:15:44 -0500  98)                             {% endfor %}
+0bd0bcaf (yejashi  2022-11-07 19:15:44 -0500  99)                     {% endif %}
 97e2d123 (yejashi 2022-11-01 22:59:58 -0400  3)     border-radius: 2.5%;
-4e543cbb (yejashi           2022-11-02 19:12:12 -0400  12) from .general import ret_location, get_json
-cfe5daf0 (yejashi           2022-11-02 13:20:55 -0400  32)             location = ret_location(request.form.get('location_name'))
-cfe5daf0 (yejashi           2022-11-02 13:20:55 -0400  33)             lat_in = location[0]
-cfe5daf0 (yejashi           2022-11-02 13:20:55 -0400  34)             lon_in = location[1]
-cfe5daf0 (yejashi           2022-11-02 13:20:55 -0400  51)     folium_map = folium.Map(min_zoom = 4, center=start_coords,tiles="OpenStreetMap")
-97e2d123 (yejashi           2022-11-01 22:59:58 -0400 111) 
-97e2d123 (yejashi           2022-11-01 22:59:58 -0400 112) @views.route('/delete-trip', methods=['POST'])
-97e2d123 (yejashi           2022-11-01 22:59:58 -0400 113) def delete_trip():
-97e2d123 (yejashi           2022-11-01 22:59:58 -0400 114)     if request.method == 'POST':
-97e2d123 (yejashi           2022-11-01 22:59:58 -0400 115)         print('delete')
-97e2d123 (yejashi           2022-11-01 22:59:58 -0400 116)         Item = json.loads(request.data)
-97e2d123 (yejashi           2022-11-01 22:59:58 -0400 117)         trip = Item['tripId']
-97e2d123 (yejashi           2022-11-01 22:59:58 -0400 118)         Item = Trip.query.get(trip)
-97e2d123 (yejashi           2022-11-01 22:59:58 -0400 119)         if Item:
-97e2d123 (yejashi           2022-11-01 22:59:58 -0400 120)             db.session.delete(Item)
-97e2d123 (yejashi           2022-11-01 22:59:58 -0400 121)             db.session.commit()
-97e2d123 (yejashi           2022-11-01 22:59:58 -0400 122)     return jsonify({})
+4e543cbb (yejashi        2022-11-02 19:12:12 -0400  12) from .general import ret_location, get_json
+2910d88e (yejashi        2022-11-02 20:37:06 -0400  23)     continent = request.args.get('continent', "")
+2910d88e (yejashi        2022-11-02 20:37:06 -0400  24)     name = request.args.get('name', "")
+4e442c53 (yejashi        2022-11-07 18:40:52 -0500  25)     description = request.args.get('description', "")
+2910d88e (yejashi        2022-11-02 20:37:06 -0400  26) 
+cfe5daf0 (yejashi        2022-11-02 13:20:55 -0400  33)             location = ret_location(request.form.get('location_name'))
+cfe5daf0 (yejashi        2022-11-02 13:20:55 -0400  34)             lat_in = location[0]
+cfe5daf0 (yejashi        2022-11-02 13:20:55 -0400  35)             lon_in = location[1]
+4e442c53 (yejashi        2022-11-07 18:40:52 -0500  56)     return render_template("events.html", user=current_user, time_till=time_till.count_time, continent=continent, name=name, description=description)
+cfe5daf0 (yejashi        2022-11-02 13:20:55 -0400  61)     folium_map = folium.Map(min_zoom = 4, center=start_coords,tiles="OpenStreetMap")
+0bd0bcaf (yejashi        2022-11-07 19:15:44 -0500 105) @views.route('suggestions', methods=['GET', 'POST'])
+0bd0bcaf (yejashi        2022-11-07 19:15:44 -0500 107)     continent = request.args.get('continent', "")
+0bd0bcaf (yejashi        2022-11-07 19:15:44 -0500 109)     return render_template("trip_suggestions.html", data=data, place=continent)
+97e2d123 (yejashi        2022-11-01 22:59:58 -0400 121) 
+97e2d123 (yejashi        2022-11-01 22:59:58 -0400 123) def delete_trip():
+97e2d123 (yejashi        2022-11-01 22:59:58 -0400 124)     if request.method == 'POST':
+97e2d123 (yejashi        2022-11-01 22:59:58 -0400 130)             db.session.commit()
+97e2d123 (yejashi        2022-11-01 22:59:58 -0400 131)     return jsonify({})
 cfe5daf0 (yejashi        2022-11-02 13:20:55 -0400  38)     folium_map = folium.Map(min_zoom = 6, center=start_coords,tiles="OpenStreetMap")
 4e543cbb (yejashi 2022-11-02 19:12:12 -0400  1) import json
 4e543cbb (yejashi 2022-11-02 19:12:12 -0400  2) from geopy.geocoders import Nominatim
@@ -64,12 +113,55 @@ cfe5daf0 (yejashi        2022-11-02 13:20:55 -0400  38)     folium_map = folium.
 4e543cbb (yejashi 2022-11-02 19:12:12 -0400 18)     ret.append(address.latitude)
 4e543cbb (yejashi 2022-11-02 19:12:12 -0400 19)     ret.append(address.longitude)
 4e543cbb (yejashi 2022-11-02 19:12:12 -0400 20)     return ret
-97e2d123 (yejashi        2022-11-01 22:59:58 -0400  8) }
-97e2d123 (yejashi        2022-11-01 22:59:58 -0400  9) 
-97e2d123 (yejashi        2022-11-01 22:59:58 -0400 10) function deleteTrip(tripId){
-97e2d123 (yejashi        2022-11-01 22:59:58 -0400 11)     fetch('/delete-trip', {
-97e2d123 (yejashi        2022-11-01 22:59:58 -0400 12)         method: "POST",
-97e2d123 (yejashi        2022-11-01 22:59:58 -0400 13)         body: JSON.stringify({ tripId: tripId}),
-97e2d123 (yejashi        2022-11-01 22:59:58 -0400 14)     }).then((_res) => {
-97e2d123 (yejashi        2022-11-01 22:59:58 -0400 15)         window.location.href = "events";
-97e2d123 (yejashi        2022-11-01 22:59:58 -0400 16)     });
+4e442c53 project_template/website/create_trip_suggestions.py (yejashi 2022-11-07 18:40:52 -0500   6) descriptions = []
+2910d88e project_template/website/create_trip_suggestions.py (yejashi 2022-11-02 20:37:06 -0400  13) 
+2910d88e project_template/website/create_trip_suggestions.py (yejashi 2022-11-02 20:37:06 -0400  14)         if os.path.isfile(filename):
+2910d88e project_template/website/create_trip_suggestions.py (yejashi 2022-11-02 20:37:06 -0400  15)             continue
+2910d88e project_template/website/create_trip_suggestions.py (yejashi 2022-11-02 20:37:06 -0400  16) 
+2910d88e project_template/website/create_trip_suggestions.py (yejashi 2022-11-02 20:37:06 -0400  18)         req = requests.get(i, stream=True)
+4e442c53 project_template/website/create_trip_suggestions.py (yejashi 2022-11-07 18:40:52 -0500  39)             p_tag = x[i].findNext('p').findNext('p')
+4e442c53 project_template/website/create_trip_suggestions.py (yejashi 2022-11-07 18:40:52 -0500  40)             descriptions.append(p_tag.text)
+4e442c53 project_template/website/create_trip_suggestions.py (yejashi 2022-11-07 18:40:52 -0500  41)             # print(p_tag.text + "\n")
+4e442c53 project_template/website/create_trip_suggestions.py (yejashi 2022-11-07 18:40:52 -0500  44)             p_tag = x[i].findNext('p').findNext('p')
+4e442c53 project_template/website/create_trip_suggestions.py (yejashi 2022-11-07 18:40:52 -0500  45)             descriptions.append(p_tag.text)
+4e442c53 project_template/website/create_trip_suggestions.py (yejashi 2022-11-07 18:40:52 -0500  46)             # print(p_tag.text + "\n")
+4e442c53 project_template/website/create_trip_suggestions.py (yejashi 2022-11-07 18:40:52 -0500  52)     # create_images(images, 72)
+4e442c53 project_template/website/create_trip_suggestions.py (yejashi 2022-11-07 18:40:52 -0500  55)         world['Africa'][names[i]] = {images[i][72::] : descriptions[i]}
+4e442c53 project_template/website/create_trip_suggestions.py (yejashi 2022-11-07 18:40:52 -0500  60)     descriptions.clear()
+4e442c53 project_template/website/create_trip_suggestions.py (yejashi 2022-11-07 18:40:52 -0500  66)     descriptions.clear()
+4e442c53 project_template/website/create_trip_suggestions.py (yejashi 2022-11-07 18:40:52 -0500  76) 
+4e442c53 project_template/website/create_trip_suggestions.py (yejashi 2022-11-07 18:40:52 -0500  77) 
+4e442c53 project_template/website/create_trip_suggestions.py (yejashi 2022-11-07 18:40:52 -0500  81)             p_tag = i.findNext('p').text
+4e442c53 project_template/website/create_trip_suggestions.py (yejashi 2022-11-07 18:40:52 -0500  82)             descriptions.append(p_tag)
+4e442c53 project_template/website/create_trip_suggestions.py (yejashi 2022-11-07 18:40:52 -0500  83)             # print(p_tag + "\n")
+4e442c53 project_template/website/create_trip_suggestions.py (yejashi 2022-11-07 18:40:52 -0500  86)             p_tag = i.findNext('p').text
+4e442c53 project_template/website/create_trip_suggestions.py (yejashi 2022-11-07 18:40:52 -0500  87)             descriptions.append(p_tag)
+4e442c53 project_template/website/create_trip_suggestions.py (yejashi 2022-11-07 18:40:52 -0500  88)             # print(p_tag + "\n")
+2910d88e project_template/website/create_trip_suggestions.py (yejashi 2022-11-02 20:37:06 -0400 101)     create_images(images, 55)
+4e442c53 project_template/website/create_trip_suggestions.py (yejashi 2022-11-07 18:40:52 -0500 103)         world['North America'][names[i]] = {images[i][55::] : descriptions[i]}
+4e442c53 project_template/website/create_trip_suggestions.py (yejashi 2022-11-07 18:40:52 -0500 111)     descriptions.clear()
+4e442c53 project_template/website/create_trip_suggestions.py (yejashi 2022-11-07 18:40:52 -0500 123)         p_tag = i.findNext('p')
+4e442c53 project_template/website/create_trip_suggestions.py (yejashi 2022-11-07 18:40:52 -0500 124)         descriptions.append(p_tag.text)
+2910d88e project_template/website/create_trip_suggestions.py (yejashi 2022-11-02 20:37:06 -0400 136)     create_images(images, 51)
+4e442c53 project_template/website/create_trip_suggestions.py (yejashi 2022-11-07 18:40:52 -0500 139)         world['South America'][names[i]] = {images[i][51::] : descriptions[i]}
+4e442c53 project_template/website/create_trip_suggestions.py (yejashi 2022-11-07 18:40:52 -0500 146)     descriptions.clear()
+4e442c53 project_template/website/create_trip_suggestions.py (yejashi 2022-11-07 18:40:52 -0500 158)             p_tag = i.find('span').findNext('p')
+4e442c53 project_template/website/create_trip_suggestions.py (yejashi 2022-11-07 18:40:52 -0500 159)             descriptions.append(p_tag.text)
+4e442c53 project_template/website/create_trip_suggestions.py (yejashi 2022-11-07 18:40:52 -0500 160)             # print(p_tag.text + "\n")
+2910d88e project_template/website/create_trip_suggestions.py (yejashi 2022-11-02 20:37:06 -0400 169)     create_images(images, 54)
+4e442c53 project_template/website/create_trip_suggestions.py (yejashi 2022-11-07 18:40:52 -0500 172)         world['Asia'][names[i]] = {images[i][54::] : descriptions[i]}
+4e442c53 project_template/website/create_trip_suggestions.py (yejashi 2022-11-07 18:40:52 -0500 181)     descriptions.clear()
+4e442c53 project_template/website/create_trip_suggestions.py (yejashi 2022-11-07 18:40:52 -0500 193)             p_tag = i.findNext('p').text + " " + i.findNext('p').findNext('p').text
+4e442c53 project_template/website/create_trip_suggestions.py (yejashi 2022-11-07 18:40:52 -0500 194)             descriptions.append(p_tag)
+4e442c53 project_template/website/create_trip_suggestions.py (yejashi 2022-11-07 18:40:52 -0500 195)             # print(p_tag + "\n")
+4e442c53 project_template/website/create_trip_suggestions.py (yejashi 2022-11-07 18:40:52 -0500 198)             p_tag = i.findNext('p').text + " " + i.findNext('p').findNext('p').text
+4e442c53 project_template/website/create_trip_suggestions.py (yejashi 2022-11-07 18:40:52 -0500 199)             descriptions.append(p_tag)
+4e442c53 project_template/website/create_trip_suggestions.py (yejashi 2022-11-07 18:40:52 -0500 200)             # print(p_tag + "\n")
+2910d88e project_template/website/create_trip_suggestions.py (yejashi 2022-11-02 20:37:06 -0400 208)     create_images(images, 54)
+4e442c53 project_template/website/create_trip_suggestions.py (yejashi 2022-11-07 18:40:52 -0500 211)         world['Oceania'][names[i]] = {images[i][54::] : descriptions[i]}
+4e442c53 project_template/website/create_trip_suggestions.py (yejashi 2022-11-07 18:40:52 -0500 217)     descriptions.clear()
+4e442c53 project_template/website/create_trip_suggestions.py (yejashi 2022-11-07 18:40:52 -0500 232)             p_tag = i.findNext('p').findNext('p')
+4e442c53 project_template/website/create_trip_suggestions.py (yejashi 2022-11-07 18:40:52 -0500 233)             descriptions.append(p_tag.text)
+4e442c53 project_template/website/create_trip_suggestions.py (yejashi 2022-11-07 18:40:52 -0500 234)             # print(p_tag.text + "\n")
+2910d88e project_template/website/create_trip_suggestions.py (yejashi 2022-11-02 20:37:06 -0400 242)     create_images(images, 61)
+4e442c53 project_template/website/create_trip_suggestions.py (yejashi 2022-11-07 18:40:52 -0500 245)         world['Europe'][names[i]] = {images[i][61::] : descriptions[i]}
