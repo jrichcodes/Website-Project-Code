@@ -37,3 +37,33 @@ def create_database(app): #checking if database exists if not it creates a new d
     if not path.exists('website/' + DB_NAME):
         db.create_all(app=app)
         print('Created Database!')
+
+def clear_database(app):
+    
+    from .models import tripTypes, menuTypes
+
+    if not path.exists('website/' + DB_NAME):
+        print('No database to clear')
+    
+    with app.app_context():
+        meta = db.metadata
+        for table in reversed(meta.sorted_tables):
+            db.session.execute(table.delete())
+        db.session.commit()
+
+        #adding trip types and menu types back to database
+        types = [
+            tripTypes(type = "backpacking"),
+            tripTypes(type = "climbing"),
+            tripTypes(type = "kayaking"),
+            tripTypes(type = "biking"),
+            menuTypes(type = "breakfast"),
+            menuTypes(type = "lunch"),
+            menuTypes(type = "dinner"),
+            menuTypes(type = "snack")
+        ]
+
+        db.session.add_all(types)
+        db.session.commit()
+
+    print("Database cleared!")

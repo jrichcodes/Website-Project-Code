@@ -3,14 +3,19 @@ import requests, bs4, re, shutil, time, json, os
 
 names = []
 images = []
+descriptions = []
 
 world = {'Africa': {}, 'North America': {}, 'South America': {}, 'Asia': {}, 'Oceania': {}, 'Europe': {}}
 
 def create_images(images, name_index):
     for i in images:
-        req = requests.get(i, stream=True)
         filename = "website/static/images/suggestions/" + i[name_index::]
+
+        if os.path.isfile(filename):
+            continue
+
         filename = open(filename, 'wb')
+        req = requests.get(i, stream=True)
         req.raw.decode_content = True
         shutil.copyfileobj(req.raw, filename)
         filename.close
@@ -31,8 +36,14 @@ def create_africa(world, images, names):
     for i in range(len(x)):
         if x[i].text[2] == ' ':
             names.append(x[i].text[3::])
+            p_tag = x[i].findNext('p').findNext('p')
+            descriptions.append(p_tag.text)
+            # print(p_tag.text + "\n")
         elif x[i].text[3] == ' ':
             names.append(x[i].text[4::])
+            p_tag = x[i].findNext('p').findNext('p')
+            descriptions.append(p_tag.text)
+            # print(p_tag.text + "\n")
     
     for i in y:
         images.append("https://www.planetware.com" + i["src"])
@@ -41,16 +52,18 @@ def create_africa(world, images, names):
     # create_images(images, 72)
     
     for i in range(len(x)):
-        world['Africa'][names[i]] = images[i][72::]
+        world['Africa'][names[i]] = {images[i][72::] : descriptions[i]}
     
     
     names.clear()
     images.clear()
+    descriptions.clear()
 
 def create_north_america(world, images, names):
     # ------North America------- #
     images.clear()
     names.clear()
+    descriptions.clear()
 
     req = requests.get('https://www.theevolista.com/usa-trip-ideas/')
     finder = bs4.BeautifulSoup(req.text, 'lxml')
@@ -60,12 +73,19 @@ def create_north_america(world, images, names):
     y = finder.find_all('img',  loading="lazy")
     # y = finder.find_all('figure',  class_="wp-block-image")
     
-    
+
+
     for i in x:
         if i.text[1] == '.':
             names.append(i.text[3::])
+            p_tag = i.findNext('p').text
+            descriptions.append(p_tag)
+            # print(p_tag + "\n")
         elif i.text[2] == '.' and int(i.text[0:2]) < 41:
             names.append(i.text[4::])
+            p_tag = i.findNext('p').text
+            descriptions.append(p_tag)
+            # print(p_tag + "\n")
     
     count = 0
     for i in y:
@@ -78,10 +98,9 @@ def create_north_america(world, images, names):
             count += 1
     
     #Download images
-    #create_images(images, 55)
-    
+    create_images(images, 55)
     for i in range(len(names)):
-        world['North America'][names[i]] = images[i][55::]
+        world['North America'][names[i]] = {images[i][55::] : descriptions[i]}
     
 
 
@@ -89,6 +108,7 @@ def create_south_america(world, images, names):
     # ------South America------- #
     images.clear()
     names.clear()
+    descriptions.clear()
 
     req = requests.get('https://www.jetsetter.com/magazine/life-changing-trips-to-take-in-south-america/')
     finder = bs4.BeautifulSoup(req.text, 'lxml')
@@ -100,6 +120,8 @@ def create_south_america(world, images, names):
     #Get names
     for i in x:
         names.append(i.text.strip())
+        p_tag = i.findNext('p')
+        descriptions.append(p_tag.text)
     
     #Get images
     for i in y:
@@ -111,16 +133,17 @@ def create_south_america(world, images, names):
             images.append(tag["src"])
     
     # Download all images
-    # create_images(images, 51)
+    create_images(images, 51)
     
     for i in range(len(names)):
-        world['South America'][names[i]] = images[i][51::]
+        world['South America'][names[i]] = {images[i][51::] : descriptions[i]}
     
 
 def create_asia(world, images, names):
     #-----Asia-----
     images.clear()
     names.clear()
+    descriptions.clear()
 
     req = requests.get('https://globalcastaway.com/southeast-asia-bucket-list/')
     finder = bs4.BeautifulSoup(req.text, 'lxml')
@@ -132,6 +155,9 @@ def create_asia(world, images, names):
     for i in x:
         if i.find('span'):
             names.append(i.find('span').text)
+            p_tag = i.find('span').findNext('p')
+            descriptions.append(p_tag.text)
+            # print(p_tag.text + "\n")
     
     count = 0
     for i in y:
@@ -140,10 +166,10 @@ def create_asia(world, images, names):
                 images.append(i["src"])
             count += 1
     
-    # create_images(images, 54)
+    create_images(images, 54)
     
     for i in range(len(names)):
-        world['Asia'][names[i]] = images[i][54::]
+        world['Asia'][names[i]] = {images[i][54::] : descriptions[i]}
     
 
 
@@ -152,6 +178,7 @@ def create_oceania(world, images, names):
     #----Oceania----
     images.clear()
     names.clear()
+    descriptions.clear()
 
     req = requests.get('https://www.joaoleitao.com/travel-oceania/')
     finder = bs4.BeautifulSoup(req.text, 'lxml')
@@ -163,8 +190,14 @@ def create_oceania(world, images, names):
     for i in x:
         if i.text[1] == '-':
             names.append(i.text[3::])
+            p_tag = i.findNext('p').text + " " + i.findNext('p').findNext('p').text
+            descriptions.append(p_tag)
+            # print(p_tag + "\n")
         elif i.text[2] == '-':
             names.append(i.text[4::])
+            p_tag = i.findNext('p').text + " " + i.findNext('p').findNext('p').text
+            descriptions.append(p_tag)
+            # print(p_tag + "\n")
     
     count = 0
     for i in y:
@@ -172,15 +205,16 @@ def create_oceania(world, images, names):
             images.append(i['src'])
         count += 1
     
-    # create_images(images, 54)
+    create_images(images, 54)
     
     for i in range(len(names)):
-        world['Oceania'][names[i]] = images[i][54::]
+        world['Oceania'][names[i]] = {images[i][54::] : descriptions[i]}
 
 def create_europe(world, images, names):
     #----Europe----
     images.clear()
     names.clear()
+    descriptions.clear()
     
     req = requests.get('https://www.secretatlastravel.com/explorers-club/travel-tips/best-places-in-europe-to-visit/')
     finder = bs4.BeautifulSoup(req.text, 'lxml')
@@ -195,6 +229,9 @@ def create_europe(world, images, names):
                 names.append(string[1::])
             else:
                 names.append(string)
+            p_tag = i.findNext('p').findNext('p')
+            descriptions.append(p_tag.text)
+            # print(p_tag.text + "\n")
     
     count = 0
     for i in y:
@@ -202,10 +239,10 @@ def create_europe(world, images, names):
             images.append(i['data-src'])
         count += 1
 
-    # create_images(images, 61)
+    create_images(images, 61)
 
     for i in range(len(names)):
-        world['Europe'][names[i]] = images[i][61::]
+        world['Europe'][names[i]] = {images[i][61::] : descriptions[i]}
 
 
 create_africa(world, images, names)

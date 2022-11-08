@@ -1,198 +1,566 @@
 {
     "Africa": {
-        "Explore Cape Town, South Africa": "cape-town-south-africa.jpg",
-        "Go Back in Time in Zanzibar, Tanzania": "back-in-time-zanzibar-tanzania.jpg",
-        "Witness the Pyramids of Giza, Egypt": "great-pyramids-cairo-egypt.jpg",
-        "Experience Victoria Falls, Zimbabwe and Zambia": "experience-victoria-falls-zimbabwe-zambia.jpg",
-        "Wander the Souks in Marrakesh, Morocco": "wander-souks-marrakesh-morocco.jpg",
-        "Go Gorilla Trekking in Rwanda": "gorilla-trecking-rwanda.jpg",
-        "Watch the Sun Rise over the Dunes in Sossusvlei, Namibia": "watch-sunrise-over-dunes-sossusvlei-namibia.jpg",
-        "Find Serenity by the Sea and in the Sahara in Tunisia": "find-serenity-by-sea-sahara-tunisia.jpg",
-        "Summit Mount Kilimanjaro in Tanzania": "summit-mt-kilimanjaro-tanzania.jpg",
-        "Go on Safari in Kruger National Park, South Africa": "safari-kruger-national-park-south-africa.jpg",
-        "See the Great Migration in Masai Mara, Kenya": "see-great-migration-masai-mara-kenya.jpg",
-        "Descend into the Ngorongoro Crater on Safari in Tanzania": "descend-into-ngorongoro-crater-on-safari-tanzania.jpg",
-        "Take a Beach Vacation to the Bazaruto Archipelago in Mozambique": "beach-vacation-bazaruto-archipelago-mozambique.jpg",
-        "Traverse the Okavango Delta in Botswana": "traverse-okavango-delta-botswana.jpg",
-        "Discover the Beauty of Lake Malawi": "discover-beauty-lake-malawi.jpg"
+        "Explore Cape Town, South Africa": {
+            "cape-town-south-africa.jpg": "One of the most beloved destinations on the continent, Cape Town sits at the southern tip of South Africa, near where the Atlantic Ocean and Indian Ocean meet at the Cape of Good Hope. It is a culturally rich and visually stunning city that is very easy to fall in love with on a first visit. "
+        },
+        "Go Back in Time in Zanzibar, Tanzania": {
+            "back-in-time-zanzibar-tanzania.jpg": "A visit to Zanzibar feels like stepping into another world, one where time stands still, and the only city, Stone Town, is a UNESCO World Heritage Site. The island in the Indian Ocean just off the coast of Tanzania is a place where Arab dhows (fishing boats) still ply the picture-perfect turquoise sea, and you can get lost in the beauty of Stone Town, wandering its narrow alleys past old mosques, vibrant bazaars, and riads with intricately carved doorways."
+        },
+        "Witness the Pyramids of Giza, Egypt": {
+            "great-pyramids-cairo-egypt.jpg": "Watching the sun rise or set over the Pyramids of Giza in Egypt from the back of a camel is an experience you'll never forget. The pyramids and the Great Sphinx date back to the 26th century BCE and are Egypt's most iconic attractions."
+        },
+        "Experience Victoria Falls, Zimbabwe and Zambia": {
+            "experience-victoria-falls-zimbabwe-zambia.jpg": "Visit Victoria Falls during the rainy seasons, when the water volume is high, and you'll understand why locals call this impressive waterfall \"The Smoke That Thunders.\" The sound of water rushing over rock before dropping into a pool some 300-plus-feet below sounds like the roll of thunder, and the mist that spews back up resembles thick smoke. It is an impressive sight."
+        },
+        "Wander the Souks in Marrakesh, Morocco": {
+            "wander-souks-marrakesh-morocco.jpg": "Beautiful Marrakesh in Morocco makes for the perfect introduction to this fascinating North African country that can actually be accessed via an overnight ferry from southern Spain. "
+        },
+        "Go Gorilla Trekking in Rwanda": {
+            "gorilla-trecking-rwanda.jpg": "Trekking to see endangered mountain gorillas in their natural habitat is on the bucket list for many animal lovers, and Rwanda's Virunga Mountains are home to more than half of the remaining wild population on the planet. "
+        },
+        "Watch the Sun Rise over the Dunes in Sossusvlei, Namibia": {
+            "watch-sunrise-over-dunes-sossusvlei-namibia.jpg": "Located in southwest Africa, Namibia is a one-of-a-kind destination that is often overlooked when planning trips to the continent. It shouldn't be. The country is chock-full of adventures and landscapes you won't find anywhere else on the continent, including the Namib Desert and Sossusvlei."
+        },
+        "Find Serenity by the Sea and in the Sahara in Tunisia": {
+            "find-serenity-by-sea-sahara-tunisia.jpg": "Facing towards Europe's Mediterranean coastline, Tunisia is Africa's most northerly country.  It is a gorgeous, sun-soaked destination, where European and Arab influences blend together. Home to a beautiful stretch of beaches on the Mediterranean Sea, Tunisia is a popular vacation destination for Europeans seeking some winter sun. The island Djerba is a perfect spot to indulge."
+        },
+        "Summit Mount Kilimanjaro in Tanzania": {
+            "summit-mt-kilimanjaro-tanzania.jpg": "With an elevation of 19,341 feet, Tanzania's Mount Kilimanjaro (\"Kili\" for short) is Africa's highest mountain and also holds the world record for the highest single freestanding mountain (it isn't part of a range). Rising from the plains of the Serengeti, it is a dormant volcano and creates a stunning backdrop for wildlife safaris in the region."
+        },
+        "Go on Safari in Kruger National Park, South Africa": {
+            "safari-kruger-national-park-south-africa.jpg": "South Africa's Kruger National Park is one of Africa's oldest conservation areas and a top safari destination on the continent. The vast park, which actually extends into Mozambique to the east, is home to South Africa's most diverse wildlife population. It is also surrounded by private reserves, like Sabi Sands Game Reserve, that animals can cross into and out of at will for an even more upscale safari experience."
+        },
+        "See the Great Migration in Masai Mara, Kenya": {
+            "see-great-migration-masai-mara-kenya.jpg": "Every year, millions of wildebeest and other hoofed animals like zebra and gazelles migrate between Tanzania's Serengeti and the Masai Mara in Kenya in what has become known as the Great Migration. The most dangerous part of this journey is crossing the Mara River, where many of the grazing animals get picked off by hungry lions and other predators."
+        },
+        "Descend into the Ngorongoro Crater on Safari in Tanzania": {
+            "descend-into-ngorongoro-crater-on-safari-tanzania.jpg": "Created about 2.5 million years ago, the Ngorongoro Crater is the largest inactive, unfilled, and unbroken volcanic caldera on the planet. Considered one of the Seven Natural Wonders of the World (Victoria Falls is another), it is home to thousands of animals and is a top safari destination in Tanzania. "
+        },
+        "Take a Beach Vacation to the Bazaruto Archipelago in Mozambique": {
+            "beach-vacation-bazaruto-archipelago-mozambique.jpg": "Off the Mozambican coastline in the Indian Ocean, the Bazaruto Archipelago Marine Park is home to a group of islands with some of the more beautiful beaches in Africa. Bazaruto Island is the main destination and offers a range of accommodations, from budget to luxury. But there are also deserted islands and others that are home to just one hotel or two."
+        },
+        "Traverse the Okavango Delta in Botswana": {
+            "traverse-okavango-delta-botswana.jpg": "Botswana, in southern Africa, is another legendary safari destination. In the northern portion of the country, the Okavango Delta is a top attraction. This large inland river delta floods during the rainy season and becomes a unique safari experience. That's when you'll get to explore the river in a dugout canoe, paddling past hippos and crocodiles while keeping your eyes peeled for elephants, giraffe, and other animals who come to the river to drink."
+        },
+        "Discover the Beauty of Lake Malawi": {
+            "discover-beauty-lake-malawi.jpg": "Spanning three countries, Malawi, Mozambique, and Tanzania, Lake Malawi is the third largest lake on the African continent at 29,600 square kilometers. It's part of the African Great Lake system, and its age is estimated at about one or two million years. "
+        }
     },
     "North America": {
-        "Pacific Coast Highway is the Ultimate Bucket List USA Road Trip (600 miles)": "West-Coast-Road-Trip-Big-Sur.jpg",
-        "Northern California Wine Country (225 miles)": "California-Wine-Country-Road-Trip.jpg",
-        "California Highway 395 and the Eastern Sierra (300+ miles)": "Secret-Cove-Lake-Tahoe.jpg",
-        "Southern California Deserts (285 miles)": "Bombay-Beach-California-Desert-Road-Trip.jpg",
-        "Oregon Coast (340 miles)": "Oregon-Most-Beautiful-US-State.jpg",
-        "Oregon Scenic Byways": "Tamolitch-Blue-Pool-Hike.jpg",
-        "Olympic Peninsula in Washington (around 330 miles)": "Olympic-National-Park.jpg",
-        "Make Sure Alaska is on Your USA Bucket List \u2013 It\u2019s Amazing!": "Bear-Glacier-Kayak-Family-1.jpg",
-        "A Southwest USA Road Trip Never Disappoints": "Bucket-List-USA-Arizona-Wave.jpg",
-        "Route 66 is a Quintessential USA Road Trip": "Cute-Sneakers-Black.jpg",
-        "Florida Keys Road Trip From Miami to Key West is A Unique USA Experience (160 miles)": "Florida-Keys.jpg",
-        "The East Coast is Full of Great USA Trip Ideas for Summer or Fall ": "Acadia-National-Park.jpg",
-        "Mid South Road Trips": "Biltmore-Estate.jpg",
-        "Lake Michigan Circle Tour is Amazing for Road Trippin\u2019 the USA": "Michigan-Pictured-Rocks.jpg",
-        "The Road to Hana is Definitely a Bucket List USA Trip": "Hawaii-3.jpg",
-        "Grand Canyon National Park in Arizona": "Grand-Canyon-National-Park.jpg",
-        "Arches National Park in Moab, Utah": "Arches-National-Park-Best-Place-to-Visit-in-April.jpg",
-        "Canyonlands National Parks in Moab, Utah": "Canyonlands.jpg",
-        "Bryce Canyon National Park": "Bryce-Canyon-Things-to-do-Near-Kanab.jpg",
-        "Zion National Park": "Zion-Narrows.jpg",
-        "Rocky Mountain National Park in Colorado": "Rocky-Mountain-National-Park.jpg",
-        "Yosemite National Park in California": "National-Parks-Passport-Yosemite.jpg",
-        "Death Valley National Park": "Things-to-do-in-Death-Valley-Zabriskie-Point-Sunset.jpg",
-        "Joshua Tree National Park in California": "Joshua-Tree-Weekend-Barker-Dam.jpg",
-        "Yellowstone National Park in Wyoming": "Grand-Prismatic-Spring-1.jpg",
-        "Grand Teton National Park": "Grand-Tetons-Fall-foliage.jpg",
-        "Glacier National Park in Montana": "Glacier-National-Park.jpg",
-        "Acadia National Park": "Acadia-Maine.jpg",
-        "Kenai Fjords National Park in Alaska": "Jenifer-Bear-Glacier.jpg",
-        "Hawaii Volcanoes National Park": "Hawaii-Volcanoes-National-Park-USA-Trips.jpg",
-        "New York City, New York": "New-York-1.jpg",
-        "Los Angeles, California": "Hollywood-Hiking.jpg",
-        "Washington DC": "Washington-DC-April.jpg",
-        "San Francisco, California": "San-Francisco.jpg",
-        "Chicago, Illinois": "Chicago-Best-places-to-visit-in-the-United-States.jpg",
-        "Boston, Massachusettes": "Best-Places-to-visit-in-the-USA-Boston.jpg",
-        "New Orleans, Louisiana": "Mardi-Gra.jpg",
-        "Miami, Florida": "Maimi-Florida.jpg",
-        "Charleston, South Carolina": "Charleston.jpg",
-        "Seattle, Washington": "Seattle-best-places-to-visit-in-the-USA.jpg"
+        "Pacific Coast Highway is the Ultimate Bucket List USA Road Trip (600 miles)": {
+            "West-Coast-Road-Trip-Big-Sur.jpg": "A Pacific Coast Highway road trip from San Diego to San Francisco (600 miles) will take you past the 13 Prettiest Beaches in Southern California and cutest California beach towns. Be sure to stop in the entertainment capital of Los Angeles, the beachy community of Santa Barbara and nearby Ojai."
+        },
+        "Northern California Wine Country (225 miles)": {
+            "California-Wine-Country-Road-Trip.jpg": "California wines are renowned worldwide. To get a proper taste of them, the California Wine Country road trip is the best option. First, make your way through Napa Valley, its vineyards, historic landmarks, and the thriving luxury hotel scene.\u00a0Spend a few days wine tasting and trying some of the best restaurants in the USA."
+        },
+        "California Highway 395 and the Eastern Sierra (300+ miles)": {
+            "Secret-Cove-Lake-Tahoe.jpg": "This scenic road trip along US Route 395 will take you east of the Sierra Nevada mountain range. Start your adventure in Lake Tahoe. Lake Tahoe has so many fun things to do. Bring an inflatable kayak to use in Secret Cove and other lakes on this trip."
+        },
+        "Southern California Deserts (285 miles)": {
+            "Bombay-Beach-California-Desert-Road-Trip.jpg": "Fly into Palm Spring Airport and start the road trip exploring the eclectic area of downtown Palm Springs and Palm Desert. Don\u2019t miss the Palm Springs Aerial Tramway for birdseye views and a day trip to Joshua Tree National Park."
+        },
+        "Oregon Coast (340 miles)": {
+            "Oregon-Most-Beautiful-US-State.jpg": "Head straight up the Oregon coast for 350 miles of extraordinary amazing Oregon beaches. See the Natural Bridges at Samuel H. Boardman State Scenic Corridor. Catch sunset at Face Rock State Park and stay overnight in Coos Bay to explore the area. Devil\u2019s Punchbowl State Park has an incredible sea cave that you can see from above."
+        },
+        "Oregon Scenic Byways": {
+            "Tamolitch-Blue-Pool-Hike.jpg": "Venture inland on one of the Oregon Scenic Byways and you\u2019ll be completely blown away. Oregon is best in summer but fall is absolutely gorgeous. See incredible foliage in Silver Falls State Park and fun harvest festivals in the Willamette Valley and Mt Hood/Columbia River Gorge Area. Winter skiing at Mt. Hood and Mt. Bachelor in Oregon is also amazing."
+        },
+        "Olympic Peninsula in Washington (around 330 miles)": {
+            "Olympic-National-Park.jpg": "To enjoy nature and its beauty, take the Olympic Peninsula loop road trip. Start your adventure in the beautiful emerald city of Seattle. Continue your way through the charming town of Port Townsend. Take a stroll through Sequim\u2019s quaint streets \u2013 and its many lavender farms.\u00a0"
+        },
+        "Make Sure Alaska is on Your USA Bucket List \u2013 It\u2019s Amazing!": {
+            "Bear-Glacier-Kayak-Family-1.jpg": "A lot of people think of Alaska as a cruise destination but a 7 to 10 Day Alaskan Road Trip and spending time in Denali National Park is so much more exciting. Kayak through iceberg lagoons, zipline through forests, see massive glaciers calve into the ocean, watch bears fishing for salmon, or flightsee around Denali, one of the tallest peaks in the world."
+        },
+        "A Southwest USA Road Trip Never Disappoints": {
+            "Bucket-List-USA-Arizona-Wave.jpg": "There are so many variations of a Southwest road trip but most involve really cool USA National Parks like Zion, Bryce, Arches, Grand Canyon, or White Sands."
+        },
+        "Route 66 is a Quintessential USA Road Trip": {
+            "Cute-Sneakers-Black.jpg": "The full Route 66 road trip is 2,137 miles, filled with natural wonders and offbeat sightseeing, between Chicago, the Grand Canyon and Los Angeles. Do the whole route (2 weeks) or just a portion like California and Arizona."
+        },
+        "Florida Keys Road Trip From Miami to Key West is A Unique USA Experience (160 miles)": {
+            "Florida-Keys.jpg": "This road trip traverses the oversees highway, where 43 of 1,700 islands are connected by bridges, to the southernmost tip of Florida. You can drive from Fort Lauderdale or Miami to Key West in 4 hours."
+        },
+        "The East Coast is Full of Great USA Trip Ideas for Summer or Fall ": {
+            "Acadia-National-Park.jpg": "A favorite East Coast road trip is from Rhode Island up to Maine It can be a romantic fall foliage trip or a great summer trip with kids to hit the beaches on Block Island, mansions in Newport, charming towns of Cape Cod, the Freedom Trail in Boston, lobstering in Maine or hiking in Acadia National Park. Check it all out on a New England Road Trip with Teens."
+        },
+        "Mid South Road Trips": {
+            "Biltmore-Estate.jpg": "We did a short version of this trip through Tennessee where you can see the sights and sounds of Nashville, whiskey tasting in Lynchburg and Chattanooga."
+        },
+        "Lake Michigan Circle Tour is Amazing for Road Trippin\u2019 the USA": {
+            "Michigan-Pictured-Rocks.jpg": "This trip will take you through Michigan, Wisconsin, Illinois, and a bit of Indiana. It\u2019s the prettiest summer trip that\u2019s perfect for families and you can combine it with a Midwest college tour."
+        },
+        "The Road to Hana is Definitely a Bucket List USA Trip": {
+            "Hawaii-3.jpg": "The famed Road to Hana in Maui is more of a long, scenic drive than a road trip. In 59 miles, you will want to stop at every waterfall, black sand beach or interesting view point."
+        },
+        "Grand Canyon National Park in Arizona": {
+            "Grand-Canyon-National-Park.jpg": "There\u2019s no place like the Grand Canyon. Whether you\u2019re an experienced hiker or a first-time visitor, there\u2019s no wrong way to experience this natural wonder."
+        },
+        "Arches National Park in Moab, Utah": {
+            "Arches-National-Park-Best-Place-to-Visit-in-April.jpg": "Arches National Park is full of, well, arches! The most famous of these is Delicate Arch, which has been featured on everything from postcards to Utah license plates. But there are plenty of other arches to explore in the park, including Double Arch (shown above) and Sand Dune Arch, among others."
+        },
+        "Canyonlands National Parks in Moab, Utah": {
+            "Canyonlands.jpg": "A visit to Canyonlands National Park can be a series of scenic drives and mind-blowing views or filled with incredible hiking and off road adventures. With over 400 miles of hiking trails, there is sure to be a route that appeals to everyone, from casual walkers to hardcore adventurers."
+        },
+        "Bryce Canyon National Park": {
+            "Bryce-Canyon-Things-to-do-Near-Kanab.jpg": "Bryce Canyon National Park is one of the most beautiful places on earth. With its red rock formations, hoodoos, and stunning views. From above, the Bryce Amphitheater is a USA bucket list sight. There are multiple viewpoints to watch the sunset or enjoy a picnic lunch."
+        },
+        "Zion National Park": {
+            "Zion-Narrows.jpg": "With over four million visitors each year, Zion National Park has some of the best sights in America. The park features sandstone cliffs, canyons, rivers and iconic views that you\u2019ve probably seen in tons of photos. There are many things to do in Zion National Park, starting with the scenic drive that will blow you away with its beauty."
+        },
+        "Rocky Mountain National Park in Colorado": {
+            "Rocky-Mountain-National-Park.jpg": "Rocky Mountain National Park is home to an incredible amount of natural beauty, including soaring mountains, pristine lakes, and lush forests. And while there are countless ways to enjoy the park, one of the most popular activities is hiking. With more than 350 miles of trails, there\u2019s a perfect hike for everyone."
+        },
+        "Yosemite National Park in California": {
+            "National-Parks-Passport-Yosemite.jpg": "Tucked away in California\u2019s Sierra Nevada Mountains, Yosemite National Park is one of the world\u2019s most incredible natural landscapes immortalized in Ansel Adams photographs. With more than 1,200 square miles to explore, there are plenty of sights worth seeing in this national treasure."
+        },
+        "Death Valley National Park": {
+            "Things-to-do-in-Death-Valley-Zabriskie-Point-Sunset.jpg": "Death Valley is a place of extremes. It is the hottest, driest, and lowest point in North America. But it is also one of the most beautiful places on earth. Here are some of the best things to do in Death Valley National Park."
+        },
+        "Joshua Tree National Park in California": {
+            "Joshua-Tree-Weekend-Barker-Dam.jpg": "Joshua Tree is the most low key, surprisingly wonderful national parks. It is named after the trees native to the region, and it consists of 760,000 acres. More than 2,500 species live in this area making it one of the most biodiverse regions in North America."
+        },
+        "Yellowstone National Park in Wyoming": {
+            "Grand-Prismatic-Spring-1.jpg": "Yellowstone National Park is home to some of the most stunning scenery in the country, including glaciers, mountains, waterfalls, hot springs and more than 200 species of animals. Yellowstone\u2019s wildlife watching is second to none. Lamar Valley, full of bison, is so exciting that it creates a traffic jam in the park every day."
+        },
+        "Grand Teton National Park": {
+            "Grand-Tetons-Fall-foliage.jpg": "At next-door neighbor Grand Teton National National Park, you can boat, float, fish, hike and camp with the Teton mountain range and Snake River as your backdrop."
+        },
+        "Glacier National Park in Montana": {
+            "Glacier-National-Park.jpg": "Glacier National Park has over 1 million acres of wilderness and some of the most jaw dropping scenery. It\u2019s a hiker\u2019s paradise but you\u2019ll also find other adventures like whitewater rafting, photographing wildlife, kayaking, fishing and more."
+        },
+        "Acadia National Park": {
+            "Acadia-Maine.jpg": "A trip up to Maine is so worth it for a chance to see Acadia National Park. It\u2019s home to some of the best hiking trails in New England with plenty of scenic views and easy hikes. Or if you\u2019re feeling adventurous, try one of their more challenging trails like South Bubble Trail or Mt. Cadillac North Ridge Trail!"
+        },
+        "Kenai Fjords National Park in Alaska": {
+            "Jenifer-Bear-Glacier.jpg": "Kenai Fjords National Park is one of the most beautiful and underrated places in Alaska. If you\u2019re looking for things to do, here are some of the best: take a hike to Exit Glacier, go iceberg kayaking in Bear Glacier Lagoon or take whale watching trip to see incredible marine life along with massive calving glaciers."
+        },
+        "Hawaii Volcanoes National Park": {
+            "Hawaii-Volcanoes-National-Park-USA-Trips.jpg": "Hawaii Volcanoes National Park on the Big Island of Hawaii is home to 2 of the world\u2019s most active volcanoes. Take the Crater Rim Drive to the Jaggar Museum overlook, hike the K\u012blauea Iki Trail and through the rain forest to the Thurston Lava Tube,  and have a bucket list dinner overlooking the crater at The Rim at Volcano House."
+        },
+        "New York City, New York": {
+            "New-York-1.jpg": "New York is a city of endless possibilities. It\u2019s the world capital of finance, fashion, media, and culture. Start your New York trip with a walk in Central Park, followed by a visit to the Met. New York\u2019s museums are world class and the Guggenheim is another of New York\u2019s most iconic attractions."
+        },
+        "Los Angeles, California": {
+            "Hollywood-Hiking.jpg": "Los Angeles is a great city with so much more to do than most visitors realize. In addition to the amazing Southern California beaches, the mountains are filled with incredible hiking trails, the city is chock full of restaurants to see and be seen and the scenic drives in LA are like movies in real life."
+        },
+        "Washington DC": {
+            "Washington-DC-April.jpg": "Washington D.C. is a city that offers something for everyone. From the history and culture of the Smithsonian museums (there are 19 of them!) to the nightlife and restaurants of Georgetown, there\u2019s plenty to do and see in this vibrant city."
+        },
+        "San Francisco, California": {
+            "San-Francisco.jpg": "San Francisco is one of the most unique and best places to visit in the USA. Take a walk across the iconic Golden Gate Bridge to get a view of the San Francisco Bay. We recommend getting a view from water level too. Follow it up with a trip to Alcatraz Island, probably the only time you\u2019ll visit a prison as a tourist attraction."
+        },
+        "Chicago, Illinois": {
+            "Chicago-Best-places-to-visit-in-the-United-States.jpg": "Chicago is a fantastic city to visit \u2013 especially in good weather. Millennium Park is home to the famous Cloud Gate sculpture, as well as a variety of gardens and performance venues. The Art Institute of Chicago is one of the largest art museums in the world, and a must visit. Even though it\u2019s super touristy, it\u2019s fun to catch a cruise at Navy Pier to tour Chicago\u2019s incredible architecture."
+        },
+        "Boston, Massachusettes": {
+            "Best-Places-to-visit-in-the-USA-Boston.jpg": "Boston is a city of many firsts from the country\u2019s oldest public park, Boston Common to Harvard, America\u2019s oldest University. Many of Boston\u2019s historical buildings can be seen by taking a stroll on the Freedom trail including Paul Revere\u2019s house.\u00a0"
+        },
+        "New Orleans, Louisiana": {
+            "Mardi-Gra.jpg": "With major events like Mardi Gras, the Jazz Festival, and others, New Orleans is one of the best places to vacation in the United States."
+        },
+        "Miami, Florida": {
+            "Maimi-Florida.jpg": "Dreaming of a beach getaway? Miami\u2019s blend of different cultures creates the ultimate destination for entertainment. Loved for its spectacular beaches and vibrant art scene, the coastal metropolis has something to offer for everyone.\u00a0"
+        },
+        "Charleston, South Carolina": {
+            "Charleston.jpg": "From charming cobblestone streets and antebellum architecture to world-class restaurants and lively nightlife \u2013 Charleston is surely one of the best US destinations."
+        },
+        "Seattle, Washington": {
+            "Seattle-best-places-to-visit-in-the-USA.jpg": "Consistently ranked among the ten best places to live in the United States, Seattle\u2019s coffee culture, grunge music scene, and lush evergreen forests will charm you too."
+        }
     },
     "South America": {
-        "Machu Picchu, Peru": "J37Z3RXw-1380x1035.jpeg",
-        "Iguazu Falls, Argentina and Brazil": "Rvz57wAV-1380x1035.jpeg",
-        "Rio de Janeiro, Brazil": "KNUlmNJT-1380x1035.jpeg",
-        "Salar de Uyuni, Bolivia": "KDGTh3LK-1380x1035.jpeg",
-        "Torres del Paine National Park, Chilean Patagonia": "3a_WgOJ1-1380x1035.jpeg",
-        "San Pedro de Atacama, Chile": "wk4tcK9S-1380x1035.jpeg",
-        "Easter Island, Chile": "WHhKV6ZP-1380x1035.jpeg",
-        "Ushuaia, Argentina": "J3jGjbUH-1380x1035.jpeg",
-        "Cruise down the Amazon": "GettyImages-621468848-1380x1035.jpg",
-        "Gal\u00e1pagos Islands": "RrEZ-tcF-1380x1035.jpeg"
+        "Machu Picchu, Peru": {
+            "J37Z3RXw-1380x1035.jpeg": "Unlike Rome\u2019s Colosseum or the Great Wall of China, as far as checking off the world\u2019s most iconic ancient landmarks goes, Machu Picchu makes you work for it. It takes trains, bus rides, and a strenuous hike (for multiple days, for the most ambitious travelers) to reach this 15th-century Incan citadel on a cloudy mountain ridge over 8,000 feet above sea level. Still, the end result\u2014to look down on, and walk through, one of the world\u2019s highest and most well-preserved ceremonial sites\u2014is worth every bead of sweat, every tired muscle, and every wave of altitude sickness to see with your own eyes. Mountain Lodges of Peru leads week-long treks along the Lares route, which is surrounded by the snow-capped Andes; for a far more expensive but much less work-intensive experience, book a room at the Belmond Sanctuary Lodge, which puts you within striking distance of the ruins."
+        },
+        "Iguazu Falls, Argentina and Brazil": {
+            "Rvz57wAV-1380x1035.jpeg": "One of the world\u2019s most beautiful waterfall systems, which straddles almost two miles of the Argentina-Brazil border, is a sight to behold. The thunder and mist are just as magical no matter which side you take them in from, but both countries have their draws. The Brazilian side features a 40-minute trek to the falls (look out for giant butterflies and colorful toucans) that\u2019s great for hikers as well as the Belmond Hotel das Cataratas, the only hotel within the national park that sits on the very lip of the falls. The Argentinian side, meanwhile, includes the famous Devil\u2019s Throat\u2014a narrow chasm accessible by jungle train\u2014and the area\u2019s most luxurious new sleep, Awasi Iguazu, where guests of its 14 pine-hewn villas get their own 4WD vehicle and guide for sunrise and sunset tours and visits to local tribes."
+        },
+        "Rio de Janeiro, Brazil": {
+            "KNUlmNJT-1380x1035.jpeg": "Ah, Rio. La Cuidad Marvelosa. From the leafy avenues and upscale boutiques of Ipanema to the rollicking nightclubs and world-famous beach of Copacabana, Rio is a treat for the senses. The Brazilian metropolis has skyrocketed onto travel bucket lists ever since it hosted the 2014 World Cup and 2016 Summer Olympic Games\u2014and the energy persists. Visits to Christ the Redeemer and the peak of Sugarloaf Mountain are musts, of course, as is ordering a caipirinha at one of the city\u2019s endless beachside bars (Bar Astor, steps from the Faena Hotel, comes to mind). The legendary Belmond Copacabana Palace, a favorite of Fred Astaire and Madonna, is always a great place to stay; for something more of-the-moment, the fashionably hip Hotel Fasano\u00a0offers Philippe Starck\u2013designed interiors and a rooftop infinity pool scene loved by the bronzed and beautiful."
+        },
+        "Salar de Uyuni, Bolivia": {
+            "KDGTh3LK-1380x1035.jpeg": "Salar de Uyuni is about as close as it gets to experiencing a surreal Salvador Dal\u00ed painting in the real world. At 4,086 square miles, this is the world\u2019s largest salt flat and, thanks to an overall elevation that varies less than a single meter, the flattest place on Earth. The dried-up prehistoric lake is crusty and dry most of the year, but come wet season (January through March), the sheet of rainwater that collects here creates a mirror-image reflection bigger than some Caribbean islands\u2014and creates the illusion that you\u2019re walking on clouds. The place to stay is nearby Hotel de Sal Luna Salada, which is constructed out of salt blocks and features luxurious perks like goose-down duvets, local cuisine, and incredible views."
+        },
+        "Torres del Paine National Park, Chilean Patagonia": {
+            "3a_WgOJ1-1380x1035.jpeg": "Of South America's many stunning national parks, it doesn\u2019t get more dramatic than Torres del Paine National Park, which manages to squeeze all of Patagonia\u2019s wonders into its 500,000 acres. Don\u2019t forget your camera, because treks through this spiritual wilderness pass by snow-capped granite mountains, glittering glaciers, ice-blue rivers and lakes, and rolling grasslands and pampas, and\u2014if you\u2019re lucky\u2014local wildlife including pumas, guanacos, condors, and huemuls. See the Grey Glacier and Frenchman\u2019s Valley during journeys with\u00a0Awasi Patagonia, the only lodge here that operates on a private-guide basis, then recharge your muscles in your private outdoor tub."
+        },
+        "San Pedro de Atacama, Chile": {
+            "wk4tcK9S-1380x1035.jpeg": "Chile\u2019s Atacama Desert may be the driest desert on Earth, but this desolate 600-mile expanse is surprisingly full of life. Amid all that sand, you\u2019ll find the Valle de Luna (\u201cMoon Valley\u201d), which has bewitched stargazers for generations thanks to its lunar-like landscape and exceptionally clear skies; fields of steaming geysers; salt flats occupied by multiple species of flamingoes; and some of the most luxurious adventure lodges anywhere. At Elqui Domos, guests spend their days horseback riding and nights in bi-level geodesic domes with zip-away skylight panels. At Explora Atacama, bike tours can take you over riverbeds and salt flats to the base of volcanoes, where demanding hikes will reward you will sweeping views. \u00a0"
+        },
+        "Easter Island, Chile": {
+            "WHhKV6ZP-1380x1035.jpeg": "Roughly 2,300 miles from the nearest landmass, Easter Island is one of the most isolated places on Earth\u2014birthing a culture that went untouched by outside influences for centuries. Early Polynesians built over 900 massive monolithic statues\u2014known as moai\u2014here (as well as ancient rock art carvings) that continue to fascinate archaeologists and all those visitors who lay eyes on them. Of course, that isn\u2019t all there is to discover on this exotic isle. Take in beautiful crowd-free beaches and cave networks during bike rides around the 64-square foot island before sunset at Ahu Tongariki and dinner at Hangaroa Eco Village, whose seafront restaurant always serves fresh fruit and fish."
+        },
+        "Ushuaia, Argentina": {
+            "J3jGjbUH-1380x1035.jpeg": "It doesn\u2019t get more \u201cend of the world\u201d than Ushuaia, Argentina. The world\u2019s southernmost city serves as the main port to Antarctica, but you don\u2019t have to cross those 620 miles to the south to get a taste of the arctic. Penguin colonies make their home right across the channel on Martillo Island, an hour-and-a-half drive from the city and just a 15-minute boat ride from shore. Back in town, local restaurants are known for their rich lamb and king crab dishes (while in season); work off your meal with a walk through the steep, colorful streets lining the harbor."
+        },
+        "Cruise down the Amazon": {
+            "GettyImages-621468848-1380x1035.jpg": "Call us clich\u00e9, but cruising down one of the world\u2019s longest rivers\u2014the Amazon, second only to the Nile, snakes over 4,000 miles through South America\u2019s tropical rainforests\u2014is truly a once-on-a-lifetime experience. On a riverboat with Delfin Amazon Cruises, guests get the royal treatment. Onboard, that means fresh-pressed passion fruit and mango juices, nightly turndown, a serene spa, and shoe-cleaning services after every hike. Off-board, it\u2019s naturalist-led excursions into the jungle to spot boa constrictors, squirrel monkeys, and sloths; swim with pink river dolphins; and get blessed by local shamans. Fair warning, though: get ready to go completely off the grid."
+        },
+        "Gal\u00e1pagos Islands": {
+            "RrEZ-tcF-1380x1035.jpeg": "Over 97 percent of the Gal\u00e1pagos Islands are protected under national park status\u2014a fact Charles Darwin would be proud of. This, of course, was where the famous scientist came up with his theory of evolution by natural selection; look closely and you\u2019ll still see his findings in the tiny variations in tortoise shells and mockingbirds between islands. The main island of Santa Cruz is a beautiful place to stay (particularly if you are staying at the luxurious Pikaia Lodge), but we suggest taking a multi-day cruise around the rest of them, where you\u2019ll get to swim with sea turtles and marine iguanas, sunbathe with sea lions and blue-footed boobies, and hike the diverse volcanic terrain."
+        }
     },
     "Asia": {
-        "Relax in Bali": "southeast-asia-bucket-list-relax-in-bali.jpg",
-        "Enjoy the sunrise over Mt.Bromo": "southeast-asia-bucket-list-mount-bromo.jpg",
-        "Go diving in Raja Ampat": "landmarks-in-indonesia-raja-ampat.jpg",
-        "Explore Borobudur": "indonesia-landmarks-borobudur.jpg",
-        "See the blue flames of Mt.Ijen": "blue-fires-of-ijen.jpg",
-        "Reach the Kelingkin Beach on Nusa Penida": "indonesia-landmarks-kelingking-beach.jpg",
-        "See a Komodo Dragon": "long-komodo.jpg",
-        "Meet the orangutans in Tanjung Puting National Park": "intro2.jpg",
-        "Marvel at the lakes of Kelimutu, Flores": "kelimutu-lakes-in-flores.jpg",
-        "Cross the street in Hanoi": "hanoi-street.jpg",
-        "Walk over the Golden Bridge in Da Nang": "southeast-asia-bucket-list-golden-bridge.jpg",
-        "Sail Halong Bay": "sunset.jpg",
-        "Go spelunking at Hang Son Doong": "guy-standing-in-a-large-cave.jpg",
-        "Explore Hoi An": "southeast-asia-bucket-list-hoi-an.jpg",
-        "Check out the dunes of Mui Ne": "girl-taking-photos-on-a-sand-dune.jpg",
-        "Take a dip in the Kuang Si Falls": "2-days-in-luang-prabang-kuang-si-waterfals.jpg",
-        "Explore the temples of Luang Prabang": "beautiful-temple-in-luang-prabang.jpg",
-        "See the viewpoints in Nong Khiew": "southeast-asia-bucket-list-nong-khiaw-viewpoint.jpg",
-        "Go tubing in Vang Vieng": "girl-tubing-in-vang-vieng.jpg",
-        "Drift along the Mekong River": "mekong-river-farmer.jpg",
-        "Explore the temples in Bangkok": "grand-palace-in-bangkok-guardian.jpg",
-        "Have a Pad Thai on Khao San Road": "pad-thai-plate.jpg",
-        "Visit a floating market": "bangkok-instagram-floating-market.jpg",
-        "Take a photo of the White Temple in Chiang Rai": "thailand-landmarks-white-temple-of-chiang-rai-photo.jpg",
-        "Meet an elephant in Chiang Mai": "southeast-asia-bucket-list-elephants.jpg",
-        "Celebrate the Loi Krathong Lantern Festival in Chiang Mai": "southeast-asia-bucket-list-celebrate-lio-krathong.jpg",
-        "Get a diving license in Koh Tao": "diving-in-raja-ampat.jpg",
-        "Visit the Maelklong Railway Market": "mae-klong-market.jpg",
-        "Go to a Full Moon Party at Koh Phangan": "kophagnan-full-moon-performer.jpg",
-        "Marvel at the Sanctuary of Truth in Pattaya": "prepare-your-visit-to-the-sanctuary-of-truth.jpg",
-        "Celebrate Songkran": "crowd-waterfighting-on-songkran.jpg",
-        "Go island-hopping in Krabi": "Krabi1.jpg",
-        "Walk around the rice terraces in Banaue": "southeast-asia-bucket-list-banaue-rice-terraces.jpg",
-        "Go firefly searching on a paddleboard in Bohol": "lighten-tree.jpg",
-        "Admire the Chocolate Hills in Bohol": "landmarks-in-the-philippines-chocolate-hills.jpg",
-        "Go island-hopping in El Nido": "southeast-asia-bucket-list-el-nido.jpg",
-        "Go diving in Coron": "two-yellow-fish-underwater.jpg",
-        "See the underground river in Puerto Princess": "tourists-in-boats-going-out-of-the-underground-river.jpg",
-        "Take a selfie with the Petronas Towers": "petronas-twin-towers-from-above.jpg",
-        "Explore the Batu Caves": "southeast-asia-bucket-list-batu-caves.jpg",
-        "Visit the Crystal Mosque at Kuala Terengganu": "southeast-asia-bucket-list-crystal-mosque.jpg",
-        "Explore Malaysian Borneo": "borneo-orangutan-tour-probo-monkeys.jpg",
-        "Eat as much as you can in Penang": "penang-dish-from-above.jpg",
-        "Enjoy the street art in Penang": "penang-street-art.jpg",
-        "Explore Angkor Wat and the Siem Reap Temples": "angkor-wat-without-crowds.jpg",
-        "Dive around Sihanoukville": "boats-in-the-ocean-at-pink-sunset.jpg",
-        "Explore Marina Bay Sands and the Gardens by the Bay": "marina-sands-bay-at-night.jpg",
-        "Enjoy the sunrise over Bagan": "myanmar2.jpg",
-        "Admire the oldest Buddhist pagoda in the world \u2013 the Shwedagon Pagoda in Yangon": "yagon-golden-pagoda.jpg",
-        "See the fishermen of Inle Lake": "inle-lake-fisherman-sitting-on-its-boat.jpg"
+        "Relax in Bali": {
+            "southeast-asia-bucket-list-relax-in-bali.jpg": "World-renounced for its chilling capabilities, nothing beats the jetlag better than a couple of days in a traditional Balinese villa. If you\u2019re Julia Roberts-lucky, you may even find the love of your life there.The more adventurous of you may replace\u00a0relax\u00a0with\u00a0surfing\u00a0since Bali is considered the surfing capital of Asia."
+        },
+        "Enjoy the sunrise over Mt.Bromo": {
+            "southeast-asia-bucket-list-mount-bromo.jpg": "Pinky sunrise over a picturesque volcano. Do I need to say more?The day-trip experience is a bit rushed and expensive, but dare to go on your own, and you\u2019ll find a\u00a0secret path\u00a0that will let enjoy Bromo to the max (and will save you a ton of money)!"
+        },
+        "Go diving in Raja Ampat": {
+            "landmarks-in-indonesia-raja-ampat.jpg": "The Raja Ampat archipelago is the pristine postcard that pops in your head when you think of tropical paradise. The most untouched region in Southeast Asia, Raja Ampat, is considered to have the world\u2019s richest marine ecosystem!\u00a0"
+        },
+        "Explore Borobudur": {
+            "indonesia-landmarks-borobudur.jpg": "The Southeast Asia bucket list has quite a lot of temples in it. The first one, however, is not just a beautiful piece of ancient architecture. It\u2019s also the largest Buddhist temple on the globe!Often used as a poster ad for Indonesia, Borobudur is particularly famous for its bell-shaped stupas that look particularly enchanting at\u00a0sunrise."
+        },
+        "See the blue flames of Mt.Ijen": {
+            "blue-fires-of-ijen.jpg": "Another extraterrestrial volcano, this time with blue flames. Never heard of a phenomenon like this? That\u2019s ok; I\u2019m not sure this is a thing anywhere else on the planet! Mt. Ijen may be quite hard to reach, but it\u2019s definitely Southeast Asia bucket list material."
+        },
+        "Reach the Kelingkin Beach on Nusa Penida": {
+            "indonesia-landmarks-kelingking-beach.jpg": "Kelingkin Beach or the T-Rex Rock is one of the most instagramable locations on the most Instagramable island. While technically not on Bali but the nearby Nusa Penida, the rock is so close and easy to reach that in my book, it\u2019s a Bali attraction."
+        },
+        "See a Komodo Dragon": {
+            "long-komodo.jpg": "Imagine a 70kg (150lb), 3 meters-long (10ft) poisonous lizard that can run up to 20 km/h (12mph). No, this is not the next Jurassic Park movie. The Komodo Dragons are quite real, and they are surely a sight to be seen. Don\u2019t be afraid, though. On your search for them, you\u2019ll be assigned a ranger-guard who is heavily armed with a\u2026 stick.If you wonder how I am still alive to write this post, you can check my whole\u00a0Komodo adventure."
+        },
+        "Meet the orangutans in Tanjung Puting National Park": {
+            "intro2.jpg": "Meeting those adorable apes in one of their last surviving natural habitats was an epic bucket list experience. Not only the orangutans are mesmerizing, but the whole trip around the park was pure magic.You can check out the whole story\u00a0here. It\u2019s worth it!"
+        },
+        "Marvel at the lakes of Kelimutu, Flores": {
+            "kelimutu-lakes-in-flores.jpg": "The Kelimutu lakes may be considered an off-the-beaten-path attraction, but they are definitely Southeast Asia bucket list quality. The three mountain lakes are not only incredibly picturesque but also change their color regularly. From aqua blue to chocolate brown and even red, you never know what you gonna get."
+        },
+        "Cross the street in Hanoi": {
+            "hanoi-street.jpg": "No, I didn\u2019t lose my mind; crossing the street in Hanoi is truly an experience. Known for its legions of bikes, Vietnam\u2019s capital is home to over 5 million scooters and motorbikes. And they never stop. The streets are like a river of bikes, and learning to cross them is a frightening experience. It\u2019s one of the things that makes Hanoi as unique as it is, though."
+        },
+        "Walk over the Golden Bridge in Da Nang": {
+            "southeast-asia-bucket-list-golden-bridge.jpg": "A relatively new attraction, the Golden Bridge in Da Nang is as glorious as it gets. Located in an amusement park high in the mountains, the bridge is supported by two giant hands and is one of the most outstanding photo ops in the country. Especially if you use a drone."
+        },
+        "Sail Halong Bay": {
+            "sunset.jpg": "Named after the heavenly dragons who once saved the country (if you believe the legends), Halong Bay is the pride of Vietnam and its most visited attraction. And there\u2019s a good reason for that. The enchanting bay is home to 1,600 limestone islands and islets, making the sail there a definite Southeast Asia bucket list experience.Check out more photos and\u00a0how to find the best Halong Bay cruise."
+        },
+        "Go spelunking at Hang Son Doong": {
+            "guy-standing-in-a-large-cave.jpg": "Being the largest natural cave in the world, Hang Son Doong is one of the most extraterrestrial places you can find. The 9km-long cave has its own fast-flowing underground river and a unique ecosystem. The proper exploration take days and cost a fortune, but it\u2019s something you can\u2019t experience anywhere else."
+        },
+        "Explore Hoi An": {
+            "southeast-asia-bucket-list-hoi-an.jpg": "The historic town of Hoi An is probably the most picturesque town in Southeast Asia. The whole place is just built for photos. Pastel-yellow walls, old-school colonial houses, and colorful boats that swarm the river at night. A joyful experience like no other and a favorite place for people from all over Asia to take their wedding photos."
+        },
+        "Check out the dunes of Mui Ne": {
+            "girl-taking-photos-on-a-sand-dune.jpg": "The coastal fishing town of Mui Ne is home to this unusual attraction that offers two types of sand dunes \u2013 red and white. Truth be told, Vietnam is the last place I would think of when I plan a desert trip, but the Mui Ne dunes turned out to be better than Egypt ones."
+        },
+        "Take a dip in the Kuang Si Falls": {
+            "2-days-in-luang-prabang-kuang-si-waterfals.jpg": "I firmly believe that the Kuang Si Falls should be in every\u00a0Most Beautiful Waterfalls in the World\u00a0list. And on top of that, the whole area around it is turned into a natural swimming pool complex, with plenty of picnic facilities and a cute moon bear rescue center.\u00a0"
+        },
+        "Explore the temples of Luang Prabang": {
+            "beautiful-temple-in-luang-prabang.jpg": "Tucked at the junction of the Nam Khan and Mekong rivers, Luang Prabang is the most touristy town in Laos. It\u2019s not only incredibly picturesque, but it also features around 30 Buddist temples. Some of them are more opulent than others, but my advice is, if you find yourself in Luang Prabang, check out every temple you stumble upon."
+        },
+        "See the viewpoints in Nong Khiew": {
+            "southeast-asia-bucket-list-nong-khiaw-viewpoint.jpg": "Nong Khiew is a small village in Northern Laos that is famous for its one-of-a-kind viewpoint. Gaining more and more popularity, the town now offers three top-notch viewpoints that (sadly) all require an exhausting (at least for me) trek. They are totally worth it though, just make your visit is not during the rice-burning period."
+        },
+        "Go tubing in Vang Vieng": {
+            "girl-tubing-in-vang-vieng.jpg": "Tubing in Vang Vieng was the most popular Laos activity for years. Just imagine lazily drifting on the river in an inner tube, making a stop from time to time to get a beer from any of the riverside bars- the laziest activity on the continent and a perfect fit for your Southeast Asia bucket list."
+        },
+        "Drift along the Mekong River": {
+            "mekong-river-farmer.jpg": "The Mekong is the most legendary river in Southeast Asia. Providing a livelihood for millions of people, going on a boat trip down the river would expose you to the authentic life of the locals. While Mekong goest through plenty of countries, Laos\u2019 boats are notoriously slow, therefore the best option for a lazy adventure."
+        },
+        "Explore the temples in Bangkok": {
+            "grand-palace-in-bangkok-guardian.jpg": "The Bangkok temples are so gorgeous that they deserve to be singled out, but since this is not a\u00a0Bangkok Temples\u00a0post (I do have\u00a0one of those), they are all grouped together."
+        },
+        "Have a Pad Thai on Khao San Road": {
+            "pad-thai-plate.jpg": "Khao San Road is an iconic spot in Bangkok and is undoubtedly a must-see. I was quite conflicted about the meal, though. It was between Pad Thai and Scorpion on a stick. While the scorpion sounds way more bucket listy, it tastes awful, and it\u2019s not really something locals eat. It\u2019s there just for the tourists. Pad Thai, on the other hand, is delicious and a real Thai dish, so eventually, it made the list."
+        },
+        "Visit a floating market": {
+            "bangkok-instagram-floating-market.jpg": "Ever since I first laid my eyes on a floating market photo, I knew I need to visit one. The combination of colors, smells, and exotic culture is precisely what I\u2019m looking for in a Southeast Asia bucket list experience."
+        },
+        "Take a photo of the White Temple in Chiang Rai": {
+            "thailand-landmarks-white-temple-of-chiang-rai-photo.jpg": "Wat Rong Khun or the White Temple of Chiang Rai is the most beautiful shrine in the area and probably the continent. The whole structure is a piece of art (no wonder since its creator is a famous Thai artist) with tons of symbols and hidden meanings. And to top it all, the mural inside combines Buddhist demons with modern-age characters such as Batman, Pikachu, and Michael Jackson.Check out more info and pictures\u00a0of this one-of-a-kind temple."
+        },
+        "Meet an elephant in Chiang Mai": {
+            "southeast-asia-bucket-list-elephants.jpg": "Elephants may be Thailand\u2019s national animal, but their history in the kingdom is beyond sad. For years the intelligent animals were enslaved to do heavy work or to entertain tourists. While the tourist industry is still guilty for exploiting these gentle giants, more and more rescue centers appear, trying to help the poor animals. These are the best places for you to meet and befriend an elephant. Feed them, bath them, enjoy their company and, by doing so, help save others of their kind.Check out\u00a0my experience on the Elephant Trail\u00a0and learn why you should never ride an elephant!"
+        },
+        "Celebrate the Loi Krathong Lantern Festival in Chiang Mai": {
+            "southeast-asia-bucket-list-celebrate-lio-krathong.jpg": "Loi Krathong is one of the most magical experiences in the world. Every year in November, hundreds of thousands of sky lanterns dapple the Thailand sky, turning it into a fairytale-like feat for the senses."
+        },
+        "Get a diving license in Koh Tao": {
+            "diving-in-raja-ampat.jpg": "The tiny island of Koh Tao is home to only two things \u2013 bars and diving shops. It\u2019s famed as being the second cheapest place in the world to get your driving license. If you do it with my friends from\u00a0Roctopus, you won\u2019t only save money but also explore top-notch diving sites and have tons of fun doing it."
+        },
+        "Visit the Maelklong Railway Market": {
+            "mae-klong-market.jpg": "A market set up on an active train rail, is this really a thing? Of course, it is. Thailand is home to all sorts of crazy things. The vendors there have become masters in moving their stalls so the train can run through. It\u2019s not very convenient, but the fame this market gets due to its unusualness is totally worth the hassle."
+        },
+        "Go to a Full Moon Party at Koh Phangan": {
+            "kophagnan-full-moon-performer.jpg": "A legendary party on a legendary island. Party animal or not, this is an experience worthy of your Southeast Asia bucket list."
+        },
+        "Marvel at the Sanctuary of Truth in Pattaya": {
+            "prepare-your-visit-to-the-sanctuary-of-truth.jpg": "A glorious beach castle-temple made entirely by wood. How cool is that? The sanctuary is still under construction, but the elaborate wooden work is already so impressive that you will never second-guess your visit there."
+        },
+        "Celebrate Songkran": {
+            "crowd-waterfighting-on-songkran.jpg": "Songkran, or the Thai New Year, is a 3-day-long festival that turns the Thai cities into the world\u2019s biggest water-fight arenas. Locals and tourists arm themselves with water guns to experience one of the most fun and unique celebrations worldwide."
+        },
+        "Go island-hopping in Krabi": {
+            "Krabi1.jpg": "Krabi is home to some of the most Edenic islands on Earth. Headed by the legendary Koh Phi Phi, an island-hopping vacation in Krabi is the most classical bucket list adventure on the list."
+        },
+        "Walk around the rice terraces in Banaue": {
+            "southeast-asia-bucket-list-banaue-rice-terraces.jpg": "The rice terraces in Banaue are criminally underrated. A\u00a0UNESCO World Heritage Site\u00a0since 1995, this place is literally breath-taking. While rice terraces are not something uncommon for these parts of the world, nothing can compare to the grandness of the Banaue ones."
+        },
+        "Go firefly searching on a paddleboard in Bohol": {
+            "lighten-tree.jpg": "One of the first experiences that made me say\u00a0Wow\u00a0out loud. Imagine this: it\u2019s midnight, everything smells like jasmine, and you\u2019re lazily paddleboarding on a jungle river while searching for the mother trees \u2013 trees surrounded by fireflies that look like eerie Christmas trees."
+        },
+        "Admire the Chocolate Hills in Bohol": {
+            "landmarks-in-the-philippines-chocolate-hills.jpg": "The Chocolate Hills in Bohol don\u2019t need much advertising. Being the top tourist landmark in the country, the oddly-shaped hills are something you can\u2019t see anywhere else; therefore, a must-have for your Southeast Asia bucket list."
+        },
+        "Go island-hopping in El Nido": {
+            "southeast-asia-bucket-list-el-nido.jpg": "The former tiny fishing village of El Nido is one of the biggest tourist attractions in the Philippines today. A gateway to incredible limestone island formations that gracefully overlooks turquoise tropical waters, El Nido is a top-notch tropical getaway.\u00a0"
+        },
+        "Go diving in Coron": {
+            "two-yellow-fish-underwater.jpg": "Coron is the favorite island for the Filipinos to go on vacation. Full of picturesque spots and idyllic islets, the area is also a heaven for scuba divers. Its rich marine ecosystem and wide accessibility make Coron the perfect place to get familiar with the beauty of the underwater world."
+        },
+        "See the underground river in Puerto Princess": {
+            "tourists-in-boats-going-out-of-the-underground-river.jpg": "One of the\u00a0New 7 Wonders of Nature, Palawan\u2019s subterranean river, is truly a natural masterpiece. A journey through the 8km long river is considered one of the most exciting experiences in the country."
+        },
+        "Take a selfie with the Petronas Towers": {
+            "petronas-twin-towers-from-above.jpg": "The Petronas Twin Towers are the most popular attraction in the country. Once the tallest buildings in the world, today the giant couple is the most photographed landmark in Kuala Lumpur."
+        },
+        "Explore the Batu Caves": {
+            "southeast-asia-bucket-list-batu-caves.jpg": "The Batu Caves are one of the most popular Hindu shrines outside India. Located near the capital Kuala Lumpur, the caves are considered to be 400 million years old and welcome around 1.5 million tourists per year."
+        },
+        "Visit the Crystal Mosque at Kuala Terengganu": {
+            "southeast-asia-bucket-list-crystal-mosque.jpg": "With a 61% Muslim population, it\u2019s not a surprise that one of Malaysia\u2019s biggest attractions is a mosque. The Crystal Mosque of Kuala Terengganu is a stunning 80 million-dollar construction made entirely of steel, glass, and crystal."
+        },
+        "Explore Malaysian Borneo": {
+            "borneo-orangutan-tour-probo-monkeys.jpg": "We continue the Southeast Asia Bucket list with an incredible adventure. Malaysian Borneo is one of the most unique ecosystems in the world that offers pre-historic-like views and peculiar inhabitants."
+        },
+        "Eat as much as you can in Penang": {
+            "penang-dish-from-above.jpg": "Penang is world-renounced for its culinary wonders. Blending Malay, Chinese, and Indian cuisines, the city is a dream destination for every foodie."
+        },
+        "Enjoy the street art in Penang": {
+            "penang-street-art.jpg": "Penang is also world-renounced for its street art. Nothing helps you stomach that big portion of\u00a0char koay teow\u00a0like a long walk around some graffiti masterpieces."
+        },
+        "Explore Angkor Wat and the Siem Reap Temples": {
+            "angkor-wat-without-crowds.jpg": "Angkor Wat is the most recognizable attraction in Cambodia and probably in Asia. A marvelous world wonder, the main temple of the Khmer Empire, welcomes around 2.5 million tourists per year."
+        },
+        "Dive around Sihanoukville": {
+            "boats-in-the-ocean-at-pink-sunset.jpg": "Sihanoukville is the famous beach town that serves as a gateway to Cambodia\u2019s best island destinations. If you\u2019re into beach vacations, tropical paradises, and underwater experiences, this is the place for you."
+        },
+        "Explore Marina Bay Sands and the Gardens by the Bay": {
+            "marina-sands-bay-at-night.jpg": "Marina Bay Sands is the most famous hotel in the world. Resembling a ship on top of skyscrapers, this architecture masterpiece opened in 2010 and quickly became the symbol of progressive Singapore. Surrounded by the incredible Gardens by the Bay, it\u2019s another must-visit spot in Southeast Asia."
+        },
+        "Enjoy the sunrise over Bagan": {
+            "myanmar2.jpg": "While Myanmar is a somewhat off-the-beaten tourist trail, Bagan is everything else but that. Once the capital of the mighty Pagan Kingdom, Bagan, offers hundreds of vintage temples best explored by a hot air balloon at sunrise. Sounds pretty bucket listy if you ask me."
+        },
+        "Admire the oldest Buddhist pagoda in the world \u2013 the Shwedagon Pagoda in Yangon": {
+            "yagon-golden-pagoda.jpg": "Dominating the Yangon skyline, the Shwedagon Pagoda can be easily spotted from hundreds of meters away. Resembling a golden city from some magical Oz-type wonderland, the pagoda is tout to be the oldest in the world and is believed to contain relics of the four previous Buddhas of the present\u00a0Kalpa."
+        },
+        "See the fishermen of Inle Lake": {
+            "inle-lake-fisherman-sitting-on-its-boat.jpg": "The leg-rowing fishermen of the Inle lake are one of Myanmar\u2019s most authentic cultural attractions. Standing on one leg like flamingos, they use their other one to wrap it around the oar and navigate the tiny boat. Although today, plenty of them earn their living more from photos than fishing, seeing the Inle Lake fishermen is undoubtedly a bucket list-worthy adventure.\u00a0"
+        }
     },
     "Oceania": {
-        "Visit Sydney, Commonwealth of Australia": "Sydney-Australia1.jpg",
-        "Visit Nuku\u02bbalofa, Kingdom of Tonga": "Nuku-Alofa-Tonga.jpg",
-        "Visit Great Ocean Road, Commonwealth of Australia": "Great-Ocean-Road-Australia1.jpg",
-        "Visit Levuka, Republic of Fiji": "Levuka-Fiji1.jpg",
-        "Visit Sopoaga Waterfall, Independent State of Samoa": "Sopoaga-Waterfall-Samoa.jpg",
-        "Visit Rotorua, New Zealand": "Rotorua-New-Zealand1.jpg",
-        "Visit Leleuvia Island, Republic of Fiji": "Leuluvia-Island-Fiji.jpg",
-        "Visit the Tsunami Rock, Kingdom of Tonga": "Tsunami-Rock-Tonga1.jpg",
-        "Visit Hobbiton, New Zealand": "Hobbiton-Movie-Set.jpg",
-        "Visit Mapuaa Vaea Blowholes, Kingdom of Tonga": "Mapuaa-Vaea-Blowholes-Tonga.jpg",
-        "Visit Lake Taupo, New Zealand": "Maori-Rock-Lake-Taupo.jpg",
-        "Visit Pohutu Geyser, New Zealand": "Pohutu-Geyser-Rotorua.jpg",
-        "Visit Auckland, New Zealand": "Auckland-New-Zealand.jpg",
-        "Visit the Oceania Collection of Auckland Museum, New Zealand": "Auckland-Museum.jpg",
-        "Visit Apia, Independent State of Samoa": "Apia-Samoa.jpg",
-        "Visit a Fire Dance Show, Kingdom of Tonga": "Fire-Dancer-Tonga.jpg",
-        "Visit Melbourne, Commonwealth of Australia": "Melbourne-Australia.jpg",
-        "Visit Blue Mountains National Park, Commonwealth of Australia": "Blue-Mountains-Australia.jpg",
-        "Visit Grampians National Park, Commonwealth of Australia": "Grampians-National-Park-Australia.jpg",
-        "Visit Parliament of Australia, Commonwealth of Australia": "Parliament-Australia-Canberra.jpg"
+        "Visit Sydney, Commonwealth of Australia": {
+            "Sydney-Australia1.jpg": "Have you already heard that Sydney is the most beautiful city of all cities? Well, it\u2019s quite possibly true! With an astounding cityscape, the multicultural Sydney was built around the world\u2019s largest natural harbors, which I\u2019m sure you\u2019ve seen pictured before. The highlight here is the Sydney Opera House, an iconic modern building recognized everywhere. In the Rocks harbor-side district, where the first Europeans arrived in 1788, the cobblestone streets tell a tale of the area\u2019s age. Other paramount features of Sydney include: the beaches and anything coast-related (the world-renowned Bondi Beach is a must for surfers), the Coathanger (Harbor Bridge), the many art galleries and museums, Sydney Botanic Gardens, Government House Sydney, The Queen Victoria Building (housing an elegant mall), Sydney Tower, The National Maritime Museum and, if possible, stop by the lively weekend market. Whatever you do in this city, be sure not to rush the experience of all that is Sydney!"
+        },
+        "Visit Nuku\u02bbalofa, Kingdom of Tonga": {
+            "Nuku-Alofa-Tonga.jpg": "In Tonga, there is a myth telling the story of the origin of Nuku\u02bbalofa, the country\u2019s capital on the north coast of Tongatapu island. Nuku is said to mean abode, \u02bbalofa means love. Period. As the capital of the country, we might expect Nuku\u02bbalofa to be the modern place that it is, while it is also quite possible to find pigs roaming peacefully, enjoying the fresh air! With sandy, white beaches caressing its coast there are also a vast quantity of churches, appearing to outnumber the city\u2019s houses. Nuku\u02bbalofa is a small city, best discovered at a slow pace. The collapsing wooden Royal Palace, built in 1867, was once the king\u2019s official residence. There was even a tortoise who, offered to the island by Captain Cook in the 18th century, lived here until 1966! Before venturing to the rest of the island, let time pass in Nuku\u2019s quaint caf\u00e9s, visit the main market where fresh fruit and vegetables are sold by locals on the first floor while, on the second, you\u2019ll find handicrafts, jewelry, carvings and much more. A bit to the south of the city are the Fanga\u2019uta Lagoon and the Tonga National Cultural Center, where you\u2019ll become better acquainted with the kingdom\u2019s history. Also, don\u2019t miss the great spectacle of local dance shows."
+        },
+        "Visit Great Ocean Road, Commonwealth of Australia": {
+            "Great-Ocean-Road-Australia1.jpg": "Not simply a road, Great Ocean Road is a 243km / 151mi-long war memorial constructed between 1919-32, by surviving World War I soldiers who returned to Australia and dedicated it to fellow soldiers killed in battle. The largest war memorial in the world and part of the Australian National Heritage list, the passage covers a distance of 244 km. between the cities of Torquay and Allansford, in the southeastern coast. Unlike what I\u2019ve written about the places I\u2019ve visited in Oceania and other continents, I feel like the Great Ocean Road deserves an almost complete account of all the landmarks and places you will see just by driving along its full stretch. So, here it goes: the Twelve Apostles limestone stack formations, heathlands, the rainforest, tranquil coastal towns, dairy farms, isolated beaches and world-class surfing breaks along Shipwreck Coast and Surf Coast, lighthouses, roadside eucalyptus forests packed with koalas and then, wineries! Do you feel like going for a drive?"
+        },
+        "Visit Levuka, Republic of Fiji": {
+            "Levuka-Fiji1.jpg": "Surrendered to the British in 1874, the small town of Levuka, on the eastern coast of the island Ovalau, was the first colonial capital of Fiji. Americans and Europeans alike helped develop it with the construction of port facilities, warehouses, stores, residences and buildings for educational, religious and social institutions. Being such a rare late-colonial example of a port town influenced in its development by the indigenous community, Levuka was considered a World Heritage Site by UNESCO in 2013. The mixture of indigenous Fijians, Indo-Fijians, Chinese Fijians, part-European Fijians and a few foreigners will surely welcome you!"
+        },
+        "Visit Sopoaga Waterfall, Independent State of Samoa": {
+            "Sopoaga-Waterfall-Samoa.jpg": "Sopoaga Waterfall is located off of Le Mafa Pass Road in southeastern Upolu, Samoa\u2019s second-largest and most populated island formed by a seafloor volcano. It is well worth the stop and payment of a few talas (Samoan currency) to visit its beautiful gardens. While you will perhaps enjoy a picnic among the many different types of Samoan plants and vegetation, you can also savor the incredible view across to the waterfall. Wow! For a place hit by a tsunami in 2009, there is so much luxurious green here!"
+        },
+        "Visit Rotorua, New Zealand": {
+            "Rotorua-New-Zealand1.jpg": "Rotorua city lies in the Bay of Plenty region of New Zealand\u2019s North Island, near a lake of the same name. The city and region\u2019s main feature is its thermal activity provided by geysers, hot springs and exploding mud pools. Trust me, your nose will sense it all as soon as you arrive! The Maori (today, only 35% of the population) have named one of Rotorua\u2019s most astounding springs Wai-O-Tapu, or Sacred Waters. Although Rotorua\u2019s constant hydrothermal activity attracts visitors to the city, the Maori traditions are what make us want to stay. Their values, traditions, dances and songs can be witnessed at concerts and at hangi evenings, for those wishing to plunge into the soul of New Zealand."
+        },
+        "Visit Leleuvia Island, Republic of Fiji": {
+            "Leuluvia-Island-Fiji.jpg": "Situated in the Moturiki Passage, south of Ovalu, the small coral island of Leleuvia is an experience especially for backpackers while it truly can please all people wanting to have the choice of doing nothing at all, for a few days. It is the sort of place many would call Paradise. If you do decide to soak up the most of Leleuvia, you can start by strolling the entire coast \u2013 only 2km / 1.3mi of a beautiful, white-sand beach with palm trees. It won\u2019t take you very long! To really take in this South Pacific island, in all aspects, submerge yourself in its transparent waters. Almost like it doesn\u2019t exist, when I say transparent waters, I mean crystal-clear! Either near the beach, or further away on a snorkeling or scuba diving trip, there are ample colorful, soft-coral reefs to experience for hours. As well, nights on the islands are amazing with all the stars in the sky shining so brilliantly."
+        },
+        "Visit the Tsunami Rock, Kingdom of Tonga": {
+            "Tsunami-Rock-Tonga1.jpg": "A truly impressive and huge coral rock on Tonga\u2019s main island, Tongatapu, Maka Sio\u2019ata is incredible (apart from its size) because of its location. Researchers call it Tsunami Rock because they believe it was pushed to where it lies, together with other smaller rocks, by a giant wave triggered by a volcano eruption during the most recent ice age, 7,000 years ago. Tsunami Rock is 15m / 50ft-wide and now sits more than 100m / 30ft from the seacoast. In order to better-understand the scale of such a giant wave required to move the rock, the swells generated by the most powerful explosion in recorded history (on the Indonesian volcano Krakatau, in 1883) were 40m / 130ft-high and transported a rock the same distance\u2026 but only one-third its size."
+        },
+        "Visit Hobbiton, New Zealand": {
+            "Hobbiton-Movie-Set.jpg": "Imagine you are big, really big. Now, picture yourself in the pictures. More precisely, in the ones telling J.R.R. Tolkien\u2019s stories of The Lord of the Rings and The Hobbit. The Hobbit\u2019s movie set transports us to The Shire, in Middle-earth, where Hobbits would run around, having fun and being part of nature. Visiting the set, rebuilt and now a permanent attraction, you can take a tour commenced by breathtaking views of the Kaimai Ranges. Here, we are transported to Bag End, the Green Dragon Inn, the mill, the double-arched bridge, the beautiful gardens and the Party Tree \u2013 all places where Frodo and Bilbo Baggins have lived part of their adventures. To boost your fantasy to an even greater level,  imagine hobbits around you sharing this experience of a lifetime!"
+        },
+        "Visit Mapuaa Vaea Blowholes, Kingdom of Tonga": {
+            "Mapuaa-Vaea-Blowholes-Tonga.jpg": "For a distance of 5km / 3.1mi along the coastline of Tonga\u2019s island of Tongatapu, there is a great natural phenomenon. Rising to heights of 30m / 100ft at high tide, a series of geological blowholes offers a spectacular show for all to see! Tongatapu\u2019s most rugged, natural beauty is, in fact, quite easy to understand. The ocean water moves through coral reef tunnels created underneath the surface, finally upsurging in a forceful sort of whistling explosion. Get your camera ready! Located in the North Island of the country, Lake Taupo is New Zealand\u2019s largest freshwater lake. With a perimeter of 193km / 120mi, it sits in the caldera of a volcano, formed by a terrain collapse during a massive eruption more than 26,000 years ago."
+        },
+        "Visit Lake Taupo, New Zealand": {
+            "Maori-Rock-Lake-Taupo.jpg": "Located in the North Island of the country, Lake Taupo is New Zealand\u2019s largest freshwater lake. With a perimeter of 193km / 120mi, it sits in the caldera of a volcano, formed by a terrain collapse during a massive eruption more than 26,000 years ago. The lake, with all its fantastic surrounding nature, makes this region a perfect place to enjoy the fresh air in an extensive array of activities such as: fishing (mostly freshwater trout), finding fascinating thermal hot spots, walking and hiking, golfing, biking, watching Huka falls and the Ariatiatia rapids and visiting the impressive Maori Rock Carvings at Mine Bay (over 10m / 33ft high and only accessible by water). Oh, and because it is a lake, don\u2019t forget to explore all of the aquatic activities!"
+        },
+        "Visit Pohutu Geyser, New Zealand": {
+            "Pohutu-Geyser-Rotorua.jpg": "Pohutu Geyser is situated in the Whakarewarewa Thermal Valley, in the northern island of Rotorua, New Zealand. The demeanor of Pohutu, actually meaning \u201cbig splash\u201d or \u201cexplosion\u201d, is self-explanatory. The largest active geyser in the southern hemisphere, reaching 30m / 100ft towards the sky, it is activated up to twenty times a day. So, if you wait long enough, it will introduce itself to you! According to Maori culture and tradition, Geysers such as this are viewed as gifts from the gods. Here, it is said that, in the thermal valley where Pohutu Geyser is found, two sisters named Te Pupu and Te Hoata, the Goddesses of Fire, went below the earth to search for their lost brother. Along the way, as they got closer to him, the sisters lifted their heads above the ground, creating the geysers and other geothermal hotspots. Folklore or scientific explanation aside, the eruptions are quite a sight!"
+        },
+        "Visit Auckland, New Zealand": {
+            "Auckland-New-Zealand.jpg": "The largest and most multicultural city in New Zealand, Auckland is home to a large Asian community and the largest Polynesian population of any city on earth. Not at all a \u201cvertical city\u201d, Auckland stretches to the limit of its land surrounded by river estuaries and its two harbors, Manukau and Waitemata. As a result, its urban scene incorporates glowing, colored sails dotting its waters, especially during summertime. Mostly due to the diversity of its terrain, Auckland is divided into several characteristic zones offering a little bit of everything for everybody. In Parnell, we can find the city\u2019s oldest churches among a few historical houses. Near Queen Street, Karangahape Road is the place for shopping, eating and for its lively nightlife and clubbing. As well, and further west of the center, Ponsonby Road fits the same satisfies the same purpose. In The Domain area, here the Auckland Museum tells the story of the Maori and the Pacific Islands. South of the center, the views towards Auckland are spectacular, especially from Mount Eden and One Tree Hill. Pah Homestead art gallery and Saturday\u2019s Otara Market, claimed to be the largest Maori-Polynesian market in the world, are also great places to visit."
+        },
+        "Visit the Oceania Collection of Auckland Museum, New Zealand": {
+            "Auckland-Museum.jpg": "Of course, the best way to know a continent, a country or  city is to travel and meet the people, to experience their lifestyle and traditions, their markets\u2026 But to know the past, while understanding the present, it is best to visit a museum. The Auckland Museum is the quickest way to learn about New Zealand and Oceania. Among its many galleries, I highly recommend visiting those exhibiting: the decorative arts, the rich diversity across Pacific island communities, the most beautiful and important Oceanic art and artifacts in the world, Maori treasures and Maori Natural History, the region\u2019s geological origins, the dramatic contrasts of New Zealand\u2019s terrain, the coastal areas, oceans and volcanoes. Take a glimpse of all these wonderful aspects of Oceania here, in just a couple of hours!"
+        },
+        "Visit Apia, Independent State of Samoa": {
+            "Apia-Samoa.jpg": "The largest city in the country as well as the nation\u2019s capital, Apia is located on the central north coast of the island Opolu. Although not the most beautiful place in Samoa, it certainly has its qualities confirming it is an interesting place to check out. In fact, Apia is the only settlement able to carry the title of \u201ccity\u201d in Samoa, while it also still maintains its own chiefly matai leaders and fa\u2019alupega (genealogy & customary greetings). While wandering around Apia, you will notice a few wooden early-colonial buildings, the most interesting being the German colonial courthouse containing a museum. Be sure to also see the harbor-side Fiame Mataafa Faumuina Mulinuu II government building and the war memorial clock tower marking the city\u2019s center.\nBefore venturing out to discover the rest of Samoa, don\u2019t leave Apia without visiting Mulinu\u2019u, also the location of the Maota Fono (Parliament House), the old ceremonial capital at the city\u2019s western end. As well, the Fugalei  area provides us with the abundant Maketi Fou, the new market. How I adore markets!"
+        },
+        "Visit a Fire Dance Show, Kingdom of Tonga": {
+            "Fire-Dancer-Tonga.jpg": "Imagine women elegantly and smoothly performing the beautiful Lakalaka while, on the other hand, men display the fierce Tongan warrior spirit through the Kailao war dance\u2019s rapid movements simulating violent attacks\u2026 Needless to say, dance is a highly important, central aspect of Tongan culture. Well known for the strong impression it leaves on its audience, the dance\u2019s single or duel dancers spin and jump while juggling flaming knives. Add in pulsating traditional drums and the visual effect of mysterious background darkness (if the performance is held at night) and you are in for a great show! The dancers, the experience as a whole, truly impressed me."
+        },
+        "Visit Melbourne, Commonwealth of Australia": {
+            "Melbourne-Australia.jpg": "Most every aspect of the city screaming culture, without a doubt Melbourne is Australia\u2019s cultural capital \u2013 its diversity, its architecture, its multitude of live music venues, the many great museums and exciting, prolific street art together give it a character unlike any other place. Melbourne\u2019s city center can be fully covered on foot, easily allowing visitors to take advantage of all it offers:  its Victorian architecture, vast array of shops, lively and animated caf\u00e9s and laneway eateries, as well as its theaters and art galleries. Places not to miss are: the Melbourne Docklands, Flinders Street Railway Station, Eureka Tower, the enormous and colorful Queen Victoria Market, Southgate, Federation Square and the Old Melbourne Gaol (prison). In the Carlton district, you will find the renowned Melbourne Museum, the largest museum in the Southern Hemisphere. Take time to become acquainted with the goings-on in other districts such as Parkville, St Kilda, South Yarra, Prahran, and so on. Melbourne is a huge city, so be sure to have a plan and make the most of your stay!"
+        },
+        "Visit Blue Mountains National Park, Commonwealth of Australia": {
+            "Blue-Mountains-Australia.jpg": "Resting only about 80km / 50mi west of Sydney, in the New South Wales region, Blue Mountains National Park is one of eight protected spaces in the Greater Blue Mountains Area, inscribed as UNESCO World Heritage sites for their sandstone plateau and eucalyptus embellished forest gorges. Only 6km / 3.7mi into the park, Mt. Portal Lookout offers amazing scenery over the Glenbrook Gorge, the Nepean River and, in the distance, all of Sydney itself. Next, take a stroll through the town of Wentworth Falls and the Jamison Valley. A network of 140km / 87mi of trails and walking paths, Wentworth offers numerous rock formations and invitations to participate in adventure sports. I truly enjoyed all Blue Mountains National Park\u2019s abundant wilderness, making me feel rather small but incredibly happy to be alive!"
+        },
+        "Visit Grampians National Park, Commonwealth of Australia": {
+            "Grampians-National-Park-Australia.jpg": "The Grampians National Park, also known as Gariwerd or The Grampians, is situated in the Grampian region of Victoria, Australia. With its series of rugged sandstone mountain ranges, forests and one of the richest indigenous rock art sites in southeastern Australia, the entire park is a display of nature\u2019s extraordinary creations. Offering what wilderness lovers seek, The Grampians will keep you occupied with activities such as: climbing, camping, bush walking and scenic drives. Like the breathtaking view from Boroka Lookout,  it\u2019s not difficult to find picturesque panoramas and waterfalls, like the spectacular MacKenzie Falls. Also, be sure to visit the park\u2019s Aboriginal Cultural Center."
+        },
+        "Visit Parliament of Australia, Commonwealth of Australia": {
+            "Parliament-Australia-Canberra.jpg": "Located in Canberra, the nation\u2019s capital, and officially named The Parliament of the Commonwealth of Australia, this is where the Australian government\u2019s legislative branch meets to make its laws. Obviously! This rather new political building located on Capital Hill, however, is also open to the public. Opened as recently as 1988 by Queen Elizabeth II, the stretching Parliament House building displays an innovative and modern architecture. Inside, you will have the opportunity to visit the Chambers to view such historic documents as the Magna Carta. Its design based on the metaphor of two boomerangs, I truly enjoyed the interplay of its interior layout within the building\u2019s clean, architectural lines."
+        }
     },
     "Europe": {
-        "Svalbard, Norway": "svalbard-expedition-micro-cruise.jpg",
-        "Azores Islands, Portugal": "Azores_50-best-places-in-europe-to-visit.jpg",
-        "Lofoten Islands, Norway": "norway-small-ship-cruise-whale-watching.jpg",
-        "Westfjords, Iceland": "a-cruise-in-iceland-west-fjords.jpg",
-        "Sintra, Portugal": "Sintra_50-best-places-in-europe-to-visit.jpg",
-        "Santorini, Greece": "Santorini_50-best-places-in-europe-to-visit.jpg",
-        "Faroe Islands": "Faroe-Islands_50-best-places-in-europe-to-visit.jpg",
-        "Isle of Skye, Scotland": "isle-of-skye-scotland-europe.jpg",
-        "Utrecht, Holland": "utrecht_50-best-places-in-europe-to-visit.jpg",
-        "Seville, Spain": "Seville_50-best-places-in-europe-to-visit.jpg",
-        "Triglav National Park, Slovenia": "Triglav-National-Park_europe.jpg",
-        "Leipzig, German": "Leipzig-Germany.jpg",
-        "Giant\u2019s Causeway, Northern Ireland": "giants-causeway-in-Europe.jpg",
-        "Crooked Forest, Poland": "crooked-forest-in-poland.jpg",
-        "Matka Canyon, Macedonia": "Matka-Canyon-Macedonia.jpg",
-        "Tallinn, Estonia": "Talin-Estonia.jpg",
-        "Karlovy Vary, Czech Republic": "Karlovy-Vary-Czech-Republic.jpg",
-        "Rotterdam, Holland": "Roterdam_50-best-places-in-europe-to-visit.jpg",
-        "Plitvice Lakes, Croatia": "Plitvice-Lakes-Croatia.jpg",
-        "Bregenz, Austria": "Bregenz_Austria_best-places-in-europe-to-visit.jpg",
-        "Ksamil, Albania": "Ksamil_Albania.jpg",
-        "Amalfi Coast, Italy": "Amalfi-coast-Italy-Europe.jpg",
-        "Porto, Portugal": "porto-portugal-europe.jpg",
-        "Transylvania, Romania": "Transylvania-Romania.jpg",
-        "Budapest, Hungary": "budapest-Europe.jpg",
-        "Veliko Tarnovo, Bulgaria": "Veliko-Tarnovo-Bulgaria.jpg",
-        "Paris, France": "Paris-France-50-best-places-in-europe-to-visit.jpg",
-        "Tbilisi, Georgia": "Tbilisi-Georgia.jpg",
-        "Crete, Greek Islands": "Crete-Greek-Islands.jpg",
-        "The Val D\u2019orcia, Italy": "The-Val-D-orcia-Italy.jpg",
-        "The Lake District, England": "The-Lake-District-England_50-best-places-in-europe-to-visit.jpg",
-        "Bratislava, Slovakia": "Bratislava_Slovakia.jpg",
-        "London, England": "London-Europe.jpg",
-        "Tatra National Park, Poland": "Tatra-National-Park-Poland.jpg",
-        "Tresco, Isles of Scilly, England": "tresco-isles-of-scilly.jpg",
-        "Black Sea Coast, Bulgaria": "Black-Sea-Coast-Bulgaria.jpg",
-        "Ille-Sur-T\u00eat,\u00a0 France": "Ille-Sur-Tet.jpg",
-        "Provence, France": "provence-france.jpg",
-        "Comino, Malta": "comino-island-malta.jpg",
-        "Lisbon, Portugal": "lisbon-50-best-places-in-europe-to-visit.jpg",
-        "Ljubljana, Slovenia": "Ljubljana-Slovenia.jpg",
-        "Mostar, Bosnia and Herzegovina": "Mostar-Bosnia-and-Herzegovina-.jpg",
-        "Barcelona, Spain": "Barcelona-50-best-places-in-europe-to-visit.jpg",
-        "Stockholm Archipelago, Sweden": "Stockholm-Archipelago-Sweden-.jpg",
-        "Matterhorn, Switzerland": "Matterhorn-50-best-places-in-europe-to-visit.jpg",
-        "Gauja National Park, Latvia": "Gauja-National-Park-Latvia-scaled.jpg",
-        "Verdon Gorge, France": "Verdon-Gorge-France.jpg",
-        "Corsica, France": "corsica-50-best-places-in-europe-to-visit.jpg",
-        "Copenhagen, Denmark": "Copenhagen-50-best-places-in-europe-to-visit.jpg"
+        "Svalbard, Norway": {
+            "svalbard-expedition-micro-cruise.jpg": "Even if you\u2019re someone who loves a winter getaway, chances are you\u2019ve never travelled anywhere quite so far north as Svalbard, an archipelago of nine islands between mainland Norway and the North Pole. But if you\u2019ve ever dreamt about visiting the Arctic, then a trip to Svalbard is the best place to go.\u00a0"
+        },
+        "Azores Islands, Portugal": {
+            "Azores_50-best-places-in-europe-to-visit.jpg": "Although technically part of Portugal, the Azores islands seem like a world away from the mainland. The remote archipelago of volcanic islands sits in the mid-Atlantic, and is often described as the \u201cHawaii of Europe\u201d. And with rugged landscapes and deep-blue waters, it\u2019s not hard to see why \u2013 although its temperatures are subtropical and milder. This is ideal if you need to get away from city heat in the summer. The Azores is a place to escape into natural beauty, and it\u2019s home to two of Portugal\u2019s 15 Unesco World Heritage Sites including the historic city of Angra do Heroismo on the island of Terceira and the ancient vineyards of Pico.\u00a0"
+        },
+        "Lofoten Islands, Norway": {
+            "norway-small-ship-cruise-whale-watching.jpg": "When it comes to natural beauty in Europe, Norway really delivers. As a well as Svalbard, the country is also home to the stunning Lofoten Islands \u2013 an archipelago of seven islands. Lofoten is a certified sustainable destination and is worth visiting for Viking history, unspoilt landscapes, witnessing the Northern Lights in, and even surfing.\u00a0"
+        },
+        "Westfjords, Iceland": {
+            "a-cruise-in-iceland-west-fjords.jpg": "To be honest, we could easily just say Iceland and leave it at that. All of it is pretty spectacular. But if you\u2019re looking for an alternative to the touristy hot spots like the Golden Circle and the Blue Lagoon, then make a trip to Westfjords. They\u2019re lesser-known and visited than other parts of the country because they\u2019re vast, and far away from the major destinations like J\u00f6kuls\u00e1rl\u00f3n glacier lagoon, Lake M\u00fdvatn (yes, as featured on Game of Thrones) and the aforementioned Golden Circle.\u00a0\u00a0"
+        },
+        "Sintra, Portugal": {
+            "Sintra_50-best-places-in-europe-to-visit.jpg": "Sintra is a beautiful, historic town nestled in the breezy mountains of Serra de Sintra in Portugal. It\u2019s only a 40-minute train ride from Lisbon, so it\u2019s easy to do as a day trip if you\u2019re visiting the capital too. Sintra is perfect for an escape when you\u2019re pushed for time.\u00a0 You can explore lush forests, colourful palaces, the ruins of a Moorish castle, and ancient wells."
+        },
+        "Santorini, Greece": {
+            "Santorini_50-best-places-in-europe-to-visit.jpg": "Most people are familiar with blue domes and bright whitewashed homes that jut out over Santorini\u2019s blue seas. But there\u2019s plenty more to explore on this Greek Island, including a place believed to be the lost city of Atlantis. Over 3000 years ago, a huge volcanic eruption devastated Santorini. The middle of the island disappeared deep into the ocean and left a massive caldera (crater) in the cliffs, so make a trip to the Minoan ruins of Akrotiri and head west to visit Akrotiri Lighthouse for spectacular views. If you\u2019re there for a few days and packed decent walking shoes, it\u2019s also worth making the short hop to Nea Kameni island for amazing hikes in dramatic volcanic landscapes."
+        },
+        "Faroe Islands": {
+            "Faroe-Islands_50-best-places-in-europe-to-visit.jpg": "It\u2019s probably no surprise that we like islands around here. And the Faroe Islands is a destination\u00a0 Secret Atlas guests would have a great time exploring. Technically part of Denmark, although self-governing \u2013 It\u2019s an archipelago of 18 islands in the Atlantic Ocean, that sit between Scotland, Norway and Iceland and you can fly there from Edinburgh, Reykjavik, or Bergen in Norway. This is one trip that will need a bit more planning than a lot of European holidays, especially as there are only a few hotels, B&Bs and private rentals to choose from."
+        },
+        "Isle of Skye, Scotland": {
+            "isle-of-skye-scotland-europe.jpg": "When it comes to rugged island escapes, Scotland more than holds its own among others in Europe. The Isle of Skye is the largest of the Inner Hebrides (an archipelago of over 40 islands off the west coast of Scotland) and it\u2019s full of stunning scenery, interesting wildlife, and plenty of Whisky. If you want to avoid crowds, head to The Fairy Glen, high above the village of Uig where a landslip created a pretty magical landscape.\u00a0"
+        },
+        "Utrecht, Holland": {
+            "utrecht_50-best-places-in-europe-to-visit.jpg": "Daytrippers often go to Utrecht from Amsterdam, but there\u2019s plenty of reasons to visit for longer. It\u2019s less crowded for a start. The city is over 2000 years old \u2013\u00a0 the Romans built a fortress at what is now Dom Square, and buildings from the middle ages still stand in the city centre. It has all the charming Dutch canals of the capital (and according to travel search engine GoEuro, it\u2019s the most beautiful canal city in Europe). As well as canalside wandering, Utrecht also has gothic architecture, pretty streets and great cafes, restaurants and bars."
+        },
+        "Seville, Spain": {
+            "Seville_50-best-places-in-europe-to-visit.jpg": "The whole of the Andalucia region is worth exploring, but for a short European break, go for the capital, Seville. The medieval city filled with Moorish, Catholic, and Jewish landmarks, gothic architecture, winding streets, beautiful gardens \u2013 and many plates of tapas. It\u2019s an easy city to walk around, although try and avoid the height of summer (July and August) unless you can handle walking in 35\u00b0c+ heat. Even early Autumn gets pretty hot, and in the mid-afternoon, you\u2019ll notice that locals pull the shutters down to escape the heat.\u00a0"
+        },
+        "Triglav National Park, Slovenia": {
+            "Triglav-National-Park_europe.jpg": "Mountain hiking isn\u2019t just for the chocolate box scenery of the Swiss Alps. Northwest Slovenia, is home to the Julian Alps, close to the Italian and Austrian borders. This is where you\u2019ll find Triglav National Park, one of our best places in Europe to visit. It has been protected since 1924, so hasn\u2019t had to contend with over-tourism. This means if you do make it, you\u2019ll witness unspoilt natural beauty, including high mountain peaks, and the stunning Savica and Pericnik waterfalls. In the winter months, they freeze over so you can go on a guided ice climb.\u00a0"
+        },
+        "Leipzig, German": {
+            "Leipzig-Germany.jpg": "The small city in Saxony has given Berlin a run for its money as the German city for creatives and visitors in recent years \u2013 just look at the #hypezig all over Instagram. The former East German city was run down after the reunification of Germany, but it\u2019s old industrial areas like\u00a0 Plagwitz are now cultural zones filled with galleries, studios, bars and clubs.\u00a0 Several of Leipzig\u2019s old buildings have been restored too, so it\u2019s a great mix of old and new.\u00a0"
+        },
+        "Giant\u2019s Causeway, Northern Ireland": {
+            "giants-causeway-in-Europe.jpg": "One of Europe\u2019s most beautiful natural wonders is Giant\u2019s Causeway.\u00a0 It\u2019s just a short train ride from Belfast and is a UNESCO World Heritage Site.\u00a0 And it\u2019s easy to see why. Legend has it, the arrangement of large stepping stones (actually tens of thousands of interlocking basalt columns) was the result of an argument between an Irish Giant and a Scottish Giant. The myth of Finn McCool makes for a great yarn, but a trip to the visitors centre offers a more scientific origin story involving volcanic activity. Either way, it\u2019s a stunning coastline to behold. Go there to stomp around the ancient rocks and walk more of the Causeway Coast Way \u2013 it\u2019s perfect for hiking.\u00a0"
+        },
+        "Crooked Forest, Poland": {
+            "crooked-forest-in-poland.jpg": "Poland\u2019s Kryzwy Las or Crooked Forest is one of Europe\u2019s most enchanting, and strange natural places to visit. It sits a little way out of the western, historic city of Szczecin. As you can probably guess from the name, the forest is full of curved trees that look a bit like upside-down question marks. And how over 400 Pine trees in the middle of a forest they got that way is still a mystery \u2013 although one theory is that the trees were shaped like that by Polish workers who wanted to use them for shipbuilding."
+        },
+        "Matka Canyon, Macedonia": {
+            "Matka-Canyon-Macedonia.jpg": "You don\u2019t have to go to the tropics to experience paradise. Just a few miles from the Macedonian capital city of Skopje lies Matka Canyon, a stunning gorge which is filled with clear waters and one\u00a0 of the largest cave systems in the world.\u00a0 It\u2019s perfect for a European trip off the beaten track. Visitors and locals come to get away from urban life for hiking, kayaking,diving and rock climbing.\u00a0"
+        },
+        "Tallinn, Estonia": {
+            "Talin-Estonia.jpg": "For a mix of city break and nature getaway, Tallinn is a great shout. It\u2019s a small city, with beautiful forests on its doorstep. And you can also hop over to the islands of Naissar, Prangli, and Aegna easily from Tallinn Bay too. Wander around the Old Town for cobbled medieval streets, beautiful architecture, and some of the city\u2019s best places to eat like Rataskaevu 16 and III Draakon. Head up to the Kohtuotsa Viewing Platform for views over the city including the harbour, bell towers, and red slate rooftops. Switch from medieval to modern at Telliskivi Creative City which is hub restaurants, music venues, caf\u00e9s and street art."
+        },
+        "Karlovy Vary, Czech Republic": {
+            "Karlovy-Vary-Czech-Republic.jpg": "Lots of people come to Karlovy Vary on day trips from Prague to take a dip in some of Europe\u2019s best hot springs. There are 15 restorative hot spas dotted around the city, including up in the hills. It\u2019s a very beautiful city too, full of grand, pastel-coloured Bohemian architecture surrounded by forests.\u00a0"
+        },
+        "Rotterdam, Holland": {
+            "Roterdam_50-best-places-in-europe-to-visit.jpg": "Just like Utrecht, Holland\u2019ssecond city\u2019 is worth more than just being tacked onto an Amsterdam trip. It\u2019s full of mind-bending, futuristic architecture like the vibrant yellow cubic houses that jut into the sky tilted at a 45-degree angle. The city is also great for art lovers, with loads of classic and contemporary museums, galleries, and outdoor sculptures including the Witte de Witth Centre for Contemporary Art.\u00a0"
+        },
+        "Plitvice Lakes, Croatia": {
+            "Plitvice-Lakes-Croatia.jpg": "Croatia is well known for its beautiful beaches, but one of the most unique places to visit is Plitvice Lakes. It\u2019s a stunning national park, and the oldest in Croatia \u2013 with beautiful turquoise lakes, waterfalls, caves, and hiking trails. Plitvice Lakes is easy to do as a day trip from either Zagreb or Split."
+        },
+        "Bregenz, Austria": {
+            "Bregenz_Austria_best-places-in-europe-to-visit.jpg": "The west of Austria is home to the mountainous Vorarlberg state, and Bregenz is its lakeside capital. Lake Constance, (Bodensee) is one of Europe\u2019s largest freshwater lakes, and it has parts in other Alpine regions including Germany, Switzerland, and Austria. Bregenz is a 2,000-year-old city that\u2019s perfect for a chilled trip wandering through medieval streets and escaping into beautiful Alpine nature.\u00a0"
+        },
+        "Ksamil, Albania": {
+            "Ksamil_Albania.jpg": "Sitting along the Albanian Riviera is the small village of Ksamil. People visit for some of the most beautiful beaches in Europe. It has four uninhabited islands with secluded sandy beaches and crystal clear waters. But it\u2019s not just a place to lie on the beach all day, there\u2019s plenty to explore close by \u2013 and it\u2019s definitely worth taking a couple of road trips.\u00a0 One of the closest is the Butrint, which is about a 10 minute drive. The UNESCO World Heritage site was an ancient city that first belonged to the Greeks, then Romans came along, then finally it was taken over by bishops in Epirus."
+        },
+        "Amalfi Coast, Italy": {
+            "Amalfi-coast-Italy-Europe.jpg": "The famous 31 mile stretch of coastline close to Naples ranks number 22 in our top 50 best places in Europe to visit. Go in early Spring or Autumn, and you can explore the Amalfi Coast\u2019s colourful winding streets, rugged coastal views, and stunning sunsets at a calmer pace, in balmy temperatures. Especially if you find some of its lesser-known spots. People flock to Positano and Amalfi, and with good reason."
+        },
+        "Porto, Portugal": {
+            "porto-portugal-europe.jpg": "Another \u2018second city\u2019 that more than holds its own against the capital is Porto. The ancient, picturesque, hilly city on the banks of the river Douro is full of architecture, great food, beautiful natural parks, and of course, a lot of Port. The hills are pretty steep, but it\u2019s worth winding your way up to some of the less touristy neighbourhoods high above the river. And there are lots of great bars and places to eat tucked down the side streets, away from the main drag at Ribeira."
+        },
+        "Transylvania, Romania": {
+            "Transylvania-Romania.jpg": "Most people know it as the stomping ground of a certain vampire, but the Eastern European destination stretches far beyond the forests surrounding Castle Dracula. It\u2019s a large region in the heart of Romania with lots to explore from stunning landscapes, medieval castles (including\u00a0 Bran Castle, the one linked to Dracula) as well as citadel ruins, fortified settlements and salt mines.\u00a0"
+        },
+        "Budapest, Hungary": {
+            "budapest-Europe.jpg": "Thermal spas, ruin bars (bars in the ruins of abandoned buildings, not the state you\u2019ll be in when you leave, although that\u2019s up to you!),\u00a0 and a mix of different architecture styles are some of the reasons why Budapest is such a great European destination.\u00a0 For pretty views of the Danube, take a stroll over The Chain Bridge. Once you\u2019ve explored city landmarks like the Jewish Quarter, Doh\u00e1ny Street Synagogue, and the Hungarian Opera House, take a wander to some of Budapest\u2019s outdoor places.\u00a0"
+        },
+        "Veliko Tarnovo, Bulgaria": {
+            "Veliko-Tarnovo-Bulgaria.jpg": "One of Europe\u2019s hidden gems is Veliko Tarnovo in Bulgaria, especially if you love historic cities that are close to nature. It\u2019s one of Bulgaria\u2019s oldest settlements, where you can visit the imposing Tsaret Fortress, stroll along the river Yantra, and go to the Assenov quarter on the edge of a pine forest."
+        },
+        "Paris, France": {
+            "Paris-France-50-best-places-in-europe-to-visit.jpg": "What more can be written about Paris that hasn\u2019t been written a thousand times. It\u2019s a beautiful city, of course. But then again, there\u2019s the Paris beyond the obvious sights like the Eiffel Tower and joining long queues at the Louvre. For interesting urban walking, take a wander through The Petite Ceinture Railway, an abandoned railway line that predates the Paris M\u00e9tro where colourful flowers peak through the old tracks and street art adorns old platforms.\u00a0"
+        },
+        "Tbilisi, Georgia": {
+            "Tbilisi-Georgia.jpg": "In a country where Europe meets Asia, the Georgian capital is one of the world\u2019s oldest settlements, with evidence of human habitation dating back to 4000 BC. The ancient city is full of historic and natural wonders. From thermal bath houses that date back to the 12th century, the Ottoman era Jumah Mosque, panoramic views at the Narikala Fortress, to the streets and buildings that tell stories of Tbilisi\u2019s more recent communist past.\u00a0"
+        },
+        "Crete, Greek Islands": {
+            "Crete-Greek-Islands.jpg": "The largest of the Greek Islands is so vast it has two airports\u00a0 Depending on how long you go for, and what you want to see, you\u2019ll need to choose whether to fly into Chania or Heraklion. Neither of them will disappoint, with stunning scenery, delicious food, and remnants of ancient civilizations. But there are a few more unspoilt, less touristy places to explore in Chania.\u00a0"
+        },
+        "The Val D\u2019orcia, Italy": {
+            "The-Val-D-orcia-Italy.jpg": "The whole region of Tuscany in central Italy is worth spending time exploring for the history, culture, and of course, the food. But if you\u2019ve experienced the many sights and tastes of Florence, Lucca and Siena, then head to the unspoilt valley of Val D\u2019orcia. Then you can get up close to Tuscan nature and see for yourself what the renaissance painters loved so much."
+        },
+        "The Lake District, England": {
+            "The-Lake-District-England_50-best-places-in-europe-to-visit.jpg": "The area close to the Scottish border has some of the UK\u2019s most jaw-dropping scenery. And while The Lake District does have many great lakes, it isn\u2019t just about the abundant waters.\u00a0 The area was shaped during the last Ice Age, creating dramatic, steep, U-shaped valleys. A visit to any of the major lakes like Windermere or Grassmere to see the rolling, green landscapes that inspired poets like William Wordsworth and Samuel Taylor Coleridge.\u00a0 But for serious hiking and the most iconic views, you have to hike Scafell Pike or Helvellyn.\u00a0"
+        },
+        "Bratislava, Slovakia": {
+            "Bratislava_Slovakia.jpg": "The compact capital of Slovakia sits on the banks of the Danube and is surrounded by forests, hills, and lakes. So you can fit in plenty of city culture and nature walking in a\u00a0 short space of time. The city has a bit of a rowdy reputation as a stag do destination, so mid-week trips are probably a safer bet. But Bratislava is also full of interesting and contrasting architecture including Baroque, Art Nouveau, and Socialist Realist (the official architecture from the Stalinist regime).\u00a0"
+        },
+        "London, England": {
+            "London-Europe.jpg": "For such a sprawling, urban mega-city, London is incredibly green and wild in parts. In 2019 it became a National Park City, an initiative to make cities greener, healthier and wilder. It\u2019s also a truly international city from the people, the culture, and the food. London is where old meets new from iconic buildings from historic sites to world-famous venues like Ronnie Scotts and The 100 Club."
+        },
+        "Tatra National Park, Poland": {
+            "Tatra-National-Park-Poland.jpg": "Nestled in the Tatra Mountains in Poland about 70 miles south of Krakow, Tatra National Park is a haven for hikers and nature lovers. Named one of CNN\u2019s most beautiful national parks in the world, there is a lot to explore, including over 600 caves, large lakes, challenging hiking trails, rugged mountain peaks, waterfalls and wildlife."
+        },
+        "Tresco, Isles of Scilly, England": {
+            "tresco-isles-of-scilly.jpg": "The turquoise waters, sandy beaches and palm trees of the Isles of Scilly look more like somewhere deep in the Mediterranean or even the Caribbean than England. But the archipelago off the Cornish coast has a micro-climate, and Tresco, its second-largest island is home to subtropical sandy beaches and lush gardens, as well as rugged coastal walks, ancient monuments and castles."
+        },
+        "Black Sea Coast, Bulgaria": {
+            "Black-Sea-Coast-Bulgaria.jpg": "Also known as the Bulgarian Riviera, the Black Sea Coast is over 200 miles of coastline that is home to beautiful ancient cities, secluded beaches, old fortresses and mysterious archaeological sites. Perfect for a road trip filled with adventure and exploration with plenty of budget campsites and small villas to stay in. One of the main coastal cities is Varna, which dates back to 4600 BC and is worth visiting for the Roman Baths, a cave monastery, bizarre rock formations and if you venture a bit further, you can visit\u00a0 Pobitli Kamani also known as the Stone Forest."
+        },
+        "Ille-Sur-T\u00eat,\u00a0 France": {
+            "Ille-Sur-Tet.jpg": "The beauty of the South of France is no secret. But it is also home to the lesser-known natural wonder Orgues of Ille-sur-T\u00eat. Meaning organs, the Orgues are incredible rock formations that have the appearance of fairy chimneys at the highest peak of the Pyrenees Orientale. You can\u2019t walk on the fragile rocks but travel south to wander through Gorge de la Fou and follow the trail that leads to the slopes of Mount Canigou. The whole region is dotted with picturesque villages and filled with deep valleys"
+        },
+        "Provence, France": {
+            "provence-france.jpg": "France is the most visited country in the world, and yes there are a lot of beautiful regions to choose from. But the large southern region of Provence is incredibly varied, with great weather. It\u2019s perfect for a road trip around some of the country\u2019s most beautiful villages, heritage sites, stunning countryside, gorgeous coasts, and natural wonders.\u00a0 Provence is an incredibly colourful area too, in the summer fields bloom with lavender and sunflowers, and you could easily plan a trip around the Proven\u00e7al food and wine feasting on plates bouillabaisse (a fish and seafood stew from Marseille), ratatouille, and local produce at the daily market at Aix En Provence.\u00a0"
+        },
+        "Comino, Malta": {
+            "comino-island-malta.jpg": "Comino is the smallest inhabited island in the Maltese archipelago with only three permanent residents. Most people come to Comino for the crystal clear waters of the Blue Lagoon, and it gets pretty crowded in the summer months. But plan a weekday visit off-season and you can visit to swim or in the azure waters, or hike up to Saint Mary\u2019s Tower and marvel at the island\u2019s rock formations.\u00a0"
+        },
+        "Lisbon, Portugal": {
+            "lisbon-50-best-places-in-europe-to-visit.jpg": "The city of seven hills on the banks of the River Tagus is one of the most beautiful and historic cities in Europe. From the bustle and cheap bars of Barrio Alto to incredible views from Miradouros and with beaches close by \u2013 it\u2019s no wonder it\u2019s become more popular with visitors and remote workers in recent years."
+        },
+        "Ljubljana, Slovenia": {
+            "Ljubljana-Slovenia.jpg": "Ljubljana is a rare European city. The capital of Slovenia is a historic city that hasn\u2019t succumbed to over-tourism. And its central location makes it a great base for seeing other interesting parts of the country. The city is filled with interesting architecture from Roman remnants to Baroque and Renaissance buildings. It\u2019s also got an alternative arts scene, so you can follow street art trails and visit Metelkova an old barracks which is now artists studios displaying off the wall sculptures (literally), and huge mosaics and it\u2019s also home to bars and music venues too."
+        },
+        "Mostar, Bosnia and Herzegovina": {
+            "Mostar-Bosnia-and-Herzegovina-.jpg": "The area suffered hugely during the Balkans war in the 1990s, but has recovered and become one of the country\u2019s most visited places. Mostar\u2019s most famous landmark is Stari Most, a 16th Century Ottoman-built bridge that crosses the Neretva river. During the summer months, you might catch professional drivers leaping off it into the river below. The atrocities suffered by Mostar during the conflict are still relatively recent in the city\u2019s history, and the \u2018Don\u2019t Forget Stone\u2019 serves as an important reminder for visitors.\u00a0\u00a0"
+        },
+        "Barcelona, Spain": {
+            "Barcelona-50-best-places-in-europe-to-visit.jpg": "The capital of Catalonia doesn\u2019t really need an introduction as a top European destination. A city that doesn\u2019t really sleep, where there is interesting architecture on every corner, lush green spaces, and some of the best galleries, restaurants and music festivals in the world. It\u2019s easy to get around too.\u00a0 Once you\u2019ve dodged the crowds at the Ramblas, you can explore the medieval alleyways of the Gothic Quarter, and make your way around the city\u2019s landmarks like La Sagrada Familia, grabbed food at the Boqueria Market and looked down over the city from Parc Guell."
+        },
+        "Stockholm Archipelago, Sweden": {
+            "Stockholm-Archipelago-Sweden-.jpg": "A visit to the Swedish capital means you can combine a European city break with island hopping too. For locals, it\u2019s the best of the urban and rural coastal living. The Stockholm Archipelago is made up of 30,000 islands, and the closest one is only 20 minutes away from the city centre. Swedes and foreign tourists alike visit the island for kayaking, hiking, camping, and just generally appreciating nature."
+        },
+        "Matterhorn, Switzerland": {
+            "Matterhorn-50-best-places-in-europe-to-visit.jpg": "Sitting on the Swiss-Italian border, the 14,692 ft mountain the Matterhorn is one of the highest peaks in the Alps. You can find out about the mountaineering history of the famous mountain at Matterhorn Museum, in Zermatt, the famous ski resort town at its base. Although many ill-fated attempts were made by climbers in the 19th century, these stunning Alpine views are much more easily accessible.\u00a0"
+        },
+        "Gauja National Park, Latvia": {
+            "Gauja-National-Park-Latvia-scaled.jpg": "A short drive from the capital Riga takes you to Gauja National Park, which is around 230 acres of green forest and the largest national park in Latvia. It\u2019s a highly biodiverse park, filled with forest trails and a haven for hikers and nature lovers. The lush green park is also filled with rock formations, cliffs and caves as well as an abundance of wildlife.\u00a0"
+        },
+        "Verdon Gorge, France": {
+            "Verdon-Gorge-France.jpg": "We\u2019ve already highlighted the whole region of Provence, but if you\u2019re short on time and want to pick one natural wonder in the region, head to Verdon Gorge. Also known as The Grand Canyon of Europe, it\u2019s a river canyon in central Province with some of the area\u2019s most jaw-droppingly dramatic scenery, and the deepest gorge in France."
+        },
+        "Corsica, France": {
+            "corsica-50-best-places-in-europe-to-visit.jpg": "The fourth-largest island in the Mediterranean has some of the most varied landscapes in the whole of Europe. It was ruled by the Republic of Genoa between the 13th and 18th centuries, but has been part of France since 1796 although Italian culture is still present on the island alongside the French. Corsica is also the home of the challenging GR20 trail, with the reputation for being the hardest long-distance trek in Europe. Considering that 75% of people fail to complete the mountainous course that spans the length of Corsica, it\u2019s one for serious hikers only.\u00a0"
+        },
+        "Copenhagen, Denmark": {
+            "Copenhagen-50-best-places-in-europe-to-visit.jpg": "The stylish, and apparently incredibly happy Danish capital offers a European City break with a mix of urban life and natural beauty. Whether you\u2019re visiting for architecture, canal wandering, or visiting galleries\u00a0 \u2013 the best way to get around is to act like a Dane and get on a bike. On hot days, you can cool off at one of the free outdoor baths like The Kastrup Sea Bath, or\u00a0 the \u2018Copencanbana\u2019 aka Fisketorvet baths."
+        }
     }
 }

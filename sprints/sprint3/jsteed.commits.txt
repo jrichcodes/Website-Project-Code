@@ -1,0 +1,225 @@
+project_template/website/auth.py
+337abc72 (juliasteed     2022-10-25 13:32:47 -0400  13)         username = request.form.get('username')
+337abc72 (juliasteed     2022-10-25 13:32:47 -0400  16)         user = User.query.filter_by(username=username).first()
+337abc72 (juliasteed     2022-10-25 13:32:47 -0400  80)         username = request.form.get('username')
+337abc72 (juliasteed     2022-10-25 13:32:47 -0400  90)         elif len(username) < 5:
+337abc72 (juliasteed     2022-10-25 13:32:47 -0400  91)             flash('Username must be greater than 4 characters', category='error')
+337abc72 (juliasteed     2022-10-25 13:32:47 -0400  92)         elif User.query.filter_by(username = username).first() != None:
+9288cd79 (juliasteed     2022-10-26 16:49:37 -0400  93)             flash('Username is taken')
+c166f153 (juliasteed     2022-09-23 12:34:45 -0400  98)         else:
+337abc72 (juliasteed     2022-10-25 13:32:47 -0400 100)             new_user = User(email=email, first_name=first_name, last_name=last_name, username=username, password=generate_password_hash(password1, method='sha256'))
+c166f153 (juliasteed     2022-09-23 12:34:45 -0400 102)             db.session.commit()
+be8d723d (juliasteed     2022-10-21 10:50:50 -0400 104)             return redirect(url_for('auth.login')) # redirect to login page after new account created
+be8d723d (juliasteed     2022-10-21 10:50:50 -0400 105)     return render_template("sign_up.html", user=current_user)
+d4c2dc39 (juliasteed     2022-10-18 09:39:16 -0400 106)
+d2794baa (juliasteed     2022-10-18 14:29:18 -0400 123)
+9288cd79 (juliasteed     2022-10-26 16:49:37 -0400 138)
+9288cd79 (juliasteed     2022-10-26 16:49:37 -0400 139) @auth.route('/username_reset/<userId>', methods = ['GET', 'POST'])
+9288cd79 (juliasteed     2022-10-26 16:49:37 -0400 140) @login_required
+9288cd79 (juliasteed     2022-10-26 16:49:37 -0400 141) def username_reset(userId):
+9288cd79 (juliasteed     2022-10-26 16:49:37 -0400 142)     if request.method == 'POST':
+9288cd79 (juliasteed     2022-10-26 16:49:37 -0400 143)         username = request.form.get('username')
+9288cd79 (juliasteed     2022-10-26 16:49:37 -0400 144)         if len(username) < 5:
+9288cd79 (juliasteed     2022-10-26 16:49:37 -0400 145)             flash('Email must be greater than 4 characters.', category='error')
+9288cd79 (juliasteed     2022-10-26 16:49:37 -0400 146)         else:
+9288cd79 (juliasteed     2022-10-26 16:49:37 -0400 147)             tmp = User.query.filter_by(id = userId).first()
+9288cd79 (juliasteed     2022-10-26 16:49:37 -0400 148)             tmp.username = username
+9288cd79 (juliasteed     2022-10-26 16:49:37 -0400 149)             db.session.commit()
+9288cd79 (juliasteed     2022-10-26 16:49:37 -0400 150)             return redirect(url_for('auth.login')) # redirect to login page after email reset       
+9288cd79 (juliasteed     2022-10-26 16:49:37 -0400 151)     return render_template("username_reset.html", user=current_user)
+
+project_template/website/models.py
+013d49e1 (juliasteed     2022-10-25 14:38:03 -0400  3) from hashlib import md5
+6cb7ae3a (juliasteed     2022-10-28 10:01:45 -0400 11)     trip_type = db.Column(db.Integer)
+337abc72 (juliasteed     2022-10-25 13:32:47 -0400 19) 
+337abc72 (juliasteed     2022-10-25 13:32:47 -0400 24)     username = db.Column(db.String(150), unique=True)
+6a242e76 (juliasteed     2022-09-27 08:48:46 -0400 25)     last_name = db.Column(db.String(150))
+013d49e1 (juliasteed     2022-10-25 14:38:03 -0400 29)     def avatar(self, size):
+013d49e1 (juliasteed     2022-10-25 14:38:03 -0400 30)         digest = md5(self.email.lower().encode('utf-8')).hexdigest()        
+013d49e1 (juliasteed     2022-10-25 14:38:03 -0400 31)         return 'https://www.gravatar.com/avatar/{}?d=identicon&s={}'.format(
+013d49e1 (juliasteed     2022-10-25 14:38:03 -0400 32)             digest, size)
+
+project_template/website/static/css/events.css
+1f8e6332 (juliasteed     2022-10-25 12:12:27 -0400 32)     margin: 1rem; 
+1f8e6332 (juliasteed     2022-10-25 12:12:27 -0400 33)     border-radius: 25px; 
+1f8e6332 (juliasteed     2022-10-25 12:12:27 -0400 34)     background-color: rgb(249, 249, 249);
+1f8e6332 (juliasteed     2022-10-25 12:12:27 -0400 35)     border-color: rgb(237, 237, 237);
+
+project_template/website/templates/events.html
+67a03c7e project_template/website/templates/events.html   (juliasteed     2022-10-26 13:23:34 -0400  23) 
+67a03c7e project_template/website/templates/events.html   (juliasteed     2022-10-26 13:23:34 -0400  24)         <script type="text/javascript">
+67a03c7e project_template/website/templates/events.html   (juliasteed     2022-10-26 13:23:34 -0400  25)             function CheckTripType(val){
+67a03c7e project_template/website/templates/events.html   (juliasteed     2022-10-26 13:23:34 -0400  26)              var element=document.getElementById('displayOther');
+6cb7ae3a project_template/website/templates/events.html   (juliasteed     2022-10-28 10:01:45 -0400  27)              if(val==5)
+67a03c7e project_template/website/templates/events.html   (juliasteed     2022-10-26 13:23:34 -0400  28)                element.style.display='block';      
+67a03c7e project_template/website/templates/events.html   (juliasteed     2022-10-26 13:23:34 -0400  29)              else
+67a03c7e project_template/website/templates/events.html   (juliasteed     2022-10-26 13:23:34 -0400  30)                element.style.display='none';       
+67a03c7e project_template/website/templates/events.html   (juliasteed     2022-10-26 13:23:34 -0400  31)             }
+67a03c7e project_template/website/templates/events.html   (juliasteed     2022-10-26 13:23:34 -0400  32)         </script>
+67a03c7e project_template/website/templates/events.html   (juliasteed     2022-10-26 13:23:34 -0400  44)         {% if user.trip %}
+1f8e6332 project_template/website/templates/events.html   (juliasteed     2022-10-25 12:12:27 -0400  45)         <h1 align="center">My Trips</h1>
+1f8e6332 project_template/website/templates/events.html   (juliasteed     2022-10-25 12:12:27 -0400  46)         <div class="container" style="margin: auto; background-color: black; border-radius: 25px">
+337abc72 project_template/website/templates/events.html   (juliasteed     2022-10-25 13:32:47 -0400  49)                 <div class="card col-lg-2 col-sm-12">
+67a03c7e project_template/website/templates/events.html   (juliasteed     2022-10-26 13:23:34 -0400  62)         {% endif %}
+1f8e6332 project_template/website/templates/events.html   (juliasteed     2022-10-25 12:12:27 -0400  63)
+1f8e6332 project_template/website/templates/events.html   (juliasteed     2022-10-25 12:12:27 -0400  64)         <div class="mask d-flex align-items-center 
+h-100">
+1f8e6332 project_template/website/templates/events.html   (juliasteed     2022-10-25 12:12:27 -0400  65)             <div class="container h-100">
+1f8e6332 project_template/website/templates/events.html   (juliasteed     2022-10-25 12:12:27 -0400  66)             <div class="row d-flex justify-content-center align-items-center h-100">
+1f8e6332 project_template/website/templates/events.html   (juliasteed     2022-10-25 12:12:27 -0400  67)                 <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+1f8e6332 project_template/website/templates/events.html   (juliasteed     2022-10-25 12:12:27 -0400  68)                 <div class="card" style="border-radius: 15px; background-color: #5cdb95">
+1f8e6332 project_template/website/templates/events.html   (juliasteed     2022-10-25 12:12:27 -0400  69)                     <div class="card-body p-5">    
+1f8e6332 project_template/website/templates/events.html   (juliasteed     2022-10-25 12:12:27 -0400  70)                     <h2 class="text-uppercase text-center mb-5">Create New Trip</h2>
+1f8e6332 project_template/website/templates/events.html   (juliasteed     2022-10-25 12:12:27 -0400  71)
+1f8e6332 project_template/website/templates/events.html   (juliasteed     2022-10-25 12:12:27 -0400  72)                     <form method="POST">
+1f8e6332 project_template/website/templates/events.html   (juliasteed     2022-10-25 12:12:27 -0400  73)
+1f8e6332 project_template/website/templates/events.html   (juliasteed     2022-10-25 12:12:27 -0400  74)                         <div class="form-outline mb-4">
+1f8e6332 project_template/website/templates/events.html   (juliasteed     2022-10-25 12:12:27 -0400  75)                         <label for="name">Trip Name</label>
+1f8e6332 project_template/website/templates/events.html   (juliasteed     2022-10-25 12:12:27 -0400  76)                         <input type="name" class="form-control" id="name" name="name"/>
+1f8e6332 project_template/website/templates/events.html   (juliasteed     2022-10-25 12:12:27 -0400  77)                         </div>
+1f8e6332 project_template/website/templates/events.html   (juliasteed     2022-10-25 12:12:27 -0400  78)
+1f8e6332 project_template/website/templates/events.html   (juliasteed     2022-10-25 12:12:27 -0400  79)                         <div class="form-outline mb-4">
+1f8e6332 project_template/website/templates/events.html   (juliasteed     2022-10-25 12:12:27 -0400  80)                         <label for="desc">Trip Description</label>
+1f8e6332 project_template/website/templates/events.html   (juliasteed     2022-10-25 12:12:27 -0400  81)                         <input type="Description" class="form-control" id="desc" name="desc"/>
+1f8e6332 project_template/website/templates/events.html   (juliasteed     2022-10-25 12:12:27 -0400  82)                         </div>
+1f8e6332 project_template/website/templates/events.html   (juliasteed     2022-10-25 12:12:27 -0400  83)
+1f8e6332 project_template/website/templates/events.html   (juliasteed     2022-10-25 12:12:27 -0400  84)                         <div class="form-group mb-4">
+1f8e6332 project_template/website/templates/events.html   (juliasteed     2022-10-25 12:12:27 -0400  85)                             <label for="lat">Latitude: </label>
+1f8e6332 project_template/website/templates/events.html   (juliasteed     2022-10-25 12:12:27 -0400  86)                             <input type="number" step = .001 id="lat" name="lat" class="lat" min="-90" max="90">
+1f8e6332 project_template/website/templates/events.html   (juliasteed     2022-10-25 12:12:27 -0400  87)                             <label for="lon">Longitude: </label>
+1f8e6332 project_template/website/templates/events.html   (juliasteed     2022-10-25 12:12:27 -0400  88)                             <input type="number" step = .001 id="lon" name="lon" class="lon" min="-180" max="180">
+1f8e6332 project_template/website/templates/events.html   (juliasteed     2022-10-25 12:12:27 -0400  89)                         </div>
+1f8e6332 project_template/website/templates/events.html   (juliasteed     2022-10-25 12:12:27 -0400  90)
+1f8e6332 project_template/website/templates/events.html   (juliasteed     2022-10-25 12:12:27 -0400  91)                         <div class="form-group mb-4">
+1f8e6332 project_template/website/templates/events.html   (juliasteed     2022-10-25 12:12:27 -0400  92)                             <label for="tripType">Trip Type</label>
+67a03c7e project_template/website/templates/events.html   (juliasteed     2022-10-26 13:23:34 -0400  93)                             <select class="form-control" id="tripType" name="tripType" onchange='CheckTripType(this.value);'>
+6cb7ae3a project_template/website/templates/events.html   (juliasteed     2022-10-28 10:01:45 -0400  94)                                 <option value="1">Backpacking</option>
+1f8e6332 project_template/website/templates/events.html   (juliasteed     2022-10-25 12:12:27 -0400  95)                                 <option value="2">Climbing</option>
+337abc72 project_template/website/templates/events.html   (juliasteed     2022-10-25 13:32:47 -0400  96)                                 <option value="3">Kayaking</option>
+6cb7ae3a project_template/website/templates/events.html   (juliasteed     2022-10-28 10:01:45 -0400  97)                                 <option value="4">Biking</option>
+6cb7ae3a project_template/website/templates/events.html   (juliasteed     2022-10-28 10:01:45 -0400  98)                                 <option value="5">Other</option>
+1f8e6332 project_template/website/templates/events.html   (juliasteed     2022-10-25 12:12:27 -0400  99)                             </select>
+67a03c7e project_template/website/templates/events.html   (juliasteed     2022-10-26 13:23:34 -0400 100)                         </div>
+67a03c7e project_template/website/templates/events.html   (juliasteed     2022-10-26 13:23:34 -0400 101)
+67a03c7e project_template/website/templates/events.html   (juliasteed     2022-10-26 13:23:34 -0400 102)                         <div class="form-group mb-4" id = "displayOther" style='display:none;'>
+67a03c7e project_template/website/templates/events.html   (juliasteed     2022-10-26 13:23:34 -0400 103)                             <label for="othertype">Other</label>
+67a03c7e project_template/website/templates/events.html   (juliasteed     2022-10-26 13:23:34 -0400 104)                             <input type="text" id="otherType" name="otherType" class="form-control">
+1f8e6332 project_template/website/templates/events.html   (juliasteed     2022-10-25 12:12:27 -0400 105)                         </div>
+1f8e6332 project_template/website/templates/events.html   (juliasteed     2022-10-25 12:12:27 -0400 106)
+1f8e6332 project_template/website/templates/events.html   (juliasteed     2022-10-25 12:12:27 -0400 107)                         <div class="form-group mb-4">
+1f8e6332 project_template/website/templates/events.html   (juliasteed     2022-10-25 12:12:27 -0400 108)                             <label for="tripdate">Date</label>
+1f8e6332 project_template/website/templates/events.html   (juliasteed     2022-10-25 12:12:27 -0400 109)                             <input type="date" id="tripDate" name="tripDate" class="form-control" >
+1f8e6332 project_template/website/templates/events.html   (juliasteed     2022-10-25 12:12:27 -0400 110)                         </div>
+1f8e6332 project_template/website/templates/events.html   (juliasteed     2022-10-25 12:12:27 -0400 111)
+1f8e6332 project_template/website/templates/events.html   (juliasteed     2022-10-25 12:12:27 -0400 112)                         <div class="form-group mb-4">
+1f8e6332 project_template/website/templates/events.html   (juliasteed     2022-10-25 12:12:27 -0400 113)                             <label for="tripTime">Time</label>
+1f8e6332 project_template/website/templates/events.html   (juliasteed     2022-10-25 12:12:27 -0400 114)                             <input type="time" id="tripTime" name="tripTime">
+1f8e6332 project_template/website/templates/events.html   (juliasteed     2022-10-25 12:12:27 -0400 115)                         </div>
+1f8e6332 project_template/website/templates/events.html   (juliasteed     2022-10-25 12:12:27 -0400 116)
+1f8e6332 project_template/website/templates/events.html   (juliasteed     2022-10-25 12:12:27 -0400 117)                         <div class="form-outline mb-4">
+1f8e6332 project_template/website/templates/events.html   (juliasteed     2022-10-25 12:12:27 -0400 118)                         <label for="num_people">Number of Participants</label>
+1f8e6332 project_template/website/templates/events.html   (juliasteed     2022-10-25 12:12:27 -0400 119)                         <input type="number" class="form-control" id="num_people" name="num_people" min="1" max="1000"/>
+1f8e6332 project_template/website/templates/events.html   (juliasteed     2022-10-25 12:12:27 -0400 120)                         </div>
+1f8e6332 project_template/website/templates/events.html   (juliasteed     2022-10-25 12:12:27 -0400 121)
+1f8e6332 project_template/website/templates/events.html   (juliasteed     2022-10-25 12:12:27 -0400 122)                         <div class="d-flex justify-content-center">
+1f8e6332 project_template/website/templates/events.html   (juliasteed     2022-10-25 12:12:27 -0400 123)                         <button name="submit_button" value="create trip" type="submit" class="btn btn-primary btn-block btn-lg" style="margin: 10px 0">Submit Trip</button>
+1f8e6332 project_template/website/templates/events.html   (juliasteed     2022-10-25 12:12:27 -0400 124)                         </div>
+1f8e6332 project_template/website/templates/events.html   (juliasteed     2022-10-25 12:12:27 -0400 125)
+1f8e6332 project_template/website/templates/events.html   (juliasteed     2022-10-25 12:12:27 -0400 126)                     </form>
+1f8e6332 project_template/website/templates/events.html   (juliasteed     2022-10-25 12:12:27 -0400 127)
+1f8e6332 project_template/website/templates/events.html   (juliasteed     2022-10-25 12:12:27 -0400 128)                     </div>
+1f8e6332 project_template/website/templates/events.html   (juliasteed     2022-10-25 12:12:27 -0400 131)             </div>
+1f8e6332 project_template/website/templates/events.html   (juliasteed     2022-10-25 12:12:27 -0400 132)             </div>
+1f8e6332 project_template/website/templates/events.html   (juliasteed     2022-10-25 12:12:27 -0400 133)         </div>
+
+project_template/website/templates/login.html
+936154eb (juliasteed     2022-10-25 09:19:27 -0400 37)             style="background-size:auto; background-image: url(../static/images/camping/hiking.jpg);">
+337abc72 (juliasteed     2022-10-25 13:32:47 -0400 49)                             <input type="username" class="form-control" id="username" name="username" placeholder="Enter username"/>
+337abc72 (juliasteed     2022-10-25 13:32:47 -0400 53)                             <input type="password" class="form-control" id="password" name="password" placeholder="Enter password"/>
+
+project_template/website/templates/profile.html
+013d49e1 (juliasteed     2022-10-25 14:38:03 -0400 44)                         <img src="{{user.avatar(128)}}"
+be8d723d (juliasteed     2022-10-21 10:50:50 -0400 45)                           alt="Avatar" class="img-fluid my-5" style="width: 80px;" />
+337abc72 (juliasteed     2022-10-25 13:32:47 -0400 57)                             <div class="col-6 mb-3">
+337abc72 (juliasteed     2022-10-25 13:32:47 -0400 58)                               <h6>Username</h6>
+337abc72 (juliasteed     2022-10-25 13:32:47 -0400 59)                               <p class="text-muted">{{user.username}}</p>
+337abc72 (juliasteed     2022-10-25 13:32:47 -0400 60)                             </div>
+9288cd79 (juliasteed     2022-10-26 16:49:37 -0400 71)                             <div class="col-6 mb-3">
+9288cd79 (juliasteed     2022-10-26 16:49:37 -0400 72)                               <a class="text-muted" href="/username_reset/{{user.id}}">Change Username</a>
+9288cd79 (juliasteed     2022-10-26 16:49:37 -0400 73)                             </div>
+
+project_template/website/templates/sign_up.html
+698e58fc (juliasteed     2022-10-28 15:41:50 -0400  44)             style="background-image: url(../static/images/camping/hiking.jpg);">
+337abc72 (juliasteed     2022-10-25 13:32:47 -0400  84)                             <div class="form-outline mb-4">
+337abc72 (juliasteed     2022-10-25 13:32:47 -0400  85)                             <input type="username" class="form-control" id="username" name="username" placeholder="Create a username"/>
+337abc72 (juliasteed     2022-10-25 13:32:47 -0400  86)                             </div>
+337abc72 (juliasteed     2022-10-25 13:32:47 -0400  87)
+
+project_template/website/templates/username_reset.html
+b2f14c01 (juliasteed 2022-10-26 16:51:57 -0400  1) <!DOCTYPE html>
+b2f14c01 (juliasteed 2022-10-26 16:51:57 -0400  2) <html>
+b2f14c01 (juliasteed 2022-10-26 16:51:57 -0400  3)     <head>
+b2f14c01 (juliasteed 2022-10-26 16:51:57 -0400  4)         <meta charset="utf-8">
+b2f14c01 (juliasteed 2022-10-26 16:51:57 -0400  5)         <meta name="viewport" content="width=device-width, initial-scale=1" />
+b2f14c01 (juliasteed 2022-10-26 16:51:57 -0400  6)
+b2f14c01 (juliasteed 2022-10-26 16:51:57 -0400  7)         <!-- Bootstrap -->
+b2f14c01 (juliasteed 2022-10-26 16:51:57 -0400  8)         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+b2f14c01 (juliasteed 2022-10-26 16:51:57 -0400  9)         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css" integrity="sha384-xeJqLiuOvjUBq3iGOjvSQSIlwrpqjSHXpduPd6rQpuiM3f5/ijby8pCsnbu5S81n" crossorigin="anonymous">
+b2f14c01 (juliasteed 2022-10-26 16:51:57 -0400 10)
+b2f14c01 (juliasteed 2022-10-26 16:51:57 -0400 11)         <!-- Custom Stylesheets -->
+b2f14c01 (juliasteed 2022-10-26 16:51:57 -0400 12)         <link rel="stylesheet" href="../static/css/reset.css">
+b2f14c01 (juliasteed 2022-10-26 16:51:57 -0400 13)
+b2f14c01 (juliasteed 2022-10-26 16:51:57 -0400 14)         <!-- Fonts -->
+b2f14c01 (juliasteed 2022-10-26 16:51:57 -0400 15)         <link rel="preconnect" href="https://fonts.googleapis.com">
+b2f14c01 (juliasteed 2022-10-26 16:51:57 -0400 16)         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+b2f14c01 (juliasteed 2022-10-26 16:51:57 -0400 17)         <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;1,700&display=swap" rel="stylesheet">
+b2f14c01 (juliasteed 2022-10-26 16:51:57 -0400 18)         <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">      
+b2f14c01 (juliasteed 2022-10-26 16:51:57 -0400 19)         <!-- FontAwesome -->
+b2f14c01 (juliasteed 2022-10-26 16:51:57 -0400 20)         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.2/css/fontawesome.min.css" integrity="sha384-X8QTME3FCg1DLb58++lPvsjbQoCT9bp3MsUU3grbIny/3ZwUJkRNO8NPW6zqzuW9" crossorigin="anonymous">
+b2f14c01 (juliasteed 2022-10-26 16:51:57 -0400 21)
+b2f14c01 (juliasteed 2022-10-26 16:51:57 -0400 22)         <title>Username Reset</title>
+b2f14c01 (juliasteed 2022-10-26 16:51:57 -0400 23)     </head>
+b2f14c01 (juliasteed 2022-10-26 16:51:57 -0400 24)     <body>
+b2f14c01 (juliasteed 2022-10-26 16:51:57 -0400 25)         <section id="title_section">
+b2f14c01 (juliasteed 2022-10-26 16:51:57 -0400 26)             <div class="container-fluid" id="title_container">
+b2f14c01 (juliasteed 2022-10-26 16:51:57 -0400 27)                 <nav class="navbar navbar-expand-lg navbar-dark">
+b2f14c01 (juliasteed 2022-10-26 16:51:57 -0400 28)                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+b2f14c01 (juliasteed 2022-10-26 16:51:57 -0400 29)                         <span class="navbar-toggler-icon"></span>
+b2f14c01 (juliasteed 2022-10-26 16:51:57 -0400 30)                     </button>
+b2f14c01 (juliasteed 2022-10-26 16:51:57 -0400 31)                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
+b2f14c01 (juliasteed 2022-10-26 16:51:57 -0400 32)                         <ul class="navbar-nav ms-auto">
+b2f14c01 (juliasteed 2022-10-26 16:51:57 -0400 33)                             <li class="navbar-item">
+b2f14c01 (juliasteed 2022-10-26 16:51:57 -0400 34)                                 <a class="nav-link" href="/profile">Profile</a>
+b2f14c01 (juliasteed 2022-10-26 16:51:57 -0400 35)                             </li>
+b2f14c01 (juliasteed 2022-10-26 16:51:57 -0400 36)                             <li class="navbar-item">
+b2f14c01 (juliasteed 2022-10-26 16:51:57 -0400 37)                                 <a class="nav-link" href="/events">Events</a>
+b2f14c01 (juliasteed 2022-10-26 16:51:57 -0400 38)                             </li>
+b2f14c01 (juliasteed 2022-10-26 16:51:57 -0400 39)                             <li class="navbar-item">
+b2f14c01 (juliasteed 2022-10-26 16:51:57 -0400 40)                                 <a class="nav-link" href="/">Home</a>
+b2f14c01 (juliasteed 2022-10-26 16:51:57 -0400 41)                             </li>
+b2f14c01 (juliasteed 2022-10-26 16:51:57 -0400 42)                         </ul>
+b2f14c01 (juliasteed 2022-10-26 16:51:57 -0400 43)                     </div>
+b2f14c01 (juliasteed 2022-10-26 16:51:57 -0400 44)                 </nav>
+b2f14c01 (juliasteed 2022-10-26 16:51:57 -0400 45)             </div>
+b2f14c01 (juliasteed 2022-10-26 16:51:57 -0400 46)         </section>
+b2f14c01 (juliasteed 2022-10-26 16:51:57 -0400 47)         <section id="reset_section"
+b2f14c01 (juliasteed 2022-10-26 16:51:57 -0400 48)             <div class="container-fluid", id="reset_container">
+b2f14c01 (juliasteed 2022-10-26 16:51:57 -0400 49)                 <form method="POST">
+b2f14c01 (juliasteed 2022-10-26 16:51:57 -0400 50)                     <h3 align="center" class="mt-4">Change Username</h3>
+b2f14c01 (juliasteed 2022-10-26 16:51:57 -0400 51)                     <div class="row mb-4 mt-4">
+b2f14c01 (juliasteed 2022-10-26 16:51:57 -0400 52)                         <label for="username" class="col-sm-3 col-form-label"><b>New Username</b></label>b2f14c01 (juliasteed 2022-10-26 16:51:57 -0400 53)                         <div class="col-sm-4">
+b2f14c01 (juliasteed 2022-10-26 16:51:57 -0400 54)                             <input
+b2f14c01 (juliasteed 2022-10-26 16:51:57 -0400 55)                                 type="username"
+b2f14c01 (juliasteed 2022-10-26 16:51:57 -0400 56)                                 class="form-control"
+b2f14c01 (juliasteed 2022-10-26 16:51:57 -0400 57)                                 id="username"
+b2f14c01 (juliasteed 2022-10-26 16:51:57 -0400 58)                                 name="username"
+b2f14c01 (juliasteed 2022-10-26 16:51:57 -0400 59)                                 placeholder="Enter new username"
+b2f14c01 (juliasteed 2022-10-26 16:51:57 -0400 60)                             />
+b2f14c01 (juliasteed 2022-10-26 16:51:57 -0400 61)                         </div>
+b2f14c01 (juliasteed 2022-10-26 16:51:57 -0400 62)                     </div>
+b2f14c01 (juliasteed 2022-10-26 16:51:57 -0400 63)                     <button type="submit" class="btn btn-primary">Submit</button>
+b2f14c01 (juliasteed 2022-10-26 16:51:57 -0400 64)                 </form>
+b2f14c01 (juliasteed 2022-10-26 16:51:57 -0400 65)             </div>
+b2f14c01 (juliasteed 2022-10-26 16:51:57 -0400 66)         </section>
+b2f14c01 (juliasteed 2022-10-26 16:51:57 -0400 67)     </body>
+b2f14c01 (juliasteed 2022-10-26 16:51:57 -0400 68) </html>

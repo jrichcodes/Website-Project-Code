@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, request, flash, redirect, url_for
-from .models import User, gearItems, Trip, tripTypes
+from .models import User, gearItems, Trip, tripTypes, Menu, menuTypes, menuItems
 from . import db
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_sqlalchemy import SQLAlchemy
@@ -35,7 +35,7 @@ def logout():
 def trip_summary_map(tripId):
     trip = Trip.query.filter_by(id = tripId).first()
     start_coords = (trip.latitude, trip.longitude)
-    folium_map = folium.Map(min_zoom = 6, center=start_coords,tiles="Stamen Terrain")
+    folium_map = folium.Map(min_zoom = 6, center=start_coords,tiles="OpenStreetMap")
     if trip.trip_type == 1:
         icon_color = "red"
     elif trip.trip_type == 2:
@@ -52,25 +52,43 @@ def trip_summary_map(tripId):
 
 @auth.route('/trip-summary/<tripId>', methods=['GET', 'POST'])
 def trip_summary(tripId):
-
     if request.method == 'POST':
-        print('here')
         item = request.form.get('item')
         trip = Trip.query.filter_by(id = tripId).first()
-        trip_type = trip.trip_type
+        quantity = request.form.get('quantity')
         if len(item) < 1:
             flash('Not valid gear item', category = 'error')
         else: 
-            new_gearItem = gearItems(name=item, trip_type_id = trip_type)
+            new_gearItem = gearItems(name=item, trip_id = trip.id, quantity = quantity)
             db.session.add(new_gearItem)
             db.session.commit()
-            flash('Gear Item added!', category='success')
 
     trip = Trip.query.filter_by(id = tripId).first()
     type = tripTypes.query.filter_by(id = trip.trip_type).first()
-    gear_items = gearItems.query.filter_by(trip_type_id = trip.trip_type)
+    gear_items = gearItems.query.filter_by(trip_id = trip.id)
 
     return render_template("trip_summary.html", trip = trip, gear_items = gear_items, type = type)
+
+@auth.route('/menu-summary/<menuId>', methods=['GET', 'POST'])
+def menu_summary(menuId):
+
+    if request.method == 'POST':
+        item = request.form.get('item')
+        menu = Menu.query.filter_by(id = menuId).first()
+        quantity = request.form.get('quantity')
+        if len(item) < 1:
+            flash('Not valid menu item', category = 'error')
+        else:
+            new_menuItem = menuItems(name=item, menu_id = menu.id, quantity = quantity)
+            db.session.add(new_menuItem)
+            db.session.commit()
+
+    menu = Menu.query.filter_by(id = menuId).first()
+    #type = menuTypes.query.filter_by(id = menu.menu_type).first()
+    #menu_items = menuItems.query.filter_by(menu_id = menu.id)
+
+    #return render_template("menu_summary.html", menu = menu, menu_items = menu_items, type = type)
+    return render_template("menu_summary.html", menu = menu)
 
 @auth.route('/sign-up', methods=['GET', 'POST'])
 def sign_up():

@@ -20,7 +20,7 @@
         <!-- FontAwesome -->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.2/css/fontawesome.min.css" integrity="sha384-X8QTME3FCg1DLb58++lPvsjbQoCT9bp3MsUU3grbIny/3ZwUJkRNO8NPW6zqzuW9" crossorigin="anonymous">
     </head>
-    <body>
+    <body >
         <nav class=" sticky-top navbar navbar-expand-lg navbar-dark" style="background-color: rgb(25, 27, 24);">
             <a class="navbar-brand" href="/" style="padding-left: 25px;">Trip Planner</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -34,32 +34,69 @@
                         <li class="navbar-item" style="margin-left: auto; padding-right: 25px; font-weight: bold;">
                             <a class="nav-link" href="profile">[Profile]</a>
                         </li>
-                        <li class="navbar-item" style="padding-right: 100px;">
+                        <li class="navbar-item" style="padding-right: 25px; margin-left: auto;">
                             <a class="nav-link" href="/map">[Map]</a>
+                        </li>
+                        <li style="margin-left: auto; padding-right: 40px;">
+                            <div class="dropdown">
+                                <button  style="background-color: rgb(25, 27, 24); border-color: rgb(25, 27, 24);" class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Filter
+                                </button>
+                                <div style="left: -50px" class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <a class="dropdown-item" href="{{ url_for('views.suggestions', continent='Africa') }}">Africa</a>
+                                    <a class="dropdown-item" href="{{ url_for('views.suggestions', continent='North America') }}">North America</a>
+                                    <a class="dropdown-item" href="{{ url_for('views.suggestions', continent='South America') }}">South America</a>
+                                    <a class="dropdown-item" href="{{ url_for('views.suggestions', continent='Asia') }}">Asia</a>
+                                    <a class="dropdown-item" href="{{ url_for('views.suggestions', continent='Oceania') }}">Oceania</a>
+                                    <a class="dropdown-item" href="{{ url_for('views.suggestions', continent='Europe') }}">Europe</a>
+                                </div>
+                            </div>
                         </li>
                     </ul>
                 </div>
         </nav>
+
         <div id="suggestions_container">
             <div id="suggestions">
-                <div class="row">
+                <div   class="row">
+                    {% if place == "" %}
                         {% for continent in data %}
                             {% for suggested_trip in data[continent] %}
-                                <div class="col-lg-3 col-md-4 col-sm-6 d-flex justify-content-center">
-                                    <div id="suggestions_card" class="card" style="width: 24rem;">
-                                    <!-- <img class="card-img-top" src="{{ data[continent][suggested_trip] }}" alt="Card image cap"> -->
-                                    <div id="card_img_container">
-                                        <img class="card-img-top" src="../static/images/suggestions/{{data[continent][suggested_trip]}}" alt="Trip Image">
+                                {% for trip_info in data[continent][suggested_trip] %}
+                                <div  class="col-lg-3 col-md-4 col-sm-6 d-flex justify-content-center">
+                                    <div  id="suggestions_card" class="card" style="width: 24rem;">
+                                    <div  id="card_img_container">
+                                        <img loading="lazy" class="card-img-top" src="../static/images/suggestions/{{trip_info}}" alt="Trip Image">
                                     </div>
                                     <div class="card-body">
                                         <h5 class="card-title">{{suggested_trip}}</h5>
-                                        <!-- <p class="card-text">Trip Description</p> -->
-                                        <a href="#" class="btn btn-primary">Create Trip</a>
+                                        <!-- <a id="'{{continent}}'" href="{{ url_for('views.events', continent='{{continent}}') }}" class="btn btn-primary">Create Trip</a> -->
+                                        <a href="{{ url_for('views.events', continent=continent, name=suggested_trip, description=data[continent][suggested_trip][trip_info]) }}" class="btn btn-primary">Create Trip</a>
                                     </div>
                                     </div>
                                 </div>
+                                {% endfor %}
                             {% endfor %}
                         {% endfor %}
+                    {% endif %}
+                    {% if place != "" %}
+                            {% for suggested_trip in data[place] %}
+                                {% for trip_info in data[place][suggested_trip] %}
+                                <div  class="col-lg-3 col-md-4 col-sm-6 d-flex justify-content-center">
+                                    <div  id="suggestions_card" class="card" style="width: 24rem;">
+                                    <div  id="card_img_container">
+                                        <img loading="lazy" class="card-img-top" src="../static/images/suggestions/{{trip_info}}" alt="Trip Image">
+                                    </div>
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{suggested_trip}}</h5>
+                                        <!-- <a id="'{{continent}}'" href="{{ url_for('views.events', continent='{{continent}}') }}" class="btn btn-primary">Create Trip</a> -->
+                                        <a href="{{ url_for('views.events', continent=place, name=suggested_trip, description=data[place][suggested_trip][trip_info]) }}" class="btn btn-primary">Create Trip</a>
+                                    </div>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            {% endfor %}
+                    {% endif %}
                 </div>
             </div>
         </div>
