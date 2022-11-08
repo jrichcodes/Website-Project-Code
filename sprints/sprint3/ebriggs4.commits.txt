@@ -1,0 +1,344 @@
+menu.html
+5c4ffb1f (ebriggs4 2022-11-07 06:35:28 -0500 14)         <link rel="stylesheet" href="../static/css/navbar.css">
+5c4ffb1f (ebriggs4 2022-11-07 06:35:28 -0500 25)         <nav>
+5c4ffb1f (ebriggs4 2022-11-07 06:35:28 -0500 26)             <div class="navheading">
+5c4ffb1f (ebriggs4 2022-11-07 06:35:28 -0500 27)                 <h4>Trip Planner</h4>
+5c4ffb1f (ebriggs4 2022-11-07 06:35:28 -0500 28)             </div>
+5c4ffb1f (ebriggs4 2022-11-07 06:35:28 -0500 29)             <ul class="nav-links">
+5c4ffb1f (ebriggs4 2022-11-07 06:35:28 -0500 30)                 <li><a href="/">Home</a></li>
+5c4ffb1f (ebriggs4 2022-11-07 06:35:28 -0500 31)                 <li><a href="/events">Events</a></li>
+5c4ffb1f (ebriggs4 2022-11-07 06:35:28 -0500 32)             </ul>
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 33)         </nav>
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 34)
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 35)         <div class="mask d-flex align-items-center h-100">
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 36)             <div class="container h-100">
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 37)             <div class="row d-flex justify-content-center align-items-center h-100">
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 38)                 <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 39)                 <div class="card" style="border-radius: 15px; background-color: #5cdb95">
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 40)                     <div class="card-body p-5">
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 41)                     <h2 class="text-uppercase text-center mb-5">Create New Meal</h2>
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 42)
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 43)                     <form method="POST">
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 44)
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 45)                         <div class="form-outline mb-4">
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 46)                         <label for="name">Meal Name</label>
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 47)                         <input type="name" class="form-control" id="name" name="name"/>
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 48)                         </div>
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 49)
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 50)                         <div class="form-outline mb-4">
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 51)                         <label for="desc">Meal Description</label>
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 52)                         <input type="Description" class="form-control" id="desc" name="desc"/>
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 53)                         </div>
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 54)
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 55)                         <div class="form-group mb-4">
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 56)                             <label for="menuType">Meal Type</label>
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 57)                             <select class="form-control" id="menuType" name="menuType">
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 58)                                 <option value="1">Breakfast</option>
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 59)                                 <option value="2">Lunch</option>
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 60)                                 <option value="3">Dinner</option>
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 61)                                 <option value="4">Snack</option>
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 62)                             </select>
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 63)                         </div>
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 64)
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 65)                         <div class="form-outline mb-4">
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 66)                         <label for="num_servings">Number of Servings</label>
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 67)                         <input type="number" class="form-control" id="num_servings" name="num_servings" min="1" max="1000"/>
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 68)                         </div>
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 69)
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 70)                         <div class="d-flex justify-content-center">
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 71)                         <button name="submit_button" value="create meal" type="submit" class="btn btn-primary btn-block btn-lg" style="margin: 10px 0">Submit Meal</button>
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 72)                         </div>
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 73)
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 74)                     </form>
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 75)
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 76)                     </div>
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 80)             </div>
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 82)
+
+menu_summary.html
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500  1) <html>
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500  2) <head>
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500  3)     <!-- Required meta tags -->
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500  4)     <meta charset="utf-8">
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500  5)     <meta name = "viewpport" content="width=device-width, inital-scale=1.0">
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500  6)
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500  7)     <!-- Custom Stylesheets-->
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500  8)     <link rel="stylesheet" href="../static/css/menu_summary.css">
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500  9)     <link rel="stylesheet" href="../static/css/navbar.css">
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 10)     <link href="https://fonts.googleapis.com/css2?
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 11)     family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 12)
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 13)     <title>Trip Planner</title>
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 14) </head>
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 15) <body>
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 16)     <nav>
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 17)         <div class="navheading">
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 18)             <h4>Trip Planner</h4>
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 19)         </div>
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 20)         <ul class="nav-links">
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 21)             <li><a href="/">Home</a></li>
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 22)             <li><a href="/logout">Logout</a></li>
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 23)             <li><a href="/events">Events</a></li>
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 24)             <li><a href="/profile">Profile</a></li>
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 25)         </ul>
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 26)     </nav>
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 27)     <div class="container">
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 28)             <div class="row">
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 29)                 <div class="col">
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 30)                     <h1>{{menu.name}}</h1>
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 31)                     <p>{{menu.m_desc}}</p>
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 32)                 </div>
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 33)                 <div class="cards">
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 34)                         <div class="card">
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 35)                             <div class="card__content">
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 36)                                 <h5>General Information</h5>
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 37)                                 <p>Meal Type: {{menu.type}}</p>
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 38)                                 <p>Number of Servings: {{menu.num_servings}}</p>
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 39)                             </div>
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 40)                         </div>
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 41)                         <div class="card">
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 42)                             <div class="card__content">
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 43)                                 <h5>Grocery List</h5>
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 44)                                     {% for menu_items in menu_items %}
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 45)                                     <div class="box">
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 46)                                         <input type="checkbox">
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 47)                                         <label>{{menu_items.name}}</label>
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 48)                                     </div>
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 49)                                     {% endfor %}
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 50)                                     <form method="POST">
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 51)                                         <input id="textboxid" type="text" name="item" placeholder="item">
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 52)                                         <input id="textboxid" type="text" name="quantity" placeholder="quantity">
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 53)                                         <input type="submit" value="Add Menu Item" class="button" style="cursor: pointer">
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 54)                                     </form>
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 55)                             </div>
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 56)                         </div>
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 57)                 </div>
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 58)             </div>
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 59)     </div>
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 60)     <script
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 61)       type="text/javascript"
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 62)       src="../static/js/index.js"
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 63)     ></script>
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 64) </body>
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 65) </html>
+
+events.html
+5c4ffb1f project_template/website/templates/events.html   (ebriggs4       2022-11-07 06:35:28 -0500  43)                 <li><a href="/menu">Menu</a></li>
+5c4ffb1f project_template/website/templates/events.html   (ebriggs4       2022-11-07 06:35:28 -0500 148) </html>
+
+models.py
+a46fe5d6 (ebriggs4       2022-11-07 15:35:21 -0500 60)
+a46fe5d6 (ebriggs4       2022-11-07 15:35:21 -0500 61) class menuItems(db.Model):
+a46fe5d6 (ebriggs4       2022-11-07 15:35:21 -0500 62)     __tablename__ = 'menu_items'
+a46fe5d6 (ebriggs4       2022-11-07 15:35:21 -0500 63)     id = db.Column(db.Integer, primary_key=True)
+a46fe5d6 (ebriggs4       2022-11-07 15:35:21 -0500 64)     name = db.Column(db.String(150))
+a46fe5d6 (ebriggs4       2022-11-07 15:35:21 -0500 65)     menu_id = db.Column(db.Integer, db.ForeignKey('menu.id'))
+a46fe5d6 (ebriggs4       2022-11-07 15:35:21 -0500 66)     quantity = db.Column(db.Integer)
+
+auth.py
+a46fe5d6 (ebriggs4       2022-11-07 15:35:21 -0500   2) from .models import User, gearItems, Trip, tripTypes, Menu, menuTypes, menuItems
+a46fe5d6 (ebriggs4       2022-11-07 15:35:21 -0500  72) @auth.route('/menu-summary/<menuId>', methods=['GET', 'POST'])
+a46fe5d6 (ebriggs4       2022-11-07 15:35:21 -0500  73) def menu_summary(menuId):
+a46fe5d6 (ebriggs4       2022-11-07 15:35:21 -0500  74)
+a46fe5d6 (ebriggs4       2022-11-07 15:35:21 -0500  75)     if request.method == 'POST':
+a46fe5d6 (ebriggs4       2022-11-07 15:35:21 -0500  76)         item = request.form.get('item')
+a46fe5d6 (ebriggs4       2022-11-07 15:35:21 -0500  77)         menu = Menu.query.filter_by(id = menuId).first()
+a46fe5d6 (ebriggs4       2022-11-07 15:35:21 -0500  78)         quantity = request.form.get('quantity')
+a46fe5d6 (ebriggs4       2022-11-07 15:35:21 -0500  79)         if len(item) < 1:
+a46fe5d6 (ebriggs4       2022-11-07 15:35:21 -0500  80)             flash('Not valid menu item', category = 'error')
+a46fe5d6 (ebriggs4       2022-11-07 15:35:21 -0500  81)         else:
+a46fe5d6 (ebriggs4       2022-11-07 15:35:21 -0500  82)             new_menuItem = menuItems(name=item, menu_id = menu.id, quantity = quantity)
+a46fe5d6 (ebriggs4       2022-11-07 15:35:21 -0500  83)             db.session.add(new_menuItem)
+a46fe5d6 (ebriggs4       2022-11-07 15:35:21 -0500  84)             db.session.commit()
+a46fe5d6 (ebriggs4       2022-11-07 15:35:21 -0500  85)
+a46fe5d6 (ebriggs4       2022-11-07 15:35:21 -0500  86)     menu = Menu.query.filter_by(id = menuId).first()
+a46fe5d6 (ebriggs4       2022-11-07 15:35:21 -0500  87)     #type = menuTypes.query.filter_by(id = menu.menu_type).first()
+a46fe5d6 (ebriggs4       2022-11-07 15:35:21 -0500  88)     #menu_items = menuItems.query.filter_by(menu_id = menu.id)
+a46fe5d6 (ebriggs4       2022-11-07 15:35:21 -0500  89)
+a46fe5d6 (ebriggs4       2022-11-07 15:35:21 -0500  90)     #return render_template("menu_summary.html", menu = menu, menu_items = menu_items, type = type)
+a46fe5d6 (ebriggs4       2022-11-07 15:35:21 -0500  91)     return render_template("menu_summary.html", menu = menu)
+a46fe5d6 (ebriggs4       2022-11-07 15:35:21 -0500  92)
+a46fe5d6 (ebriggs4       2022-11-07 15:35:21 -0500 171)     return render_template("username_reset.html", user=current_user)
+
+views.py
+a46fe5d6 (ebriggs4       2022-11-07 15:35:21 -0500  87) def menu():
+a46fe5d6 (ebriggs4       2022-11-07 15:35:21 -0500  89)         if request.form['submit_button'] == 'create meal':
+a46fe5d6 (ebriggs4       2022-11-07 15:35:21 -0500  95)                 flash('Meal name is too short!', category='error')
+a46fe5d6 (ebriggs4       2022-11-07 15:35:21 -0500 100)                 flash('Meal added!', category='success')
+
+menu_summary.css
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500   1) *{
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500   2)     margin: 0;
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500   3)     padding: 0;
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500   4)     font-family:'Montserrat', sans-serif
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500   5) }
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500   6)
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500   7) .container{
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500   8)     width: 100%;
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500   9)     height: 100vh;
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500  10)     background-image: linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)), url(../images/camping/mountains.jpg);
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500  11)     background-position: center;
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500  12)     background-size: cover;
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500  13)     padding-left: 8%;
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500  14)     padding-right: 8%;
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500  15)     box-sizing: border-box;
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500  16) }
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500  17)
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500  18) nav ul li{
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500  19)     list-style: none;
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500  20)     display: inline-block;
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500  21)     margin-left: 60px;
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500  22) }
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500  23)
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500  24) .row{
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500  25)     display: flex;
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500  26)     height: 88%;
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500  27)     align-items: center;
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500  28)     padding: 15px 25px;
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500  29) }
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500  30)
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500  31) .col{
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500  32)     flex-basis: 50%;
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500  33) }
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500  34)
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500  35) h1{
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500  36)     color: #fff;
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500  37)     font-size: 100px;
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500  38) }
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500  39)
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500  40) p{
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500  41)     color: #fff;
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500  42)     font-size: 22px;
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500  43)     line-height: 30px;
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500  44) }
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500  45)
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500  46) .cards {
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500  47)     margin: 0 auto;
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500  48)     max-width: 70%;
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500  49)     display: grid;
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500  50)     grid-template-columns: repeat(2, 1fr);
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500  51)     gap: 2px;
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500  52) }
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500  53)
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500  54) .card{
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500  55)     width: 400px;
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500  56)     height: 460px;
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500  57)     display: grid;
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500  58)     border-radius: 10px;
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500  59)     padding: 15px 25px;
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500  60)     box-sizing: border-box;
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500  61)     margin: 10px 15px;
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500  62)     background-color: whitesmoke;
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500  63)     background-position: center;
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500  64)     background-size: cover;
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500  65) }
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500  66)
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500  67) .card__content h5{
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500  68)     color: rgb(6, 6, 6);
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500  69)     text-shadow: 0 0 10px #999;
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500  70)     text-align: left;
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500  71)     font-size: 35px;
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500  72)
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500  73) }
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500  74)
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500  75) .card p{
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500  76)     color: rgb(6, 6, 6);
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500  77)     text-shadow: 0 0 10px #999;
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500  78)     padding: 10px;
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500  79) }
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500  80)
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500  81) .card__content {
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500  82)     line-height: 1.5;
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500  83)     font-size: 0.9em;
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500  84)     padding: 5px;
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500  85) }
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500  86)
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500  87) .card__image{
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500  88)     width: 75%;
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500  89)     display: flex;
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500  90) }
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500  91) .box {
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500  92)     font-family: 'Montserrat', sans-serif;
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500  93)     display: flex;
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500  94)     align-items: left;
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500  95)     justify-content: left;
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500  96) }
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500  97)
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500  98) input[type="checkbox"] {
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500  99)     position: relative;
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 100)     width: 2em;
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 101)     height: 2em;
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 102)     color: #363839;
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 103)     border: 1px solid #bdc1c6;
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 104)     border-radius: 4px;
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 105)     appearance: none;
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 106)     outline: 0;
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 107)     cursor: pointer;
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 108)     transition: background 175ms cubic-bezier(0.1, 0.1, 0.25, 1);
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 109) }
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 110) input[type="checkbox"]::before {
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 111)     position: absolute;
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 112)     content: '';
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 113)     display: block;
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 114)     top: 2px;
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 115)     left: 7px;
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 116)     width: 8px;
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 117)     height: 14px;
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 118)     border-style: solid;
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 119)     border-color: #fff;
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 120)     border-width: 0 2px 2px 0;
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 121)     transform: rotate(45deg);
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 122)     opacity: 0;
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 123) }
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 124) input[type="checkbox"]:checked {
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 125)     color: #fff;
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 126)     border-color: #06842c;
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 127)     background: #06842c;
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 128) }
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 129) input[type="checkbox"]:checked::before {
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 130)     opacity: 1;
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 131) }
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 132) input[type="checkbox"]:checked ~ label::before {
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 133)     clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 134) }
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 135) label {
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 136)     position: relative;
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 137)     cursor: pointer;
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 138)     font-size: 1.5em;
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 139)     font-weight: 600;
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 140)     padding: 0 0.25em 0;
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 141)     user-select: none;
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 142) }
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 143) label::before {
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 144)     position: absolute;
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 145)     content: attr(data-content);
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 146)     color: #9c9e9f;
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 147)     clip-path: polygon(0 0, 0 0, 0% 100%, 0 100%);
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 148)     text-decoration: line-through;
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 149)     text-decoration-thickness: 3px;
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 150)     text-decoration-color: #363839;
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 151)     transition: clip-path 200ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 152) }
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 153)
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 154) input[type=text]:focus {
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 155)     border: 3px solid #555;
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 156) }
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 157)
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 158) #textboxid
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 159) {
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 160)     height:30px;
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 161)     border-radius: 10px;
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 162)     font-size:14pt;
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 163) }
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 164)
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 165) input[type=button], input[type=submit], input[type=reset] {
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 166)     background-color: black;
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 167)     border-radius: 10px;
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 168)     color: white;
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 169)     padding: 16px 32px;
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 170)     text-decoration: none;
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 171)     margin: 4px 2px;
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 172)     cursor: pointer;
+a46fe5d6 (ebriggs4 2022-11-07 15:35:21 -0500 173) }
+
+

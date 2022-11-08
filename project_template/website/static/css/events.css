@@ -30,7 +30,7 @@ body {
 
 .card {
     margin: 1rem; 
-    border-radius: 25px; 
+    border-radius: 20px; 
     background-color: rgb(249, 249, 249);
     border-color: rgb(237, 237, 237);
 }
@@ -55,4 +55,10 @@ a.button {
 
     text-decoration: none;
     color: initial;
+}
+
+.delete_button {
+    position: relative;
+    top: 100%;
+    transform: translateY(-100%);
 }

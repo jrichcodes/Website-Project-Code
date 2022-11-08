@@ -1,0 +1,321 @@
+shopping.py 
+d78194c4 (Josephine Rich 2022-11-07 10:35:23 -0500  1) from selenium import webdriver
+d78194c4 (Josephine Rich 2022-11-07 10:35:23 -0500  2) from selenium.webdriver.chrome.options import Options
+d78194c4 (Josephine Rich 2022-11-07 10:35:23 -0500  3) from selenium.webdriver.common.by import By
+d78194c4 (Josephine Rich 2022-11-07 10:35:23 -0500  4) from selenium.webdriver.common.keys import Keys
+d78194c4 (Josephine Rich 2022-11-07 10:35:23 -0500  5) from selenium.webdriver.support.ui import WebDriverWait
+d78194c4 (Josephine Rich 2022-11-07 10:35:23 -0500  6) from selenium.webdriver.support import expected_conditions as EC
+d78194c4 (Josephine Rich 2022-11-07 10:35:23 -0500  7) from selenium.common.exceptions import NoSuchElementException
+d78194c4 (Josephine Rich 2022-11-07 10:35:23 -0500  8) from selenium.common.exceptions import StaleElementReferenceException
+d78194c4 (Josephine Rich 2022-11-07 10:35:23 -0500  9) import time
+d78194c4 (Josephine Rich 2022-11-07 10:35:23 -0500 10) 
+d78194c4 (Josephine Rich 2022-11-07 10:35:23 -0500 11) def shopping(Foods): 
+d78194c4 (Josephine Rich 2022-11-07 10:35:23 -0500 12) 
+d78194c4 (Josephine Rich 2022-11-07 10:35:23 -0500 13)     #inital setup to connect to chrome and open website
+d78194c4 (Josephine Rich 2022-11-07 10:35:23 -0500 14)     chrome_options = Options()
+d78194c4 (Josephine Rich 2022-11-07 10:35:23 -0500 15)     chrome_options.add_experimental_option("detach", True)
+d78194c4 (Josephine Rich 2022-11-07 10:35:23 -0500 16)     chrome_options.add_argument('--disable-blink-features=AutomationControlled')
+d78194c4 (Josephine Rich 2022-11-07 10:35:23 -0500 17)     #chrome_options.add_argument("--start-maximized");
+d78194c4 (Josephine Rich 2022-11-07 10:35:23 -0500 18) 
+d78194c4 (Josephine Rich 2022-11-07 10:35:23 -0500 19)     PATH = "C:\Downloads\chromedriver2.exe"
+d78194c4 (Josephine Rich 2022-11-07 10:35:23 -0500 20)     driver = webdriver.Chrome(PATH, options=chrome_options)
+d78194c4 (Josephine Rich 2022-11-07 10:35:23 -0500 21)     driver.get("https://www.target.com")
+d78194c4 (Josephine Rich 2022-11-07 10:35:23 -0500 22)     driver.implicitly_wait(15)
+d78194c4 (Josephine Rich 2022-11-07 10:35:23 -0500 23) 
+d78194c4 (Josephine Rich 2022-11-07 10:35:23 -0500 24) 
+d78194c4 (Josephine Rich 2022-11-07 10:35:23 -0500 25)     #typing in search bar for different foods
+d78194c4 (Josephine Rich 2022-11-07 10:35:23 -0500 26)     item = "ham"
+d78194c4 (Josephine Rich 2022-11-07 10:35:23 -0500 27)     search = driver.find_element(By.XPATH, "//*[@id='search']")
+d78194c4 (Josephine Rich 2022-11-07 10:35:23 -0500 28)     search.send_keys(item)
+d78194c4 (Josephine Rich 2022-11-07 10:35:23 -0500 29)     driver.find_element(By.CLASS_NAME, "styles__SearchButton-sc-srf2ow-7").click()
+d78194c4 (Josephine Rich 2022-11-07 10:35:23 -0500 30)     driver.implicitly_wait(5)
+d78194c4 (Josephine Rich 2022-11-07 10:35:23 -0500 31) 
+d78194c4 (Josephine Rich 2022-11-07 10:35:23 -0500 32)     #choosing pick-up
+d78194c4 (Josephine Rich 2022-11-07 10:35:23 -0500 33)     pick_up_button = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="pageBodyContainer"]/div[1]/div/div[4]/div/div/div[1]/div/div/div/div[1]/button[1]')))
+d78194c4 (Josephine Rich 2022-11-07 10:35:23 -0500 34)     pick_up_button.click()
+d78194c4 (Josephine Rich 2022-11-07 10:35:23 -0500 35)     driver.implicitly_wait(3)
+d78194c4 (Josephine Rich 2022-11-07 10:35:23 -0500 36) 
+d78194c4 (Josephine Rich 2022-11-07 10:35:23 -0500 37)     #first item
+d78194c4 (Josephine Rich 2022-11-07 10:35:23 -0500 38)     time.sleep(5)
+d78194c4 (Josephine Rich 2022-11-07 10:35:23 -0500 39)     WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.CSS_SELECTOR,"button[data-test='orderPickupButton']"))).click()
+d78194c4 (Josephine Rich 2022-11-07 10:35:23 -0500 40)     driver.implicitly_wait(3)
+d78194c4 (Josephine Rich 2022-11-07 10:35:23 -0500 41)     driver.find_element(By.CSS_SELECTOR, 'button[aria-label="close"]').click()
+d78194c4 (Josephine Rich 2022-11-07 10:35:23 -0500 42)     driver.implicitly_wait(3)
+d78194c4 (Josephine Rich 2022-11-07 10:35:23 -0500 43) 
+d78194c4 (Josephine Rich 2022-11-07 10:35:23 -0500 44)     for i in Foods:
+d78194c4 (Josephine Rich 2022-11-07 10:35:23 -0500 45)         search = driver.find_element(By.XPATH, "//*[@id='search']")
+d78194c4 (Josephine Rich 2022-11-07 10:35:23 -0500 46)         
+d78194c4 (Josephine Rich 2022-11-07 10:35:23 -0500 47)         #clearing the search bar
+d78194c4 (Josephine Rich 2022-11-07 10:35:23 -0500 48)         search.click()
+d78194c4 (Josephine Rich 2022-11-07 10:35:23 -0500 49)         search.send_keys(Keys.CONTROL + "a")
+d78194c4 (Josephine Rich 2022-11-07 10:35:23 -0500 50)         search.send_keys(Keys.DELETE)
+d78194c4 (Josephine Rich 2022-11-07 10:35:23 -0500 51)         
+d78194c4 (Josephine Rich 2022-11-07 10:35:23 -0500 52)         #typing in food and searching
+d78194c4 (Josephine Rich 2022-11-07 10:35:23 -0500 53)         search.send_keys(i)
+d78194c4 (Josephine Rich 2022-11-07 10:35:23 -0500 54)         driver.find_element(By.CLASS_NAME, "styles__SearchButton-sc-srf2ow-7").click()
+d78194c4 (Josephine Rich 2022-11-07 10:35:23 -0500 55)         time.sleep(5)
+d78194c4 (Josephine Rich 2022-11-07 10:35:23 -0500 56)         
+d78194c4 (Josephine Rich 2022-11-07 10:35:23 -0500 57)         #clicking on the first aviable item
+d78194c4 (Josephine Rich 2022-11-07 10:35:23 -0500 58)         WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.CSS_SELECTOR,"button[data-test='orderPickupButton']"))).click()
+d78194c4 (Josephine Rich 2022-11-07 10:35:23 -0500 59)         driver.implicitly_wait(3)
+d78194c4 (Josephine Rich 2022-11-07 10:35:23 -0500 60)         driver.find_element(By.CSS_SELECTOR, 'button[aria-label="close"]').click()
+d78194c4 (Josephine Rich 2022-11-07 10:35:23 -0500 61)         driver.implicitly_wait(3)
+d78194c4 (Josephine Rich 2022-11-07 10:35:23 -0500 62) 
+d78194c4 (Josephine Rich 2022-11-07 10:35:23 -0500 63)     time.sleep(10)
+d78194c4 (Josephine Rich 2022-11-07 10:35:23 -0500 64)     driver.quit()
+d78194c4 (Josephine Rich 2022-11-07 10:35:23 -0500 65) 
+d78194c4 (Josephine Rich 2022-11-07 10:35:23 -0500 66)     #To Do: add in quanity funcitonality and chooses not sponsored products
+d78194c4 (Josephine Rich 2022-11-07 10:35:23 -0500 67)     #notes for later use in case I get stuck again 
+d78194c4 (Josephine Rich 2022-11-07 10:35:23 -0500 68)     #ignored_exceptions=(NoSuchElementException,StaleElementReferenceException,)
+d78194c4 (Josephine Rich 2022-11-07 10:35:23 -0500 69)     #item = WebDriverWait(driver, 10,ignored_exceptions=ignored_exceptions).until(EC.presence_of_element_located((By.CLASS_NAME, 'styles__ProductCardVariantDefaultWrapper-sc-bcz5ql-4 bUjSUe')))
+d78194c4 (Josephine Rich 2022-11-07 10:35:23 -0500 70)     #item.click()
+d78194c4 (Josephine Rich 2022-11-07 10:35:23 -0500 71)     #driver.find_element(By.CLASS_NAME,'styles__StyledProductCardBody-sc-bcz5ql-0').click()
+d78194c4 (Josephine Rich 2022-11-07 10:35:23 -0500 72)     #WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.CSS_SELECTOR,'div[data-test="web/ProductCard/body"]'))).click()
+
+test.py
+d78194c4 (Josephine Rich 2022-11-07 10:35:23 -0500 1) from shopping import shopping
+d78194c4 (Josephine Rich 2022-11-07 10:35:23 -0500 2) 
+d78194c4 (Josephine Rich 2022-11-07 10:35:23 -0500 3) Foods = {'Hummus' : 1,
+d78194c4 (Josephine Rich 2022-11-07 10:35:23 -0500 4)         'Bannana' : 5,
+d78194c4 (Josephine Rich 2022-11-07 10:35:23 -0500 5)         'Cheese' : 3}
+d78194c4 (Josephine Rich 2022-11-07 10:35:23 -0500 6)                 
+d78194c4 (Josephine Rich 2022-11-07 10:35:23 -0500 7) shopping(Foods)
+d78194c4 (Josephine Rich 2022-11-07 10:35:23 -0500 8) 
+
+project_template/website/static/css/trip_summary.css
+99b64049 (Josephine Rich 2022-10-31 12:15:51 -0400  47)     margin: 0 auto;
+99b64049 (Josephine Rich 2022-10-31 12:15:51 -0400  48)     max-width: 70%;
+99b64049 (Josephine Rich 2022-10-31 12:15:51 -0400  49)     display: grid;
+99b64049 (Josephine Rich 2022-10-31 12:15:51 -0400  50)     grid-template-columns: repeat(2, 1fr);
+99b64049 (Josephine Rich 2022-10-31 12:15:51 -0400  51)     gap: 2px;
+99b64049 (Josephine Rich 2022-10-31 12:15:51 -0400  52) }
+99b64049 (Josephine Rich 2022-10-31 12:15:51 -0400  53)
+99b64049 (Josephine Rich 2022-10-31 12:15:51 -0400  70)     text-align: left;
+99b64049 (Josephine Rich 2022-10-31 12:15:51 -0400  71)     font-size: 35px;
+99b64049 (Josephine Rich 2022-10-31 12:15:51 -0400  72) 
+f253a219 (Josephine Rich 2022-11-05 10:27:02 -0400  78)     padding: 10px;
+99b64049 (Josephine Rich 2022-10-31 12:15:51 -0400  79) }
+99b64049 (Josephine Rich 2022-10-31 12:15:51 -0400  80) 
+99b64049 (Josephine Rich 2022-10-31 12:15:51 -0400  81) .card__content {
+99b64049 (Josephine Rich 2022-10-31 12:15:51 -0400  82)     line-height: 1.5;
+99b64049 (Josephine Rich 2022-10-31 12:15:51 -0400  83)     font-size: 0.9em;
+99b64049 (Josephine Rich 2022-10-31 12:15:51 -0400  84)     padding: 5px;
+99b64049 (Josephine Rich 2022-10-31 12:15:51 -0400  85) }
+99b64049 (Josephine Rich 2022-10-31 12:15:51 -0400  86) 
+99b64049 (Josephine Rich 2022-10-31 12:15:51 -0400  87) .card__image{
+99b64049 (Josephine Rich 2022-10-31 12:15:51 -0400  88)     width: 75%;
+99b64049 (Josephine Rich 2022-10-31 12:15:51 -0400  89)     display: flex;
+99b64049 (Josephine Rich 2022-10-31 12:15:51 -0400  90) }
+99b64049 (Josephine Rich 2022-10-31 12:15:51 -0400  91) .box {
+f253a219 (Josephine Rich 2022-11-05 10:27:02 -0400  92)     font-family: 'Montserrat', sans-serif;
+99b64049 (Josephine Rich 2022-10-31 12:15:51 -0400  93)     display: flex;
+99b64049 (Josephine Rich 2022-10-31 12:15:51 -0400  94)     align-items: left;
+99b64049 (Josephine Rich 2022-10-31 12:15:51 -0400  95)     justify-content: left;
+99b64049 (Josephine Rich 2022-10-31 12:15:51 -0400  96) }
+99b64049 (Josephine Rich 2022-10-31 12:15:51 -0400  97) 
+99b64049 (Josephine Rich 2022-10-31 12:15:51 -0400  98) input[type="checkbox"] {
+99b64049 (Josephine Rich 2022-10-31 12:15:51 -0400  99)     position: relative;
+99b64049 (Josephine Rich 2022-10-31 12:15:51 -0400 100)     width: 2em;
+99b64049 (Josephine Rich 2022-10-31 12:15:51 -0400 101)     height: 2em;
+99b64049 (Josephine Rich 2022-10-31 12:15:51 -0400 102)     color: #363839;
+99b64049 (Josephine Rich 2022-10-31 12:15:51 -0400 103)     border: 1px solid #bdc1c6;
+99b64049 (Josephine Rich 2022-10-31 12:15:51 -0400 104)     border-radius: 4px;
+99b64049 (Josephine Rich 2022-10-31 12:15:51 -0400 105)     appearance: none;
+99b64049 (Josephine Rich 2022-10-31 12:15:51 -0400 106)     outline: 0;
+99b64049 (Josephine Rich 2022-10-31 12:15:51 -0400 107)     cursor: pointer;
+99b64049 (Josephine Rich 2022-10-31 12:15:51 -0400 108)     transition: background 175ms cubic-bezier(0.1, 0.1, 0.25, 1);
+99b64049 (Josephine Rich 2022-10-31 12:15:51 -0400 109) }
+99b64049 (Josephine Rich 2022-10-31 12:15:51 -0400 110) input[type="checkbox"]::before {
+99b64049 (Josephine Rich 2022-10-31 12:15:51 -0400 111)     position: absolute;
+99b64049 (Josephine Rich 2022-10-31 12:15:51 -0400 112)     content: '';
+99b64049 (Josephine Rich 2022-10-31 12:15:51 -0400 113)     display: block;
+99b64049 (Josephine Rich 2022-10-31 12:15:51 -0400 114)     top: 2px;
+99b64049 (Josephine Rich 2022-10-31 12:15:51 -0400 115)     left: 7px;
+99b64049 (Josephine Rich 2022-10-31 12:15:51 -0400 116)     width: 8px;
+99b64049 (Josephine Rich 2022-10-31 12:15:51 -0400 117)     height: 14px;
+99b64049 (Josephine Rich 2022-10-31 12:15:51 -0400 118)     border-style: solid;
+99b64049 (Josephine Rich 2022-10-31 12:15:51 -0400 119)     border-color: #fff;
+99b64049 (Josephine Rich 2022-10-31 12:15:51 -0400 120)     border-width: 0 2px 2px 0;
+99b64049 (Josephine Rich 2022-10-31 12:15:51 -0400 121)     transform: rotate(45deg);
+99b64049 (Josephine Rich 2022-10-31 12:15:51 -0400 122)     opacity: 0;
+99b64049 (Josephine Rich 2022-10-31 12:15:51 -0400 123) }
+99b64049 (Josephine Rich 2022-10-31 12:15:51 -0400 124) input[type="checkbox"]:checked {
+99b64049 (Josephine Rich 2022-10-31 12:15:51 -0400 125)     color: #fff;
+99b64049 (Josephine Rich 2022-10-31 12:15:51 -0400 126)     border-color: #06842c;
+99b64049 (Josephine Rich 2022-10-31 12:15:51 -0400 127)     background: #06842c;
+99b64049 (Josephine Rich 2022-10-31 12:15:51 -0400 128) }
+99b64049 (Josephine Rich 2022-10-31 12:15:51 -0400 129) input[type="checkbox"]:checked::before {
+99b64049 (Josephine Rich 2022-10-31 12:15:51 -0400 130)     opacity: 1;
+99b64049 (Josephine Rich 2022-10-31 12:15:51 -0400 131) }
+99b64049 (Josephine Rich 2022-10-31 12:15:51 -0400 132) input[type="checkbox"]:checked ~ label::before {
+99b64049 (Josephine Rich 2022-10-31 12:15:51 -0400 133)     clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+99b64049 (Josephine Rich 2022-10-31 12:15:51 -0400 134) }
+99b64049 (Josephine Rich 2022-10-31 12:15:51 -0400 135) label {
+99b64049 (Josephine Rich 2022-10-31 12:15:51 -0400 136)     position: relative;
+99b64049 (Josephine Rich 2022-10-31 12:15:51 -0400 137)     cursor: pointer;
+99b64049 (Josephine Rich 2022-10-31 12:15:51 -0400 138)     font-size: 1.5em;
+99b64049 (Josephine Rich 2022-10-31 12:15:51 -0400 139)     font-weight: 600;
+99b64049 (Josephine Rich 2022-10-31 12:15:51 -0400 140)     padding: 0 0.25em 0;
+99b64049 (Josephine Rich 2022-10-31 12:15:51 -0400 141)     user-select: none;
+99b64049 (Josephine Rich 2022-10-31 12:15:51 -0400 142) }
+99b64049 (Josephine Rich 2022-10-31 12:15:51 -0400 143) label::before {
+99b64049 (Josephine Rich 2022-10-31 12:15:51 -0400 144)     position: absolute;
+99b64049 (Josephine Rich 2022-10-31 12:15:51 -0400 145)     content: attr(data-content);
+99b64049 (Josephine Rich 2022-10-31 12:15:51 -0400 146)     color: #9c9e9f;
+99b64049 (Josephine Rich 2022-10-31 12:15:51 -0400 147)     clip-path: polygon(0 0, 0 0, 0% 100%, 0 100%);
+99b64049 (Josephine Rich 2022-10-31 12:15:51 -0400 148)     text-decoration: line-through;
+99b64049 (Josephine Rich 2022-10-31 12:15:51 -0400 149)     text-decoration-thickness: 3px;
+99b64049 (Josephine Rich 2022-10-31 12:15:51 -0400 150)     text-decoration-color: #363839;
+99b64049 (Josephine Rich 2022-10-31 12:15:51 -0400 151)     transition: clip-path 200ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+99b64049 (Josephine Rich 2022-10-31 12:15:51 -0400 152) }
+99b64049 (Josephine Rich 2022-10-31 12:15:51 -0400 153) 
+99b64049 (Josephine Rich 2022-10-31 12:15:51 -0400 154) input[type=text]:focus {
+99b64049 (Josephine Rich 2022-10-31 12:15:51 -0400 155)     border: 3px solid #555;
+99b64049 (Josephine Rich 2022-10-31 12:15:51 -0400 156) }
+99b64049 (Josephine Rich 2022-10-31 12:15:51 -0400 157) 
+99b64049 (Josephine Rich 2022-10-31 12:15:51 -0400 158) #textboxid
+99b64049 (Josephine Rich 2022-10-31 12:15:51 -0400 159) {
+99b64049 (Josephine Rich 2022-10-31 12:15:51 -0400 160)     height:30px;
+99b64049 (Josephine Rich 2022-10-31 12:15:51 -0400 161)     border-radius: 10px;
+99b64049 (Josephine Rich 2022-10-31 12:15:51 -0400 162)     font-size:14pt;
+99b64049 (Josephine Rich 2022-10-31 12:15:51 -0400 163) }
+99b64049 (Josephine Rich 2022-10-31 12:15:51 -0400 164) 
+99b64049 (Josephine Rich 2022-10-31 12:15:51 -0400 165) input[type=button], input[type=submit], input[type=reset] {
+99b64049 (Josephine Rich 2022-10-31 12:15:51 -0400 166)     background-color: black;
+99b64049 (Josephine Rich 2022-10-31 12:15:51 -0400 167)     border-radius: 10px;
+99b64049 (Josephine Rich 2022-10-31 12:15:51 -0400 168)     color: white;
+99b64049 (Josephine Rich 2022-10-31 12:15:51 -0400 169)     padding: 16px 32px;
+99b64049 (Josephine Rich 2022-10-31 12:15:51 -0400 170)     text-decoration: none;
+99b64049 (Josephine Rich 2022-10-31 12:15:51 -0400 171)     margin: 4px 2px;
+99b64049 (Josephine Rich 2022-10-31 12:15:51 -0400 172)     cursor: pointer;
+170fb414 (Josephine Rich 2022-11-06 08:37:55 -0500 173) }
+
+project_template/website/templates/trip_summary.html
+99b64049 (Josephine Rich 2022-10-31 12:15:51 -0400  7)     <!-- Custom Stylesheets-->
+99b64049 (Josephine Rich 2022-10-31 12:15:51 -0400  8)     <link rel="stylesheet" href="../static/css/trip_summary.css">
+99b64049 (Josephine Rich 2022-10-31 12:15:51 -0400  9)     <link rel="stylesheet" href="../static/css/navbar.css">
+99b64049 (Josephine Rich 2022-10-31 12:15:51 -0400 10)     <link href="https://fonts.googleapis.com/css2?
+99b64049 (Josephine Rich 2022-10-31 12:15:51 -0400 11)     family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+13c8bebe (Josephine Rich 2022-09-21 09:54:27 -0400 12) 
+99b64049 (Josephine Rich 2022-10-31 12:15:51 -0400 13)     <title>Trip Planner</title>
+99b64049 (Josephine Rich 2022-10-31 12:15:51 -0400 14) </head>
+99b64049 (Josephine Rich 2022-10-31 12:15:51 -0400 15) <body>
+99b64049 (Josephine Rich 2022-10-31 12:15:51 -0400 16)     <nav>
+99b64049 (Josephine Rich 2022-10-31 12:15:51 -0400 17)         <div class="navheading">
+99b64049 (Josephine Rich 2022-10-31 12:15:51 -0400 18)             <h4>Trip Planner</h4>
+13c8bebe (Josephine Rich 2022-09-21 09:54:27 -0400 19)         </div>
+99b64049 (Josephine Rich 2022-10-31 12:15:51 -0400 20)         <ul class="nav-links">
+99b64049 (Josephine Rich 2022-10-31 12:15:51 -0400 21)             <li><a href="/">Home</a></li>
+99b64049 (Josephine Rich 2022-10-31 12:15:51 -0400 22)             <li><a href="/logout">Logout</a></li>
+99b64049 (Josephine Rich 2022-10-31 12:15:51 -0400 23)             <li><a href="/map">Map</a></li>
+f253a219 (Josephine Rich 2022-11-05 10:27:02 -0400 24)             <li><a href="/profile">Profile</a></li>
+99b64049 (Josephine Rich 2022-10-31 12:15:51 -0400 25)         </ul>
+99b64049 (Josephine Rich 2022-10-31 12:15:51 -0400 26)     </nav>
+13c8bebe (Josephine Rich 2022-09-21 09:54:27 -0400 27)     <div class="container">
+99b64049 (Josephine Rich 2022-10-31 12:15:51 -0400 28)             <div class="row">
+99b64049 (Josephine Rich 2022-10-31 12:15:51 -0400 29)                 <div class="col">
+99b64049 (Josephine Rich 2022-10-31 12:15:51 -0400 30)                     <h1>{{trip.name}}</h1>
+99b64049 (Josephine Rich 2022-10-31 12:15:51 -0400 31)                     <p>{{trip.desc}}</p>
+13c8bebe (Josephine Rich 2022-09-21 09:54:27 -0400 32)                 </div>
+99b64049 (Josephine Rich 2022-10-31 12:15:51 -0400 33)                 <div class="cards">
+99b64049 (Josephine Rich 2022-10-31 12:15:51 -0400 34)                         <div class="card">
+99b64049 (Josephine Rich 2022-10-31 12:15:51 -0400 35)                             <div class="card__content">
+99b64049 (Josephine Rich 2022-10-31 12:15:51 -0400 36)                                 <h5>General Information</h5>
+f253a219 (Josephine Rich 2022-11-05 10:27:02 -0400 37)                                 <p>Activity Type: {{type.type}}</p>
+f253a219 (Josephine Rich 2022-11-05 10:27:02 -0400 38)                                 <p>Date: {{trip.date}}</p>
+f253a219 (Josephine Rich 2022-11-05 10:27:02 -0400 39)                                 <p>Number of People: {{trip.num_people}}</p>
+99b64049 (Josephine Rich 2022-10-31 12:15:51 -0400 40)                             </div>
+99b64049 (Josephine Rich 2022-10-31 12:15:51 -0400 41)                         </div>
+99b64049 (Josephine Rich 2022-10-31 12:15:51 -0400 42)                         <div class="card">
+99b64049 (Josephine Rich 2022-10-31 12:15:51 -0400 43)                             <div class="card__content">
+99b64049 (Josephine Rich 2022-10-31 12:15:51 -0400 44)                                 <h5>Menu</h5>
+99b64049 (Josephine Rich 2022-10-31 12:15:51 -0400 45)                             </div>
+99b64049 (Josephine Rich 2022-10-31 12:15:51 -0400 46)                         </div>
+99b64049 (Josephine Rich 2022-10-31 12:15:51 -0400 47)                         <div class="card">
+99b64049 (Josephine Rich 2022-10-31 12:15:51 -0400 48)                             <div class="card__content">
+99b64049 (Josephine Rich 2022-10-31 12:15:51 -0400 49)                                 <h5>Gear List</h5>
+99b64049 (Josephine Rich 2022-10-31 12:15:51 -0400 50)                                     {% for gear_items in gear_items %}
+99b64049 (Josephine Rich 2022-10-31 12:15:51 -0400 51)                                     <div class="box">
+99b64049 (Josephine Rich 2022-10-31 12:15:51 -0400 52)                                         <input type="checkbox">
+99b64049 (Josephine Rich 2022-10-31 12:15:51 -0400 53)                                         <label>{{gear_items.name}}</label>
+f253a219 (Josephine Rich 2022-11-05 10:27:02 -0400 54)                                         <button type="button" onClick="deleteGearItem({{gear_items.id}}, {{trip.id}})">
+f253a219 (Josephine Rich 2022-11-05 10:27:02 -0400 55)                                             <span aria-hidden="true">&times;</span>
+f253a219 (Josephine Rich 2022-11-05 10:27:02 -0400 56)                                         </button>
+99b64049 (Josephine Rich 2022-10-31 12:15:51 -0400 57)                                     </div>
+99b64049 (Josephine Rich 2022-10-31 12:15:51 -0400 58)                                     {% endfor %}
+99b64049 (Josephine Rich 2022-10-31 12:15:51 -0400 59)                                     <form method="POST">
+170fb414 (Josephine Rich 2022-11-06 08:37:55 -0500 60)                                         <input id="textboxid" type="text" name="item" placeholder="item">
+170fb414 (Josephine Rich 2022-11-06 08:37:55 -0500 61)                                         <input id="textboxid" type="text" name="quantity" placeholder="quantity">
+99b64049 (Josephine Rich 2022-10-31 12:15:51 -0400 62)                                           <input type="submit" value="Add Item" class="button" style="cursor: pointer">
+99b64049 (Josephine Rich 2022-10-31 12:15:51 -0400 63)                                     </form>
+ae23ad0b (Josephine Rich 2022-11-06 18:56:58 -0500 64)                                     <a href="https://recsports.utk.edu/utop/equipment-rentals/" target="_blank" rel="noopener noreferrer">Need gear?</a>
+99b64049 (Josephine Rich 2022-10-31 12:15:51 -0400 65)                             </div>
+99b64049 (Josephine Rich 2022-10-31 12:15:51 -0400 66)                         </div>
+99b64049 (Josephine Rich 2022-10-31 12:15:51 -0400 67)                         <div class="card">
+99b64049 (Josephine Rich 2022-10-31 12:15:51 -0400 68)                             <div class="card__content">
+99b64049 (Josephine Rich 2022-10-31 12:15:51 -0400 69)                                 <h5>Map</h5>
+99b64049 (Josephine Rich 2022-10-31 12:15:51 -0400 70)                             </div>
+99b64049 (Josephine Rich 2022-10-31 12:15:51 -0400 71)                             <div class="card__image">
+99b64049 (Josephine Rich 2022-10-31 12:15:51 -0400 72)                                 <iframe width="450px" height="460px" frameborder="0" 
+99b64049 (Josephine Rich 2022-10-31 12:15:51 -0400 73)                                 scrolling="no" src="/trip-summary-map/{{trip.id}}">
+99b64049 (Josephine Rich 2022-10-31 12:15:51 -0400 74)                                 </iframe>
+99b64049 (Josephine Rich 2022-10-31 12:15:51 -0400 75)                             </div>
+99b64049 (Josephine Rich 2022-10-31 12:15:51 -0400 76)                         </div>
+13c8bebe (Josephine Rich 2022-09-21 09:54:27 -0400 77)                 </div>
+13c8bebe (Josephine Rich 2022-09-21 09:54:27 -0400 78)             </div>
+99b64049 (Josephine Rich 2022-10-31 12:15:51 -0400 79)     </div>
+99b64049 (Josephine Rich 2022-10-31 12:15:51 -0400 80)     <script
+99b64049 (Josephine Rich 2022-10-31 12:15:51 -0400 81)       type="text/javascript"
+99b64049 (Josephine Rich 2022-10-31 12:15:51 -0400 82)       src="../static/js/index.js"
+99b64049 (Josephine Rich 2022-10-31 12:15:51 -0400 83)     ></script>
+99b64049 (Josephine Rich 2022-10-31 12:15:51 -0400 84) </body>
+99b64049 (Josephine Rich 2022-10-31 12:15:51 -0400 85) </html>
+
+project_template/website/_init__.py
+54760832 (Josephine Rich 2022-11-05 13:12:59 -0400 40) 
+54760832 (Josephine Rich 2022-11-05 13:12:59 -0400 41) def clear_database(app):
+54760832 (Josephine Rich 2022-11-05 13:12:59 -0400 42)     
+54760832 (Josephine Rich 2022-11-05 13:12:59 -0400 43)     from .models import tripTypes, menuTypes
+54760832 (Josephine Rich 2022-11-05 13:12:59 -0400 44) 
+54760832 (Josephine Rich 2022-11-05 13:12:59 -0400 45)     if not path.exists('website/' + DB_NAME):
+54760832 (Josephine Rich 2022-11-05 13:12:59 -0400 46)         print('No database to clear')
+54760832 (Josephine Rich 2022-11-05 13:12:59 -0400 47)     
+54760832 (Josephine Rich 2022-11-05 13:12:59 -0400 48)     with app.app_context():
+54760832 (Josephine Rich 2022-11-05 13:12:59 -0400 49)         meta = db.metadata
+54760832 (Josephine Rich 2022-11-05 13:12:59 -0400 50)         for table in reversed(meta.sorted_tables):
+54760832 (Josephine Rich 2022-11-05 13:12:59 -0400 51)             db.session.execute(table.delete())
+54760832 (Josephine Rich 2022-11-05 13:12:59 -0400 52)         db.session.commit()
+54760832 (Josephine Rich 2022-11-05 13:12:59 -0400 53) 
+54760832 (Josephine Rich 2022-11-05 13:12:59 -0400 54)         #adding trip types and menu types back to database
+54760832 (Josephine Rich 2022-11-05 13:12:59 -0400 55)         types = [
+54760832 (Josephine Rich 2022-11-05 13:12:59 -0400 56)             tripTypes(type = "backpacking"),
+54760832 (Josephine Rich 2022-11-05 13:12:59 -0400 57)             tripTypes(type = "climbing"),
+54760832 (Josephine Rich 2022-11-05 13:12:59 -0400 58)             tripTypes(type = "kayaking"),
+54760832 (Josephine Rich 2022-11-05 13:12:59 -0400 59)             tripTypes(type = "biking"),
+54760832 (Josephine Rich 2022-11-05 13:12:59 -0400 60)             menuTypes(type = "breakfast"),
+54760832 (Josephine Rich 2022-11-05 13:12:59 -0400 61)             menuTypes(type = "lunch"),
+54760832 (Josephine Rich 2022-11-05 13:12:59 -0400 62)             menuTypes(type = "dinner"),
+54760832 (Josephine Rich 2022-11-05 13:12:59 -0400 63)             menuTypes(type = "snack")
+54760832 (Josephine Rich 2022-11-05 13:12:59 -0400 64)         ]
+54760832 (Josephine Rich 2022-11-05 13:12:59 -0400 65) 
+54760832 (Josephine Rich 2022-11-05 13:12:59 -0400 66)         db.session.add_all(types)
+54760832 (Josephine Rich 2022-11-05 13:12:59 -0400 67)         db.session.commit()
+54760832 (Josephine Rich 2022-11-05 13:12:59 -0400 68) 
+54760832 (Josephine Rich 2022-11-05 13:12:59 -0400 69)     print("Database cleared!")
+
+project_template/website/views.py
+609b0fe1 (Josephine Rich 2022-11-07 11:46:42 -0500  38)             
+609b0fe1 (Josephine Rich 2022-11-07 11:46:42 -0500  39)             if int(tripType_in) == 5:
+609b0fe1 (Josephine Rich 2022-11-07 11:46:42 -0500  40)                 other_name = request.form.get('otherType')
+609b0fe1 (Josephine Rich 2022-11-07 11:46:42 -0500  41)                 other_Type = tripTypes(type=other_name)
+609b0fe1 (Josephine Rich 2022-11-07 11:46:42 -0500  42)                 db.session.add(other_Type)
+609b0fe1 (Josephine Rich 2022-11-07 11:46:42 -0500  43)                 db.session.commit()
+609b0fe1 (Josephine Rich 2022-11-07 11:46:42 -0500  44)                 type = db.session.query(tripTypes).filter(tripTypes.type == other_name).first()
+609b0fe1 (Josephine Rich 2022-11-07 11:46:42 -0500  45)                 tripType_in = type.id
+609b0fe1 (Josephine Rich 2022-11-07 11:46:42 -0500  46)             
+
+project_template/main.py
+54760832 (Josephine Rich 2022-11-05 13:12:59 -0400  6) if (len(sys.argv) > 1) and (sys.argv[1] == "cleardb"):
+54760832 (Josephine Rich 2022-11-05 13:12:59 -0400  7)         clear_database(app);
+54760832 (Josephine Rich 2022-11-05 13:12:59 -0400  8) 
+54760832 (Josephine Rich 2022-11-05 13:12:59 -0400  9) elif __name__ == '__main__':
