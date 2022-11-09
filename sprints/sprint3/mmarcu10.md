@@ -6,7 +6,7 @@
 ### What I Planned To Do
 - Make trip pages more private by making links hashes instead of consecutive intergers.
 - Create model for friends relationship.
-- Impliment Adding and removing friends functionality.
+- Implement Adding and removing friends functionality.
 - Add a fourums page.
 
 ### What I Didn't Do
@@ -16,12 +16,9 @@
 - familiarising myself with html fourums was more challanging than I thought it would be
 
 ### Issues I Worked On
-- [Issue 46](https://github.com/jrichcodes/Website-Project-Code/issues/46)
-- [Issue 47](https://github.com/jrichcodes/Website-Project-Code/issues/47)
-- [Issue 48](https://github.com/jrichcodes/Website-Project-Code/issues/48)
-- [Issue 49](https://github.com/jrichcodes/Website-Project-Code/issues/49)
-- [Issue 57](https://github.com/jrichcodes/Website-Project-Code/issues/57)
-- [Issue 59](https://github.com/jrichcodes/Website-Project-Code/issues/59)
+- [Issue 76](https://github.com/jrichcodes/Website-Project-Code/issues/76)
+- [Issue 77](https://github.com/jrichcodes/Website-Project-Code/issues/77)
+- [Issue 78](https://github.com/jrichcodes/Website-Project-Code/issues/78)
 
 ### Files I Worked On
 - project_template/website/friendsfuncs.py
