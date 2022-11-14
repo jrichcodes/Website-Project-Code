@@ -40,25 +40,31 @@
         </nav>
         </section>
 
+        <!-- Error Messages -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    {% if category == 'error' %}
+                        <div class="alert alert-danger alter-dismissable fade show" role="alert">
+                        {{ message }}
+                        <button type="button" class="m1-2 mb-1 close" data-dismiss="alert">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        </div>
+                    {% else %}
+                        <div class="alert alert-success alter-dismissable fade show" role="alert">
+                        {{ message }}
+                        <button type="button" class="m1-2 mb-1 close" data-dismiss="alert">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
         <section class="vh-100 bg-image"
             style="background-image: url(../static/images/camping/hiking.jpg);">
-            <!-- Error Messages -->
-            {% with messages = get_flashed_messages(with_categories=true) %} {% if messages %} {% for category, message in messages %} {% if category ==
-                'error' %}
-                <div class="alert alert-danger alter-dismissable fade show" role="alert">
-                {{ message }}
-                <button type="button" class="close" data-dismiss="alert">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-                </div>
-                {% else %}
-                <div class="alert alert-success alter-dismissable fade show" role="alert">
-                {{ message }}
-                <button type="button" class="close" data-dismiss="alert">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-                </div>
-            {% endif %} {% endfor %} {% endif %} {% endwith %}
             <div class="mask d-flex align-items-center h-100 gradient-custom-3">
                 <div class="container h-100">
                 <div class="row d-flex justify-content-center align-items-center h-100">

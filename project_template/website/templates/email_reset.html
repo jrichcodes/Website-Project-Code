@@ -10,6 +10,7 @@
 
         <!-- Custom Stylesheets -->
         <link rel="stylesheet" href="../static/css/reset.css">
+        <link rel="stylesheet" href="../static/css/navbar.css">
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -22,28 +23,38 @@
         <title>Email Reset</title>
     </head>
     <body>
-        <section id="title_section">
-            <div class="container-fluid" id="title_container">
-                <nav class="navbar navbar-expand-lg navbar-dark">
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav ms-auto">
-                            <li class="navbar-item">
-                                <a class="nav-link" href="/profile">Profile</a>
-                            </li>
-                            <li class="navbar-item">
-                                <a class="nav-link" href="/events">Events</a>
-                            </li>
-                            <li class="navbar-item">
-                                <a class="nav-link" href="/">Home</a>
-                            </li>       
-                        </ul>
-                    </div>
-                </nav>
+        <nav>
+            <div class="navheading">
+                <h4>Trip Planner</h4>
             </div>
-        </section>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/logout">Logout</a></li>
+                <li><a href="/profile">Profile</a></li>
+            </ul>
+        </nav>
+        <!-- Error Messages -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    {% if category == 'error' %}
+                        <div class="alert alert-danger alter-dismissable fade show" role="alert">
+                        {{ message }}
+                        <button type="button" class="m1-2 mb-1 close" data-dismiss="alert">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        </div>
+                    {% else %}
+                        <div class="alert alert-success alter-dismissable fade show" role="alert">
+                        {{ message }}
+                        <button type="button" class="m1-2 mb-1 close" data-dismiss="alert">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
         <section id="reset_section"
             <div class="container-fluid", id="reset_container">
                 <form method="POST">

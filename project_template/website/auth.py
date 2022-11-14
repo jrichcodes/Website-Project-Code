@@ -22,7 +22,7 @@ def login():
             else:
                 flash('Incorrect password, try again.', category='error')
         else:
-            flash('Email does not exist.', category='error')
+            flash('Username does not exist.', category='error')
 
     return render_template("login.html", user=current_user)
 
@@ -110,7 +110,7 @@ def sign_up():
         elif len(username) < 5:
             flash('Username must be greater than 4 characters', category='error')
         elif User.query.filter_by(username = username).first() != None:
-            flash('Username is taken')
+            flash('Username is taken', category='error')
         elif password1 != password2:
             flash('Passwords don\'t match', category='error')
         elif len(password1) < 7:
@@ -162,7 +162,7 @@ def username_reset(userId):
     if request.method == 'POST':
         username = request.form.get('username')
         if len(username) < 5:
-            flash('Email must be greater than 4 characters.', category='error')
+            flash('Username must be greater than 4 characters.', category='error')
         else:
             tmp = User.query.filter_by(id = userId).first()
             tmp.username = username
