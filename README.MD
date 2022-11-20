@@ -18,6 +18,7 @@ Some features of trip planner include:
 - Ability to friend other users
 
 ## Graphics
+![tp_homepage](https://user-images.githubusercontent.com/112104073/202907104-6eba0540-37e4-46e7-882d-f7e5761ad0dc.PNG)
 
 ## Download Instructions
 In order to use Trip Planner, navigate to the home page of this repository and use the "Code" button to copy the address to clone to your clipboard. Navigate to the directory in which you would like to store Trip Planner and git clone the repository there.
