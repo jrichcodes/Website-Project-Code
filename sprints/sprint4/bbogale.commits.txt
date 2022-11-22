@@ -1,0 +1,20 @@
+4e543cbb (yejashi           2022-11-02 19:12:12 -0400  1) import json
+4e543cbb (yejashi           2022-11-02 19:12:12 -0400  2) from geopy.geocoders import Nominatim
+4e543cbb (yejashi           2022-11-02 19:12:12 -0400  3) 
+4e543cbb (yejashi           2022-11-02 19:12:12 -0400  4) def get_json():
+4e543cbb (yejashi           2022-11-02 19:12:12 -0400  5)     json_file = open('website/static/json_files/suggestions.json')
+4e543cbb (yejashi           2022-11-02 19:12:12 -0400  6) 
+4e543cbb (yejashi           2022-11-02 19:12:12 -0400  7)     data = json.load(json_file)
+4e543cbb (yejashi           2022-11-02 19:12:12 -0400  8) 
+4e543cbb (yejashi           2022-11-02 19:12:12 -0400  9)     # for continent in data:
+4e543cbb (yejashi           2022-11-02 19:12:12 -0400 10)     #     for trip in data[continent]:
+4e543cbb (yejashi           2022-11-02 19:12:12 -0400 11)     #         print(trip + ": " + data[continent][trip])
+4e543cbb (yejashi           2022-11-02 19:12:12 -0400 12)     return data
+4e543cbb (yejashi           2022-11-02 19:12:12 -0400 13) 
+4e543cbb (yejashi           2022-11-02 19:12:12 -0400 17) def ret_location(location):
+4e543cbb (yejashi           2022-11-02 19:12:12 -0400 34)     ret = []
+4e543cbb (yejashi           2022-11-02 19:12:12 -0400 38)     return ret
+cfe5daf0 (yejashi           2022-11-02 13:20:55 -0400  3) 
+cfe5daf0 (yejashi           2022-11-02 13:20:55 -0400  4) def ret_location(location):
+cfe5daf0 (yejashi           2022-11-02 13:20:55 -0400 21)     ret = []
+4e543cbb (yejashi           2022-11-02 19:12:12 -0400 25)     return ret
