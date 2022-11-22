@@ -1,0 +1,260 @@
+- README.MD
+d6735a0b (juliasteed 2022-11-16 11:06:07 -0500  1) # Trip Planner
+d6735a0b (juliasteed 2022-11-16 11:06:07 -0500  2) Created by
+d6735a0b (juliasteed 2022-11-16 11:06:07 -0500  3) - Josie Rich: jrichcodes
+d6735a0b (juliasteed 2022-11-16 11:06:07 -0500  4) - Befikir Blogale: yejashi
+d6735a0b (juliasteed 2022-11-16 11:06:07 -0500  5) - Erin Briggs: ebriggs4
+d6735a0b (juliasteed 2022-11-16 11:06:07 -0500  6) - Maxwell Marcum: mmarcu10
+d6735a0b (juliasteed 2022-11-16 11:06:07 -0500  7) - Julia Steed: juliasteed
+d6735a0b (juliasteed 2022-11-16 11:06:07 -0500  9) ## Description
+d6735a0b (juliasteed 2022-11-16 11:06:07 -0500 10) Trip Planner is an online outdoor trip planning service that allows users to prepare for trips efficiently.
+d6735a0b (juliasteed 2022-11-16 11:06:07 -0500 12) Some features of trip planner include:
+d6735a0b (juliasteed 2022-11-16 11:06:07 -0500 13) - Trip suggestions
+d6735a0b (juliasteed 2022-11-16 11:06:07 -0500 14) - Scheduling tools
+d6735a0b (juliasteed 2022-11-16 11:06:07 -0500 15) - Mapping tools
+d6735a0b (juliasteed 2022-11-16 11:06:07 -0500 16) - Meal planning
+d6735a0b (juliasteed 2022-11-16 11:06:07 -0500 17) - Grocery shopping aid
+d6735a0b (juliasteed 2022-11-16 11:06:07 -0500 18) - Ability to friend other users
+d6735a0b (juliasteed 2022-11-16 11:06:07 -0500 20) ## Graphics
+0954d644 (juliasteed 2022-11-20 09:15:07 -0500 21) ![tp_homepage](https://user-images.githubusercontent.com/112104073/202907104-6eba0540-37e4-46e7-882d-f7e5761ad0dc.PNG)
+d6735a0b (juliasteed 2022-11-16 11:06:07 -0500 22)
+d6735a0b (juliasteed 2022-11-16 11:06:07 -0500 23) ## Download Instructions
+d6735a0b (juliasteed 2022-11-16 11:06:07 -0500 24) In order to use Trip Planner, navigate to the home page of this repository and use the "Code" button to copy the address to clone to your clipboard. Navigate to the directory in which you would like to store Trip Planner and git clone the repository there.     
+d6735a0b (juliasteed 2022-11-16 11:06:07 -0500 25)
+d6735a0b (juliasteed 2022-11-16 11:06:07 -0500 26) Next, you should check to make sure you have the following:
+d6735a0b (juliasteed 2022-11-16 11:06:07 -0500 27) - Python (version 3.10.5 or greater)
+d6735a0b (juliasteed 2022-11-16 11:06:07 -0500 28) - Pip
+d6735a0b (juliasteed 2022-11-16 11:06:07 -0500 29) - Flask
+d6735a0b (juliasteed 2022-11-16 11:06:07 -0500 30) - SqlAlchemy
+d6735a0b (juliasteed 2022-11-16 11:06:07 -0500 31)
+d6735a0b (juliasteed 2022-11-16 11:06:07 -0500 32) ## Usage Instructions
+d6735a0b (juliasteed 2022-11-16 11:06:07 -0500 33) To run the website, navigate to "Website-Project-Code/project_template" and run the command "python .\main.py" in a terminal. A website address with a localhost will be given to you that can be opened in any browser.
+d6735a0b (juliasteed 2022-11-16 11:06:07 -0500 34)
+0954d644 (juliasteed 2022-11-20 09:15:07 -0500 35) ## License
+
+- project_template/website/auth.py
+d17ffc40 (juliasteed     2022-11-14 18:40:55 -0500  25)             flash('Username does not exist.', category='error')
+d17ffc40 (juliasteed     2022-11-14 18:40:55 -0500 113)             flash('Username is taken', category='error')
+d17ffc40 (juliasteed     2022-11-14 18:40:55 -0500 165)             flash('Username must be greater than 4 characters.', category='error')
+
+- project_template/website/templates/base.html
+d17ffc40 (juliasteed     2022-11-14 18:40:55 -0500  25)             flash('Username does not exist.', category='error')
+d17ffc40 (juliasteed     2022-11-14 18:40:55 -0500 113)             flash('Username is taken', category='error')
+d17ffc40 (juliasteed     2022-11-14 18:40:55 -0500 40)     {% with messages = get_flashed_messages(with_categories=true) %}
+d17ffc40 (juliasteed     2022-11-14 18:40:55 -0500 41)       {% if messages %}
+d17ffc40 (juliasteed     2022-11-14 18:40:55 -0500 42)         {% for category, message in messages %}
+d17ffc40 (juliasteed     2022-11-14 18:40:55 -0500 43)           {% if category == 'error' %}
+d17ffc40 (juliasteed     2022-11-14 18:40:55 -0500 44)             <div class="alert alert-danger alter-dismissable fade show" role="alert">
+d17ffc40 (juliasteed     2022-11-14 18:40:55 -0500 45)               {{ message }}
+d17ffc40 (juliasteed     2022-11-14 18:40:55 -0500 46)               <button type="button" class="close" data-dismiss="alert">
+d17ffc40 (juliasteed     2022-11-14 18:40:55 -0500 47)                 <span aria-hidden="true">&times;</span>
+d17ffc40 (juliasteed     2022-11-14 18:40:55 -0500 48)               </button>
+d17ffc40 (juliasteed     2022-11-14 18:40:55 -0500 49)             </div>
+d17ffc40 (juliasteed     2022-11-14 18:40:55 -0500 50)             {% else %}
+d17ffc40 (juliasteed     2022-11-14 18:40:55 -0500 51)             <div class="alert alert-success alter-dismissable fade show" role="alert">
+d17ffc40 (juliasteed     2022-11-14 18:40:55 -0500 52)               {{ message }}
+d17ffc40 (juliasteed     2022-11-14 18:40:55 -0500 53)               <button type="button" class="close" data-dismiss="alert">
+d17ffc40 (juliasteed     2022-11-14 18:40:55 -0500 54)                 <span aria-hidden="true">&times;</span>
+d17ffc40 (juliasteed     2022-11-14 18:40:55 -0500 55)               </button>
+d17ffc40 (juliasteed     2022-11-14 18:40:55 -0500 56)             </div>
+d17ffc40 (juliasteed     2022-11-14 18:40:55 -0500 57)           {% endif %}
+d17ffc40 (juliasteed     2022-11-14 18:40:55 -0500 58)         {% endfor %}
+d17ffc40 (juliasteed     2022-11-14 18:40:55 -0500 59)       {% endif %}
+d17ffc40 (juliasteed     2022-11-14 18:40:55 -0500 60)     {% endwith %}
+
+- project_template/website/templates/email_reset.htmlbe8d723d (juliasteed 2022-10-21 10:50:50 -0400  1) <!DOCTYPE html>
+d17ffc40 (juliasteed 2022-11-14 18:40:55 -0500 13)         <link rel="stylesheet" href="../static/css/navbar.css">
+d17ffc40 (juliasteed 2022-11-14 18:40:55 -0500 26)         <nav>
+d17ffc40 (juliasteed 2022-11-14 18:40:55 -0500 27)             <div class="navheading">
+d17ffc40 (juliasteed 2022-11-14 18:40:55 -0500 28)                 <h4>Trip Planner</h4>
+d17ffc40 (juliasteed 2022-11-14 18:40:55 -0500 30)             <ul class="nav-links">
+d17ffc40 (juliasteed 2022-11-14 18:40:55 -0500 31)                 <li><a href="/">Home</a></li>
+d17ffc40 (juliasteed 2022-11-14 18:40:55 -0500 32)                 <li><a href="/logout">Logout</a></li>
+d17ffc40 (juliasteed 2022-11-14 18:40:55 -0500 33)                 <li><a href="/profile">Profile</a></li>
+d17ffc40 (juliasteed 2022-11-14 18:40:55 -0500 34)             </ul>
+d17ffc40 (juliasteed 2022-11-14 18:40:55 -0500 35)         </nav>
+d17ffc40 (juliasteed 2022-11-14 18:40:55 -0500 36)         <!-- Error Messages -->
+d17ffc40 (juliasteed 2022-11-14 18:40:55 -0500 37)         {% with messages = get_flashed_messages(with_categories=true) %}
+d17ffc40 (juliasteed 2022-11-14 18:40:55 -0500 38)             {% if messages %}
+d17ffc40 (juliasteed 2022-11-14 18:40:55 -0500 39)                 {% for category, message in messages %}
+d17ffc40 (juliasteed 2022-11-14 18:40:55 -0500 40)                     {% if category == 'error' %}
+d17ffc40 (juliasteed 2022-11-14 18:40:55 -0500 41)                         <div class="alert alert-danger alter-dismissable fade show" role="alert">        
+d17ffc40 (juliasteed 2022-11-14 18:40:55 -0500 42)                         {{ message }}
+d17ffc40 (juliasteed 2022-11-14 18:40:55 -0500 43)                         <button type="button" class="m1-2 mb-1 close" data-dismiss="alert">
+d17ffc40 (juliasteed 2022-11-14 18:40:55 -0500 44)                             <span aria-hidden="true">&times;</span>
+d17ffc40 (juliasteed 2022-11-14 18:40:55 -0500 45)                         </button>
+d17ffc40 (juliasteed 2022-11-14 18:40:55 -0500 46)                         </div>
+d17ffc40 (juliasteed 2022-11-14 18:40:55 -0500 47)                     {% else %}
+d17ffc40 (juliasteed 2022-11-14 18:40:55 -0500 48)                         <div class="alert alert-success alter-dismissable fade show" role="alert">       
+d17ffc40 (juliasteed 2022-11-14 18:40:55 -0500 49)                         {{ message }}
+d17ffc40 (juliasteed 2022-11-14 18:40:55 -0500 50)                         <button type="button" class="m1-2 mb-1 close" data-dismiss="alert">
+d17ffc40 (juliasteed 2022-11-14 18:40:55 -0500 51)                             <span aria-hidden="true">&times;</span>
+d17ffc40 (juliasteed 2022-11-14 18:40:55 -0500 52)                         </button>
+d17ffc40 (juliasteed 2022-11-14 18:40:55 -0500 53)                         </div>
+d17ffc40 (juliasteed 2022-11-14 18:40:55 -0500 54)                     {% endif %}
+d17ffc40 (juliasteed 2022-11-14 18:40:55 -0500 55)                 {% endfor %}
+d17ffc40 (juliasteed 2022-11-14 18:40:55 -0500 56)             {% endif %}
+d17ffc40 (juliasteed 2022-11-14 18:40:55 -0500 57)         {% endwith %}
+
+- project_template/website/templates/login.html
+d17ffc40 (juliasteed     2022-11-14 18:40:55 -0500 36)         <!-- Error Messages -->
+d17ffc40 (juliasteed     2022-11-14 18:40:55 -0500 37)         {% with messages = get_flashed_messages(with_categories=true) %}
+d17ffc40 (juliasteed     2022-11-14 18:40:55 -0500 38)             {% if messages %}
+d17ffc40 (juliasteed     2022-11-14 18:40:55 -0500 39)                 {% for category, message in messages %}
+d17ffc40 (juliasteed     2022-11-14 18:40:55 -0500 40)                     {% if category == 'error' %}
+d17ffc40 (juliasteed     2022-11-14 18:40:55 -0500 41)                         <div class="alert alert-danger alter-dismissable fade show" role="alert">    
+d17ffc40 (juliasteed     2022-11-14 18:40:55 -0500 42)                         {{ message }}
+d17ffc40 (juliasteed     2022-11-14 18:40:55 -0500 43)                         <button type="button" class="close" data-dismiss="alert">
+d17ffc40 (juliasteed     2022-11-14 18:40:55 -0500 44)                             <span aria-hidden="true">&times;</span>
+d17ffc40 (juliasteed     2022-11-14 18:40:55 -0500 45)                         </button>
+d17ffc40 (juliasteed     2022-11-14 18:40:55 -0500 46)                         </div>
+d17ffc40 (juliasteed     2022-11-14 18:40:55 -0500 47)                     {% else %}
+d17ffc40 (juliasteed     2022-11-14 18:40:55 -0500 48)                         <div class="alert alert-success alter-dismissable fade show" role="alert">   
+d17ffc40 (juliasteed     2022-11-14 18:40:55 -0500 49)                         {{ message }}
+d17ffc40 (juliasteed     2022-11-14 18:40:55 -0500 50)                         <button type="button" class="close" data-dismiss="alert">
+d17ffc40 (juliasteed     2022-11-14 18:40:55 -0500 51)                             <span aria-hidden="true">&times;</span>
+d17ffc40 (juliasteed     2022-11-14 18:40:55 -0500 52)                         </button>
+d17ffc40 (juliasteed     2022-11-14 18:40:55 -0500 53)                         </div>
+d17ffc40 (juliasteed     2022-11-14 18:40:55 -0500 54)                     {% endif %}
+d17ffc40 (juliasteed     2022-11-14 18:40:55 -0500 55)                 {% endfor %}
+d17ffc40 (juliasteed     2022-11-14 18:40:55 -0500 56)             {% endif %}
+d17ffc40 (juliasteed     2022-11-14 18:40:55 -0500 57)         {% endwith %}
+d17ffc40 (juliasteed     2022-11-14 18:40:55 -0500 58)
+
+- project_template/website/templates/password_reset.html
+d17ffc40 (juliasteed 2022-11-14 18:40:55 -0500 13)         <link rel="stylesheet" href="../static/css/navbar.css">
+d17ffc40 (juliasteed 2022-11-14 18:40:55 -0500 26)         <nav>
+d17ffc40 (juliasteed 2022-11-14 18:40:55 -0500 27)             <div class="navheading">
+d17ffc40 (juliasteed 2022-11-14 18:40:55 -0500 28)                 <h4>Trip Planner</h4>
+d17ffc40 (juliasteed 2022-11-14 18:40:55 -0500 30)             <ul class="nav-links">
+d17ffc40 (juliasteed 2022-11-14 18:40:55 -0500 31)                 <li><a href="/">Home</a></li>
+d17ffc40 (juliasteed 2022-11-14 18:40:55 -0500 32)                 <li><a href="/logout">Logout</a></li>
+d17ffc40 (juliasteed 2022-11-14 18:40:55 -0500 33)                 <li><a href="/profile">Profile</a></li>
+d17ffc40 (juliasteed 2022-11-14 18:40:55 -0500 34)             </ul>
+d17ffc40 (juliasteed 2022-11-14 18:40:55 -0500 35)         </nav>
+d17ffc40 (juliasteed 2022-11-14 18:40:55 -0500 36)         <!-- Error Messages -->
+d17ffc40 (juliasteed 2022-11-14 18:40:55 -0500 37)         {% with messages = get_flashed_messages(with_categories=true) %}
+d17ffc40 (juliasteed 2022-11-14 18:40:55 -0500 38)             {% if messages %}
+d17ffc40 (juliasteed 2022-11-14 18:40:55 -0500 39)                 {% for category, message in messages %}
+d17ffc40 (juliasteed 2022-11-14 18:40:55 -0500 40)                     {% if category == 'error' %}
+d17ffc40 (juliasteed 2022-11-14 18:40:55 -0500 41)                         <div class="alert alert-danger alter-dismissable fade show" role="alert">        
+d17ffc40 (juliasteed 2022-11-14 18:40:55 -0500 42)                         {{ message }}
+d17ffc40 (juliasteed 2022-11-14 18:40:55 -0500 43)                         <button type="button" class="m1-2 mb-1 close" data-dismiss="alert">
+d17ffc40 (juliasteed 2022-11-14 18:40:55 -0500 44)                             <span aria-hidden="true">&times;</span>
+d17ffc40 (juliasteed 2022-11-14 18:40:55 -0500 45)                         </button>
+d17ffc40 (juliasteed 2022-11-14 18:40:55 -0500 46)                         </div>
+d17ffc40 (juliasteed 2022-11-14 18:40:55 -0500 47)                     {% else %}
+d17ffc40 (juliasteed 2022-11-14 18:40:55 -0500 48)                         <div class="alert alert-success alter-dismissable fade show" role="alert">       
+d17ffc40 (juliasteed 2022-11-14 18:40:55 -0500 49)                         {{ message }}
+d17ffc40 (juliasteed 2022-11-14 18:40:55 -0500 50)                         <button type="button" class="m1-2 mb-1 close" data-dismiss="alert">
+d17ffc40 (juliasteed 2022-11-14 18:40:55 -0500 51)                             <span aria-hidden="true">&times;</span>
+d17ffc40 (juliasteed 2022-11-14 18:40:55 -0500 52)                         </button>
+d17ffc40 (juliasteed 2022-11-14 18:40:55 -0500 53)                         </div>
+d17ffc40 (juliasteed 2022-11-14 18:40:55 -0500 54)                     {% endif %}
+d17ffc40 (juliasteed 2022-11-14 18:40:55 -0500 55)                 {% endfor %}
+d17ffc40 (juliasteed 2022-11-14 18:40:55 -0500 56)             {% endif %}
+d17ffc40 (juliasteed 2022-11-14 18:40:55 -0500 57)         {% endwith %}
+
+- project_template/website/templates/sign_up.html
+d17ffc40 (juliasteed     2022-11-14 18:40:55 -0500  43)         <!-- Error Messages -->
+d17ffc40 (juliasteed     2022-11-14 18:40:55 -0500  44)         {% with messages = get_flashed_messages(with_categories=true) %}
+d17ffc40 (juliasteed     2022-11-14 18:40:55 -0500  45)             {% if messages %}
+d17ffc40 (juliasteed     2022-11-14 18:40:55 -0500  46)                 {% for category, message in messages %}
+d17ffc40 (juliasteed     2022-11-14 18:40:55 -0500  47)                     {% if category == 'error' %}
+d17ffc40 (juliasteed     2022-11-14 18:40:55 -0500  48)                         <div class="alert alert-danger alter-dismissable fade show" role="alert">   
+d17ffc40 (juliasteed     2022-11-14 18:40:55 -0500  49)                         {{ message }}
+d17ffc40 (juliasteed     2022-11-14 18:40:55 -0500  50)                         <button type="button" class="m1-2 mb-1 close" data-dismiss="alert">
+d17ffc40 (juliasteed     2022-11-14 18:40:55 -0500  51)                             <span aria-hidden="true">&times;</span>
+d17ffc40 (juliasteed     2022-11-14 18:40:55 -0500  52)                         </button>
+d17ffc40 (juliasteed     2022-11-14 18:40:55 -0500  53)                         </div>
+d17ffc40 (juliasteed     2022-11-14 18:40:55 -0500  54)                     {% else %}
+d17ffc40 (juliasteed     2022-11-14 18:40:55 -0500  55)                         <div class="alert alert-success alter-dismissable fade show" role="alert">  
+d17ffc40 (juliasteed     2022-11-14 18:40:55 -0500  56)                         {{ message }}
+d17ffc40 (juliasteed     2022-11-14 18:40:55 -0500  57)                         <button type="button" class="m1-2 mb-1 close" data-dismiss="alert">
+d17ffc40 (juliasteed     2022-11-14 18:40:55 -0500  58)                             <span aria-hidden="true">&times;</span>
+d17ffc40 (juliasteed     2022-11-14 18:40:55 -0500  59)                         </button>
+d17ffc40 (juliasteed     2022-11-14 18:40:55 -0500  60)                         </div>
+d17ffc40 (juliasteed     2022-11-14 18:40:55 -0500  61)                     {% endif %}
+d17ffc40 (juliasteed     2022-11-14 18:40:55 -0500  62)                 {% endfor %}
+d17ffc40 (juliasteed     2022-11-14 18:40:55 -0500  63)             {% endif %}
+d17ffc40 (juliasteed     2022-11-14 18:40:55 -0500  64)         {% endwith %}
+d17ffc40 (juliasteed     2022-11-14 18:40:55 -0500  65)
+
+- project_template/website/templates/trip_summary.html
+d17ffc40 (juliasteed     2022-11-14 18:40:55 -0500  27)     <!-- Error Messages -->
+d17ffc40 (juliasteed     2022-11-14 18:40:55 -0500  28)     {% with messages = get_flashed_messages(with_categories=true) %}
+d17ffc40 (juliasteed     2022-11-14 18:40:55 -0500  29)         {% if messages %}
+d17ffc40 (juliasteed     2022-11-14 18:40:55 -0500  30)             {% for category, message in messages %}
+d17ffc40 (juliasteed     2022-11-14 18:40:55 -0500  31)                 {% if category == 'error' %}
+d17ffc40 (juliasteed     2022-11-14 18:40:55 -0500  32)                     <div class="alert alert-danger alter-dismissable fade show" role="alert">       
+d17ffc40 (juliasteed     2022-11-14 18:40:55 -0500  33)                     {{ message }}
+d17ffc40 (juliasteed     2022-11-14 18:40:55 -0500  34)                     <button type="button" class="m1-2 mb-1 close" data-dismiss="alert">
+d17ffc40 (juliasteed     2022-11-14 18:40:55 -0500  35)                         <span aria-hidden="true">&times;</span>
+d17ffc40 (juliasteed     2022-11-14 18:40:55 -0500  36)                     </button>
+d17ffc40 (juliasteed     2022-11-14 18:40:55 -0500  37)                     </div>
+d17ffc40 (juliasteed     2022-11-14 18:40:55 -0500  38)                 {% else %}
+d17ffc40 (juliasteed     2022-11-14 18:40:55 -0500  39)                     <div class="alert alert-success alter-dismissable fade show" role="alert">      
+d17ffc40 (juliasteed     2022-11-14 18:40:55 -0500  40)                     {{ message }}
+d17ffc40 (juliasteed     2022-11-14 18:40:55 -0500  41)                     <button type="button" class="m1-2 mb-1 close" data-dismiss="alert">
+d17ffc40 (juliasteed     2022-11-14 18:40:55 -0500  42)                         <span aria-hidden="true">&times;</span>
+d17ffc40 (juliasteed     2022-11-14 18:40:55 -0500  43)                     </button>
+d17ffc40 (juliasteed     2022-11-14 18:40:55 -0500  44)                     </div>
+d17ffc40 (juliasteed     2022-11-14 18:40:55 -0500  45)                 {% endif %}
+d17ffc40 (juliasteed     2022-11-14 18:40:55 -0500  46)             {% endfor %}
+d17ffc40 (juliasteed     2022-11-14 18:40:55 -0500  47)         {% endif %}
+d17ffc40 (juliasteed     2022-11-14 18:40:55 -0500  48)     {% endwith %}
+
+- project_template/website/templates/username_reset.html
+d17ffc40 (juliasteed 2022-11-14 18:40:55 -0500 13)         <link rel="stylesheet" href="../static/css/navbar.css">
+d17ffc40 (juliasteed 2022-11-14 18:40:55 -0500 26)         <nav>
+d17ffc40 (juliasteed 2022-11-14 18:40:55 -0500 27)             <div class="navheading">
+d17ffc40 (juliasteed 2022-11-14 18:40:55 -0500 28)                 <h4>Trip Planner</h4>
+d17ffc40 (juliasteed 2022-11-14 18:40:55 -0500 30)             <ul class="nav-links">
+d17ffc40 (juliasteed 2022-11-14 18:40:55 -0500 31)                 <li><a href="/">Home</a></li>
+d17ffc40 (juliasteed 2022-11-14 18:40:55 -0500 32)                 <li><a href="/logout">Logout</a></li>
+d17ffc40 (juliasteed 2022-11-14 18:40:55 -0500 33)                 <li><a href="/profile">Profile</a></li>
+d17ffc40 (juliasteed 2022-11-14 18:40:55 -0500 34)             </ul>
+d17ffc40 (juliasteed 2022-11-14 18:40:55 -0500 35)         </nav>
+d17ffc40 (juliasteed 2022-11-14 18:40:55 -0500 36)         <!-- Error Messages -->
+d17ffc40 (juliasteed 2022-11-14 18:40:55 -0500 37)         {% with messages = get_flashed_messages(with_categories=true) %}
+d17ffc40 (juliasteed 2022-11-14 18:40:55 -0500 38)             {% if messages %}
+d17ffc40 (juliasteed 2022-11-14 18:40:55 -0500 39)                 {% for category, message in messages %}
+d17ffc40 (juliasteed 2022-11-14 18:40:55 -0500 40)                     {% if category == 'error' %}
+d17ffc40 (juliasteed 2022-11-14 18:40:55 -0500 41)                         <div class="alert alert-danger alter-dismissable fade show" role="alert">        
+d17ffc40 (juliasteed 2022-11-14 18:40:55 -0500 42)                         {{ message }}
+d17ffc40 (juliasteed 2022-11-14 18:40:55 -0500 43)                         <button type="button" class="m1-2 mb-1 close" data-dismiss="alert">
+d17ffc40 (juliasteed 2022-11-14 18:40:55 -0500 44)                             <span aria-hidden="true">&times;</span>
+d17ffc40 (juliasteed 2022-11-14 18:40:55 -0500 45)                         </button>
+d17ffc40 (juliasteed 2022-11-14 18:40:55 -0500 46)                         </div>
+d17ffc40 (juliasteed 2022-11-14 18:40:55 -0500 47)                     {% else %}
+d17ffc40 (juliasteed 2022-11-14 18:40:55 -0500 48)                         <div class="alert alert-success alter-dismissable fade show" role="alert">       
+d17ffc40 (juliasteed 2022-11-14 18:40:55 -0500 49)                         {{ message }}
+d17ffc40 (juliasteed 2022-11-14 18:40:55 -0500 50)                         <button type="button" class="m1-2 mb-1 close" data-dismiss="alert">
+d17ffc40 (juliasteed 2022-11-14 18:40:55 -0500 51)                             <span aria-hidden="true">&times;</span>
+d17ffc40 (juliasteed 2022-11-14 18:40:55 -0500 52)                         </button>
+d17ffc40 (juliasteed 2022-11-14 18:40:55 -0500 53)                         </div>
+d17ffc40 (juliasteed 2022-11-14 18:40:55 -0500 54)                     {% endif %}
+d17ffc40 (juliasteed 2022-11-14 18:40:55 -0500 55)                 {% endfor %}
+d17ffc40 (juliasteed 2022-11-14 18:40:55 -0500 56)             {% endif %}
+d17ffc40 (juliasteed 2022-11-14 18:40:55 -0500 57)         {% endwith %}
+
+- project_template/website/templates/home.html
+02dbb2a6 (juliasteed     2022-11-14 19:32:37 -0500  55)                         <h1 id="title_introduction">Create your next adventure</h1>
+02dbb2a6 (juliasteed     2022-11-14 19:32:37 -0500  56)                         <h3 id="title_details">Making quick and easy outdoor trip organization possible so our users can spend more time enjoying nature than planning for it</h1>
+02dbb2a6 (juliasteed     2022-11-14 19:32:37 -0500  82)                         <h3 style="font-weight: bold;">We do the hard work</h3>
+02dbb2a6 (juliasteed     2022-11-14 19:32:37 -0500  83)                         <p style="color: #8f8f8f;">Our software considers every angle so that you don't have to</p>
+02dbb2a6 (juliasteed     2022-11-14 19:32:37 -0500  87)                         <h3 style="font-weight: bold;">Interactive</h3>
+02dbb2a6 (juliasteed     2022-11-14 19:32:37 -0500  92)                         <h3 style="font-weight: bold;">Customizable</h3>
+02dbb2a6 (juliasteed     2022-11-14 19:32:37 -0500 109)                                 <li>Trip suggestions</li>
+02dbb2a6 (juliasteed     2022-11-14 19:32:37 -0500 110)                                 <li>Menu suggestions</li>
+02dbb2a6 (juliasteed     2022-11-14 19:32:37 -0500 111)                                 <li>Autofilled grocery lists</li>
+02dbb2a6 (juliasteed     2022-11-14 19:32:37 -0500 121)                                 <li>Unique profiles</li>
+02dbb2a6 (juliasteed     2022-11-14 19:32:37 -0500 122)                                 <li>Add friends</li>
+02dbb2a6 (juliasteed     2022-11-14 19:32:37 -0500 123)                                 <li>Accessible to anyone</li>
+02dbb2a6 (juliasteed     2022-11-14 19:32:37 -0500 133)                                 <li>Custom trip types</li>
+02dbb2a6 (juliasteed     2022-11-14 19:32:37 -0500 134)                                 <li>Custom gear items</li>
+02dbb2a6 (juliasteed     2022-11-14 19:32:37 -0500 135)                                 <li>Custom meals</li>
+d6735a0b (juliasteed     2022-11-16 11:06:07 -0500  88)                         <p style="color: #8f8f8f;">Connect with other nature lovers from around the 
+world</p>
+d6735a0b (juliasteed     2022-11-16 11:06:07 -0500  93)                         <p style="color: #8f8f8f;">Incorporate your unique ideas and needs into our 
+framework</p>
