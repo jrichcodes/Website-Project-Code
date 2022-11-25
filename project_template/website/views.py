@@ -11,7 +11,7 @@ from flask_sqlalchemy import SQLAlchemy
 from . import time_till
 from . import friendsfuncs
 import uuid
-from .general import ret_location, get_json
+from .general import ret_location, get_json, get_recipes
 
 views = Blueprint('views', __name__)
 
@@ -147,6 +147,20 @@ def suggestions():
     continent = request.args.get('continent', "")
     data = get_json()
     return render_template("trip_suggestions.html", data=data, place=continent)
+
+@views.route('/recipes', methods=['GET', 'POST'])
+def recipes():
+    data = get_recipes()
+    return render_template("recipes.html", data=data)
+
+@views.route('/single-recipe', methods=['GET','POST'])
+def single_recipe():
+    recipe_in = request.args.get('recipe', "")
+    data = get_recipes()
+    for recipe in data:
+        if recipe['name'] == recipe_in:
+            recipe_out = recipe
+    return render_template("single-recipe.html", recipe = recipe_out)
     
 @views.route('/delete-gearitem', methods=['POST'])
 def delete_gearitem():

@@ -58,6 +58,7 @@ nav ul li{
     background: #fafafa;
     border-right: 2px;
     border-left: 2px;
+    height: 30%;
 }
 
 .card__content > p:first-of-type {

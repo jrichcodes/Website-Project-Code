@@ -24,108 +24,25 @@
         </ul>
     </nav>
     <div class="cards">
-        <div class="card">
-          <img class="card__image" src="https://www.freshoffthegrid.com/wp-content/uploads/2017/01/Campfire-Nachos-Dutch-Oven-Camping-Recipe-6.jpg.webp" alt="">
-          <div class="card__content">
-            <h2>Campfire Nachos</h2>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos ducimus id ab tenetur delectus reiciendis fugit autem qui at.
-            </p>
-            <p>
-              Alias itaque praesentium eum, pariatur consequatur ducimus asperiores accusantium velit minima?
-            </p>
-          </div>
-          <div class="card__info">
-            <div>
-              <a href="./" class="card__link">View Recipe</a>
-            </div>
-          </div>
-        </div>
-        <div class="card">
-          <img class="card__image" src="https://www.freshoffthegrid.com/wp-content/uploads/Curried-Chickpeas-Camping-Recipe.jpg" alt="">
-          <div class="card__content">
-            <h2>Easy Chickpea Curry</h2>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos ducimus id ab tenetur delectus reiciendis fugit autem qui at.
-            </p>
-            <p>
-              Alias itaque praesentium eum, pariatur consequatur ducimus asperiores accusantium velit minima?
-            </p>
-          </div>
-          <div class="card__info">
-            <div>
-              <a href="./" class="card__link">View Recipe</a>
-            </div>
-          </div>
-        </div>
-        <div class="card">
-          <img class="card__image" src="https://www.freshoffthegrid.com/wp-content/uploads/2017/01/Camping-Breakfast-Idea-Sausage-Egg-and-Cheese-Sandwiches-4.jpg.webp" alt="">
-          <div class="card__content">
-            <h2>Sauage Breakfast Sandwiches</h2>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos ducimus id ab tenetur delectus reiciendis fugit autem qui at.
-            </p>
-            <p>
-              Alias itaque praesentium eum, pariatur consequatur ducimus asperiores accusantium velit minima?
-            </p>
-          </div>
-          <div class="card__info">
-            <div>
-              <a href="./" class="card__link">View Recipe</a>
-            </div>
-          </div>
-        </div>
-        <div class="card">
-          <img class="card__image" src="https://www.freshoffthegrid.com/wp-content/uploads/maple-trail-mix-sweet-gluten-free.jpg" alt="">
-          <div class="card__content">
-            <h2>Trail Mix</h2>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos ducimus id ab tenetur delectus reiciendis fugit autem qui at.
-            </p>
-            <p>
-              Alias itaque praesentium eum, pariatur consequatur ducimus asperiores accusantium velit minima?
-            </p>
-          </div>
-          <div class="card__info">
-            <div>
-              <a href="./" class="card__link">View Recipe</a>
-            </div>
-          </div>
-        </div>
-        <div class="card">
-          <img class="card__image" src="https://www.freshoffthegrid.com/wp-content/uploads/2017/07/banana-bread-pancakes-2.jpg" alt="">
-          <div class="card__content">
-            <h2>Banana Bread Pancakes</h2>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos ducimus id ab tenetur delectus reiciendis fugit autem qui at.
-            </p>
-            <p>
-              Alias itaque praesentium eum, pariatur consequatur ducimus asperiores accusantium velit minima?
-            </p>
-          </div>
-          <div class="card__info">
-            <div>
-              <a href="./" class="card__link">View Recipe</a>
-            </div>
-          </div>
-        </div>
-        <div class="card">
-            <img class="card__image" src="https://www.freshoffthegrid.com/wp-content/uploads/one-pot-pasta-primavera-camping-recipe-12.jpg" alt="">
+      {% for recipe in data %}
+          <div class="card">
+            <img loading="lazy" class="card__image" src= "../static/images/recipes/{{recipe.image}}" alt="">
             <div class="card__content">
-                <h2>One Pot Pasta Primarera</h2>
+              <h2>{{recipe.name}}</h2>
               <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos ducimus id ab tenetur delectus reiciendis fugit autem qui at.
-              </p>
-              <p>
-                Alias itaque praesentium eum, pariatur consequatur ducimus asperiores accusantium velit minima?
+                {{recipe.description}}
               </p>
             </div>
             <div class="card__info">
               <div>
-                <a href="./" class="card__link">View Recipe</a>
+                <a href="{{url_for('views.single_recipe', recipe = recipe.name)}}" class="card__link">View Recipe</a>
               </div>
             </div>
           </div>
+        {% endfor %}
       </div>
+      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </body>
 </html>
