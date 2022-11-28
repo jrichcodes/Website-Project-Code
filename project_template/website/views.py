@@ -17,7 +17,10 @@ views = Blueprint('views', __name__)
 
 @views.route('/', methods=['GET', 'POST'])
 def home():
-    return render_template("home.html")
+    if current_user.is_authenticated:
+        return render_template("home.html", check = 1)
+    else: 
+        return render_template("home.html", check = 0)
 
 @views.route('events', methods=['GET', 'POST'])
 @login_required
@@ -57,7 +60,7 @@ def events():
 
     return render_template("events.html", user=current_user, time_till=time_till.count_time, continent=continent, name=name, description=description)
 
-@views.route('friends', methods=['GET', 'POST'])
+@views.route('/friends', methods=['GET', 'POST'])
 @login_required
 def friends():
     if request.method == 'POST':
