@@ -28,7 +28,7 @@
         <aside>
     
             <img src="../static/images/recipes/{{recipe.image}}" alt="" />
-            <a href="#" class="button">+</a>
+            <a href="{{url_for('views.menu', name = recipe.name, desc = recipe.description, menuType = recipe.type, num_servings = recipe.servings)}} " class="button">Add</a>
     
         </aside>
     

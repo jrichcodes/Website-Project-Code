@@ -126,6 +126,11 @@ def profile():
 @views.route('menu', methods=['GET', 'POST'])
 @login_required
 def menu():
+    name = request.args.get('name', "")
+    desc = request.args.get('desc', "")
+    menuType = request.args.get('menuType', "")
+    num_servings = request.args.get('num_servings', "")
+
     if request.method == 'POST':
         if request.form['submit_button'] == 'create meal':
             name_in = request.form.get('name')
@@ -140,7 +145,7 @@ def menu():
                 db.session.commit()
                 flash('Meal added!', category='success')
 
-    return render_template("menu.html", user=current_user)
+    return render_template("menu.html", user=current_user, name=name, desc=desc, menuType=menuType, num_servings=num_servings)
 
 @views.route('suggestions', methods=['GET', 'POST'])
 def suggestions():
