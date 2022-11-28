@@ -1,0 +1,57 @@
+<html>
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name = "viewpport" content="width=device-width, inital-scale=1.0">
+
+    <!-- Custom Stylesheets-->
+    <link rel="stylesheet" href="../static/css/single-recipe.css">
+    <link rel="stylesheet" href="../static/css/navbar.css">
+    <link href="https://fonts.googleapis.com/css2?
+    family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+    <title>Trip Planner</title>
+</head>
+<body>
+    <nav>
+        <div class="navheading">
+            <h4>Trip Planner</h4>
+        </div>
+        <ul class="nav-links">
+            <li><a href="/">Home</a></li>
+            <li><a href="/logout">Logout</a></li>
+            <li><a href="/profile">Profile</a></li>
+        </ul>
+    </nav>
+    <div class="recipe-card">
+
+        <aside>
+    
+            <img src="../static/images/recipes/{{recipe.image}}" alt="" />
+            <a href="{{url_for('views.menu', name = recipe.name, desc = recipe.description, menuType = recipe.type, num_servings = recipe.servings)}} " class="button">Add</a>
+    
+        </aside>
+    
+        <article>
+    
+            <h2>{{recipe.name}}</h2>
+            <h3>{{recipe.type}}</h3>
+    
+            <ul>
+                <li><span class="icon icon-users"></span><span>{{recipe.servings}}</span></li>
+                <li><span class="icon icon-clock"></span><span>{{recipe.time}}</span></li>
+            <p>{{recipe.description}}</p>
+            <p>Instructions:</p>
+            {%for instruction in recipe.instructions%}
+                <p>{{instruction.name}}</p>
+            {%endfor %}
+            <p class="ingredients"><span>Ingredients:&nbsp;</span>
+                {%for ingredient in recipe.ingredients%}
+                {{ingredient.name}},
+                {%endfor%}
+            </p>
+    
+        </article>
+    </div>
+</body>
+</html>

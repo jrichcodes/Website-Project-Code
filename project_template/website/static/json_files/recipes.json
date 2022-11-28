@@ -1,0 +1,386 @@
+[
+    {
+        "name": "Campfire Nachos",
+        "description": "A beloved happy hour classic, now being served at a campground near you. What better way to end the day outside than with a cold beer, warm campfire, and a big plate full of cheesy nachos?",
+        "image": "Campfire-Nachos.jpg",
+        "type": "snack",
+        "time": 15,
+        "servings": 4,
+        "ingredients": [
+            {
+                "name": "oil",
+                "amount": 1
+            },
+            {
+                "name": "tortilla chips",
+                "amount": 1
+            },
+            {
+                "name": "hot tomato sauce",
+                "amount": 1
+            },
+            {
+                "name": "shredded Mexican cheese blend",
+                "amount": 1
+            },
+            {
+                "name": "black beans",
+                "amount": 1
+            },
+            {
+                "name": "avocado",
+                "amount": 1
+            },
+            {
+                "name": "green onions",
+                "amount": 4
+            },
+            {
+                "name": "cilantro",
+                "amount": 1
+            },
+            {
+                "name": "lime",
+                "amount": 1
+            }
+        ],
+        "instructions" : [
+            {
+                "name": "Lightly oil the bottom of a large dutch oven, to prevent the nachos from sticking."
+            },
+            {
+                "name": "For the first layer, evenly spread 1/3 of the chips into the dutch oven, topped with 1/4 can El Pato, 1/4 can black beans, 1/4 cup cheese, and a handful of avocado, green onions, and cilantro. Repeat for the second layer."
+            },
+            {
+                "name": "For the third and final layer, use the remaining 1/3 portion of chips, 1/2 can El Pato, 1/2 can black beans, 1/2  cup cheese, and the remaining avocado, onion, and cilantro."
+            },
+            {
+                "name": "Cover the dutch oven and place on a metal grill over your campfire for about 10 minutes, until the cheese has melted. Serve with the lime wedges."
+            }
+        ]
+    },
+    {
+        "name": "Easy Chickpea Curry",
+        "description": "Packed with plant-based protein, completely filling, and loaded with flavor, these curried chickpeas with coconut milk continues to be a recurring camping favorite.",
+        "image": "Chickpea-Curry.jpg",
+        "type": "dinner",
+        "time": 25,
+        "servings": 4,
+        "ingredients": [
+            {
+                "name": "oil",
+                "amount": 1
+            },
+            {
+                "name": "onion",
+                "amount": 1
+            },
+            {
+                "name": "Garam Masala",
+                "amount": 1
+            },
+            {
+                "name": "cinnamon",
+                "amount": 1
+            },
+            {
+                "name": "ginger",
+                "amount": 1
+            },
+            {
+                "name": "turmeric",
+                "amount": 1
+            },
+            {
+                "name": "pepper",
+                "amount": 4
+            },
+            {
+                "name": "salt",
+                "amount": 1
+            },
+            {
+                "name": "tomato paste",
+                "amount": 1
+            },
+            {
+                "name": "coconut milk",
+                "amount": 1
+            },
+            {
+                "name": "chickpeas",
+                "amount": 1
+            },
+            {
+                "name": "lime",
+                "amount": 1
+            },
+            {
+                "name": "cilantro",
+                "amount": 1
+            },
+            {
+                "name": "yogurt",
+                "amount": 1
+            }
+        ],
+        "instructions" : [
+            {
+                "name": "Heat the oil or ghee in a pot over medium heat and add the onions, sauteing until translucent but not browning."
+            },
+            {
+                "name": "Add the Garam Masala, turmeric, ground ginger, cinnamon, and cayenne, and stir briefly toast the spices so they become fragrant."
+            },
+            {
+                "name": "Add the coconut milk, tomato paste, and salt. Stir until the tomato paste is completely blended into the coconut milk, then add the chickpeas."
+            },
+            {
+                "name": "Cook over medium to med-low heat, stirring frequently until the sauce thickens to your liking – 10 or 15 minutes."
+            },
+            {
+                "name": "Serve the chickpea curry with a squeeze of lime, a dollop of yogurt (optional), and garnish with plenty of cilantro."
+            }
+        ]
+    },
+    {
+        "name": "Sausage Breakfast Sandwiches",
+        "description": "These sweet & spicy breakfast sandwiches are the perfect in-hand meal to get your morning started off right.",
+        "image": "Camping-Breakfast.jpg",
+        "type": "breakfast",
+        "time": 15,
+        "servings": 6,
+        "ingredients": [
+            {
+                "name": "ground pork",
+                "amount": 1
+            },
+            {
+                "name": "salt",
+                "amount": 1
+            },
+            {
+                "name": "honey",
+                "amount": 1
+            },
+            {
+                "name": "sriracha",
+                "amount": 1
+            },
+            {
+                "name": "eggs",
+                "amount": 6
+            },
+            {
+                "name": "slices cheese",
+                "amount": 6
+            },
+            {
+                "name": "english muffins",
+                "amount": 6
+            }
+        ],
+        "instructions" : [
+            {
+                "name": "PREP THE SAUSAGES: Mix the ground pork, herbs, and salt in a large bowl until thoroughly combined. Form into 6 equal sized patties, keeping in mind that they will shrink slightly while cooking."
+            },
+            {
+                "name": "PREP THE SAUCE: Combine the honey and sriracha in a small bowl and stir together. Set aside."
+            },
+            {
+                "name": "COOK: Heat a griddle or skillet over your campfire or stove top. Once hot, place the sausages on the surface and cook until browned, 2-3 minutes. Flip and cook the other side until browned, 2-3 minutes more. Meanwhile, cook the eggs as desired and toast the English muffins."
+            },
+            {
+                "name": "ASSEMBLE & SERVE: Spread the Sriracha honey sauce on the English muffins, then layer with a sausage patty, egg, and slice of cheese. Serve & enjoy!"
+            }
+        ]
+    },
+    {
+        "name": "One Pot Pasta Primavera",
+        "description": "This one-pot pasta dish captures the freshness and excitement of spring camping. Loaded with veggies and tangy goat cheese, this Pasta Primavera is a quick and easy meal to throw together at the end of the day.",
+        "image": "pasta-primavera.jpg",
+        "type": "dinner",
+        "time": 25,
+        "servings": 2,
+        "ingredients": [
+            {
+                "name": "zucchini",
+                "amount": 1
+            },
+            {
+                "name": "summer squash",
+                "amount": 1
+            },
+            {
+                "name": "cherry tomatoes",
+                "amount": 1
+            },
+            {
+                "name": "garlic",
+                "amount": 1
+            },
+            {
+                "name": "oil",
+                "amount": 1
+            },
+            {
+                "name": "pasta",
+                "amount": 1
+            },
+            {
+                "name": "salt",
+                "amount": 1
+            },
+            {
+                "name": "goat cheese",
+                "amount": 1
+            },
+            {
+                "name": "lemon juice",
+                "amount": 1
+            }
+        ],
+        "instructions" : [
+            {
+                "name": "Slice the zucchini and squash into ¼ inch slices. Cut the cherry tomatoes in half. Mince the garlic."
+            },
+            {
+                "name": "Slice the zucchini and squash into ¼ inch slices. Cut the cherry tomatoes in half. Mince the garlic."
+            },
+            {
+                "name": "Add the pasta, salt, and just enough water to cover the pasta to the skillet. Bring the water to a boil over medium heat and cook until the pasta is tender, about 10 minutes (this time may vary depending on the pasta you use). Be sure to stir frequently to ensure even cooking. If the water boils off before the pasta is tender, you can always add a bit more. Once the pasta has cooked through, remove the skillet from the heat."
+            },
+            {
+                "name": "Stir in the goat cheese to coat the pasta. Add the vegetables back to the skillet and stir to combine. Finish with a squeeze of lemon, serve & enjoy!"
+            }
+        ]
+    },
+    {
+        "name": "Sweet and Spicy Sriracha Trail Mix",
+        "description": "Blending the sweetness of honey, the spice of sriracha, and a savory-salty pop, this quick and easy trail mix brings together a trifecta of flavors to make a highly-cravable trail snack.",
+        "image": "trail-mix.jpg",
+        "type": "snack",
+        "time": 21,
+        "servings": 6.5,
+        "ingredients": [
+            {
+                "name": "cashews",
+                "amount": 1
+            },
+            {
+                "name": "peanuts",
+                "amount": 1
+            },
+            {
+                "name": "corn Chex cereal",
+                "amount": 1
+            },
+            {
+                "name": "pretzels",
+                "amount": 1
+            },
+            {
+                "name": "honey",
+                "amount": 1
+            },
+            {
+                "name": "Sriracha",
+                "amount": 1
+            },
+            {
+                "name": "oil",
+                "amount": 1
+            },
+            {
+                "name": "liquid aminos",
+                "amount": 1
+            },
+            {
+                "name": "salt",
+                "amount": 1
+            }
+        ],
+        "instructions" : [
+            {
+                "name": "Preheat the oven to 300."
+            },
+            {
+                "name": "Add the Sriracha, honey, oil, and liquid aminos/soy sauce to a medium bowl. Whisk to combine. Add the Chex, pretzels, cashews, and peanuts to the bowl, and mix well to completely coat with the Sriracha-honey sauce."
+            },
+            {
+                "name": "Spread mix onto a parchment paper-lined baking sheet and sprinkle with salt."
+            },
+            {
+                "name": "Bake for about 18 minutes (check after 15 to make sure the mix is not burning - ovens may vary), then remove from the oven to cool."
+            },
+            {
+                "name": "Once cool, portion into zip-top bags."
+            }
+        ]
+    },
+    {
+        "name": "Banana Bread Pancakes",
+        "description": "Add some banana, walnuts, and a scoop of brown sugar and you can turn your ordinary pancakes into delicious, perfectly sweet Banana Bread Pancakes.",
+        "image": "Banana-Bread-Pancakes.jpg",
+        "type": "breakfast",
+        "time": 30,
+        "servings": 4,
+        "ingredients": [
+            {
+                "name": "bananas",
+                "amount": 3
+            },
+            {
+                "name": "eggs",
+                "amount": 1
+            },
+            {
+                "name": "whole milk",
+                "amount": 1
+            },
+            {
+                "name": "flour",
+                "amount": 1
+            },
+            {
+                "name": "brown sugar",
+                "amount": 1
+            },
+            {
+                "name": "cinnamon",
+                "amount": 1
+            },
+            {
+                "name": "baking powder",
+                "amount": 1
+            },
+            {
+                "name": "salt",
+                "amount": 1
+            },
+            {
+                "name": "walnuts",
+                "amount": 1
+            }
+        ],
+        "instructions" : [
+            {
+                "name": "Add the flour, brown sugar, cinnamon, baking powder, and salt to a sealable bag or container and pack along with the rest of the ingredients."
+            },
+            {
+                "name": "Place two bananas in a medium bowl and mash thoroughly with the back of a fork until fairly smooth. Crack the egg into the mixture and add in the milk. Beat the banana, egg, and milk together until smooth."
+            },
+            {
+                "name": "Add the dry ingredients to the bowl and mix until well combined with the wet ingredients. Don't overmix - some small lumps are OK. If the batter seems too thick, you can add an additional 1/4 cup milk."
+            },
+            {
+                "name": "Heat a nonstick pan or well-seasoned cast iron skillet on your stove over medium-low to medium heat. Add a generous dab of ghee, butter, or coconut oil (especially if using cast iron!) and swirl to coat the pan. Pour 1/3 cup of the pancake batter into the center of the skillet and scatter some of the chopped walnuts on top. Cook for a few minutes until the top begins to bubble and the sides are set (2-3 minutes). Using a spatula, flip the pancake and cook the other side until golden."
+            },
+            {
+                "name": "Repeat with the rest of the batter, adding more ghee or oil to the pan for each pancake as needed."
+            },
+            {
+                "name": "To serve, stack the pancakes and top with maple syrup or butter, sliced banana, and additional toasted walnuts. Enjoy!"
+            }
+        ]
+    }
+]
