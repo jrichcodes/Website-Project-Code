@@ -15,7 +15,7 @@ Some other convenient features of trip planner include:
 - Scheduling tools
 - Mapping tools
 - Meal planning
-- Grocery shopping aid
+- Grocery shopping list
 - Ability to friend other users
 
 ## Graphics
