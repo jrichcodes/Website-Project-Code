@@ -11,13 +11,16 @@ from flask_sqlalchemy import SQLAlchemy
 from . import time_till
 from . import friendsfuncs
 import uuid
-from .general import ret_location, get_json
+from .general import ret_location, get_json, get_recipes
 
 views = Blueprint('views', __name__)
 
 @views.route('/', methods=['GET', 'POST'])
 def home():
-    return render_template("home.html")
+    if current_user.is_authenticated:
+        return render_template("home.html", check = 1)
+    else: 
+        return render_template("home.html", check = 0)
 
 @views.route('events', methods=['GET', 'POST'])
 @login_required
@@ -57,7 +60,7 @@ def events():
 
     return render_template("events.html", user=current_user, time_till=time_till.count_time, continent=continent, name=name, description=description)
 
-@views.route('friends', methods=['GET', 'POST'])
+@views.route('/friends', methods=['GET', 'POST'])
 @login_required
 def friends():
     if request.method == 'POST':
@@ -126,6 +129,11 @@ def profile():
 @views.route('menu', methods=['GET', 'POST'])
 @login_required
 def menu():
+    name = request.args.get('name', "")
+    desc = request.args.get('desc', "")
+    menuType = request.args.get('menuType', "")
+    num_servings = request.args.get('num_servings', "")
+
     if request.method == 'POST':
         if request.form['submit_button'] == 'create meal':
             name_in = request.form.get('name')
@@ -140,13 +148,27 @@ def menu():
                 db.session.commit()
                 flash('Meal added!', category='success')
 
-    return render_template("menu.html", user=current_user)
+    return render_template("menu.html", user=current_user, name=name, desc=desc, menuType=menuType, num_servings=num_servings)
 
 @views.route('suggestions', methods=['GET', 'POST'])
 def suggestions():
     continent = request.args.get('continent', "")
     data = get_json()
     return render_template("trip_suggestions.html", data=data, place=continent)
+
+@views.route('/recipes', methods=['GET', 'POST'])
+def recipes():
+    data = get_recipes()
+    return render_template("recipes.html", data=data)
+
+@views.route('/single-recipe', methods=['GET','POST'])
+def single_recipe():
+    recipe_in = request.args.get('recipe', "")
+    data = get_recipes()
+    for recipe in data:
+        if recipe['name'] == recipe_in:
+            recipe_out = recipe
+    return render_template("single-recipe.html", recipe = recipe_out)
     
 @views.route('/delete-gearitem', methods=['POST'])
 def delete_gearitem():

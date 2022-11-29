@@ -19,33 +19,11 @@
         </div>
         <ul class="nav-links">
             <li><a href="/">Home</a></li>
-            <li><a href="/logout">Logout</a></li>
             <li><a href="/map">Map</a></li>
             <li><a href="/profile">Profile</a></li>
+            <li><a href="/logout">Logout</a></li>
         </ul>
     </nav>
-    <!-- Error Messages -->
-    {% with messages = get_flashed_messages(with_categories=true) %}
-        {% if messages %}
-            {% for category, message in messages %}
-                {% if category == 'error' %}
-                    <div class="alert alert-danger alter-dismissable fade show" role="alert">
-                    {{ message }}
-                    <button type="button" class="m1-2 mb-1 close" data-dismiss="alert">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                    </div>
-                {% else %}
-                    <div class="alert alert-success alter-dismissable fade show" role="alert">
-                    {{ message }}
-                    <button type="button" class="m1-2 mb-1 close" data-dismiss="alert">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                    </div>
-                {% endif %}
-            {% endfor %}
-        {% endif %}
-    {% endwith %}
     <div class="container">
             <div class="row">
                 <div class="col">
@@ -64,6 +42,7 @@
                         <div class="card">
                             <div class="card__content">
                                 <h5>Menu</h5>
+                                <a href="/recipes" class="button">Recipes</a>
                             </div>
                         </div>
                         <div class="card">
@@ -72,7 +51,8 @@
                                     {% for gear_items in gear_items %}
                                     <div class="box">
                                         <input type="checkbox">
-                                        <label>{{gear_items.name}}</label>
+                                        <label>{{gear_items.name}}--{{gear_items.quantity}}</label>
+
                                         <button type="button" onClick="deleteGearItem({{gear_items.id}}, {{trip.id}})">
                                             <span aria-hidden="true">&times;</span>
                                         </button>

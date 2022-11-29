@@ -1,0 +1,763 @@
+project_template/website/views.py
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 159) @views.route('/recipes', methods=['GET', 'POST'])
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 160) def recipes():
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 161)     data = get_recipes()
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 162)     return render_template("recipes.html", data=data)
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 163) 
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 164) @views.route('/single-recipe', methods=['GET','POST'])
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 165) def single_recipe():
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 166)     recipe_in = request.args.get('recipe', "")
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 167)     data = get_recipes()
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 168)     for recipe in data:
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 169)         if recipe['name'] == recipe_in:
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 170)             recipe_out = recipe
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 171)     return render_template("single-recipe.html", recipe = recipe_out)
+dc8f65f9 (Josephine Rich 2022-10-24 13:32:05 -0400 172)     
+48a35dd (Josephine Rich 2022-09-07 11:52:53 -0400  19) def home():
+acc9463b (Josephine Rich 2022-11-27 20:19:52 -0500  20)     if current_user.is_authenticated:
+acc9463b (Josephine Rich 2022-11-27 20:19:52 -0500  21)         return render_template("home.html", check = 1)
+acc9463b (Josephine Rich 2022-11-27 20:19:52 -0500  22)     else: 
+acc9463b (Josephine Rich 2022-11-27 20:19:52 -0500  23)         return render_template("home.html", check = 0)
+
+project_template/website/templates/recipes.html
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500  1) <html>
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500  2) <head>
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500  3)     <!-- Required meta tags -->
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500  4)     <meta charset="utf-8">
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500  5)     <meta name = "viewpport" content="width=device-width, inital-scale=1.0">
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500  6) 
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500  7)     <!-- Custom Stylesheets-->
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500  8)     <link rel="stylesheet" href="../static/css/recipes.css">
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500  9)     <link rel="stylesheet" href="../static/css/navbar.css">
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500 10)     <link href="https://fonts.googleapis.com/css2?
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500 11)     family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500 12) 
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500 13)     <title>Trip Planner</title>
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500 14) </head>
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500 15) <body>
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500 16)     <nav>
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500 17)         <div class="navheading">
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500 18)             <h4>Trip Planner</h4>
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500 19)         </div>
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500 20)         <ul class="nav-links">
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500 21)             <li><a href="/">Home</a></li>
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500 22)             <li><a href="/profile">Profile</a></li>
+acc9463b (Josephine Rich 2022-11-27 20:19:52 -0500 23)             <li><a href="/logout">Logout</a></li>
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500 24)         </ul>
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500 25)     </nav>
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500 26)     <div class="cards">
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 27)       {% for recipe in data %}
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 28)           <div class="card">
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 29)             <img loading="lazy" class="card__image" src= "../static/images/recipes/{{recipe.image}}" alt="">
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500 30)             <div class="card__content">
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 31)               <h2>{{recipe.name}}</h2>
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500 32)               <p>
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 33)                 {{recipe.description}}
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500 34)               </p>
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500 35)             </div>
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500 36)             <div class="card__info">
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500 37)               <div>
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 38)                 <a href="{{url_for('views.single_recipe', recipe = recipe.name)}}" class="card__link">View Recipe</a>
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500 39)               </div>
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500 40)             </div>
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500 41)           </div>
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 42)         {% endfor %}
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500 43)       </div>
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 44)       <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 45)       <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 46)       <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500 47) </body>
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500 48) </html>
+
+project_template/website/templates/single-recipe.html
+22-11-21 11:59:15 -0500  1) <html>
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500  2) <head>
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500  3)     <!-- Required meta tags -->
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500  4)     <meta charset="utf-8">
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500  5)     <meta name = "viewpport" content="width=device-width, inital-scale=1.0">
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500  6) 
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500  7)     <!-- Custom Stylesheets-->
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500  8)     <link rel="stylesheet" href="../static/css/single-recipe.css">
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500  9)     <link rel="stylesheet" href="../static/css/navbar.css">
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500 10)     <link href="https://fonts.googleapis.com/css2?
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500 11)     family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500 12) 
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500 13)     <title>Trip Planner</title>
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500 14) </head>
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500 15) <body>
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500 16)     <nav>
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500 17)         <div class="navheading">
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500 18)             <h4>Trip Planner</h4>
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500 19)         </div>
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500 20)         <ul class="nav-links">
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500 21)             <li><a href="/">Home</a></li>
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500 22)             <li><a href="/logout">Logout</a></li>
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500 23)             <li><a href="/profile">Profile</a></li>
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500 24)         </ul>
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500 25)     </nav>
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500 26)     <div class="recipe-card">
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500 27) 
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500 28)         <aside>
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500 29)     
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 30)             <img src="../static/images/recipes/{{recipe.image}}" alt="" />
+29079617 (Josephine Rich 2022-11-27 19:11:40 -0500 31)             <a href="{{url_for('views.menu', name = recipe.name, desc = recipe.description, menuType = recipe.type, num_servings = recipe.servings)}} " class="button">Add</a>
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500 32)     
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500 33)         </aside>
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500 34)     
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500 35)         <article>
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500 36)     
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 37)             <h2>{{recipe.name}}</h2>
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 38)             <h3>{{recipe.type}}</h3>
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500 39)     
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500 40)             <ul>
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 41)                 <li><span class="icon icon-users"></span><span>{{recipe.servings}}</span></li>
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 42)                 <li><span class="icon icon-clock"></span><span>{{recipe.time}}</span></li>
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 43)             <p>{{recipe.description}}</p>
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 44)             <p>Instructions:</p>
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 45)             {%for instruction in recipe.instructions%}
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 46)                 <p>{{instruction.name}}</p>
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 47)             {%endfor %}
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 48)             <p class="ingredients"><span>Ingredients:&nbsp;</span>
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 49)                 {%for ingredient in recipe.ingredients%}
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 50)                 {{ingredient.name}},
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 51)                 {%endfor%}
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 52)             </p>
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500 53)     
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500 54)         </article>
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500 55)     </div>
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500 56) </body>
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500 57) </html>
+
+project_template/website/static/css/single-recipe.css
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500   1) * {
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500   2)     -webkit-box-sizing: border-box;
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500   3)     -moz-box-sizing: border-box;
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500   4)     box-sizing: border-box;
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500   5)     margin: 0;
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500   6)     padding: 0;
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500   7)     font-family:'Montserrat', sans-serif
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500   8)   }
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500   9)   
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500  10) nav ul li{
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500  11)     list-style: none;
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500  12)     display: inline-block;
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500  13)     margin-left: 60px;
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500  14) }
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500  15) 
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500  16) html {
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500  17)     height: 100%;
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500  18) }
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500  19)   
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500  20) body {
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500  21)     background-color: #5CDB95;
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500  22)     font-family: "Open Sans", sans-serif;
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500  23)     font-size: 1rem;
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500  24) }
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500  25) 
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500  26) img {
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500  27)   max-width: 100%;
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500  28)   height: auto;
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500  29)   vertical-align: bottom;
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500  30) }
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500  31) 
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500  32) .recipe-card {
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500  33)   background: #fff;
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500  34)   margin: 4em auto;
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500  35)   width: 90%;
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500  36)   max-width: 496px;
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500  37)   border-top-left-radius: 5px;
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500  38)   border-top-right-radius: 5px;
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500  39)   border-bottom-left-radius: 5px;
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500  40)   border-bottom-right-radius: 5px;
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500  41) }
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500  42) .recipe-card aside {
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500  43)   position: relative;
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500  44) }
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500  45) .recipe-card aside img {
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500  46)   border-top-left-radius: 5px;
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500  47)   border-top-right-radius: 5px;
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500  48) }
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500  49) .recipe-card aside .button {
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500  50)   background: #57abf2;
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500  51)   display: inline-block;
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500  52)   position: absolute;
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500  53)   top: 80%;
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500  54)   right: 3%;
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500  55)   width: 4.0625em;
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500  56)   height: 4.0625em;
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500  57)   border-radius: 4.0625em;
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500  58)   line-height: 4.0625em;
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500  59)   text-align: center;
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500  60) }
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500  61) .recipe-card aside .button .icon {
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500  62)   vertical-align: middle;
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500  63) }
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500  64) .recipe-card article {
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500  65)   padding: 1.25em 1.5em;
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500  66) }
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500  67) .recipe-card article ul {
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500  68)   list-style: none;
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500  69)   margin: 0.5em 0 0;
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500  70)   padding: 0;
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500  71) }
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500  72) .recipe-card article ul li {
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500  73)   display: inline-block;
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500  74)   margin-left: 1em;
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500  75)   line-height: 1em;
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500  76) }
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500  77) .recipe-card article ul li:first-child {
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500  78)   margin-left: 0;
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500  79) }
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500  80) .recipe-card article ul li .icon {
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500  81)   vertical-align: bottom;
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500  82) }
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500  83) .recipe-card article ul li span:nth-of-type(2) {
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500  84)   margin-left: 0.5em;
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500  85)   font-size: 0.8em;
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500  86)   font-weight: 300;
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500  87)   vertical-align: middle;
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500  88)   color: #838689;
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500  89) }
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500  90) .recipe-card article h2, .recipe-card article h3 {
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500  91)   margin: 0;
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500  92)   font-weight: 300;
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500  93) }
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500  94) .recipe-card article h2 {
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500  95)   font-size: 1.75em;
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500  96)   color: #222222;
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500  97) }
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500  98) .recipe-card article h3 {
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500  99)   font-size: 0.9375em;
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 100)   color: #838689;
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 101) }
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 102) .recipe-card article p {
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 103)   margin: 1.25em 0;
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 104)   font-size: 0.8125em;
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 105)   font-weight: 400;
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 106)   color: #222222;
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 107) }
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 108) .recipe-card article p span {
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 109)   font-weight: 700;
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 110)   color: #000000;
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 111) }
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 112) .recipe-card article .ingredients {
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 113)   margin: 2em 0 0.5em;
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 114) }
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 115) .recipe-card .icon {
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 116)   display: inline;
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 117)   display: inline-block;
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 118)   background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/203277/recipe-card-icons.svg);
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 119)   background-repeat: no-repeat;
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 120) }
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 121) .recipe-card .icon-calories, .recipe-card .icon-calories\:regular {
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 122)   background-position: 0 0;
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 123)   width: 16px;
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 124)   height: 19px;
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 125) }
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 126) .recipe-card .icon-clock, .recipe-card .icon-clock\:regular {
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 127)   background-position: 0 -19px;
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 128)   width: 20px;
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 129)   height: 20px;
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 130) }
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 131) .recipe-card .icon-level, .recipe-card .icon-level\:regular {
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 132)   background-position: 0 -39px;
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 133)   width: 16px;
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 134)   height: 19px;
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 135) }
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 136) .recipe-card .icon-play, .recipe-card .icon-play\:regular {
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 137)   background-position: 0 -58px;
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 138)   width: 21px;
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 139)   height: 26px;
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 140) }
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 141) .recipe-card .icon-users, .recipe-card .icon-users\:regular {
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 142)   background-position: 0 -84px;
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 143)   width: 18px;
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 144)   height: 18px;
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 145) }
+
+project_template/website/static/css/recipes.css
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500  1) *{
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500  2)     margin: 0;
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500  3)     padding: 0;
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500  4)     font-family:'Montserrat', sans-serif
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500  5) }
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500  6) 
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500  7) body {
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500  8)     background-color: #5CDB95;
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500  9) }
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500 10) 
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500 11) nav ul li{
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500 12)     list-style: none;
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500 13)     display: inline-block;
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500 14)     margin-left: 60px;
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500 15) }
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500 16) 
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500 17) .card {
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500 18)     /* Add shadows to create the "card" effect */
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500 19)     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500 20)     transition: 0.3s;
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500 21)     width: 400px;
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500 22)   }
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500 23) 
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500 24) /* On mouse-over, add a deeper shadow */
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500 25) .card:hover {
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500 26)     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500 27) }
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500 28) 
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500 29) .cards {
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500 30)     margin: 0 auto;
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500 31)     max-width: 1500px;
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500 32)     display: grid;
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500 33)     grid-template-columns: repeat(auto-fill, minmax(375px, 1fr));
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500 34)     grid-auto-rows: auto;
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500 35)     gap: 20px;
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500 36)     font-family: sans-serif;
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500 37)     padding-top: 30px;
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500 38) }
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500 39) 
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500 40) .cards * {
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500 41)     box-sizing: border-box;
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500 42) }
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500 43) 
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500 44) .card__image {
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500 45)     width: 100%;
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500 46)     height: 300px;
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500 47)     object-fit: cover;
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500 48)     display: block;
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500 49)     border-top: 2px;
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500 50)     border-right: 2px;
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500 51)     border-left: 2px;
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500 52) }
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500 53) 
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500 54) .card__content {
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500 55)     line-height: 1.5;
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500 56)     font-size: 0.9em;
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500 57)     padding: 15px;
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500 58)     background: #fafafa;
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500 59)     border-right: 2px;
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500 60)     border-left: 2px;
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 61)     height: 30%;
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500 62) }
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500 63) 
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500 64) .card__content > p:first-of-type {
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500 65)     margin-top: 0;
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500 66) }
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500 67) 
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500 68) .card__content > p:last-of-type {
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500 69)     margin-bottom: 0;
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500 70) }
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500 71) 
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500 72) .card__info {
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500 73)     padding: 15px;
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500 74)     display: flex;
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500 75)     justify-content: space-between;
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500 76)     align-items: center;
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500 77)     color: #555555;
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500 78)     background: #eeeeee;
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500 79)     font-size: 0.8em;
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500 80)     border-bottom: 2px;
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500 81)     border-right: 2px;
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500 82)     border-left: 2px;
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500 83) }
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500 84) 
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500 85) .card__info i {
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500 86)     font-size: 0.9em;
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500 87)     margin-right: 8px;
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500 88) }
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500 89) 
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500 90) .card__link {
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500 91)     color: #64968c;
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500 92)     text-decoration: none;
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500 93) }
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500 94) 
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500 95) .card__link:hover {
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500 96)     text-decoration: underline;
+2ddd2edc (Josephine Rich 2022-11-21 11:59:15 -0500 97) }
+
+project_template/website/static/json_files/recipes.json
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500   1) [
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500   2)     {
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500   3)         "name": "Campfire Nachos",
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500   4)         "description": "A beloved happy hour classic, now being served at a campground near you. What better way to end the day outside than with a cold beer, warm campfire, and a big plate full of cheesy nachos?",
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500   5)         "image": "Campfire-Nachos.jpg",
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500   6)         "type": "snack",
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500   7)         "time": 15,
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500   8)         "servings": 4,
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500   9)         "ingredients": [
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500  10)             {
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500  11)                 "name": "oil",
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500  12)                 "amount": 1
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500  13)             },
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500  14)             {
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500  15)                 "name": "tortilla chips",
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500  16)                 "amount": 1
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500  17)             },
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500  18)             {
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500  19)                 "name": "hot tomato sauce",
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500  20)                 "amount": 1
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500  21)             },
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500  22)             {
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500  23)                 "name": "shredded Mexican cheese blend",
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500  24)                 "amount": 1
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500  25)             },
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500  26)             {
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500  27)                 "name": "black beans",
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500  28)                 "amount": 1
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500  29)             },
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500  30)             {
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500  31)                 "name": "avocado",
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500  32)                 "amount": 1
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500  33)             },
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500  34)             {
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500  35)                 "name": "green onions",
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500  36)                 "amount": 4
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500  37)             },
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500  38)             {
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500  39)                 "name": "cilantro",
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500  40)                 "amount": 1
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500  41)             },
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500  42)             {
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500  43)                 "name": "lime",
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500  44)                 "amount": 1
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500  45)             }
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500  46)         ],
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500  47)         "instructions" : [
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500  48)             {
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500  49)                 "name": "Lightly oil the bottom of a large dutch oven, to prevent the nachos from sticking."
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500  50)             },
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500  51)             {
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500  52)                 "name": "For the first layer, evenly spread 1/3 of the chips into the dutch oven, topped with 1/4 can El Pato, 1/4 can black beans, 1/4 cup cheese, and a handful of avocado, green onions, and cilantro. Repeat for the second layer."
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500  53)             },
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500  54)             {
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500  55)                 "name": "For the third and final layer, use the remaining 1/3 portion of chips, 1/2 can El Pato, 1/2 can black beans, 1/2  cup cheese, and the remaining avocado, onion, and cilantro."
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500  56)             },
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500  57)             {
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500  58)                 "name": "Cover the dutch oven and place on a metal grill over your campfire for about 10 minutes, until the cheese has melted. Serve with the lime wedges."
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500  59)             }
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500  60)         ]
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500  61)     },
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500  62)     {
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500  63)         "name": "Easy Chickpea Curry",
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500  64)         "description": "Packed with plant-based protein, completely filling, and loaded with flavor, these curried chickpeas with coconut milk continues to be a recurring camping favorite.",
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500  65)         "image": "Chickpea-Curry.jpg",
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500  66)         "type": "dinner",
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500  67)         "time": 25,
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500  68)         "servings": 4,
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500  69)         "ingredients": [
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500  70)             {
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500  71)                 "name": "oil",
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500  72)                 "amount": 1
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500  73)             },
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500  74)             {
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500  75)                 "name": "onion",
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500  76)                 "amount": 1
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500  77)             },
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500  78)             {
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500  79)                 "name": "Garam Masala",
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500  80)                 "amount": 1
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500  81)             },
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500  82)             {
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500  83)                 "name": "cinnamon",
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500  84)                 "amount": 1
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500  85)             },
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500  86)             {
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500  87)                 "name": "ginger",
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500  88)                 "amount": 1
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500  89)             },
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500  90)             {
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500  91)                 "name": "turmeric",
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500  92)                 "amount": 1
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500  93)             },
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500  94)             {
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500  95)                 "name": "pepper",
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500  96)                 "amount": 4
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500  97)             },
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500  98)             {
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500  99)                 "name": "salt",
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 100)                 "amount": 1
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 101)             },
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 102)             {
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 103)                 "name": "tomato paste",
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 104)                 "amount": 1
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 105)             },
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 106)             {
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 107)                 "name": "coconut milk",
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 108)                 "amount": 1
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 109)             },
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 110)             {
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 111)                 "name": "chickpeas",
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 112)                 "amount": 1
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 113)             },
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 114)             {
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 115)                 "name": "lime",
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 116)                 "amount": 1
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 117)             },
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 118)             {
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 119)                 "name": "cilantro",
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 120)                 "amount": 1
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 121)             },
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 122)             {
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 123)                 "name": "yogurt",
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 124)                 "amount": 1
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 125)             }
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 126)         ],
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 127)         "instructions" : [
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 128)             {
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 129)                 "name": "Heat the oil or ghee in a pot over medium heat and add the onions, sauteing until translucent but not browning."
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 130)             },
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 131)             {
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 132)                 "name": "Add the Garam Masala, turmeric, ground ginger, cinnamon, and cayenne, and stir briefly toast the spices so they become fragrant."
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 133)             },
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 134)             {
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 135)                 "name": "Add the coconut milk, tomato paste, and salt. Stir until the tomato paste is completely blended into the coconut milk, then add the chickpeas."
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 136)             },
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 137)             {
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 138)                 "name": "Cook over medium to med-low heat, stirring frequently until the sauce thickens to your liking ??? 10 or 15 minutes."
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 139)             },
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 140)             {
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 141)                 "name": "Serve the chickpea curry with a squeeze of lime, a dollop of yogurt (optional), and garnish with plenty of cilantro."
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 142)             }
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 143)         ]
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 144)     },
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 145)     {
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 146)         "name": "Sausage Breakfast Sandwiches",
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 147)         "description": "These sweet & spicy breakfast sandwiches are the perfect in-hand meal to get your morning started off right.",
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 148)         "image": "Camping-Breakfast.jpg",
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 149)         "type": "breakfast",
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 150)         "time": 15,
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 151)         "servings": 6,
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 152)         "ingredients": [
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 153)             {
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 154)                 "name": "ground pork",
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 155)                 "amount": 1
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 156)             },
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 157)             {
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 158)                 "name": "salt",
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 159)                 "amount": 1
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 160)             },
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 161)             {
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 162)                 "name": "honey",
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 163)                 "amount": 1
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 164)             },
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 165)             {
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 166)                 "name": "sriracha",
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 167)                 "amount": 1
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 168)             },
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 169)             {
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 170)                 "name": "eggs",
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 171)                 "amount": 6
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 172)             },
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 173)             {
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 174)                 "name": "slices cheese",
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 175)                 "amount": 6
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 176)             },
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 177)             {
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 178)                 "name": "english muffins",
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 179)                 "amount": 6
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 180)             }
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 181)         ],
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 182)         "instructions" : [
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 183)             {
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 184)                 "name": "PREP THE SAUSAGES: Mix the ground pork, herbs, and salt in a large bowl until thoroughly combined. Form into 6 equal sized patties, keeping in mind that they will shrink slightly while cooking."
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 185)             },
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 186)             {
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 187)                 "name": "PREP THE SAUCE: Combine the honey and sriracha in a small bowl and stir together. Set aside."
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 188)             },
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 189)             {
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 190)                 "name": "COOK: Heat a griddle or skillet over your campfire or stove top. Once hot, place the sausages on the surface and cook until browned, 2-3 minutes. Flip and cook the other side until browned, 2-3 minutes more. Meanwhile, cook the eggs as desired and toast the English muffins."
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 191)             },
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 192)             {
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 193)                 "name": "ASSEMBLE & SERVE: Spread the Sriracha honey sauce on the English muffins, then layer with a sausage patty, egg, and slice of cheese. Serve & enjoy!"
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 194)             }
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 195)         ]
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 196)     },
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 197)     {
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 198)         "name": "One Pot Pasta Primavera",
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 199)         "description": "This one-pot pasta dish captures the freshness and excitement of spring camping. Loaded with veggies and tangy goat cheese, this Pasta Primavera is a quick and easy meal to throw together at the end of the day.",
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 200)         "image": "pasta-primavera.jpg",
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 201)         "type": "dinner",
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 202)         "time": 25,
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 203)         "servings": 2,
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 204)         "ingredients": [
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 205)             {
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 206)                 "name": "zucchini",
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 207)                 "amount": 1
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 208)             },
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 209)             {
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 210)                 "name": "summer squash",
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 211)                 "amount": 1
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 212)             },
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 213)             {
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 214)                 "name": "cherry tomatoes",
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 215)                 "amount": 1
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 216)             },
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 217)             {
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 218)                 "name": "garlic",
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 219)                 "amount": 1
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 220)             },
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 221)             {
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 222)                 "name": "oil",
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 223)                 "amount": 1
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 224)             },
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 225)             {
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 226)                 "name": "pasta",
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 227)                 "amount": 1
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 228)             },
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 229)             {
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 230)                 "name": "salt",
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 231)                 "amount": 1
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 232)             },
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 233)             {
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 234)                 "name": "goat cheese",
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 235)                 "amount": 1
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 236)             },
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 237)             {
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 238)                 "name": "lemon juice",
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 239)                 "amount": 1
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 240)             }
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 241)         ],
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 242)         "instructions" : [
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 243)             {
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 244)                 "name": "Slice the zucchini and squash into ?? inch slices. Cut the cherry tomatoes in half. Mince the garlic."
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 245)             },
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 246)             {
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 247)                 "name": "Slice the zucchini and squash into ?? inch slices. Cut the cherry tomatoes in half. Mince the garlic."
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 248)             },
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 249)             {
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 250)                 "name": "Add the pasta, salt, and just enough water to cover the pasta to the skillet. Bring the water to a boil over medium heat and cook until the pasta is tender, about 10 minutes (this time may vary depending on the pasta you use). Be sure to stir frequently to ensure even cooking. If the water boils off before the pasta is tender, you can always add a bit more. Once the pasta has cooked through, remove the skillet from the heat."
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 251)             },
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 252)             {
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 253)                 "name": "Stir in the goat cheese to coat the pasta. Add the vegetables back to the skillet and stir to combine. Finish with a squeeze of lemon, serve & enjoy!"
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 254)             }
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 255)         ]
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 256)     },
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 257)     {
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 258)         "name": "Sweet and Spicy Sriracha Trail Mix",
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 259)         "description": "Blending the sweetness of honey, the spice of sriracha, and a savory-salty pop, this quick and easy trail mix brings together a trifecta of flavors to make a highly-cravable trail snack.",
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 260)         "image": "trail-mix.jpg",
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 261)         "type": "snack",
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 262)         "time": 21,
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 263)         "servings": 6.5,
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 264)         "ingredients": [
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 265)             {
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 266)                 "name": "cashews",
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 267)                 "amount": 1
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 268)             },
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 269)             {
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 270)                 "name": "peanuts",
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 271)                 "amount": 1
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 272)             },
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 273)             {
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 274)                 "name": "corn Chex cereal",
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 275)                 "amount": 1
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 276)             },
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 277)             {
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 278)                 "name": "pretzels",
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 279)                 "amount": 1
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 280)             },
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 281)             {
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 282)                 "name": "honey",
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 283)                 "amount": 1
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 284)             },
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 285)             {
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 286)                 "name": "Sriracha",
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 287)                 "amount": 1
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 288)             },
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 289)             {
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 290)                 "name": "oil",
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 291)                 "amount": 1
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 292)             },
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 293)             {
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 294)                 "name": "liquid aminos",
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 295)                 "amount": 1
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 296)             },
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 297)             {
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 298)                 "name": "salt",
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 299)                 "amount": 1
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 300)             }
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 301)         ],
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 302)         "instructions" : [
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 303)             {
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 304)                 "name": "Preheat the oven to 300."
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 305)             },
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 306)             {
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 307)                 "name": "Add the Sriracha, honey, oil, and liquid aminos/soy sauce to a medium bowl. Whisk to combine. Add the Chex, pretzels, cashews, and peanuts to the bowl, and mix well to completely coat with the Sriracha-honey sauce."
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 308)             },
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 309)             {
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 310)                 "name": "Spread mix onto a parchment paper-lined baking sheet and sprinkle with salt."
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 311)             },
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 312)             {
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 313)                 "name": "Bake for about 18 minutes (check after 15 to make sure the mix is not burning - ovens may vary), then remove from the oven to cool."
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 314)             },
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 315)             {
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 316)                 "name": "Once cool, portion into zip-top bags."
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 317)             }
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 318)         ]
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 319)     },
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 320)     {
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 321)         "name": "Banana Bread Pancakes",
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 322)         "description": "Add some banana, walnuts, and a scoop of brown sugar and you can turn your ordinary pancakes into delicious, perfectly sweet Banana Bread Pancakes.",
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 323)         "image": "Banana-Bread-Pancakes.jpg",
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 324)         "type": "breakfast",
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 325)         "time": 30,
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 326)         "servings": 4,
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 327)         "ingredients": [
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 328)             {
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 329)                 "name": "bananas",
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 330)                 "amount": 3
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 331)             },
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 332)             {
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 333)                 "name": "eggs",
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 334)                 "amount": 1
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 335)             },
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 336)             {
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 337)                 "name": "whole milk",
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 338)                 "amount": 1
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 339)             },
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 340)             {
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 341)                 "name": "flour",
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 342)                 "amount": 1
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 343)             },
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 344)             {
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 345)                 "name": "brown sugar",
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 346)                 "amount": 1
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 347)             },
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 348)             {
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 349)                 "name": "cinnamon",
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 350)                 "amount": 1
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 351)             },
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 352)             {
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 353)                 "name": "baking powder",
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 354)                 "amount": 1
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 355)             },
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 356)             {
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 357)                 "name": "salt",
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 358)                 "amount": 1
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 359)             },
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 360)             {
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 361)                 "name": "walnuts",
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 362)                 "amount": 1
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 363)             }
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 364)         ],
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 365)         "instructions" : [
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 366)             {
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 367)                 "name": "Add the flour, brown sugar, cinnamon, baking powder, and salt to a sealable bag or container and pack along with the rest of the ingredients."
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 368)             },
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 369)             {
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 370)                 "name": "Place two bananas in a medium bowl and mash thoroughly with the back of a fork until fairly smooth. Crack the egg into the mixture and add in the milk. Beat the banana, egg, and milk together until smooth."
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 371)             },
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 372)             {
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 373)                 "name": "Add the dry ingredients to the bowl and mix until well combined with the wet ingredients. Don't overmix - some small lumps are OK. If the batter seems too thick, you can add an additional 1/4 cup milk."
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 374)             },
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 375)             {
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 376)                 "name": "Heat a nonstick pan or well-seasoned cast iron skillet on your stove over medium-low to medium heat. Add a generous dab of ghee, butter, or coconut oil (especially if using cast iron!) and swirl to coat the pan. Pour 1/3 cup of the pancake batter into the center of the skillet and scatter some of the chopped walnuts on top. Cook for a few minutes until the top begins to bubble and the sides are set (2-3 minutes). Using a spatula, flip the pancake and cook the other side until golden."
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 377)             },
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 378)             {
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 379)                 "name": "Repeat with the rest of the batter, adding more ghee or oil to the pan for each pancake as needed."
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 380)             },
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 381)             {
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 382)                 "name": "To serve, stack the pancakes and top with maple syrup or butter, sliced banana, and additional toasted walnuts. Enjoy!"
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 383)             }
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 384)         ]
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 385)     }
+c3cc637b (Josephine Rich 2022-11-24 21:44:55 -0500 386) ]

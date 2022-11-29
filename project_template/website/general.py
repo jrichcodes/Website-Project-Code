@@ -36,3 +36,8 @@ def ret_location(location):
     ret.append(long)
 
     return ret
+
+def get_recipes():
+    json_file = open('website/static/json_files/recipes.json')
+    data = json.load(json_file)
+    return data
