@@ -41,6 +41,7 @@
                         <div class="card">
                             <div class="card__content">
                                 <h5>Grocery List</h5>
+                                    <br>
                                     {% for menu_items in menu_items %}
                                     <div class="box">
                                         <input type="checkbox">
@@ -51,6 +52,7 @@
                                         </button>
                                     </div>
                                     {% endfor %}
+                                    <br>
                                     <form method="POST">
                                         <input id="textboxid" type="text" name="item" placeholder="item">
                                         <input id="textboxid" type="text" name="quantity" placeholder="quantity">
