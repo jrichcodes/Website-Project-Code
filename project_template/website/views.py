@@ -3,7 +3,7 @@ from datetime import datetime
 from django.shortcuts import render
 from flask import Blueprint, render_template, request, flash, current_app as app, redirect, url_for, jsonify
 from flask_login import login_required, current_user
-from .models import Trip, User, gearItems, Menu, tripTypes, Friends
+from .models import Trip, User, gearItems, Menu, tripTypes, Friends, menuTypes
 from . import db
 import json, os
 import folium
@@ -189,5 +189,16 @@ def delete_trip():
         delete_trip = Trip.query.get(tripId)
         if delete_trip:
             db.session.delete(delete_trip)
+            db.session.commit()
+    return jsonify({})
+
+@views.route('/delete-menu', methods=['POST'])
+def delete_menu():
+    if request.method == 'POST':
+        delete_menu = json.loads(request.data)
+        menuid = delete_menu['menuid']
+        delete_menu = Menu.query.get(menuid)
+        if delete_menu:
+            db.session.delete(delete_menu)
             db.session.commit()
     return jsonify({})

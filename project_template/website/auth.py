@@ -84,11 +84,10 @@ def menu_summary(menuId):
             db.session.commit()
 
     menu = Menu.query.filter_by(id = menuId).first()
-    #type = menuTypes.query.filter_by(id = menu.menu_type).first()
-    #menu_items = menuItems.query.filter_by(menu_id = menu.id)
+    type = menuTypes.query.filter_by(id = menu.menu_type).first()
+    menu_items = menuItems.query.filter_by(menu_id = menu.id)
 
-    #return render_template("menu_summary.html", menu = menu, menu_items = menu_items, type = type)
-    return render_template("menu_summary.html", menu = menu)
+    return render_template("menu_summary.html", menu = menu, menu_items = menu_items, type = type)
 
 @auth.route('/sign-up', methods=['GET', 'POST'])
 def sign_up():
