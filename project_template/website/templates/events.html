@@ -56,13 +56,13 @@
                             <h5 id="{{trip.id}}" class="link card-title" >{{trip.name}}</h5>
                             <p class="card-text">{{time_till(trip.date)}}</p>
                         </div>
-                        <div style="position: absolute; bottom: 0; text-align: center;">
-                            <button  type="button" class="btn btn-primary btn-block btn-sm close" onClick="deleteTrip({{trip.id}})">
-                                <span style="font-size: 1rem;" aria-hidden="true">Delete Trip</span>
-                            </button>
-                        </div>
                     </div>
                     </a>
+                     <div style="position: absolute; bottom: 0; text-align: center;">
+                        <button  type="button" class="btn btn-primary btn-block btn-sm close" onClick="deleteTrip('{{trip.id}}')">
+                            <span style="font-size: 1rem;" aria-hidden="true">Delete Trip</span>
+                        </button>
+                    </div>
                 </div>
                 {% endfor %}
                 </div>
