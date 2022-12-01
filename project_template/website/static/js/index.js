@@ -24,3 +24,12 @@ function deleteMenu(menuId) {
         window.location.href = "/menu";
     });
 }
+
+function deleteMenuItem(menuItemId, menuId){
+    fetch('/delete-menuitem', {
+        method: "POST",
+        body: JSON.stringify({ menuItemId: menuItemId}),
+    }).then((_res) => {
+        window.location.href = "/menu-summary/" + menuId;
+    });
+}

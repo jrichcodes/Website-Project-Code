@@ -59,7 +59,9 @@
                     </div>
                     </a>
                     <div style="position: absolute; bottom: 0; text-align: center;">
-                        <button type="button" class="btn btn-primary btn-sm" onClick="deleteMenu('{{menu.id}}')">Delete Menu</button>
+                        <button type="button" class="btn btn-primary btn-block btn-sm close" onClick="deleteMenu('{{menu.id}}')">
+                            <span style="font-size: 1rem;" aria-hidden="true">Delete Menu</span>
+                        </button>
                     </div>
                 </div>
                 {% endfor %}
