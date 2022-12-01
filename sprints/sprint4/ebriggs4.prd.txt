@@ -1,0 +1,42 @@
+# Product Requirements Document
+Name: Erin Briggs
+Product Name: TripPlanner
+
+## Background
+Planning a trip takes lots of time and effort that most people don't want to put in the work for. Why not create a website that allows you to plan a trip easily and hassle free. One thing that I found lacking with a lot of travel planning sites is their lack of lists of equiptment for the trip or planning for what you will eat while on the trip. There is a need for a website that does all of the above. That is where TripPlanner comes along.
+
+## Project Overview
+TripPlanner is the easily managable website that helps you plan your trips hassle free. To begin, a user must create an account with the website so there is a place to store and save all of their trip data. Once logged in, the user is free to create all the trips they would like. There is an events page which holds all of the user's saved trips as well as a place that allows the user to create a new trip. On this menu page, you can click on any previously created trip and it will take you to the trip's summary page. The trip summary page lays out all of the trip's details, including location, time and date, how many people will be attending, and any meals you plan to prep for this excursion. The meal page is just as easy to navigate as the trip planning page. The meal summary page also allows you to create a grocery list within your given meal. It also allows you to remove items from it, just as easily as it was added. 
+
+Additional features of TripPlanner is the trip suggestion page and meal suggestion page. These pages are accessible from their corresponding event/menu pages. They help plan trips just at the click of a button. All you have to do is put in the date you would like to go or the time of day the meal is planned to be eaten. Furthermore, there is a map feature that allows you to zoom in to your location you will be visiting. The platform is user friendly and allows users to befriend other users on the websites and access their trip. This shared trip function makes it easy for both users to plan a trip together.
+
+## Features
+1. **User Accounts** As a user, I want my data to be saved so I can come back to it later and edit it as I please.
+2. **Suggested Trips** As a user that wants to plan a trip but doesn't know where to go, the suggested trip page allows me to browse options of places to go and makes it easy to autofill the details of my desired trip.
+3. **Add Friends** As a user, I want to be able to connect with others on the platform and share my trips.
+4. **Change Password** As a user, I want to make sure my private content is safe and therefore change my password often to prevent curruption.
+5. **Grocery and Gear Lists** As a user, I want to be organized with my content and have it stored safely with its corresponding trip or meal.
+6. **Meal Prep** As a user who is planning a trip, I want to know what I am going to eat on my trip and what time of day I am going to eat it.
+7. **Home Page** As an unregistered user, I want to see what features the platform has to offer before signing up.
+8. **Maps** As a user, I want to view the location I am going before I get there.
+9. **Trip Countdown** As a user, I want a time sensitive countdown that lets me know how close my trip is.
+
+## Technologies to be Used
+### Frontend
+- Bootstrap
+- CSS
+- HTML
+
+### Backend
+- Flask
+- Flask-Login
+- Javascript
+- Json
+- Python
+- SQLAlchemy
+
+### Other Libraries
+- Datetime
+- Folium
+- Geopy
+- werkzeug.security

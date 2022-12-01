@@ -7,30 +7,35 @@ d6735a0b (juliasteed 2022-11-16 11:06:07 -0500  5) - Erin Briggs: ebriggs4
 d6735a0b (juliasteed 2022-11-16 11:06:07 -0500  6) - Maxwell Marcum: mmarcu10
 d6735a0b (juliasteed 2022-11-16 11:06:07 -0500  7) - Julia Steed: juliasteed
 d6735a0b (juliasteed 2022-11-16 11:06:07 -0500  9) ## Description
-d6735a0b (juliasteed 2022-11-16 11:06:07 -0500 10) Trip Planner is an online outdoor trip planning service that allows users to prepare for trips efficiently.
-d6735a0b (juliasteed 2022-11-16 11:06:07 -0500 12) Some features of trip planner include:
-d6735a0b (juliasteed 2022-11-16 11:06:07 -0500 13) - Trip suggestions
-d6735a0b (juliasteed 2022-11-16 11:06:07 -0500 14) - Scheduling tools
-d6735a0b (juliasteed 2022-11-16 11:06:07 -0500 15) - Mapping tools
-d6735a0b (juliasteed 2022-11-16 11:06:07 -0500 16) - Meal planning
-d6735a0b (juliasteed 2022-11-16 11:06:07 -0500 17) - Grocery shopping aid
-d6735a0b (juliasteed 2022-11-16 11:06:07 -0500 18) - Ability to friend other users
-d6735a0b (juliasteed 2022-11-16 11:06:07 -0500 20) ## Graphics
-0954d644 (juliasteed 2022-11-20 09:15:07 -0500 21) ![tp_homepage](https://user-images.githubusercontent.com/112104073/202907104-6eba0540-37e4-46e7-882d-f7e5761ad0dc.PNG)
-d6735a0b (juliasteed 2022-11-16 11:06:07 -0500 22)
-d6735a0b (juliasteed 2022-11-16 11:06:07 -0500 23) ## Download Instructions
-d6735a0b (juliasteed 2022-11-16 11:06:07 -0500 24) In order to use Trip Planner, navigate to the home page of this repository and use the "Code" button to copy the address to clone to your clipboard. Navigate to the directory in which you would like to store Trip Planner and git clone the repository there.     
-d6735a0b (juliasteed 2022-11-16 11:06:07 -0500 25)
-d6735a0b (juliasteed 2022-11-16 11:06:07 -0500 26) Next, you should check to make sure you have the following:
-d6735a0b (juliasteed 2022-11-16 11:06:07 -0500 27) - Python (version 3.10.5 or greater)
-d6735a0b (juliasteed 2022-11-16 11:06:07 -0500 28) - Pip
-d6735a0b (juliasteed 2022-11-16 11:06:07 -0500 29) - Flask
-d6735a0b (juliasteed 2022-11-16 11:06:07 -0500 30) - SqlAlchemy
-d6735a0b (juliasteed 2022-11-16 11:06:07 -0500 31)
-d6735a0b (juliasteed 2022-11-16 11:06:07 -0500 32) ## Usage Instructions
-d6735a0b (juliasteed 2022-11-16 11:06:07 -0500 33) To run the website, navigate to "Website-Project-Code/project_template" and run the command "python .\main.py" in a terminal. A website address with a localhost will be given to you that can be opened in any browser.
-d6735a0b (juliasteed 2022-11-16 11:06:07 -0500 34)
-0954d644 (juliasteed 2022-11-20 09:15:07 -0500 35) ## License
+3f78b72e (juliasteed 2022-11-26 21:15:28 -0500 10) Trip Planner is an online outdoor trip planning service that allows users to prepare for trips easily. Users must create a profile to begin planning. From there, users can log in and utilize the Events page to create a trip. After a trip is created, users have 
+the option to delete the trip or modify it through the Trip Summary page. The Trip Summary page can be accessed by clicking on the trip on the Events page. 
+Users can use the Trip Summary page to create trip view general information about the trip, add gear items, create a menu for the trip, or view the trip's location on a map.
+3f78b72e (juliasteed 2022-11-26 21:15:28 -0500 12) One of the most convenient features of trip planner is how efficient it allows the trip planning process 
+to become. For example, if a user wants to create a trip but is not sure where they would like to go, they can use the Trip Suggestions page to view a list 
+of possible trips, which can be filtered by location. Additionally, if the user clicks the "Create Trip" button on one of these suggestions, the Events page will be autofilled with information such as the name, description, and location.
+3f78b72e (juliasteed 2022-11-26 21:15:28 -0500 13)
+3f78b72e (juliasteed 2022-11-26 21:15:28 -0500 14) Some other convenient features of trip planner include:
+d6735a0b (juliasteed 2022-11-16 11:06:07 -0500 15) - Scheduling tools
+d6735a0b (juliasteed 2022-11-16 11:06:07 -0500 16) - Mapping tools
+d6735a0b (juliasteed 2022-11-16 11:06:07 -0500 17) - Meal planning
+d6735a0b (juliasteed 2022-11-16 11:06:07 -0500 18) - Grocery shopping aid
+d6735a0b (juliasteed 2022-11-16 11:06:07 -0500 19) - Ability to friend other users
+d6735a0b (juliasteed 2022-11-16 11:06:07 -0500 21) ## Graphics
+0954d644 (juliasteed 2022-11-20 09:15:07 -0500 22) ![tp_homepage](https://user-images.githubusercontent.com/112104073/202907104-6eba0540-37e4-46e7-882d-f7e5761ad0dc.PNG)
+d6735a0b (juliasteed 2022-11-16 11:06:07 -0500 23)
+d6735a0b (juliasteed 2022-11-16 11:06:07 -0500 24) ## Download Instructions
+d6735a0b (juliasteed 2022-11-16 11:06:07 -0500 25) In order to use Trip Planner, navigate to the home page of this repository and use the "Code" button to copy the address to clone to your clipboard. Navigate to the directory in which you would like to store Trip Planner and git clone the repository there.     
+d6735a0b (juliasteed 2022-11-16 11:06:07 -0500 26)
+d6735a0b (juliasteed 2022-11-16 11:06:07 -0500 27) Next, you should check to make sure you have the following:
+d6735a0b (juliasteed 2022-11-16 11:06:07 -0500 28) - Python (version 3.10.5 or greater)
+d6735a0b (juliasteed 2022-11-16 11:06:07 -0500 29) - Pip
+d6735a0b (juliasteed 2022-11-16 11:06:07 -0500 30) - Flask
+d6735a0b (juliasteed 2022-11-16 11:06:07 -0500 31) - SqlAlchemy
+d6735a0b (juliasteed 2022-11-16 11:06:07 -0500 32)
+d6735a0b (juliasteed 2022-11-16 11:06:07 -0500 33) ## Usage Instructions
+d6735a0b (juliasteed 2022-11-16 11:06:07 -0500 34) To run the website, navigate to "Website-Project-Code/project_template" and run the command "python .\main.py" in a terminal. A website address with a localhost will be given to you that can be opened in any browser.
+d6735a0b (juliasteed 2022-11-16 11:06:07 -0500 35)
+0954d644 (juliasteed 2022-11-20 09:15:07 -0500 36) ## License
 
 - project_template/website/auth.py
 d17ffc40 (juliasteed     2022-11-14 18:40:55 -0500  25)             flash('Username does not exist.', category='error')

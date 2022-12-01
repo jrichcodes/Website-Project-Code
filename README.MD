@@ -15,7 +15,7 @@ Some other convenient features of trip planner include:
 - Scheduling tools
 - Mapping tools
 - Meal planning
-- Grocery shopping aid
+- Grocery shopping list
 - Ability to friend other users
 
 ## Graphics
@@ -29,8 +29,10 @@ Next, you should check to make sure you have the following:
 - Pip
 - Flask
 - SqlAlchemy
+- folium
 
 ## Usage Instructions
 To run the website, navigate to "Website-Project-Code/project_template" and run the command "python .\main.py" in a terminal. A website address with a localhost will be given to you that can be opened in any browser.
 
 ## License
+TripPlanner is available under the MIT license. See the [LICENSE](https://github.com/jrichcodes/Website-Project-Code/blob/main/LICENSE) for more info.

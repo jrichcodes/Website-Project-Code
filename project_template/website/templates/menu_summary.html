@@ -34,23 +34,29 @@
                         <div class="card">
                             <div class="card__content">
                                 <h5>General Information</h5>
-                                <p>Meal Type: {{menu.type}}</p>
+                                <p>Meal Type: {{type.type}}</p>
                                 <p>Number of Servings: {{menu.num_servings}}</p>
                             </div>
                         </div>
                         <div class="card">
                             <div class="card__content">
                                 <h5>Grocery List</h5>
+                                    <br>
                                     {% for menu_items in menu_items %}
                                     <div class="box">
                                         <input type="checkbox">
-                                        <label>{{menu_items.name}}</label>
+                                        <label>{{menu_items.name}}--{{menu_items.quantity}}</label>
+
+                                        <button type="button" onClick="deleteMenuItem({{menu_items.id}}, {{menu.id}})">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
                                     </div>
                                     {% endfor %}
+                                    <br>
                                     <form method="POST">
                                         <input id="textboxid" type="text" name="item" placeholder="item">
                                         <input id="textboxid" type="text" name="quantity" placeholder="quantity">
-                                        <input type="submit" value="Add Menu Item" class="button" style="cursor: pointer">
+                                        <input type="submit" value="Add Grocery Item" class="button" style="cursor: pointer">
                                     </form>
                             </div>
                         </div>

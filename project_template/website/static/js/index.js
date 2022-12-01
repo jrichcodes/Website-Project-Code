@@ -15,3 +15,12 @@ function deleteTrip(tripId) {
         window.location.href = "/events";
     });
 }
+
+function deleteMenu(menuId) {
+    fetch('/delete-menu', {
+        method: "POST",
+        body: JSON.stringify({menuId: menuId}),
+    }).then((_res) => {
+        window.location.href = "/menu";
+    });
+}
