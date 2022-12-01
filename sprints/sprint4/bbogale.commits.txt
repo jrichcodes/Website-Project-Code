@@ -18,3 +18,108 @@ cfe5daf0 (yejashi           2022-11-02 13:20:55 -0400  3)
 cfe5daf0 (yejashi           2022-11-02 13:20:55 -0400  4) def ret_location(location):
 cfe5daf0 (yejashi           2022-11-02 13:20:55 -0400 21)     ret = []
 4e543cbb (yejashi           2022-11-02 19:12:12 -0400 25)     return ret
+4e543cbb (yejashi        2022-11-02 19:12:12 -0400  1) import json
+4e543cbb (yejashi        2022-11-02 19:12:12 -0400  2) from geopy.geocoders import Nominatim
+4e543cbb (yejashi        2022-11-02 19:12:12 -0400  3) 
+4e543cbb (yejashi        2022-11-02 19:12:12 -0400  4) def get_json():
+4e543cbb (yejashi        2022-11-02 19:12:12 -0400  5)     json_file = open('website/static/json_files/suggestions.json')
+4e543cbb (yejashi        2022-11-02 19:12:12 -0400  6) 
+4e543cbb (yejashi        2022-11-02 19:12:12 -0400  7)     data = json.load(json_file)
+4e543cbb (yejashi        2022-11-02 19:12:12 -0400  8) 
+4e543cbb (yejashi        2022-11-02 19:12:12 -0400  9)     # for continent in data:
+4e543cbb (yejashi        2022-11-02 19:12:12 -0400 10)     #     for trip in data[continent]:
+4e543cbb (yejashi        2022-11-02 19:12:12 -0400 11)     #         print(trip + ": " + data[continent][trip])
+4e543cbb (yejashi        2022-11-02 19:12:12 -0400 12)     return data
+4e543cbb (yejashi        2022-11-02 19:12:12 -0400 13) 
+625d4d1c (yejashi        2022-11-21 23:51:26 -0500 14) import requests, json
+625d4d1c (yejashi        2022-11-21 23:51:26 -0500 15) 
+625d4d1c (yejashi        2022-11-21 23:51:26 -0500 16) 
+4e543cbb (yejashi        2022-11-02 19:12:12 -0400 17) def ret_location(location):
+625d4d1c (yejashi        2022-11-21 23:51:26 -0500 18)     name_list = location.split()
+625d4d1c (yejashi        2022-11-21 23:51:26 -0500 19) 
+625d4d1c (yejashi        2022-11-21 23:51:26 -0500 20)     formatted_name = "%20".join(name_list)
+625d4d1c (yejashi        2022-11-21 23:51:26 -0500 21) 
+625d4d1c (yejashi        2022-11-21 23:51:26 -0500 22) 
+625d4d1c (yejashi        2022-11-21 23:51:26 -0500 23)     path = 'https://api.opencagedata.com/geocode/v1/json?q=' + formatted_name + '&key=03c48dae07364cabb7f121d8c1519492'
+625d4d1c (yejashi        2022-11-21 23:51:26 -0500 24) 
+625d4d1c (yejashi        2022-11-21 23:51:26 -0500 25)     req = requests.get(path,headers={"User-Agent":"Mozilla/5.0"})
+625d4d1c (yejashi        2022-11-21 23:51:26 -0500 26) 
+625d4d1c (yejashi        2022-11-21 23:51:26 -0500 27)     response_info = json.loads(req.text)
+625d4d1c (yejashi        2022-11-21 23:51:26 -0500 28) 
+625d4d1c (yejashi        2022-11-21 23:51:26 -0500 29)     #print(response_info['geometry']['lat'])
+625d4d1c (yejashi        2022-11-21 23:51:26 -0500 30) 
+625d4d1c (yejashi        2022-11-21 23:51:26 -0500 31)     lat = response_info['results'][0]['geometry']['lat']
+625d4d1c (yejashi        2022-11-21 23:51:26 -0500 32)     long = response_info['results'][0]['geometry']['lng']
+625d4d1c (yejashi        2022-11-21 23:51:26 -0500 33) 
+4e543cbb (yejashi        2022-11-02 19:12:12 -0400 34)     ret = []
+625d4d1c (yejashi        2022-11-21 23:51:26 -0500 35)     ret.append(lat)
+625d4d1c (yejashi        2022-11-21 23:51:26 -0500 36)     ret.append(long)
+625d4d1c (yejashi        2022-11-21 23:51:26 -0500 37) 
+625d4d1c (yejashi 2022-11-21 23:51:26 -0500  1) import requests, json
+625d4d1c (yejashi 2022-11-21 23:51:26 -0500  2) 
+cfe5daf0 (yejashi 2022-11-02 13:20:55 -0400  3) 
+cfe5daf0 (yejashi 2022-11-02 13:20:55 -0400  4) def ret_location(location):
+625d4d1c (yejashi 2022-11-21 23:51:26 -0500  5)     name_list = location.split()
+625d4d1c (yejashi 2022-11-21 23:51:26 -0500  6) 
+625d4d1c (yejashi 2022-11-21 23:51:26 -0500  7)     formatted_name = "%20".join(name_list)
+625d4d1c (yejashi 2022-11-21 23:51:26 -0500  8) 
+625d4d1c (yejashi 2022-11-21 23:51:26 -0500  9) 
+625d4d1c (yejashi 2022-11-21 23:51:26 -0500 10)     path = 'https://api.opencagedata.com/geocode/v1/json?q=' + formatted_name + '&key=03c48dae07364cabb7f121d8c1519492'
+625d4d1c (yejashi 2022-11-21 23:51:26 -0500 11) 
+625d4d1c (yejashi 2022-11-21 23:51:26 -0500 12)     req = requests.get(path,headers={"User-Agent":"Mozilla/5.0"})
+625d4d1c (yejashi 2022-11-21 23:51:26 -0500 13) 
+625d4d1c (yejashi 2022-11-21 23:51:26 -0500 14)     response_info = json.loads(req.text)
+625d4d1c (yejashi 2022-11-21 23:51:26 -0500 15) 
+625d4d1c (yejashi 2022-11-21 23:51:26 -0500 16)     #print(response_info['geometry']['lat'])
+625d4d1c (yejashi 2022-11-21 23:51:26 -0500 17) 
+625d4d1c (yejashi 2022-11-21 23:51:26 -0500 18)     lat = response_info['results'][0]['geometry']['lat']
+625d4d1c (yejashi 2022-11-21 23:51:26 -0500 19)     long = response_info['results'][0]['geometry']['lng']
+625d4d1c (yejashi 2022-11-21 23:51:26 -0500 20) 
+cfe5daf0 (yejashi 2022-11-02 13:20:55 -0400 21)     ret = []
+625d4d1c (yejashi 2022-11-21 23:51:26 -0500 22)     ret.append(lat)
+625d4d1c (yejashi 2022-11-21 23:51:26 -0500 23)     ret.append(long)
+625d4d1c (yejashi 2022-11-21 23:51:26 -0500 24) 
+4e543cbb (yejashi 2022-11-02 19:12:12 -0400 25)     return ret
+bb8ce714 (yejashi        2022-11-30 21:59:34 -0500 111)                         <div class="card feature_card" style="width: 18rem;">
+bb8ce714 (yejashi        2022-11-30 21:59:34 -0500 112)                             <img class="card-img-top" src="../static/images/features/suggestion.jpg" alt="Card image cap">
+bb8ce714 (yejashi        2022-11-30 21:59:34 -0500 113)                             <div class="card-body">
+bb8ce714 (yejashi        2022-11-30 21:59:34 -0500 114)                               <!-- <h5 class="card-title">Card title</h5> -->
+bb8ce714 (yejashi        2022-11-30 21:59:34 -0500 115)                               <p class="card-text">Trip Suggestions</p>
+bb8ce714 (yejashi        2022-11-30 21:59:34 -0500 116)                               <p class="card-text">Menu Suggestions</p>
+bb8ce714 (yejashi        2022-11-30 21:59:34 -0500 117)                               <p class="card-text">Autofilled Grocery Lists</p>
+bb8ce714 (yejashi        2022-11-30 21:59:34 -0500 118)                               <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+bb8ce714 (yejashi        2022-11-30 21:59:34 -0500 119)                             </div>
+bb8ce714 (yejashi        2022-11-30 21:59:34 -0500 120)                           </div>
+bb8ce714 (yejashi        2022-11-30 21:59:34 -0500 123)                         <div class="card feature_card" style="width: 18rem;">
+bb8ce714 (yejashi        2022-11-30 21:59:34 -0500 124)                             <img class="card-img-top" src="../static/images/features/community.jpg" alt="Card image cap">
+bb8ce714 (yejashi        2022-11-30 21:59:34 -0500 125)                             <div class="card-body">
+bb8ce714 (yejashi        2022-11-30 21:59:34 -0500 126)                               <!-- <h5 class="card-title">Card title</h5> -->
+bb8ce714 (yejashi        2022-11-30 21:59:34 -0500 127)                               <p class="card-text">Unique Profiles</p>
+bb8ce714 (yejashi        2022-11-30 21:59:34 -0500 128)                               <p class="card-text">Add Friends</p>
+bb8ce714 (yejashi        2022-11-30 21:59:34 -0500 129)                               <p class="card-text">Accessible to anyone</p>
+bb8ce714 (yejashi        2022-11-30 21:59:34 -0500 130)                               <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+bb8ce714 (yejashi        2022-11-30 21:59:34 -0500 131)                             </div>
+bb8ce714 (yejashi        2022-11-30 21:59:34 -0500 132)                           </div>
+bb8ce714 (yejashi        2022-11-30 21:59:34 -0500 135)                         <div class="card feature_card" style="width: 18rem;">
+bb8ce714 (yejashi        2022-11-30 21:59:34 -0500 136)                             <img class="card-img-top" src="../static/images/features/customizability.png" alt="Card image cap">
+bb8ce714 (yejashi        2022-11-30 21:59:34 -0500 137)                             <div class="card-body">
+bb8ce714 (yejashi        2022-11-30 21:59:34 -0500 138)                               <!-- <h5 class="card-title">Card title</h5> -->
+bb8ce714 (yejashi        2022-11-30 21:59:34 -0500 139)                               <p class="card-text">Custom Trip Types</p>
+bb8ce714 (yejashi        2022-11-30 21:59:34 -0500 140)                               <p class="card-text">Custom Gear Items</p>
+bb8ce714 (yejashi        2022-11-30 21:59:34 -0500 141)                               <p class="card-text">Custom Meals</p>
+bb8ce714 (yejashi        2022-11-30 21:59:34 -0500 142)                               <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+bb8ce714 (yejashi        2022-11-30 21:59:34 -0500 143)                             </div>
+bb8ce714 (yejashi        2022-11-30 21:59:34 -0500 144)                           </div>
+bb8ce714 (yejashi        2022-11-30 21:59:34 -0500 145)                     </div>
+bb8ce714 (yejashi 2022-11-30 21:59:34 -0500  96) .feature_card {
+bb8ce714 (yejashi 2022-11-30 21:59:34 -0500  97)     border-color: #5CDB95;
+bb8ce714 (yejashi 2022-11-30 21:59:34 -0500  98)     margin: 10px 10px;
+bb8ce714 (yejashi 2022-11-30 21:59:34 -0500  99)     border-radius: 2.5%;
+bb8ce714 (yejashi 2022-11-30 21:59:34 -0500 100) }
+bb8ce714 (yejashi 2022-11-30 21:59:34 -0500 101) 
+bb8ce714 (yejashi 2022-11-30 21:59:34 -0500 102) .card-img-top {
+bb8ce714 (yejashi 2022-11-30 21:59:34 -0500 103)     width: 100%;
+bb8ce714 (yejashi 2022-11-30 21:59:34 -0500 104)     height: 13rem;
+bb8ce714 (yejashi 2022-11-30 21:59:34 -0500 105)     object-fit: cover;
+bb8ce714 (yejashi 2022-11-30 21:59:34 -0500 106) }
+bb8ce714 (yejashi 2022-11-30 21:59:34 -0500 107) 
