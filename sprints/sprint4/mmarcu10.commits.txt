@@ -1,0 +1,78 @@
+profile.html
+76656efe (mmarcu10   2022-11-30 22:48:02 -0500  89)           </div>
+76656efe (mmarcu10   2022-11-30 22:48:02 -0500  90)           <div class="row d-flex justify-content-center align-items-center h-100">
+76656efe (mmarcu10   2022-11-30 22:48:02 -0500  91)             <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+76656efe (mmarcu10   2022-11-30 22:48:02 -0500  92)               <div class="card" style="border-radius: 15px; background-color: #535353">
+76656efe (mmarcu10   2022-11-30 22:48:02 -0500  93)                 <div class="card-body p-5">
+76656efe (mmarcu10   2022-11-30 22:48:02 -0500  94)                   <h2 class="text-uppercase text-center mb-5">Bio</h2>
+76656efe (mmarcu10   2022-11-30 22:48:02 -0500  95)                   <form method="POST">
+76656efe (mmarcu10   2022-11-30 22:48:02 -0500  96)                     <div class="form-outline mb-4">
+76656efe (mmarcu10   2022-11-30 22:48:02 -0500  97)                       <label for="name">Bio</label>
+76656efe (mmarcu10   2022-11-30 22:48:02 -0500  98)                       <input type="name" class="form-control" id="bio" name="bio" placeholder="Bio Here" value="{{bio}}" />
+76656efe (mmarcu10   2022-11-30 22:48:02 -0500  99)                     </div>
+76656efe (mmarcu10   2022-11-30 22:48:02 -0500 100)                     <div class="form-outline mb-4">
+76656efe (mmarcu10   2022-11-30 22:48:02 -0500 101)                       <label for="d_d_a">Dream Destinations</label>
+76656efe (mmarcu10   2022-11-30 22:48:02 -0500 102)                       <input type="d_d_a" class="form-control" id="d_d_a" placeholder="place A, place b, ..." name="d_d_a" value="{{d_d_a}}" />
+76656efe (mmarcu10   2022-11-30 22:48:02 -0500 103)                     </div>
+76656efe (mmarcu10   2022-11-30 22:48:02 -0500 104)                     <div class="d-flex justify-content-center">
+76656efe (mmarcu10   2022-11-30 22:48:02 -0500 105)                       <button name="submit_button" value="submit bio" type="submit"
+76656efe (mmarcu10   2022-11-30 22:48:02 -0500 106)                         class="btn btn-primary btn-block btn-lg" style="margin: 10px 0">Submit Bio</button>
+76656efe (mmarcu10   2022-11-30 22:48:02 -0500 107)                     </div>
+76656efe (mmarcu10   2022-11-30 22:48:02 -0500 108)                   </form>
+76656efe (mmarcu10   2022-11-30 22:48:02 -0500 109)                 </div>
+76656efe (mmarcu10   2022-11-30 22:48:02 -0500 110)               </div>
+76656efe (mmarcu10   2022-11-30 22:48:02 -0500 111)             </div>
+76656efe (mmarcu10   2022-11-30 22:48:02 -0500 112)           </div>
+76656efe (mmarcu10   2022-11-30 22:48:02 -0500 113)         </div>
+76656efe (mmarcu10   2022-11-30 22:48:02 -0500 114)       </div>
+76656efe (mmarcu10   2022-11-30 22:48:02 -0500 115)     </div>
+76656efe (mmarcu10   2022-11-30 22:48:02 -0500 116)   </section>
+76656efe (mmarcu10   2022-11-30 22:48:02 -0500 117) </body>
+76656efe (mmarcu10   2022-11-30 22:48:02 -0500 118) 
+
+friend.html
+76656efe (mmarcu10 2022-11-30 22:48:02 -0500 38)         <div class="container" style="margin: auto; background-color: #5CDB95; border-radius: 25px">
+76656efe (mmarcu10 2022-11-30 22:48:02 -0500 39)             <div class="card-body">
+76656efe (mmarcu10 2022-11-30 22:48:02 -0500 40)                 <p align = center ><img src="{{friend2.avatar(128)}}" alt="Avatar" class="img-fluid my-5" style="width: 100px;" /> </p>
+76656efe (mmarcu10 2022-11-30 22:48:02 -0500 41)                 <h2 align = "center"> About {{friend2.first_name}} </h2>
+76656efe (mmarcu10 2022-11-30 22:48:02 -0500 42)                 <hr>
+76656efe (mmarcu10 2022-11-30 22:48:02 -0500 43)                 <p align = "center">{{friend_bio.bio}}</p>
+76656efe (mmarcu10 2022-11-30 22:48:02 -0500 44)                 <h2 align = "center"> {{friend2.first_name}}'s Dream Destinations </h2>
+76656efe (mmarcu10 2022-11-30 22:48:02 -0500 45)                 <hr>
+76656efe (mmarcu10 2022-11-30 22:48:02 -0500 46)                 <p align = "center">{{friend_bio.dream_dest_array}}</p>
+76656efe (mmarcu10 2022-11-30 22:48:02 -0500 47)                 
+76656efe (mmarcu10 2022-11-30 22:48:02 -0500 48)             </div>
+76656efe (mmarcu10 2022-11-30 22:48:02 -0500 49)         </div>
+
+auth.py
+76656efe (mmarcu10       2022-11-30 22:48:02 -0500   2) from .models import User, UserBio, gearItems, Trip, tripTypes, Menu, menuTypes, menuItems
+76656efe (mmarcu10       2022-11-30 22:48:02 -0500 122)             new_user_bio = UserBio(user_id = new_user.id)
+76656efe (mmarcu10       2022-11-30 22:48:02 -0500 123)             db.session.add(new_user_bio)
+76656efe (mmarcu10       2022-11-30 22:48:02 -0500 124)             db.session.commit()
+
+models.py
+76656efe (mmarcu10       2022-11-30 22:48:02 -0500 45) class UserBio(db.Model, UserMixin):
+76656efe (mmarcu10       2022-11-30 22:48:02 -0500 46)     user_id = db.Column(db.Integer, primary_key=True)
+76656efe (mmarcu10       2022-11-30 22:48:02 -0500 47)     bio = db.Column(db.String(5000))
+76656efe (mmarcu10       2022-11-30 22:48:02 -0500 48)     dream_dest_array = db.Column(db.String(500))
+76656efe (mmarcu10       2022-11-30 22:48:02 -0500 49) 
+
+views.py
+3e23cd02 (mmarcu10       2022-11-30 22:50:57 -0500   6) from .models import Trip, UserBio, User, gearItems, Menu, tripTypes, Friends, menuTypes
+76656efe (mmarcu10       2022-11-30 22:48:02 -0500  91)     friend_bio = UserBio.query.filter_by(user_id = friend2.id).first()
+76656efe (mmarcu10       2022-11-30 22:48:02 -0500 100)     return render_template("friend.html", friendship = friendship, friend2 = friend2, time_till=time_till.count_time, friend_bio = friend_bio)
+76656efe (mmarcu10       2022-11-30 22:48:02 -0500 128)     curbio = UserBio.query.filter_by(user_id=User.id).first()
+76656efe (mmarcu10       2022-11-30 22:48:02 -0500 129)     bio = curbio.bio
+76656efe (mmarcu10       2022-11-30 22:48:02 -0500 130)     d_d_a = curbio.dream_dest_array
+76656efe (mmarcu10       2022-11-30 22:48:02 -0500 131) 
+76656efe (mmarcu10       2022-11-30 22:48:02 -0500 132)     if request.method == 'POST':
+76656efe (mmarcu10       2022-11-30 22:48:02 -0500 133)         if request.form['submit_button'] =='submit bio':
+76656efe (mmarcu10       2022-11-30 22:48:02 -0500 134)             bio_in = request.form.get('bio')
+76656efe (mmarcu10       2022-11-30 22:48:02 -0500 135)             d_d_a_in = request.form.get('d_d_a')
+76656efe (mmarcu10       2022-11-30 22:48:02 -0500 136) 
+76656efe (mmarcu10       2022-11-30 22:48:02 -0500 137)             curbio.bio = bio_in
+76656efe (mmarcu10       2022-11-30 22:48:02 -0500 138)             curbio.dream_dest_array = d_d_a_in
+76656efe (mmarcu10       2022-11-30 22:48:02 -0500 139)             db.session.commit()
+76656efe (mmarcu10       2022-11-30 22:48:02 -0500 140)             return redirect(url_for('views.profile'))
+76656efe (mmarcu10       2022-11-30 22:48:02 -0500 141) 
+76656efe (mmarcu10       2022-11-30 22:48:02 -0500 142)     return render_template("profile.html", user=current_user,  d_d_a = d_d_a, bio = bio)
