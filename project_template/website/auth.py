@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, request, flash, redirect, url_for
-from .models import User, gearItems, Trip, tripTypes, Menu, menuTypes, menuItems
+from .models import User, UserBio, gearItems, Trip, tripTypes, Menu, menuTypes, menuItems
 from . import db
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_sqlalchemy import SQLAlchemy
@@ -118,6 +118,9 @@ def sign_up():
             #add user to database
             new_user = User(email=email, first_name=first_name, last_name=last_name, username=username, password=generate_password_hash(password1, method='sha256'))
             db.session.add(new_user)
+            db.session.commit()
+            new_user_bio = UserBio(user_id = new_user.id)
+            db.session.add(new_user_bio)
             db.session.commit()
             flash('Account created!', category='sucess')
             return redirect(url_for('auth.login')) # redirect to login page after new account created
