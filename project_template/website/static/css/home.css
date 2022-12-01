@@ -93,6 +93,18 @@
     padding-bottom: 5%;
 }
 
+.feature_card {
+    border-color: #5CDB95;
+    margin: 10px 10px;
+    border-radius: 2.5%;
+}
+
+.card-img-top {
+    width: 100%;
+    height: 13rem;
+    object-fit: cover;
+}
+
 body {
     font-family: "Montserrat";
 }
