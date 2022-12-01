@@ -1,0 +1,109 @@
+views.py
+1ac20f15 (ebriggs4       2022-11-30 14:40:32 -0500   6) from .models import Trip, User, gearItems, Menu, tripTypes, Friends, menuTypes
+1ac20f15 (ebriggs4       2022-11-30 14:40:32 -0500 193)     return jsonify({})
+1ac20f15 (ebriggs4       2022-11-30 14:40:32 -0500 194)
+1ac20f15 (ebriggs4       2022-11-30 14:40:32 -0500 195) @views.route('/delete-menu', methods=['POST'])
+1ac20f15 (ebriggs4       2022-11-30 14:40:32 -0500 196) def delete_menu():
+1ac20f15 (ebriggs4       2022-11-30 14:40:32 -0500 197)     if request.method == 'POST':
+1ac20f15 (ebriggs4       2022-11-30 14:40:32 -0500 198)         delete_menu = json.loads(request.data)
+1ac20f15 (ebriggs4       2022-11-30 14:40:32 -0500 199)         menuid = delete_menu['menuid']
+1ac20f15 (ebriggs4       2022-11-30 14:40:32 -0500 200)         delete_menu = Menu.query.get(menuid)
+1ac20f15 (ebriggs4       2022-11-30 14:40:32 -0500 201)         if delete_menu:
+1ac20f15 (ebriggs4       2022-11-30 14:40:32 -0500 202)             db.session.delete(delete_menu)
+1ac20f15 (ebriggs4       2022-11-30 14:40:32 -0500 203)             db.session.commit()
+1ac20f15 (ebriggs4       2022-11-30 14:40:32 -0500 204)     return jsonify({})
+
+auth.py
+1ac20f15 (ebriggs4       2022-11-30 14:40:32 -0500  87)     type = menuTypes.query.filter_by(id = menu.menu_type).first()
+1ac20f15 (ebriggs4       2022-11-30 14:40:32 -0500  88)     menu_items = menuItems.query.filter_by(menu_id = menu.id)
+1ac20f15 (ebriggs4       2022-11-30 14:40:32 -0500  90)     return render_template("menu_summary.html", menu = menu, menu_items = menu_items, type = type)
+
+menu.html
+1ac20f15 (ebriggs4       2022-11-30 14:40:32 -0500  13)         <link rel="stylesheet" href="../static/css/events.css">
+1ac20f15 (ebriggs4       2022-11-30 14:40:32 -0500  23)
+1ac20f15 (ebriggs4       2022-11-30 14:40:32 -0500  24)         <script type="text/javascript">
+1ac20f15 (ebriggs4       2022-11-30 14:40:32 -0500  25)             function CheckMenuType(val){
+1ac20f15 (ebriggs4       2022-11-30 14:40:32 -0500  26)              var element=document.getElementById('displayOther');
+1ac20f15 (ebriggs4       2022-11-30 14:40:32 -0500  27)              if(val==5)
+1ac20f15 (ebriggs4       2022-11-30 14:40:32 -0500  28)                element.style.display='block';
+1ac20f15 (ebriggs4       2022-11-30 14:40:32 -0500  29)              else
+1ac20f15 (ebriggs4       2022-11-30 14:40:32 -0500  30)                element.style.display='none';
+1ac20f15 (ebriggs4       2022-11-30 14:40:32 -0500  31)             }
+1ac20f15 (ebriggs4       2022-11-30 14:40:32 -0500  32)         </script>
+1ac20f15 (ebriggs4       2022-11-30 14:40:32 -0500  33)
+1ac20f15 (ebriggs4       2022-11-30 14:40:32 -0500  43)                 <li><a href="/recipes">Recipe Suggestions</a></li>
+1ac20f15 (ebriggs4       2022-11-30 14:40:32 -0500  44)                 <li><a href="/logout">Logout</a></li>
+1ac20f15 (ebriggs4       2022-11-30 14:40:32 -0500  47)
+1ac20f15 (ebriggs4       2022-11-30 14:40:32 -0500  48)         {% if user.menu %}
+1ac20f15 (ebriggs4       2022-11-30 14:40:32 -0500  49)         <h1 align="center">My Meals</h1>
+1ac20f15 (ebriggs4       2022-11-30 14:40:32 -0500  50)         <div class="container" style="margin: auto; background-color: black; border-radius: 20px">
+1ac20f15 (ebriggs4       2022-11-30 14:40:32 -0500  51)             <div class="  row mx-auto" >
+1ac20f15 (ebriggs4       2022-11-30 14:40:32 -0500  52)                 {% for menu in user.menu %}
+1ac20f15 (ebriggs4       2022-11-30 14:40:32 -0500  53)                 <div style="position: relative;" class="card col-lg-2 col-sm-8">
+1ac20f15 (ebriggs4       2022-11-30 14:40:32 -0500  54)                     <a href="/menu-summary/{{menu.id}}" class="button">
+1ac20f15 (ebriggs4       2022-11-30 14:40:32 -0500  55)                     <div class="card-body">
+1ac20f15 (ebriggs4       2022-11-30 14:40:32 -0500  56)                         <div style="margin-bottom: 2rem;">
+1ac20f15 (ebriggs4       2022-11-30 14:40:32 -0500  57)                             <h5 id="{{menu.id}}" class="link card-title" >{{menu.name}}</h5>
+1ac20f15 (ebriggs4       2022-11-30 14:40:32 -0500  58)                         </div>
+1ac20f15 (ebriggs4       2022-11-30 14:40:32 -0500  59)                         <div style="position: absolute; bottom: 0; text-align: center;">
+1ac20f15 (ebriggs4       2022-11-30 14:40:32 -0500  60)                             <button type="button" class="btn btn-primary btn-sm" onClick="deleteMenu({{menu.id}})">Delete Menu</button>
+1ac20f15 (ebriggs4       2022-11-30 14:40:32 -0500  61)                         </div>
+1ac20f15 (ebriggs4       2022-11-30 14:40:32 -0500  62)                     </div>
+1ac20f15 (ebriggs4       2022-11-30 14:40:32 -0500  63)                     </a>
+1ac20f15 (ebriggs4       2022-11-30 14:40:32 -0500  64)                 </div>
+1ac20f15 (ebriggs4       2022-11-30 14:40:32 -0500  65)                 {% endfor %}
+1ac20f15 (ebriggs4       2022-11-30 14:40:32 -0500  66)                 </div>
+1ac20f15 (ebriggs4       2022-11-30 14:40:32 -0500  67)             </div>
+1ac20f15 (ebriggs4       2022-11-30 14:40:32 -0500  68)         </div>
+1ac20f15 (ebriggs4       2022-11-30 14:40:32 -0500  69)         {% endif %}
+1ac20f15 (ebriggs4       2022-11-30 14:40:32 -0500  70)
+1ac20f15 (ebriggs4       2022-11-30 14:40:32 -0500  71)
+1ac20f15 (ebriggs4       2022-11-30 14:40:32 -0500  72)         <br>
+1ac20f15 (ebriggs4       2022-11-30 14:40:32 -0500  79)                     <h1 class="text-uppercase text-center mb-5">Create New Meal</h1>
+1ac20f15 (ebriggs4       2022-11-30 14:40:32 -0500  95)                             <select class="form-control" id="menuType" name="menuType" onchange='CheckMenuType(this.value);'>
+
+menu_summary.html
+1ac20f15 (ebriggs4 2022-11-30 14:40:32 -0500 37)                                 <p>Meal Type: {{type.type}}</p>
+083fc0b3 (ebriggs4 2022-11-30 17:22:52 -0500 44)                                     <br>
+1ac20f15 (ebriggs4 2022-11-30 14:40:32 -0500 48)                                         <label>{{menu_items.name}}--{{menu_items.quantity}}</label>
+1ac20f15 (ebriggs4 2022-11-30 14:40:32 -0500 49)
+1ac20f15 (ebriggs4 2022-11-30 14:40:32 -0500 50)                                         <button type="button" onClick="deleteMenuItem({{menu_items.id}}, {{menu.id}})">
+1ac20f15 (ebriggs4 2022-11-30 14:40:32 -0500 51)                                             <span aria-hidden="true">&times;</span>
+1ac20f15 (ebriggs4 2022-11-30 14:40:32 -0500 52)                                         </button>
+083fc0b3 (ebriggs4 2022-11-30 17:22:52 -0500 55)                                     <br>
+1ac20f15 (ebriggs4 2022-11-30 14:40:32 -0500 59)                                         <input type="submit" value="Add Grocery Item" class="button" style="cursor: pointer">
+
+trip_summary.html
+1ac20f15 (ebriggs4       2022-11-30 14:40:32 -0500 46)                                 <br>
+1ac20f15 (ebriggs4       2022-11-30 14:40:32 -0500 47)                                 <a href="/menu" class="button">View Your Recipes</a>
+1ac20f15 (ebriggs4       2022-11-30 14:40:32 -0500 89) </html>
+
+menu.css
+1ac20f15 (ebriggs4 2022-11-30 14:40:32 -0500 32)     margin: 1rem;
+1ac20f15 (ebriggs4 2022-11-30 14:40:32 -0500 33)     border-radius: 20px;
+1ac20f15 (ebriggs4 2022-11-30 14:40:32 -0500 34)     background-color: rgb(249, 249, 249);
+1ac20f15 (ebriggs4 2022-11-30 14:40:32 -0500 35)     border-color: rgb(237, 237, 237);
+1ac20f15 (ebriggs4 2022-11-30 14:40:32 -0500 59)
+1ac20f15 (ebriggs4 2022-11-30 14:40:32 -0500 60) .delete_button {
+1ac20f15 (ebriggs4 2022-11-30 14:40:32 -0500 61)     position: relative;
+1ac20f15 (ebriggs4 2022-11-30 14:40:32 -0500 62)     top: 100%;
+1ac20f15 (ebriggs4 2022-11-30 14:40:32 -0500 63)     transform: translateY(-100%);
+1ac20f15 (ebriggs4 2022-11-30 14:40:32 -0500 64) }
+
+recipes.css
+1ac20f15 (ebriggs4       2022-11-30 14:40:32 -0500  4)     font-family:'Montserrat' sanserif;
+1ac20f15 (ebriggs4       2022-11-30 14:40:32 -0500 97) }
+
+index.js
+1ac20f15 (ebriggs4       2022-11-30 14:40:32 -0500 17) }
+1ac20f15 (ebriggs4       2022-11-30 14:40:32 -0500 18)
+1ac20f15 (ebriggs4       2022-11-30 14:40:32 -0500 19) function deleteMenu(menuId) {
+1ac20f15 (ebriggs4       2022-11-30 14:40:32 -0500 20)     fetch('/delete-menu', {
+1ac20f15 (ebriggs4       2022-11-30 14:40:32 -0500 21)         method: "POST",
+1ac20f15 (ebriggs4       2022-11-30 14:40:32 -0500 22)         body: JSON.stringify({menuId: menuId}),
+1ac20f15 (ebriggs4       2022-11-30 14:40:32 -0500 23)     }).then((_res) => {
+1ac20f15 (ebriggs4       2022-11-30 14:40:32 -0500 24)         window.location.href = "/menu";
+1ac20f15 (ebriggs4       2022-11-30 14:40:32 -0500 25)     });
+1ac20f15 (ebriggs4       2022-11-30 14:40:32 -0500 26) }
+
+
