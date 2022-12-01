@@ -10,4 +10,4 @@
 - project_template/website/static/css/home.css
 
 ### What i accomplished
-The problem we were left with at last sprint was the unpredictability of location entries for trips. Our code would recognize some locations while not others. I used this sprint to make that functionality more robust. I changed the api used to convert the location names to coordinates to a more functional one. At the current moment, as long as there is a recognizable location name entered, the map will be coordinated appropriatly.
+The problem we were left with at last sprint was the unpredictability of location entries for trips. Our code would recognize some locations while not others. I used this sprint to make that functionality more robust. I changed the api used to convert the location names to coordinates to a more functional one. At the current moment, as long as there is a recognizable location name entered, the map will be coordinated appropriatly. On the other hand, i added touch ups to the home page to make it more asthetically pleasing.
