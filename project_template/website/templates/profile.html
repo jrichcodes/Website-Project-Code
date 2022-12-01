@@ -1,91 +1,119 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-        <!-- Bootstrap -->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css" integrity="sha384-xeJqLiuOvjUBq3iGOjvSQSIlwrpqjSHXpduPd6rQpuiM3f5/ijby8pCsnbu5S81n" crossorigin="anonymous">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-        <!-- Custom Stylesheets -->
-        <link rel="stylesheet" href="../static/css/profile.css">
-        <link rel="stylesheet" href="../static/css/navbar.css">
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css"
+    integrity="sha384-xeJqLiuOvjUBq3iGOjvSQSIlwrpqjSHXpduPd6rQpuiM3f5/ijby8pCsnbu5S81n" crossorigin="anonymous">
 
-        <!-- Fonts -->
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;1,700&display=swap" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
-        <!-- FontAwesome -->
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.2/css/fontawesome.min.css" integrity="sha384-X8QTME3FCg1DLb58++lPvsjbQoCT9bp3MsUU3grbIny/3ZwUJkRNO8NPW6zqzuW9" crossorigin="anonymous">
+  <!-- Custom Stylesheets -->
+  <link rel="stylesheet" href="../static/css/profile.css">
+  <link rel="stylesheet" href="../static/css/navbar.css">
 
-        <title>My Profile</title>
-    </head>
-    <body>
-        <nav>
-          <div class="navheading">
-              <h4>Trip Planner</h4>
-            </div>
-            <ul class="nav-links">
-                <li><a href="/">Home</a></li>
-                <li><a href="/events">Trips</a></li>
-                <li><a href="/friends">Friends</a></li>
-                <li><a href="/logout">Logout</a></li>
-            </ul>
-          </nav>
-        
-        <section class="vh-100" style="background-color: #5CDB95;">
-            <div class="container py-5 h-100">
-              <div class="row d-flex justify-content-center align-items-center h-100">
-                <div class="col col-lg-6 mb-4 mb-lg-0">
-                  <div class="card mb-3" style="border-radius: .5rem;">
-                    <div class="row g-0">
-                      <div class="col-md-4 gradient-custom text-center text-white"
-                        style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem;">
-                        <img src="{{user.avatar(128)}}"
-                          alt="Avatar" class="img-fluid my-5" style="width: 80px;" />
-                        <h5>{{user.first_name}} {{user.last_name}}</h5>
-                      </div>
-                      <div class="col-md-8">
-                        <div class="card-body p-4">
-                          <h5>My Information</h5>
-                          <hr class="mt-0 mb-4">
-                          <div class="row pt-1">
-                            <div class="col-6 mb-3">
-                              <h6>Email</h6>
-                              <p class="text-muted">{{user.email}}</p>
-                            </div>
-                            <div class="col-6 mb-3">
-                              <h6>Username</h6>
-                              <p class="text-muted">{{user.username}}</p>
-                            </div>
-                          </div>
-                          <h5>Edit Profile</h5>
-                          <hr class="mt-0 mb-4">
-                          <div class="row pt-1">
-                            <div class="col-6 mb-3">
-                              <a class="text-muted" href="/email_reset/{{user.id}}">Change Email</a>
-                            </div>
-                            <div class="col-6 mb-3">
-                              <a class="text-muted" href="/password_reset/{{user.id}}">Change Password</a>
-                            </div>
-                            <div class="col-6 mb-3">
-                              <a class="text-muted" href="/username_reset/{{user.id}}">Change Username</a>
-                            </div>
-                          </div>
-                          <div class="d-flex justify-content-start">
-                            <a href="#!"><i class="fab fa-facebook-f fa-lg me-3"></i></a>
-                            <a href="#!"><i class="fab fa-twitter fa-lg me-3"></i></a>
-                            <a href="#!"><i class="fab fa-instagram fa-lg"></i></a>
-                          </div>
-                        </div>
-                      </div>
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;1,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
+  <!-- FontAwesome -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.2/css/fontawesome.min.css"
+    integrity="sha384-X8QTME3FCg1DLb58++lPvsjbQoCT9bp3MsUU3grbIny/3ZwUJkRNO8NPW6zqzuW9" crossorigin="anonymous">
+
+  <title>My Profile</title>
+</head>
+
+<body>
+  <nav>
+    <div class="navheading">
+      <h4>Trip Planner</h4>
+    </div>
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/events">Trips</a></li>
+      <li><a href="/friends">Friends</a></li>
+      <li><a href="/logout">Logout</a></li>
+    </ul>
+  </nav>
+
+  <section class="vh-100" style="background-color: #5CDB95;">
+    <div class="container py-5 h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col col-lg-6 mb-4 mb-lg-0">
+          <div class="card mb-3" style="border-radius: .5rem;">
+            <div class="row g-0">
+              <div class="col-md-4 gradient-custom text-center text-white"
+                style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem;">
+                <img src="{{user.avatar(128)}}" alt="Avatar" class="img-fluid my-5" style="width: 80px;" />
+                <h5>{{user.first_name}} {{user.last_name}}</h5>
+              </div>
+              <div class="col-md-8">
+                <div class="card-body p-4">
+                  <h5>My Information</h5>
+                  <hr class="mt-0 mb-4">
+                  <div class="row pt-1">
+                    <div class="col-6 mb-3">
+                      <h6>Email</h6>
+                      <p class="text-muted">{{user.email}}</p>
                     </div>
+                    <div class="col-6 mb-3">
+                      <h6>Username</h6>
+                      <p class="text-muted">{{user.username}}</p>
+                    </div>
+                  </div>
+                  <h5>Edit Profile</h5>
+                  <hr class="mt-0 mb-4">
+                  <div class="row pt-1">
+                    <div class="col-6 mb-3">
+                      <a class="text-muted" href="/email_reset/{{user.id}}">Change Email</a>
+                    </div>
+                    <div class="col-6 mb-3">
+                      <a class="text-muted" href="/password_reset/{{user.id}}">Change Password</a>
+                    </div>
+                    <div class="col-6 mb-3">
+                      <a class="text-muted" href="/username_reset/{{user.id}}">Change Username</a>
+                    </div>
+                  </div>
+                  <div class="d-flex justify-content-start">
+                    <a href="#!"><i class="fab fa-facebook-f fa-lg me-3"></i></a>
+                    <a href="#!"><i class="fab fa-twitter fa-lg me-3"></i></a>
+                    <a href="#!"><i class="fab fa-instagram fa-lg"></i></a>
                   </div>
                 </div>
               </div>
             </div>
-          </section>
-    </body>
+          </div>
+          <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+              <div class="card" style="border-radius: 15px; background-color: #535353">
+                <div class="card-body p-5">
+                  <h2 class="text-uppercase text-center mb-5">Bio</h2>
+                  <form method="POST">
+                    <div class="form-outline mb-4">
+                      <label for="name">Bio</label>
+                      <input type="name" class="form-control" id="bio" name="bio" placeholder="Bio Here" value="{{bio}}" />
+                    </div>
+                    <div class="form-outline mb-4">
+                      <label for="d_d_a">Dream Destinations</label>
+                      <input type="d_d_a" class="form-control" id="d_d_a" placeholder="place A, place b, ..." name="d_d_a" value="{{d_d_a}}" />
+                    </div>
+                    <div class="d-flex justify-content-center">
+                      <button name="submit_button" value="submit bio" type="submit"
+                        class="btn btn-primary btn-block btn-lg" style="margin: 10px 0">Submit Bio</button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</body>
+
 </html>

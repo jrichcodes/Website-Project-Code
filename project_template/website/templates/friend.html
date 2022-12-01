@@ -35,6 +35,18 @@
         <h1 align="center">{{friend2.username}}</h1>
         <hr>
         {% if friendship.status == 0 %}
+        <div class="container" style="margin: auto; background-color: #5CDB95; border-radius: 25px">
+            <div class="card-body">
+                <p align = center ><img src="{{friend2.avatar(128)}}" alt="Avatar" class="img-fluid my-5" style="width: 100px;" /> </p>
+                <h2 align = "center"> About {{friend2.first_name}} </h2>
+                <hr>
+                <p align = "center">{{friend_bio.bio}}</p>
+                <h2 align = "center"> {{friend2.first_name}}'s Dream Destinations </h2>
+                <hr>
+                <p align = "center">{{friend_bio.dream_dest_array}}</p>
+                
+            </div>
+        </div>
             {% if friend2.trip %}
             <h1 align="center">{{friend2.first_name}}'s Trips</h1>
             <div class="container" style="margin: auto; background-color: black; border-radius: 25px">

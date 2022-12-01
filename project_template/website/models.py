@@ -42,6 +42,11 @@ class User(db.Model, UserMixin):
         return 'https://www.gravatar.com/avatar/{}?d=identicon&s={}'.format(
             digest, size)
 
+class UserBio(db.Model, UserMixin):
+    user_id = db.Column(db.Integer, primary_key=True)
+    bio = db.Column(db.String(5000))
+    dream_dest_array = db.Column(db.String(500))
+
 class tripTypes(db.Model): 
     __tablename__ = 'trip_types'
     id = db.Column(db.Integer, primary_key=True)

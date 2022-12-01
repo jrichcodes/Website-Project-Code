@@ -3,7 +3,7 @@ from datetime import datetime
 from django.shortcuts import render
 from flask import Blueprint, render_template, request, flash, current_app as app, redirect, url_for, jsonify
 from flask_login import login_required, current_user
-from .models import Trip, User, gearItems, Menu, tripTypes, Friends
+from .models import Trip, UserBio, User, gearItems, Menu, tripTypes, Friends
 from . import db
 import json, os
 import folium
@@ -88,6 +88,7 @@ def friends():
 def friend(friendship_id):
     friendship = Friends.query.filter_by(id = friendship_id).first()
     friend2 = User.query.filter_by(id = friendship.friend2_id).first()
+    friend_bio = UserBio.query.filter_by(user_id = friend2.id).first()
 
     if request.method == 'POST':
         if request.form['Friendship_Button'] == 'Accept':
@@ -96,7 +97,7 @@ def friend(friendship_id):
             friendsfuncs.rejectfriend(friendship_id)
             return redirect(url_for('views.friends'))
 
-    return render_template("friend.html", friendship = friendship, friend2 = friend2, time_till=time_till.count_time)
+    return render_template("friend.html", friendship = friendship, friend2 = friend2, time_till=time_till.count_time, friend_bio = friend_bio)
 
 @views.route('/map')
 def index():
@@ -124,7 +125,21 @@ def index():
 @views.route('/profile/', methods = ['GET', 'POST'])
 @login_required
 def profile():
-    return render_template("profile.html", user=current_user)
+    curbio = UserBio.query.filter_by(user_id=User.id).first()
+    bio = curbio.bio
+    d_d_a = curbio.dream_dest_array
+
+    if request.method == 'POST':
+        if request.form['submit_button'] =='submit bio':
+            bio_in = request.form.get('bio')
+            d_d_a_in = request.form.get('d_d_a')
+
+            curbio.bio = bio_in
+            curbio.dream_dest_array = d_d_a_in
+            db.session.commit()
+            return redirect(url_for('views.profile'))
+
+    return render_template("profile.html", user=current_user,  d_d_a = d_d_a, bio = bio)
 
 @views.route('menu', methods=['GET', 'POST'])
 @login_required
