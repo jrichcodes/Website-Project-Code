@@ -67,7 +67,7 @@ def trip_summary(tripId):
     type = tripTypes.query.filter_by(id = trip.trip_type).first()
     gear_items = gearItems.query.filter_by(trip_id = trip.id)
 
-    return render_template("trip_summary.html", trip = trip, gear_items = gear_items, type = type)
+    return render_template("trip_summary.html", user=current_user, trip = trip, gear_items = gear_items, type = type)
 
 @auth.route('/menu-summary/<menuId>', methods=['GET', 'POST'])
 def menu_summary(menuId):
