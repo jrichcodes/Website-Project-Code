@@ -54,21 +54,31 @@
                         <div class="card">
                             <div class="card__content">
                                 <h5>Gear List</h5>
-                                    {% for gear_items in gear_items %}
-                                    <div class="box">
-                                        <input type="checkbox">
-                                        <label>{{gear_items.name}}--{{gear_items.quantity}}</label>
+                                    {% if edit == 1  %}
+                                        {% for gear_items in gear_items %}
+                                        <div class="box">
+                                            <input type="checkbox">
+                                            <label>{{gear_items.name}}--{{gear_items.quantity}}</label>
 
-                                        <button type="button" onClick="deleteGearItem('{{gear_items.id}}', '{{trip.id}}')">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                    {% endfor %}
+                                            <button type="button" onClick="deleteGearItem('{{gear_items.id}}', '{{trip.id}}')">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        {% endfor %}
+
                                     <form method="POST">
                                         <input id="textboxid" type="text" name="item" placeholder="item">
                                         <input id="textboxid" type="text" name="quantity" placeholder="quantity">
                                           <input type="submit" value="Add Item" class="button" style="cursor: pointer">
                                     </form>
+                                    {% else %}
+                                        {% for gear_items in gear_items %}
+                                        <div class="box">
+                                            <input type="checkbox">
+                                            <label>{{gear_items.name}}--{{gear_items.quantity}}</label>
+                                        </div>
+                                        {% endfor %}
+                                    {% endif %}
                                     <a href="https://recsports.utk.edu/utop/equipment-rentals/" target="_blank" rel="noopener noreferrer">Need gear?</a>
                             </div>
                         </div>
